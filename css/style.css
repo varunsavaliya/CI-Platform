@@ -1,0 +1,284 @@
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* login page styling */
+        
+        .main-container {
+            width: 100%;
+            margin: auto;
+        }
+        
+        .login-page {
+            display: grid;
+            grid-template-columns: 2.04fr 1fr;
+            column-gap: 1rem;
+        }
+        
+        .carousel-indicators {
+            margin-bottom: -0.2rem;
+        }
+        
+        .item {
+            position: absolute;
+        }
+        
+        .image-caption {
+            position: relative;
+            right: 14%;
+        }
+        
+        .image-caption h3 {
+            font-family: 'Noto Sans', sans-serif;
+            text-align: left;
+            font-size: 2.7rem;
+        }
+        
+        .image-caption p {
+            font-family: 'Noto Sans', sans-serif;
+            text-align: left;
+            font-size: 1.2rem;
+        }
+        /* form */
+        
+        .login-section {
+            display: contents;
+        }
+        
+        .formdiv {
+            justify-content: center;
+            display: grid;
+            align-items: center;
+            margin-top: 22%;
+        }
+        
+        .formdiv p {
+            font-size: 14px;
+            color: #414141;
+            font-family: 'Noto Sans', sans-serif;
+            text-align: center;
+        }
+        
+        .formcontent {
+            width: 400px;
+        }
+        
+        .formcontent p {
+            font-size: 14px;
+            color: #414141;
+            font-family: 'Noto Sans', sans-serif;
+            text-align: center;
+            margin-bottom: 17px;
+        }
+        
+        .formlabels {
+            color: #414141;
+            font-size: 16px;
+            font-family: 'Noto Sans', sans-serif;
+            margin: 9px 0;
+            font-weight: 500;
+        }
+        
+        .login-section .formcontent div input {
+            border: solid 1px #D9D9D9;
+            margin-bottom: 5px;
+            box-shadow: 0.97px 0.26px 3px #0000000D;
+        }
+        
+        .loginbtn {
+            color: #F88634;
+            border: solid 2px #F88634 !important;
+            border-radius: 24px !important;
+            background-color: white;
+            width: 100%;
+            margin-bottom: 15px !important;
+            margin-top: 22px !important;
+        }
+        
+        .loginbtn:hover {
+            color: #ffffff !important;
+            background-color: #F88634;
+        }
+        
+        .formcontent p a,
+        .formdiv .privacy a {
+            color: #414141;
+            text-decoration: none;
+        }
+        
+        .create-account {
+            color: #2B64B1 !important;
+        }
+        
+        .privacy {
+            /* margin-bottom: -32%; */
+        }
+        
+        @media screen and (max-width:1280px) {
+            .formcontent {
+                width: 376px;
+            }
+        }
+        
+        @media screen and (max-width:1180px) {
+            .image-caption h3 {
+                font-size: 2.6rem;
+            }
+            .image-caption p {
+                font-size: 1.1rem;
+            }
+            .formcontent {
+                width: 350px;
+            }
+        }
+        
+        @media screen and (max-width:1100px) {
+            .formcontent {
+                width: 325px;
+            }
+            .formlabels {
+                font-size: 15px;
+            }
+        }
+        
+        @media screen and (max-width:1028px) {
+            .image-caption h3 {
+                font-size: 2.4rem;
+            }
+            .formcontent {
+                width: 286px;
+            }
+            .formcontent p {
+                font-size: 13px;
+            }
+            .formcontent p a,
+            .formdiv .privacy a {
+                font-size: 13px;
+            }
+        }
+        
+        @media screen and (max-width: 964px) {
+            .image-caption h3 {
+                font-size: 2.3rem;
+            }
+            .formcontent {
+                width: 255px;
+            }
+            .formcontent p a {
+                display: block;
+            }
+        }
+        
+        @media screen and (max-width: 844px) {
+            .image-caption h3 {
+                font-size: 2.1rem;
+            }
+            .formlabels {
+                font-size: 14px;
+            }
+            .formcontent {
+                width: 230px;
+            }
+        }
+        
+        @media screen and (max-width: 780px) {
+            .login-page {
+                grid-template-columns: 2fr 1fr;
+            }
+            .image-caption h3 {
+                font-size: 2.1rem;
+            }
+            .image-caption p {
+                font-size: 1rem;
+            }
+            .formcontent {
+                width: 201px;
+            }
+            .formlabels {
+                font-size: 13px;
+            }
+            .formcontent p a,
+            .formdiv .privacy a {
+                font-size: 12px;
+            }
+            .formdiv {
+                margin-top: 5%;
+            }
+            .formcontent p {
+                font-size: 12px;
+            }
+        }
+        
+        @media screen and (max-width: 700px) {
+            .image-caption h3 {
+                font-size: 1.8rem;
+            }
+            .image-caption p {
+                font-size: 0.9rem;
+                margin: 0 !important;
+            }
+            .formlabels {
+                font-size: 14px;
+                margin: 6px 0;
+            }
+            .loginbtn {
+                margin-top: 12px !important;
+            }
+            .login-page {
+                grid-template-columns: 1fr;
+            }
+            .formcontent {
+                width: 282px;
+            }
+            .formcontent p a {
+                display: inline;
+            }
+        }
+        
+        @media screen and (max-width: 490px) {
+            .carousel-inner {
+                height: 50vh;
+            }
+            .image-caption {
+                padding-bottom: 20%;
+            }
+            .image-caption {
+                right: 0;
+            }
+            .image-caption h3 {
+                text-align: center;
+            }
+            .image-caption p {
+                text-align: center;
+            }
+        }
+        
+        @media screen and (max-width: 451px) and (min-width:403px) {
+            .image-caption {
+                padding-bottom: 34px;
+            }
+        }
+        
+        @media screen and (max-width: 402px) and (min-width:360px) {
+            .image-caption {
+                padding-bottom: 0;
+            }
+        }
+        
+        @media screen and (max-width: 385px) and (min-width:360px) {
+            .carousel-indicators {
+                bottom: 30px !important;
+            }
+        }
+        /* forgot password styling */
+        
+        .formcontent h3 {
+            text-align: center;
+        }
+        /* @media screen and (max-width: 490px) {
+            .carousel-inner {
+                height: 39vh;
+            }
+        } */
