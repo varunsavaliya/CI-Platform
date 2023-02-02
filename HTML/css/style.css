@@ -14,7 +14,7 @@
         .login-page {
             display: grid;
             grid-template-columns: 2.04fr 1fr;
-            column-gap: 1rem;
+            /* column-gap: 1rem; */
         }
         
         .carousel-indicators {
@@ -110,10 +110,6 @@
         
         .create-account {
             color: #2B64B1 !important;
-        }
-        
-        .privacy {
-            /* margin-bottom: -32%; */
         }
         
         @media screen and (max-width:1280px) {
@@ -282,3 +278,21 @@
                 height: 39vh;
             }
         } */
+        /* registration page styling */
+        
+        .registration-section {
+            display: contents;
+        }
+        
+        .registration-section .formcontent div input {
+            border: solid 1px #D9D9D9;
+            margin-bottom: 5px;
+            box-shadow: 0.97px 0.26px 3px #0000000D;
+        }
+        
+        .registration-section .formdiv {
+            justify-content: center;
+            display: grid;
+            align-items: center;
+            margin-top: 0;
+        }
