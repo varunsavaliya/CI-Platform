@@ -25,6 +25,15 @@
             position: absolute;
         }
         
+        .carousel-image1,
+        .carousel-image2,
+        .carousel-image3 {
+            background-image: url(../images/Grow-Trees-On-the-path-to-environment-sustainability-login.png);
+            background-size: cover;
+            height: 100vh;
+            background-position: center;
+        }
+        
         .image-caption {
             position: relative;
             right: 14%;
@@ -212,6 +221,11 @@
         }
         
         @media screen and (max-width: 700px) {
+            .carousel-image1,
+            .carousel-image2,
+            .carousel-image3 {
+                height: 50vh;
+            }
             .image-caption h3 {
                 font-size: 1.8rem;
             }
@@ -415,6 +429,11 @@
             .registration-page {
                 display: grid;
                 grid-template-columns: 1fr;
+            }
+            .registration-page .carousel-image1,
+            .registration-page .carousel-image2,
+            .registration-page .carousel-image3 {
+                height: 50vh;
             }
             .registration-section .formdiv {
                 margin-top: 3%;
