@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0d64b576-535a-429f-aca1-9515bf24f12d": {
+      "ProjectGuid": "0d64b576-535a-429f-aca1-9515bf24f12d",
+      "DisplayName": "CI Platform web",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

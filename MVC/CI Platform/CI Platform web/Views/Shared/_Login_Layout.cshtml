@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CI_Platform_web.styles.css" asp-append-version="true" />
+    <title>@ViewData["Title"] - CI_Platform_web</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="login-page">
+            <div class="banner">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+
+                        <div class="item active">
+                            <div class="carousel-image1"></div>
+
+                            <!-- <img src="images\Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt="Los Angeles" style="width:100%;"> -->
+                            <div class="carousel-caption">
+                                <div class="image-caption">
+                                    <h3>Sed ut perspiciatis unde omnis iste natus voluptatem.</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                                        est laborum.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="carousel-image2"></div>
+
+                            <!-- <img src="images\Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt="Chicago" style="width:100%;"> -->
+                            <div class="carousel-caption">
+                                <div class="image-caption">
+                                    <h3>Sed ut perspiciatis unde omnis iste natus voluptatem.</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                                        est laborum.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="carousel-image3"></div>
+                            <!-- <img src="images\Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt="New York" style="width:100%;"> -->
+                            <div class="carousel-caption">
+                                <div class="image-caption">
+                                    <h3>Sed ut perspiciatis unde omnis iste natus voluptatem.</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                                        est laborum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @RenderBody()
+    </div>
+            </div>
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

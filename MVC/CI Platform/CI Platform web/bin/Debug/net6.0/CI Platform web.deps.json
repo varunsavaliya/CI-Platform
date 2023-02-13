@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CI Platform web/1.0.0": {
+        "runtime": {
+          "CI Platform web.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CI Platform web/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

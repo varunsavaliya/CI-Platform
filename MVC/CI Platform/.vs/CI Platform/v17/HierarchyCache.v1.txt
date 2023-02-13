@@ -1,0 +1,445 @@
+﻿++Solution 'CI Platform' ‎(1 of 1 project)
+i:{00000000-0000-0000-0000-000000000000}:CI Platform.sln
+++CI Platform web
+i:{00000000-0000-0000-0000-000000000000}:CI Platform web
+++Connected Services 
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:>517
+++Dependencies
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:>516
+++Properties
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\properties\
+++wwwroot
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\
+++css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\css\
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\
+++style.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\css\style.css
+++images
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\
+++js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\js\
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\
+++lib
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\
+++favicon.ico
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\favicon.ico
+++Controllers
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\controllers\
+++HomeController.cs
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\controllers\homecontroller.cs
+++Models
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\models\
+++ErrorViewModel.cs
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\models\errorviewmodel.cs
+++Views
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\
+++Home
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\home\
+++Forgot_Password.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\home\forgot_password.cshtml
+++Index.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\home\index.cshtml
+++Privacy.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\home\privacy.cshtml
+++Registration.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\home\registration.cshtml
+++Reset_Password.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\home\reset_password.cshtml
+++Shared
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\shared\
+++_Layout.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\shared\_layout.cshtml
+++_Login_Layout.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\shared\_login_layout.cshtml
+++_ValidationScriptsPartial.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\shared\_validationscriptspartial.cshtml
+++Error.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\shared\error.cshtml
+++_ViewImports.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\_viewimports.cshtml
+++_ViewStart.cshtml
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\_viewstart.cshtml
+++appsettings.json
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\appsettings.json
+++appsettings.Development.json
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\appsettings.development.json
+++Program.cs
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\program.cs
+++No service dependencies discovered
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:>518
+++Analyzers
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:analyzers
+++Frameworks
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:frameworks
+++launchSettings.json
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\properties\launchsettings.json
+++404-Page-image.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\404-page-image.png
+++achieved.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\achieved.png
+++add.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\add.png
+++add1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\add1.png
+++Already-volunteered.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\already-volunteered.png
+++Animal-welfare-&-save-birds-campaign.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\animal-welfare-&-save-birds-campaign.png
+++Animal-welfare-&-save-birds-campaign-1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\animal-welfare-&-save-birds-campaign-1.png
+++arrow.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\arrow.png
+++bell.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\bell.png
+++bell-big.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\bell-big.png
+++bin.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\bin.png
+++calender.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\calender.png
+++cancel.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\cancel.png
+++cancel1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\cancel1.png
+++checked.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\checked.png
+++cross.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\cross.png
+++CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\csr-initiative-stands-for-coffee--and-farmer-equity.png
+++CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\csr-initiative-stands-for-coffee--and-farmer-equity-1.png
+++CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\csr-initiative-stands-for-coffee--and-farmer-equity-2.png
+++CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\csr-initiative-stands-for-coffee--and-farmer-equity-3.png
+++CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\csr-initiative-stands-for-coffee--and-farmer-equity-4.png
+++CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\csr-initiative-stands-for-coffee--and-farmer-equity-5.png
+++CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\csr-initiative-stands-for-coffee--and-farmer-equity-6.png
+++deadline.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\deadline.png
+++doc.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\doc.png
+++down.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\down.png
+++drag-and-drop.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\drag-and-drop.png
+++drop-down.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\drop-down.png
+++Education-Supplies-for-Every--Pair-of-Shoes-Sold.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\education-supplies-for-every--pair-of-shoes-sold.png
+++Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\education-supplies-for-every--pair-of-shoes-sold-1.png
+++Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\education-supplies-for-every--pair-of-shoes-sold-2.png
+++eye.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\eye.png
+++facebook.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\facebook.png
+++filter.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\filter.png
+++gift.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\gift.png
+++graph.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\graph.png
+++grid.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\grid.png
+++Grow-Trees-On-the-path-to-environment-sustainability.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\grow-trees-on-the-path-to-environment-sustainability.png
+++Grow-Trees-On-the-path-to-environment-sustainability-1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\grow-trees-on-the-path-to-environment-sustainability-1.png
+++Grow-Trees-On-the-path-to-environment-sustainability-2.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\grow-trees-on-the-path-to-environment-sustainability-2.png
+++Grow-Trees-On-the-path-to-environment-sustainability-3.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\grow-trees-on-the-path-to-environment-sustainability-3.png
+++Grow-Trees-On-the-path-to-environment-sustainability-4.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\grow-trees-on-the-path-to-environment-sustainability-4.png
+++Grow-Trees-On-the-path-to-environment-sustainability-5.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\grow-trees-on-the-path-to-environment-sustainability-5.png
+++Grow-Trees-On-the-path-to-environment-sustainability-login.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\grow-trees-on-the-path-to-environment-sustainability-login.png
+++heart.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\heart.png
+++heart1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\heart1.png
+++hours.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\hours.png
+++image.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\image.png
+++image1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\image1.png
+++image2.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\image2.png
+++img.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\img.png
+++img1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\img1.png
+++img11.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\img11.png
+++img2.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\img2.png
+++img22.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\img22.png
+++img3.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\img3.png
+++img33.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\img33.png
+++info.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\info.png
+++left.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\left.png
+++left1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\left1.png
+++linkedin.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\linkedin.png
+++list.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\list.png
+++logo.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\logo.png
+++mission.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\mission.png
+++my-story.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\my-story.png
+++new-message.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\new-message.png
+++next.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\next.png
+++Nourish-the-Children-in--African-country.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\nourish-the-children-in--african-country.png
+++Nourish-the-Children-in--African-country-1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\nourish-the-children-in--african-country-1.png
+++Open-Volunteering-Requests.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\open-volunteering-requests.png
+++organization.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\organization.png
+++pdf.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\pdf.png
+++pin.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\pin.png
+++pin1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\pin1.png
+++Plantation-and-Afforestation-programme.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\plantation-and-afforestation-programme.png
+++Plantation-and-Afforestation-programme-1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\plantation-and-afforestation-programme-1.png
+++previous.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\previous.png
+++right.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\right.png
+++right-arrow.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\right-arrow.png
+++right-arrow1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\right-arrow1.png
+++right-arrow2.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\right-arrow2.png
+++right-white.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\right-white.png
+++search.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\search.png
+++Seats-left.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\seats-left.png
+++selected-star.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\selected-star.png
+++settings.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\settings.png
+++star.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\star.png
+++star-empty.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\star-empty.png
+++twitter.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\twitter.png
+++up.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\up.png
+++user.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\user.png
+++user1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\user1.png
+++user-img.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\user-img.png
+++user-img-large.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\user-img-large.png
+++volunteer1.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteer1.png
+++volunteer2.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteer2.png
+++volunteer3.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteer3.png
+++volunteer4.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteer4.png
+++volunteer5.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteer5.png
+++volunteer6.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteer6.png
+++volunteer7.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteer7.png
+++volunteer8.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteer8.png
+++volunteer9.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteer9.png
+++Volunteering-Rank.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\volunteering-rank.png
+++Voted-Missions.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\voted-missions.png
+++web.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\web.png
+++xlsx.png
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\images\xlsx.png
+++site.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\js\site.js
+++bootstrap
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\
+++jquery
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery\
+++jquery-validation
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation\
+++jquery-validation-unobtrusive
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation-unobtrusive\
+++_Layout.cshtml.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\views\shared\_layout.cshtml.css
+++Microsoft.AspNetCore.Analyzers
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.App.Analyzers
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
+++Microsoft.AspNetCore.App.CodeFixes
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.codefixes.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.AspNetCore.Razor.Internal.SourceGenerator.Transport
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.internal.sourcegenerator.transport.dll
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++Microsoft.Extensions.Logging.Generators
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+++Microsoft.NET.Sdk.Razor.SourceGenerators
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\sdk\6.0.100\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
+++System.Text.Json.SourceGeneration
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.0\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+++Microsoft.AspNetCore.App
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\microsoft.aspnetcore.app
+++Microsoft.NETCore.App
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\microsoft.netcore.app
+++dist
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery\dist\
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation\dist\
+++LICENSE
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\license
+++LICENSE.txt
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery\license.txt
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation-unobtrusive\license.txt
+++LICENSE.md
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation\license.md
+++jquery.validate.unobtrusive.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
+++jquery.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery\dist\jquery.js
+++additional-methods.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation\dist\additional-methods.js
+++jquery.validate.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+++jquery.validate.unobtrusive.min.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
+++bootstrap.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+++bootstrap-grid.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+++bootstrap-reboot.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+++bootstrap-utilities.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+++bootstrap.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+++jquery.min.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery\dist\jquery.min.js
+++additional-methods.min.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+++jquery.validate.min.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+++bootstrap.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+++bootstrap.min.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+++bootstrap.rtl.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+++bootstrap-grid.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+++bootstrap-grid.min.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+++bootstrap-grid.rtl.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+++bootstrap-reboot.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+++bootstrap-reboot.min.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+++bootstrap-reboot.rtl.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+++bootstrap-utilities.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+++bootstrap-utilities.min.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+++bootstrap-utilities.rtl.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+++bootstrap.bundle.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+++bootstrap.esm.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+++bootstrap.js.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+++bootstrap.min.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+++jquery.min.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\jquery\dist\jquery.min.map
+++bootstrap.min.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+++bootstrap.rtl.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+++bootstrap.rtl.min.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+++bootstrap-grid.min.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+++bootstrap-grid.rtl.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+++bootstrap-grid.rtl.min.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+++bootstrap-reboot.min.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+++bootstrap-reboot.rtl.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+++bootstrap-reboot.rtl.min.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+++bootstrap-utilities.min.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+++bootstrap-utilities.rtl.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+++bootstrap-utilities.rtl.min.css
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+++bootstrap.bundle.js.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+++bootstrap.bundle.min.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+++bootstrap.esm.js.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+++bootstrap.esm.min.js
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+++bootstrap.min.js.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+++bootstrap.rtl.min.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+++bootstrap-grid.rtl.min.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+++bootstrap-reboot.rtl.min.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+++bootstrap-utilities.rtl.min.css.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+++bootstrap.bundle.min.js.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+++bootstrap.esm.min.js.map
+i:{0d64b576-535a-429f-aca1-9515bf24f12d}:d:\projects\ci - platform\mvc\ci platform\ci platform web\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map

@@ -1,0 +1,26 @@
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\appsettings.Development.json
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\appsettings.json
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\CI Platform web.staticwebassets.runtime.json
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\CI Platform web.exe
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\CI Platform web.deps.json
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\CI Platform web.runtimeconfig.json
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\CI Platform web.dll
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\ref\CI Platform web.dll
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\CI Platform web.pdb
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.csproj.AssemblyReference.cache
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.AssemblyInfoInputs.cache
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.AssemblyInfo.cs
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.csproj.CoreCompileInputs.cache
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.RazorAssemblyInfo.cache
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.RazorAssemblyInfo.cs
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\staticwebassets.build.json
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\staticwebassets.development.json
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\scopedcss\bundle\CI Platform web.styles.css
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\scopedcss\projectbundle\CI Platform web.bundle.scp.css
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.dll
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\ref\CI Platform web.dll
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.pdb
+D:\Projects\CI - Platform\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.genruntimeconfig.cache
