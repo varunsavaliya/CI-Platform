@@ -1,4 +1,6 @@
-﻿@{
+﻿@model CI_Platform_web.Models.Login
+
+@{
     Layout = "_Login_Layout";
     ViewData["Title"] = "Welcome";
 }
@@ -10,12 +12,14 @@
                 <div class="mt-3 formdiv">
                     <form action="/action_page.php" class="formcontent">
                         <div class="mb-3 mt-3">
-                            <label class="formlabels" for="email">Email Address</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" value="evan.donohue@gmail.com">
+                            <label class="formlabels" asp-for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" asp-for="email" placeholder="Enter email" name="email" value="evan.donohue@gmail.com">
+                            <span asp-validation-for="email" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
-                            <label class="formlabels" for="pwd">Password</label>
-                            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" value="varun">
+                            <label class="formlabels" asp-for="pwd">Password</label>
+                            <input type="password" class="form-control" id="pwd" asp-for="pwd" placeholder="Enter password" name="pwd" value="varun">
+                            <span asp-validation-for="pwd" class="text-danger"></span>
                         </div>
                         <button type="submit" class="btn mt-3 loginbtn">Login</button>
                         <p><a class="lost-password" asp-controller="Home" asp-action="Forgot_password">Lost your password?</a></p>
