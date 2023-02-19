@@ -1,5 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400&display=swap');
-
+﻿@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -587,5 +586,233 @@
 
     .registration-section .formdiv .formcontent {
         width: 300px;
+    }
+}
+
+
+/* header layout styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff !important;
+}
+
+.left button,
+.offcanvas-header button {
+    border: none !important;
+}
+
+.middle div ul li a {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 300;
+}
+
+nav .right {
+    cursor: pointer;
+}
+
+    nav .right img {
+        width: 11px;
+        height: 6px;
+        margin-right: 11px;
+    }
+
+    nav .right .profile img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    nav .right p {
+        margin-right: 9px !important;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: 300;
+    }
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    border: none !important;
+}
+
+.header-menu {
+    margin-left: 85px;
+}
+
+    .header-menu li a {
+        margin-right: 34px;
+    }
+
+@media screen and (max-width:991px) {
+    .header-menu {
+        margin-left: 5px;
+    }
+
+    .offcanvas-header img {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .right p {
+        display: none;
+    }
+
+    .dropdown-menu {
+        transform: translateX(-6rem);
+    }
+
+        .dropdown-menu li a {
+            font-size: 13px;
+        }
+}
+
+@media screen and (max-width:320px) {
+    .left button {
+        padding: 0;
+        font-size: 13px;
+    }
+
+        .left button + img {
+            width: 56%;
+        }
+
+    .offcanvas-header {
+        padding-bottom: 0;
+    }
+
+        .offcanvas-header img {
+            width: 28%;
+        }
+}
+
+/*search bar styling*/
+
+.search-bar {
+    box-shadow: 0 2px #E8E8E8;
+}
+
+.search-field {
+    padding: 20px;
+}
+
+    .search-field img {
+        width: 21px;
+    }
+
+    .search-field input {
+        border: none;
+    }
+
+input:focus-visible {
+    outline-offset: 0 !important;
+}
+
+.search-bar .dropdown {
+    border-right: 1px solid #E8E8E8;
+    padding: 20px 0;
+}
+
+    .search-bar .dropdown a {
+        color: #414141;
+        margin-right: 17px;
+        margin-left: 17px;
+        line-height: 10px;
+    }
+
+        .search-bar .dropdown a img {
+            margin-left: 18px;
+        }
+
+.filter-icon {
+    display: none;
+}
+
+.pill {
+    display: inline-block;
+    border-radius: 50px;
+    position: relative;
+    font-size: 13px;
+    line-height: 20px;
+    padding: 5px 24px 5px 10px;
+    border: 1px solid #E8E8E8;
+    margin-bottom: 0.5rem;
+}
+
+    .pill .close {
+        color: #757575;
+        position: absolute;
+        right: 5px;
+        top: 3px;
+        font-size: 22px;
+        line-height: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+.closeAll {
+    border: none;
+    padding: 0;
+    margin: 0 0 0 4px;
+    cursor: pointer;
+}
+
+@media screen and (min-width:769px) and (max-width:991px) {
+    .dropdown a {
+        color: #414141;
+        margin-right: 14px;
+        margin-left: 13px;
+        line-height: 10px;
+    }
+
+        .dropdown a img {
+            margin-left: 0;
+        }
+}
+
+@media screen and (max-width:768px) {
+    .search-bar .d-flex {
+        display: none !important;
+    }
+
+    .filter-icon {
+        display: block;
+    }
+
+    .dropdown {
+        border: none;
+    }
+}
+
+@media screen and (min-width:425px) and (max-width:525px) {
+    .pill {
+        display: inline-block;
+        border-radius: 50px;
+        position: relative;
+        font-size: 12px;
+        line-height: 20px;
+        padding: 4px 20px 4px 8px;
+        border: 1px solid #E8E8E8;
+    }
+
+        .pill .close {
+            color: #757575;
+            position: absolute;
+            right: 6px;
+            top: 3px;
+            font-size: 19px;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+}
+
+@media screen and (max-width:425px) {
+    .searched-filters {
+        display: none;
     }
 }

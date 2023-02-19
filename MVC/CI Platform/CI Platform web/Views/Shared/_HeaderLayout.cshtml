@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - CI_Platform_web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light d-flex justify-space-between align-items-center">
+            <div class="container-fluid">
+                <div class="left">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" aria-controls="offcanvasExample" href="#topmenu">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <img src="~/images/logo.png" alt="">
+                </div>
+
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="topmenu" aria-labelledby="topmenulabel">
+                    <div class="offcanvas-header">
+                        <img src="~/images/logo.png" alt="">
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="middle">
+                            <div class="" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0 header-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="#">Stories</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Policy
+                                            <img src="~/images/drop-down.png" alt="" />
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div role="button" data-bs-toggle="dropdown">
+                        <div class="right d-flex justify-space-between align-items-center">
+                            <div class="profile">
+                                <img src="~/images/user-img-large.png" alt="">
+                            </div>
+                            <p class="profile-text m-0">Evan Donohue</p>
+                            <img src="~/images/drop-down.png" alt="">
+                        </div>
+                    </div>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">My Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Volunteering Timesheet</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    @RenderBody();
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/SearchBar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CI Platform web.props" />
+</Project>
