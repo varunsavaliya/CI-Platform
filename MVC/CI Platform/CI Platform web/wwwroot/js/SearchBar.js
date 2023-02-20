@@ -3,7 +3,7 @@ var closeButtons = document.querySelectorAll('.pill .close');
 var closeAllButton = document.getElementsByClassName('closeAll');
 for (var i = 0; i < closeButtons.length; i++) {
     closeButtons[i].addEventListener('click', function () {
-        console.log(this.parentNode)
+        //console.log(this.parentNode)
 
         this.parentNode.style.display = 'none';
     });

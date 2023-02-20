@@ -5,3 +5,72 @@
 
 <partial name="_SearchBarPartial" />
 
+<div class="container">
+<div class="d-flex py-4">
+        <h4>Explore <span>72 missions</span></h4>
+
+        <div class="d-flex align-items-center ms-auto sort-div-right gap-4">
+            <div class="filter-box sort-box dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <span>Sort by &nbsp;&nbsp;</span>
+                    <img class="dropdown-icon" src="~/images/drop-down.png" alt="" />
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Date</a></li>
+                    <li><a class="dropdown-item" href="#">Time</a></li>
+                    <li><a class="dropdown-item" href="#">Mission</a></li>
+                </ul>
+            </div>
+
+            <ul class="d-flex align-items-center gap-2 nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#GridView"><img class="p-1" src="~/images/grid.png" /></a></li>
+                <li><a data-toggle="tab" href="#ListView"><img class="p-1" src="~/images/list.png" /></a></li>
+            </ul>
+  
+        </div>
+    </div>
+    </div>
+
+    <div class="tab-content">
+        <div id="GridView" class="tab-pane active">
+            <partial name="_GridViewPartial" />
+        </div>
+        <div id="ListView" class="tab-pane">
+            <partial name="_ListViewPartial" />
+        </div>
+    </div>
+
+
+@*pagination*@
+<div class="container">
+<nav aria-label="Page navigation example" class="pagination justify-content-center">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true"><img src="~/images/previous.png" /></span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true"><img src="~/images/left.png" /></span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item active"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">5</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true"><img src="~/images/right-arrow1.png" /></span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true"><img src="~/images/next.png" /></span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>
