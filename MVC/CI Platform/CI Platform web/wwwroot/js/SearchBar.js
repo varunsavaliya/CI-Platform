@@ -2,8 +2,9 @@
 var closeButtons = document.querySelectorAll('.pill .close');
 var closeAllButton = document.getElementsByClassName('closeAll');
 for (var i = 0; i < closeButtons.length; i++) {
-    closeButtons[i].addEventListener('click', function () {
-        //console.log(this.parentNode)
+    closeButtons[i].addEventListener('click', function (e) {
+        e.preventDefault();
+        console.log(this.parentNode);
 
         this.parentNode.style.display = 'none';
     });
@@ -15,3 +16,4 @@ closeAllButton[0].addEventListener('click', function () {
     }
     this.style.display = "none";
 })
+

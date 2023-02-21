@@ -5,6 +5,16 @@
     box-sizing: border-box;
 }
 /* login page styling */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #fff !important;
+    margin: 0 0 47px;
+}
+
 
 .main-container {
     width: 100%;
@@ -592,21 +602,16 @@
 
 /* header layout styling */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #fff !important;
-}
-
 .left button,
 .offcanvas-header button {
     border: none !important;
 }
-
+.middle .header-menu .dropdown-menu {
+    transform: translate(0px, 8px);
+    box-shadow: 0 2px 5px #E8E8E8;
+    border: none;
+    padding: 0;
+}
 .middle div ul li a {
     font-family: 'Noto Sans', sans-serif;
     font-weight: 300;
@@ -646,7 +651,14 @@ nav .right {
     .header-menu li a {
         margin-right: 34px;
     }
-
+.dropdown-menu {
+        width: 150px;
+        min-width:auto;
+        overflow:hidden;
+    transform: translate3d(0px, 65px, 0px) !important;
+    border-radius: 0;
+}
+    
 @media screen and (max-width:991px) {
     .header-menu {
         margin-left: 5px;
@@ -716,7 +728,8 @@ input:focus-visible {
     outline-offset: 0 !important;
 }
 
-.search-bar .dropdown {
+.search-bar .d-flex .dropdown {
+    width:150px;
     border-right: 1px solid #E8E8E8;
     padding: 20px 0;
 }
@@ -735,6 +748,9 @@ input:focus-visible {
         .search-bar .dropdown a img {
             margin-left: 18px;
         }
+.dropdown li a{
+    margin:0 !important;
+}
 
 .filter-icon {
     display: none;
@@ -770,7 +786,10 @@ input:focus-visible {
 }
 
 @media screen and (min-width:769px) and (max-width:991px) {
-    .dropdown a {
+    .search-bar .d-flex .dropdown {
+        width: auto;
+    }
+        .dropdown a {
         color: #414141;
         margin-right: 14px;
         margin-left: 13px;
@@ -841,7 +860,6 @@ input:focus-visible {
     .dropdown-menu[data-bs-popper] {
         top: 100%;
         left: 0;
-        right: 0 !important;
         margin-top: var(--bs-dropdown-spacer);
     }
 
@@ -1145,9 +1163,14 @@ input:focus-visible {
 
 /*footer styling*/
 
-Footer {
+footer {
     border-top: 1px solid #e1e1e1;
-    height: 72px;
+    position: absolute;
+    /*left: 0;*/
+    bottom: 0;
+    /*height: 72px;*/
+    width: 100%;
+    overflow: hidden;
 }
 footer container p{
     /*margin*/
@@ -1157,4 +1180,115 @@ footer p a{
     text-decoration:none;
     margin:1rem 1.5rem !important;
 }
+    footer p a:hover {
+        color: #757575;
+    }
 
+/*viewport 991px grid and list view*/
+@media screen and (max-width:991px){
+    .container div h4+div{
+        display:none !important;
+    }
+}
+/*nobr mission found styling*/
+.submitNewMissionBtn {
+    width: 20%;
+    align-self: center;
+}
+    .submitNewMissionBtn img {
+        margin-left: 1rem;
+    }
+    .submitNewMissionBtn img+img{
+        display:none;
+    }
+    .submitNewMissionBtn:hover img{
+        display:none;
+    }
+    .submitNewMissionBtn:hover img+img {
+        display: inline;
+    }
+
+
+
+    /*mission volunteering styling*/
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.swiper {
+    width: 100%;
+    height: 300px; /*
+    margin-left: ;
+    margin-right: auto;*/
+    margin-bottom: 0.6rem !important;
+}
+
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
+
+.mySwiper2 {
+    height: 80%;
+    width: 100%;
+}
+
+.mySwiper {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+    .mySwiper .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+    }
+
+    .mySwiper .swiper-slide-thumb-active {
+        opacity: 1;
+    }
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.swiper-button-prev:after,  .swiper-button-next:after {
+    content: 'prev';
+    font-size: 20px !important;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* height: 108%; */
+    padding: 49px 4px !important;
+}
+    .swiper-button-prev:focus, .swiper-button-next:focus{
+        outline:none;
+    }
+    .swiper-button-prev {
+        left: -4px !important;
+        right: auto;
+    }
+.swiper-button-next {
+    right: -4px !important;
+    left: auto;
+}

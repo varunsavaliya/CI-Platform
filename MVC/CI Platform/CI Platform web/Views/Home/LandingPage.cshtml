@@ -24,14 +24,14 @@
             </div>
 
             <ul class="d-flex align-items-center gap-2 nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#GridView"><img class="p-1" src="~/images/grid.png" /></a></li>
-                <li><a data-toggle="tab" href="#ListView"><img class="p-1" src="~/images/list.png" /></a></li>
+                <li class="active grid"><a data-toggle="tab" href="#GridView"><img class="p-1" src="~/images/grid.png" /></a></li>
+                <li class=" list"><a data-toggle="tab" href="#ListView"><img class="p-1" src="~/images/list.png" /></a></li>
             </ul>
   
         </div>
     </div>
     </div>
-
+    @*<partial name="_NoMissionFound" />*@
     <div class="tab-content">
         <div id="GridView" class="tab-pane active">
             <partial name="_GridViewPartial" />
@@ -41,7 +41,7 @@
         </div>
     </div>
 
-
+    
 @*pagination*@
 <div class="container">
 <nav aria-label="Page navigation example" class="pagination justify-content-center">

@@ -1,0 +1,105 @@
+﻿@{
+    Layout = "_HeaderLayout";
+    ViewData["Title"] = "LandingPage";
+}
+
+<div class="container mt-3">
+      <div class="row">
+        <!-- slider image gallery -->
+        <div class="col-md-6">
+          <div
+            style="
+              --swiper-navigation-color: #fff;
+              --swiper-pagination-color: #fff;
+            "
+            class="swiper mySwiper2"
+          >
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
+                />
+              </div>
+              <div class="swiper-slide">
+                <img src="~/images/img1.png" />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                />
+              </div>
+              <div class="swiper-slide">
+                <img src="~/images/img11.png" />
+              </div>
+              <div class="swiper-slide">
+                <img src="~/images/image1.png" />
+              </div>
+            </div>
+            @*<div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>*@
+          </div>
+          <div thumbsSlider="" class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
+                />
+              </div>
+              <div class="swiper-slide">
+                <img src="~/images/img1.png" />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                />
+              </div>
+              <div class="swiper-slide">
+                <img src="~/images/img11.png" />
+              </div>
+              <div class="swiper-slide">
+                <img src="~/images/image1.png" />
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="d-flex flex-column">
+            <h2>CSR initiative stands for Coffee & Farmer Equity</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
+            </p>
+
+            <!-- seats and deadline -->
+            <div
+              class="mission-details d-flex justify-content-around border-top border-bottom p-3"
+            >
+              <div class="seats-detail d-flex align-items-center">
+                <img src="~/images/Seats-left.png" alt="" />
+                <div class="d-flex flex-column">
+                  <p>10</p>
+                  <p>Seats left</p>
+                </div>
+              </div>
+              <div class="duration-detail d-flex align-items-center">
+                <img src="~/images/achieved.png" alt="">
+                <div class="d-flex flex-column">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    <p>8000 Achieved</p>
+                </div>
+            </div>
+
+              <div class="mission-date">
+                <p>From 10/01/2019 until 25/02/2019</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

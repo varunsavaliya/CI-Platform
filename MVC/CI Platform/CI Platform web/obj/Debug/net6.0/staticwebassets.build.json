@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "C8RM6gX2ewSz4esEveqABAAK6oiFRx3tJAeT+4teK24=",
+  "Hash": "gp1MopPzD+rNFf3BYaukqtzGgdC4YjV1cuxrbED9zBE=",
   "Source": "CI Platform web",
   "BasePath": "_content/CI Platform web",
   "Mode": "Default",
@@ -1904,6 +1904,23 @@
       "OriginalItemSpec": "wwwroot\\images\\xlsx.png"
     },
     {
+      "Identity": "D:\\Projects\\ci\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\MissionVolunteering.js",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\ci\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "js/MissionVolunteering.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\MissionVolunteering.js"
+    },
+    {
       "Identity": "D:\\Projects\\ci\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\SearchBar.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
@@ -1936,6 +1953,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "D:\\Projects\\ci\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\viewConfiguration.js",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\ci\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "js/viewConfiguration.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\viewConfiguration.js"
     },
     {
       "Identity": "D:\\Projects\\ci\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
