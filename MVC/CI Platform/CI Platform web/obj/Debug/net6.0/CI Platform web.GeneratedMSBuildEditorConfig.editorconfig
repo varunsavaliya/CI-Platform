@@ -5,88 +5,89 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CI_Platform_web
 build_property.RootNamespace = CI_Platform_web
-build_property.ProjectDir = D:\Projects\ci\MVC\CI Platform\CI Platform web\
+build_property.ProjectDir = E:\project\CI\MVC\CI Platform\CI Platform web\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Projects\ci\MVC\CI Platform\CI Platform web
+build_property.MSBuildProjectDirectory = E:\project\CI\MVC\CI Platform\CI Platform web
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Home/Forgot_Password.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Home/Forgot_Password.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGb3Jnb3RfUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Home/Index.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Home/LandingPage.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Home/LandingPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMYW5kaW5nUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Home/Privacy.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Home/Registration.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Home/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Home/Reset_Password.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Home/Reset_Password.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXNldF9QYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Mission/MissionVolunteering.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Mission/MissionVolunteering.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxNaXNzaW9uVm9sdW50ZWVyaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Mission/StoriesListing.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Mission/StoriesListing.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxTdG9yaWVzTGlzdGluZy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Shared/Error.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Shared/_GridViewPartial.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Shared/_GridViewPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9HcmlkVmlld1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Shared/_HeaderLayout.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Shared/_HeaderLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Shared/_ListViewPartial.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Shared/_ListViewPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MaXN0Vmlld1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Shared/_Login_Layout.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Shared/_Login_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbl9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Shared/_NoMissionFound.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Shared/_NoMissionFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob01pc3Npb25Gb3VuZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Shared/_SearchBarPartial.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Shared/_SearchBarPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZWFyY2hCYXJQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/_ViewImports.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/_ViewStart.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/ci/MVC/CI Platform/CI Platform web/Views/Shared/_Layout.cshtml]
+[E:/project/CI/MVC/CI Platform/CI Platform web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ajsl1beifh

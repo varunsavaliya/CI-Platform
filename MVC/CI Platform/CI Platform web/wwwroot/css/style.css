@@ -1548,7 +1548,7 @@ color:#414141;
     .hero-banner img {
         object-fit: cover;
         width: 100%;
-        height: 35vh;
+        height: inherit;
         object-position: 50% 38%;
         filter: brightness(0.4);
     }
@@ -1568,3 +1568,39 @@ color:#414141;
         transform: translate(-50%, -50%);
         border-
     }
+
+.story-creator img{
+    border-radius:50%;
+    width:50px;
+    height:50px;
+}
+
+.story-card .card-image img:hover {
+    filter: brightness(0.4);
+}
+
+    .sl-card-btn {
+        position: absolute;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: max-content;
+        transform: translate(-86px, -17px);
+        display:none;
+    }
+
+.story-card .card-image img:hover+.sl-card-btn {
+    display: block;
+}
+
+@media screen and (max-width:425px){
+    .pagination ul li {
+        margin: 10px 2px;
+    }
+    .pagination ul li a {
+        border-radius: 4px;
+        color: #414141;
+        font-size: 13px;
+        padding: 5px 11px;
+    }
+}
