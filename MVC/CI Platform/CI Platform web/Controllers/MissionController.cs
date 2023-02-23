@@ -8,5 +8,9 @@ namespace CI_Platform_web.Controllers
         {
             return View();
         }
+        public IActionResult StoriesListing()
+        {
+            return View();
+        }
     }
 }

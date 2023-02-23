@@ -2,11 +2,14 @@
 var closeButtons = document.querySelectorAll('.pill .close');
 var closeAllButton = document.getElementsByClassName('closeAll');
 for (var i = 0; i < closeButtons.length; i++) {
-    closeButtons[i].addEventListener('click', function (e) {
-        e.preventDefault();
-        console.log(this.parentNode);
+    closeButtons[i].addEventListener('click', function () {
+        console.log("hii")
+        //e.preventDefault();
+        //console.log(this.parentNode);
 
-        this.parentNode.style.display = 'none';
+        //this.parentNode.style.display = 'none';
+        this.parentNode.remove();
+        console.log(closeButtons.length);
     });
 }
 // Close button functionality for close all text

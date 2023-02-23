@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gp1MopPzD+rNFf3BYaukqtzGgdC4YjV1cuxrbED9zBE=",
+  "Hash": "yoOn1hw6Wz6j/chG2RNDU+9cEAcQMHZxOthjKEdQGLI=",
   "Source": "CI Platform web",
   "BasePath": "_content/CI Platform web",
   "Mode": "Default",
@@ -1953,23 +1953,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
-    },
-    {
-      "Identity": "D:\\Projects\\ci\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\viewConfiguration.js",
-      "SourceId": "CI Platform web",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\ci\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
-      "BasePath": "_content/CI Platform web",
-      "RelativePath": "js/viewConfiguration.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\viewConfiguration.js"
     },
     {
       "Identity": "D:\\Projects\\ci\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

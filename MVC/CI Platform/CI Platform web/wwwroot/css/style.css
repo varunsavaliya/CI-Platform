@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:'Noto Sans';
 }
 /* login page styling */
 html {
@@ -651,14 +652,38 @@ nav .right {
     .header-menu li a {
         margin-right: 34px;
     }
-.dropdown-menu {
-        width: 150px;
-        min-width:auto;
-        overflow:hidden;
+.search-bar .dropdown-menu {
+    height: 200px;
+    overflow-y: auto;
+    width: 150px;
+    min-width: auto;
+    white-space: normal;
     transform: translate3d(0px, 65px, 0px) !important;
     border-radius: 0;
+    box-shadow: rgb(0 0 0 / 20%) 2px 2px 2px 0px;
 }
-    
+    .search-bar .dropdown-menu li {
+        padding-left: 13px;
+    }
+
+    .dropdown-item {
+        white-space: normal;
+        padding: .25rem 1.5rem;
+    }
+#filters .offcanvas-body .dropdown {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-left:0;
+}
+
+    #filters .offcanvas-body .dropdown .dropdown-menu {
+        width: 100%;
+        transform: translate3d(0px, 35px, 0px) !important;
+    }
+    #filters .offcanvas-body .dropdown:first-child .dropdown-menu {
+        width: 100%;
+        transform: translate3d(0px, 55px, 0px) !important;
+    }
 @media screen and (max-width:991px) {
     .header-menu {
         margin-left: 5px;
@@ -784,11 +809,26 @@ input:focus-visible {
     margin: 0 0 0 4px;
     cursor: pointer;
 }
-
-@media screen and (min-width:769px) and (max-width:991px) {
+@media screen and (max-width:991px){
     .search-bar .d-flex .dropdown {
-        width: auto;
+        width: 108px;
     }
+    .search-bar .dropdown a {
+        margin-right: 0;
+        margin-left: 15px;
+    }
+        .search-bar .dropdown a img {
+            margin-right: 0px;
+            margin-left: 4px;
+        }
+    .dropdown-menu {
+        width: 108px;
+    }
+}
+@media screen and (min-width:769px) and (max-width:991px) {
+    /*.search-bar .d-flex .dropdown {
+        width: auto;
+    }*/
         .dropdown a {
         color: #414141;
         margin-right: 14px;
@@ -1166,11 +1206,10 @@ input:focus-visible {
 footer {
     border-top: 1px solid #e1e1e1;
     position: absolute;
-    /*left: 0;*/
+    left: 0;
     bottom: 0;
     /*height: 72px;*/
     width: 100%;
-    overflow: hidden;
 }
 footer container p{
     /*margin*/
@@ -1189,8 +1228,14 @@ footer p a{
     .container div h4+div{
         display:none !important;
     }
+    #ListView{
+        display:none;
+    }
+    #GridView{
+        display:block;
+    }
 }
-/*nobr mission found styling*/
+/*no mission found styling*/
 .submitNewMissionBtn {
     width: 20%;
     align-self: center;
@@ -1279,7 +1324,7 @@ footer p a{
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     /* height: 108%; */
-    padding: 49px 4px !important;
+    padding: 68px 4px !important;
 }
     .swiper-button-prev:focus, .swiper-button-next:focus{
         outline:none;
@@ -1292,3 +1337,234 @@ footer p a{
     right: -4px !important;
     left: auto;
 }
+
+.vm-mission-details{
+    padding-left:0 !important;
+    padding-top:0 !important;
+}
+
+.vmheading{
+font-weight:400;
+color:#414141;
+}
+    .vmheading+p{
+        font-weight:300;
+    }
+
+    .vmbtn {
+        border: 2px solid #757575;
+        border-radius: 33px;
+        width: -webkit-fill-available;
+        padding: 10px 0;
+    }
+    .vmbtn img+img{
+        display:none;
+    }
+.vmbtn:hover{
+    background-color: #757575;
+    color:#fff;
+}
+    .vmbtn:hover img{
+        display:none;
+    }
+    .vmbtn:hover img+img{
+        display:inline !important;
+    }
+
+.recommend-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    background-color: #757575;
+}
+.vmbtn:hover .recommend-icon {
+    background-color: #fff;
+}
+.recommend-text:after {
+    content: "Recommend to a Co-Worker";
+}
+
+@media screen and (max-width:1387px) {
+    .recommend-text:after {
+        content: "Recommend Mission";
+    }
+}
+
+.star-capsule {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: auto;
+    min-width: max-content;
+}
+
+.vm-cards div img {
+    width: fit-content;
+}
+
+.vm-cards div p{
+    color:#757575;
+    font-weight:300;
+    margin-bottom:0;
+}
+
+.vm-cards div p+p {
+    color: #414141;
+    font-weight: 400;
+}
+
+.vm-cards div{
+    min-height:150px;
+}
+
+/*mission organization comments*/
+.vm-mis-org-com .nav-tabs button {
+    color: #757575;
+}
+.vm-mis-org-com .nav-tabs .active {
+    border-bottom: 2px solid black !important;
+    border-radius: 0;
+    color: #414141;
+    font-weight:400;
+}
+.vm-mis-org-com .nav-tabs .nav-link {
+    border: none;
+    /* border-bottom: 1px solid red; */
+}
+.mission-tab h2{
+    font-weight:400;
+}
+.mission-tab h2, .mission-tab p {
+    color: #414141;
+}
+.docs h2+div{
+    gap:30px;
+}
+.docs div{
+    flex-flow:wrap;
+}
+.docs div div {
+    padding: 6px 27px;
+    border: 1px solid #E8E8E8;
+    border-radius: 30px;
+}
+
+.organization-tab p{
+    color:#414141;
+}
+
+.show-comments{
+    height:400px;
+    /*overflow-y:scroll;*/
+    border:7px solid #b1b1b1;
+}
+
+.comment {
+    border-bottom: 4px solid #b1b1b1;
+}
+
+    .comment div div img {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+    }
+    .comment div div p{
+        font-size:14px;
+        color:#414141;
+    }
+    .comment div div .comment-text{
+        font-size:15px;
+    }
+    .info-heading {
+        width: fit-content;
+        border-bottom: 1px solid black;
+    }
+    .info-heading h2 {
+        font-size:1.5rem;
+        font-weight: 400;
+    }
+
+.mission-skills div div, .mission-date div div{
+    color:#414141;
+}
+
+.mission-rating img+span{
+    color:#757575;
+    font-size:14px;
+}
+
+.recent-volunteers div div img{
+    width:62px;
+    height:62px;
+    border-radius:50%;
+}
+
+.recent-volunteers div div p {
+    text-align:center;
+    font-size: 13px;
+    color: #414141;
+}
+.carousel-control-next, .carousel-control-prev {
+    position: unset;
+}
+
+#recentVolunteersSlider + div div div {
+    padding: 12px 0;
+}
+.related-missions h2{
+    text-align:center;
+    font-weight:300;
+    font-family:'Noto Sans';
+}
+
+@media screen and (max-width:768px){
+    .comment div div img {
+        width: 50px;
+        height: 50px;
+        margin-left:20px;
+    }
+}
+
+@media screen and (max-width:433px) {
+    .comment div div p {
+        font-size: 12px;
+        color: #414141;
+    }
+    .comment div div .comment-text {
+        font-size: 13px;
+    }
+}
+
+/*stories listing page styling*/
+
+.hero-banner {
+    height: 300px;
+    position: relative;
+}
+
+    .hero-banner img {
+        object-fit: cover;
+        width: 100%;
+        height: 35vh;
+        object-position: 50% 38%;
+        filter: brightness(0.4);
+    }
+    .hero-banner p {
+        color: #fff;
+        position: absolute;
+        top: 42%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .hero-banner .hero-btn {
+        position: absolute;
+        top: 70%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        border-
+    }
