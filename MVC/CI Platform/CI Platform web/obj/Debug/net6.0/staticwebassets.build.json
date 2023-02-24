@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c78fTF+360y1H9nLc8vcqrMyPdZSngpa23YnVEH5w0U=",
+  "Hash": "gYgJoIt4U1xdTxcGQGNyrj+5vZG0I28PxAj8D53+K0A=",
   "Source": "CI Platform web",
   "BasePath": "_content/CI Platform web",
   "Mode": "Default",
@@ -1936,6 +1936,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\SearchBar.js"
+    },
+    {
+      "Identity": "D:\\Projects\\New folder\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\ShareStoryTextarea.js",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\New folder\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "js/ShareStoryTextarea.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ShareStoryTextarea.js"
     },
     {
       "Identity": "D:\\Projects\\New folder\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\site.js",

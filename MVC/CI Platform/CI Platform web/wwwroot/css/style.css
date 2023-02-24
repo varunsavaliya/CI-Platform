@@ -1570,8 +1570,12 @@ color:#414141;
 
 .story-creator img{
     border-radius:50%;
-    width:50px;
-    height:50px;
+    width:46px;
+    height:46px;
+}
+
+.story-creator span {
+    font-weight: 300;
 }
 
 .story-card .card-image:hover img{
@@ -1587,9 +1591,6 @@ color:#414141;
     transform: translate(-86px, -17px);
     display: none;
 }
-        .sl-card-btn:hover{
-            display:block;
-        }
 .story-card .card-image .sl-card-btn:hover+img {
     filter: brightness(0.4);
 }
@@ -1614,3 +1615,169 @@ color:#414141;
         padding: 5px 11px;
     }
 }
+
+
+
+
+/*share story styling*/
+
+/*text area styling*/
+
+#code-editor {
+    border: 1px solid #d1d1d1;
+    /*width: 80%;*/
+    margin: 0px auto;
+}
+
+.editor-block-controls {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    background: #f8f8f8;
+}
+
+    .editor-block-controls > div > button.command {
+        outline: none;
+        background-color: none;
+        background: transparent;
+        color: black;
+        cursor: pointer;
+        border: none;
+        transition: .2s;
+        padding: 5px 10px;
+    }
+
+        .editor-block-controls > div > button.command:hover {
+            color: lightblue;
+        }
+
+#editor-block-content {
+    max-width: 100%;
+    min-height: 150px;
+    width: 100%;
+    height: auto;
+    padding: 12px;
+    resize: vertical;
+    overflow: auto;
+    font-size: 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 0 0 3px 3px;
+    background: #ffffff;
+    outline: none;
+}
+
+    #editor-block-content > blockquote {
+        border-left: 2px solid black;
+        padding: 5px;
+        background: #1111;
+        font-style: italic;
+    }
+
+.sharestory {
+    border-top: solid 1px #D9D9D9;
+}
+
+.ssheading {
+    font-weight: 300;
+    color: #414141;
+    font-size: 40px;
+}
+
+#code-editor {
+    border: 1px solid #d1d1d1;
+    /* max-width: 700px;*/
+    margin: 0px auto;
+}
+
+.editor-block-controls {
+    /*display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;*/
+    padding: 5px;
+    background: #F2F4F6;
+}
+
+    .editor-block-controls > div > button.command {
+        outline: none;
+        background-color: none;
+        background: transparent;
+        color: black;
+        cursor: pointer;
+        transition: .2s;
+        border: none;
+        padding: 5px 10px;
+    }
+
+        .editor-block-controls > div > button.command:hover {
+            color: lightblue;
+        }
+
+#editor-block-content {
+    max-width: 100%;
+    min-height: 150px;
+    width: 100%;
+    height: auto;
+    padding: 12px;
+    resize: vertical;
+    overflow: auto;
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+    border: 2px solid #e1e1e1;
+    border-radius: 0 0 3px 3px;
+    background: #fff;
+    outline: none;
+    border-bottom: solid 27px #F2F4F6;
+}
+
+    #editor-block-content > blockquote {
+        border-left: 2px solid black;
+        padding: 5px;
+        background: #1111;
+        font-style: italic;
+    }
+
+.wsy-command {
+    padding: 3px;
+    border-radius: 3px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.form-select:focus {
+    border-color: inherit;
+    box-shadow: none;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    box-shadow: none;
+    outline: none;
+}
+.drag-drop {
+    width: 100%;
+    margin: 10px auto;
+    text-align:center;
+    border:1px dashed #757575;
+    padding:30px 0;
+    background-color:#fff;
+    cursor:pointer;
+}
+    .drag-drop img{
+    }
+    .ssbuttons {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .ssbuttons > button {
+        height: fit-content;
+        border-radius: 31px;
+        padding: 10px 26px;
+    }
+
+    .ssbuttons div {
+        gap: 20px;
+    }
