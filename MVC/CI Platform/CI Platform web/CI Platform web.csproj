@@ -19,4 +19,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CI Platform.Entities\CI Platform.Entities.csproj" />
+    <ProjectReference Include="..\Ci Platform.Repositories\Ci Platform.Repositories.csproj" />
+  </ItemGroup>
+
 </Project>
