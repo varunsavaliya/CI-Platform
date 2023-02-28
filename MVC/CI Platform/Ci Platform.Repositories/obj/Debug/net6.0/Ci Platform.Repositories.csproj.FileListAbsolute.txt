@@ -12,3 +12,6 @@ D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0
 D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\ref\Ci Platform.Repositories.dll
 D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.pdb
 D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.genruntimeconfig.cache
+D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.csproj.CopyComplete

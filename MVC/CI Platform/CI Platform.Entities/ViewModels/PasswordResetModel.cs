@@ -10,5 +10,8 @@ namespace CI_Platform.Entities.ViewModels
         [Required]
         [Compare("password", ErrorMessage = "Confirm password doesn't match, Type again !")]
         public string ConfirmPassword { get; set; }
+
+        public string Email { get; set; }
+        public string Token { get; set; }
     }
 }

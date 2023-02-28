@@ -17,4 +17,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CI Platform.Entities\CI Platform.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
