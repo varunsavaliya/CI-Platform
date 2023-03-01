@@ -1,7 +1,7 @@
-﻿using CI_Platform.Entities.DataModels;
+﻿using Ci_Platform.Repositories.Interfaces;
+using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using CI_Platform_web.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
@@ -12,16 +12,21 @@ namespace CI_Platform_web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private readonly UserManager<IdentityUser> userManager;
-        //private readonly SignInManager<IdentityUser> signInManager;
-        private ApplicationDbContext _context;
+        private readonly IRegister _register;
+        private readonly ILogin _login;
+        private readonly IForgotPassword _forgotPassword;
+        private readonly IResetPassword _passwordReset;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger /*UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager*/)
+
+        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger, IRegister register, ILogin login, IForgotPassword forgotPassword, IResetPassword passwordReset)
         {
             _context = context;
             _logger = logger;
-            //this.userManager = userManager;
-            //this.signInManager = signInManager;
+            _register = register;
+            _login = login;
+            _forgotPassword = forgotPassword;
+            _passwordReset = passwordReset;
         }
 
         public IActionResult Index()
@@ -35,8 +40,8 @@ namespace CI_Platform_web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var obj2 = _context.Users.Where(a=>a.Email.Equals(obj.Email) && a.Password.Equals(obj.Password)).FirstOrDefault();
-                if(obj2 != null)
+                //var obj2 = _userAuthentication.chkUser(obj);
+                if (_login.ComparePassword(obj))
                 {
                     return RedirectToAction("LandingPage", "Home");
                 }
@@ -64,62 +69,16 @@ namespace CI_Platform_web.Controllers
 
             if (ModelState.IsValid)
             {
-                var data = _context.Users.Where(e => e.Email == model.email).FirstOrDefault();
+                //var data = _context.Users.Where(e => e.Email == model.email).FirstOrDefault();
+                var data = _forgotPassword.BindData(model);
 
-                if (data != null)
+                if (_forgotPassword.IsRegistered(data))
                 {
 
-                    Random random = new Random();
-
-                    int capitalCharCode = random.Next(65, 91);
-                    char randomCapitalChar = (char)capitalCharCode;
-
-
-                    int randomint = random.Next();
-
-
-                    int SmallcharCode = random.Next(97, 123);
-                    char randomChar = (char)SmallcharCode;
-
-                    String token = "";
-                    token += randomCapitalChar.ToString();
-                    token += randomint.ToString();
-                    token += randomChar.ToString();
-
-
+                    var token = _forgotPassword.GenerateToken();
                     var PasswordResetLink = Url.Action("Reset_Password", "Home", new { Email = model.email, Token = token }, Request.Scheme);
 
-                    var ResetPasswordInfo = new PasswordReset()
-                    {
-                        Email = model.email,
-                        Token = token
-                    };
-                    _context.PasswordResets.Add(ResetPasswordInfo);
-                    _context.SaveChanges();
-
-
-                    var fromEmail = new MailAddress("demo90720@gmail.com");
-                    var toEmail = new MailAddress(model.email);
-                    var fromEmailPassword = "Demodemo";
-                    string subject = "Reset Password";
-                    string body = PasswordResetLink;
-
-                    var smtp = new SmtpClient
-                    {
-
-                        Host = "smtp.gmail.com",
-                        Port = 587,
-                        EnableSsl = true,
-                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                        UseDefaultCredentials = false,
-                        Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
-                    };
-
-                    MailMessage message = new MailMessage(fromEmail, toEmail);
-                    message.Subject = subject;
-                    message.Body = body;
-                    message.IsBodyHtml = true;
-                    smtp.Send(message);
+                    _forgotPassword.SendMail(token, PasswordResetLink, model);
 
                     ModelState.Clear();
                     model.emailSent = true;
@@ -160,15 +119,8 @@ namespace CI_Platform_web.Controllers
 
             if (ResetPasswordData)
             {
-                var x = _context.Users.FirstOrDefault(e => e.Email == model.Email);
-
-
-                x.Password = model.password;
-
-
-                _context.Users.Update(x);
-                _context.SaveChanges();
-
+                _passwordReset.ResetPass(model);
+                return RedirectToAction("Index");
             }
             else
             {
@@ -194,12 +146,12 @@ namespace CI_Platform_web.Controllers
             if (ModelState.IsValid)
             {
                 //var chkMail = obj.Email == model.Email;
-                var chkMail = _context.Users.Any(e => e.Email == model.Email);
-                if (!chkMail)
+                //var chkMail = _context.Users.Any(e => e.Email == model.Email);
+                
+                if (_register.IsRegistered(obj))
                 {
-
-                _context.Users.Add(obj);
-                _context.SaveChanges();
+                _register.Add(obj);
+                _register.Save();
                 return RedirectToAction("LandingPage", "Home");
                 }
                 else

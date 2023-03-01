@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CI_Platform.Entities.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -9,12 +10,10 @@ namespace Ci_Platform.Repositories.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        T GetFirstOrDefault(Expression<Func<T, bool>> filter);
-
-        IEnumerable<T> GetAll();
-
-        void Add(T entity);
-        void Delete(T entity);
-        void Update(T entity);
+        public void Add(T model);
+        public void Save();
+        public bool IsRegistered(User user);
+        public bool IsRegistered(PasswordReset user);
+        public bool ComparePassword(User user);
     }
 }

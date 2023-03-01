@@ -8,5 +8,7 @@ namespace CI_Platform.Entities.ViewModels
         [EmailAddress]
         public string email { get; set; }
         public bool emailSent { get; set; }
+        
+        public string? token { get; set; }
     }
 }
