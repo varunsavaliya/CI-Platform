@@ -661,10 +661,16 @@ nav .right {
     transform: translate3d(0px, 65px, 0px) !important;
     border-radius: 0;
     box-shadow: rgb(0 0 0 / 20%) 2px 2px 2px 0px;
+    padding-left: 11px;
 }
-    .search-bar .dropdown-menu li {
-        padding-left: 13px;
-    }
+    /*.search-bar .dropdown .dropdown-menu:first-child {*/
+        /* padding-left: 13px; */
+        /*padding: 6px 0;*/
+        /* line-height: 7px; */
+    /*}*/
+.search-bar .dropdown-menu li {
+    padding: 4px 0;
+}
 
     .dropdown-item {
         white-space: normal;
@@ -767,7 +773,6 @@ input:focus-visible {
         color: #414141;
         margin-right: 17px;
         margin-left: 17px;
-        line-height: 10px;
     }
 
         .search-bar .dropdown a img {

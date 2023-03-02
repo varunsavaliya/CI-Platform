@@ -12,32 +12,32 @@
                         <div asp-validation-summary=ModelOnly class="text-danger"> </div>
                         <div class="mb-3 mt-3">
                             <label class="formlabels" asp-for="FirstName">First Name</label>
-                            <input type="text" asp-for="FirstName" class="form-control" id="fnmae" placeholder="Enter first name" name="FirstName" value="evan">
+                            <input type="text" asp-for="FirstName" class="form-control" id="fnmae" placeholder="Enter first name" name="FirstName">
                             <span asp-validation-for="FirstName" class="text-danger"></span>
                         </div>
                         <div class="mb-3 mt-3">
                             <label class="formlabels" for="LastName">Last Name</label>
-                            <input type="text" asp-for="LastName" class="form-control" id="lname" placeholder="Enter last name" name="LastName" value="donohue">
+                            <input type="text" asp-for="LastName" class="form-control" id="lname" placeholder="Enter last name" name="LastName">
                             <span asp-validation-for="LastName" class="text-danger"></span>
                         </div>
                         <div class="mb-3 mt-3">
                             <label class="formlabels" asp-for="PhoneNumber">Phone Number</label>
-                            <input type="number" class="form-control" id="phone-number" asp-for="PhoneNumber" placeholder="Enter phone number" name="PhoneNumber" value="8923454615">
+                            <input type="number" class="form-control" id="phone-number" asp-for="PhoneNumber" placeholder="Enter phone number" name="PhoneNumber">
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
                         <div class="mb-3 mt-3">
                             <label class="formlabels" asp-for="Email">Email Address</label>
-                            <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Enter email" name="Email" value="evan.donohue@gmail.com">
+                            <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Enter email" name="Email">
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="formlabels" asp-for="Password">Password</label>
-                            <input type="password" class="form-control" asp-for="Password" id="pwd" placeholder="Enter password" name="Password" value="varun">
+                            <input type="password" class="form-control" asp-for="Password" id="pwd" placeholder="Enter password" name="Password">
                             <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="formlabels" asp-for="confirmPassword">Confirm Password</label>
-                            <input type="password" class="form-control" asp-for="confirmPassword" id="re-pwd" placeholder="Reenter password" name="confirmPassword" value="varun">
+                            <input type="password" class="form-control" asp-for="confirmPassword" id="re-pwd" placeholder="Reenter password" name="confirmPassword">
                              <span asp-validation-for="confirmPassword" class="text-danger"></span>
                         </div>
                         <button type="submit" class="btn mt-3 registrationbtn">Register</button>

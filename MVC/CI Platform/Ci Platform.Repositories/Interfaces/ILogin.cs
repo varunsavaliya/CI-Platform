@@ -10,8 +10,6 @@ namespace Ci_Platform.Repositories.Interfaces
 {
     public interface ILogin : IRepository<User>
     {
-        //public bool chkUser(ForgotPasswordModel model);
-        //public bool chkUser(User user);
-        //public PasswordReset BindtoPassReset(ForgotPasswordModel model);
+
     }
 }

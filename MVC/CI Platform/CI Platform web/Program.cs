@@ -15,6 +15,10 @@ builder.Services.AddScoped<IRegister, Register>();
 builder.Services.AddScoped<ILogin, Login>();
 builder.Services.AddScoped<IForgotPassword, ForgotPassword>();
 builder.Services.AddScoped<IResetPassword, ResetPassword>();
+
+// for use of session
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,8 +36,10 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+app.UseSession();
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Mission}/{action=LandingPage}/{id?}");
 
 app.Run();

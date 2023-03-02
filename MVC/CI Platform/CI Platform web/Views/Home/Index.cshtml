@@ -12,12 +12,12 @@
                     <form action="" method="post" class="formcontent">
                         <div class="mb-3 mt-3">
                             <label class="formlabels" asp-for="email">Email Address</label>
-                            <input type="email" class="form-control" id="email" asp-for="email" placeholder="Enter email" name="email" value="evan.donohue@gmail.com">
+                            <input type="email" class="form-control" id="email" asp-for="email" placeholder="Enter email" name="email">
                             <span asp-validation-for="email" class="text-danger"></span>
                         </div>
                         <div class="mb-3">
                             <label class="formlabels" asp-for="password">Password</label>
-                            <input type="password" class="form-control" id="pwd" asp-for="password" placeholder="Enter password" name="password" value="varun">
+                            <input type="password" class="form-control" id="pwd" asp-for="password" placeholder="Enter password" name="password">
                             <span asp-validation-for="password" class="text-danger"></span>
                         </div>
                         <button type="submit" class="btn mt-3 loginbtn">Login</button>

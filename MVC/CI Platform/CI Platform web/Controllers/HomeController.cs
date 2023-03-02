@@ -40,10 +40,15 @@ namespace CI_Platform_web.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var obj2 = _userAuthentication.chkUser(obj);
                 if (_login.ComparePassword(obj))
                 {
-                    return RedirectToAction("LandingPage", "Home");
+                    // creating username for session to show on profile field
+                    var sessionUser = _context.Users.Where(a => a.Email == obj.Email).FirstOrDefault();
+                    HttpContext.Session.SetString("UserName", sessionUser.FirstName+" "+sessionUser.LastName);
+
+
+                    HttpContext.Session.SetString("IsLoggedIn", "True");
+                    return RedirectToAction("LandingPage", "Mission");
                 }
             }
             return View();
@@ -120,7 +125,8 @@ namespace CI_Platform_web.Controllers
             if (ResetPasswordData)
             {
                 _passwordReset.ResetPass(model);
-                return RedirectToAction("Index");
+                model.PasswordChanged = true;
+                //return RedirectToAction("Index");
             }
             else
             {
@@ -145,14 +151,11 @@ namespace CI_Platform_web.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var chkMail = obj.Email == model.Email;
-                //var chkMail = _context.Users.Any(e => e.Email == model.Email);
-                
                 if (_register.IsRegistered(obj))
                 {
                 _register.Add(obj);
                 _register.Save();
-                return RedirectToAction("LandingPage", "Home");
+                return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -161,10 +164,14 @@ namespace CI_Platform_web.Controllers
             }
             return View(model);
         }
-        public IActionResult LandingPage()
+
+        public IActionResult Logout()
         {
-            return View();
+            HttpContext.Session.Remove("UserName");
+            HttpContext.Session.Remove("IsLoggedIn");
+            return RedirectToAction("Index", "Home");
         }
+
 
         public IActionResult ShareStory()
         {

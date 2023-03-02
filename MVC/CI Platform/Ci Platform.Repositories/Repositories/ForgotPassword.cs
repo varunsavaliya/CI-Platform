@@ -58,9 +58,9 @@ namespace Ci_Platform.Repositories.Repositories
             _context.SaveChanges();
 
 
-            var fromEmail = new MailAddress("demo90720@gmail.com");
+            var fromEmail = new MailAddress("d41677656@gmail.com");
             var toEmail = new MailAddress(model.email);
-            var fromEmailPassword = "vpomharwnqswzdao";
+            var fromEmailPassword = "wrazrtzeetuuhzrr";
             string subject = "Reset Password";
             string body = PasswordResetLink;
 

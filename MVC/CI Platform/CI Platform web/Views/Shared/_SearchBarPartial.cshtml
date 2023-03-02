@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    var countryList = ViewBag.countryList;
+}
 <div class="container">
     <div class="search-bar d-flex justify-content-between">
         <div class="search-field">
@@ -20,10 +22,11 @@
                         Country
                         <img src="~/images/drop-down.png" alt="">
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <ul class="dropdown-menu" id="countryDropdown">
+                        @foreach(SelectListItem country in countryList)
+                        {   
+                        <li value="@country.Value"><a class="dropdown-item" value="@country.Value"  href="#">@country.Text</a></li>
+                        }
                     </ul>
                 </div>
                 <!-- city dropdown -->
@@ -32,8 +35,9 @@
                         City
                         <img src="~/images/drop-down.png" alt="">
                     </a>
-                    <ul class="dropdown-menu">
-                        <li>
+                    <ul class="dropdown-menu" id="cityDropdown">
+                       
+                        @*<li>
                             <div class="dropdown-item mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -56,7 +60,7 @@
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
-                        </li>
+                        </li>*@
                     </ul>
                 </div>
                 <!-- </li> -->
@@ -146,9 +150,10 @@
                     <img src="~/images/drop-down.png" alt="">
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                     @foreach(SelectListItem country in countryList)
+                        {   
+                        <li><a class="dropdown-item" href="#">@country.Text</a></li>
+                        }
                 </ul>
             </div>
 

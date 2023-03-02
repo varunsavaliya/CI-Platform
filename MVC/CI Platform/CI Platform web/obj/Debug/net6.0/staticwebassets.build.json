@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gYgJoIt4U1xdTxcGQGNyrj+5vZG0I28PxAj8D53+K0A=",
+  "Hash": "Ge1XwL0RUTPDJmKVK+RrY9HbMUF3KoeNS9bPKgKVmko=",
   "Source": "CI Platform web",
   "BasePath": "_content/CI Platform web",
   "Mode": "Default",
@@ -1902,6 +1902,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\xlsx.png"
+    },
+    {
+      "Identity": "D:\\Projects\\New folder\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\getCitiesByCountry.js",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\New folder\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "js/getCitiesByCountry.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\getCitiesByCountry.js"
     },
     {
       "Identity": "D:\\Projects\\New folder\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\MissionVolunteering.js",
