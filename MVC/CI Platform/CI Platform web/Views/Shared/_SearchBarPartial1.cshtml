@@ -1,0 +1,187 @@
+﻿@{
+    var countryList = ViewBag.countryList;
+}
+<div class="container">
+    <div class="search-bar d-flex justify-content-between">
+        <div class="search-field">
+            <img src="~/images/search.png" alt="">
+            <input type="text" placeholder="Search mission...">
+        </div>
+        <button class="filter-icon" type="button" data-bs-toggle="offcanvas" aria-controls="offcanvasExample" data-bs-target="offcanvas2" href="#filters">
+            @*<span class="navbar-toggler-icon" id="filter-icon-main"></span>*@
+            <img src="~/images/filter.png" />
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="filters" aria-labelledby="topmenulabel2">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filters</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="dropdown border-bottom">
+                    <a class="text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Country
+                        <img src="~/images/drop-down.png" alt="">
+                    </a>
+                    <ul class="dropdown-menu" id="countryDropdown">
+                        @foreach(SelectListItem country in countryList)
+                        {   
+                        <li value="@country.Value"><a class="dropdown-item" value="@country.Value"  href="#">@country.Text</a></li>
+                        }
+                    </ul>
+                </div>
+                <!-- city dropdown -->
+                <div class="dropdown border-bottom">
+                    <a class="text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        City
+                        <img src="~/images/drop-down.png" alt="">
+                    </a>
+                    <ul class="dropdown-menu" id="cityDropdownOffCanvas">
+                       
+                        @*<li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>*@
+                    </ul>
+                </div>
+                <!-- </li> -->
+                <!-- theme dropdown  -->
+                <!-- <li> -->
+                <div class="dropdown border-bottom">
+                    <a class="text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Theme
+                        <img src="~/images/drop-down.png" alt="">
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- </li> -->
+                <!-- skill dropdown -->
+                <!-- <li> -->
+                <div class="dropdown border-bottom">
+                    <a class="text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Skill
+                        <img src="~/images/drop-down.png" alt="">
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown-item mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- </li> -->
+                <!-- </ul> -->
+                <!-- </div> -->
+
+            </div>
+        </div>
+
+
+        
+    </div>
+    </div>
+<div class="border-top"></div>
+<div class="container">
+    <div class="searched-filters mt-3">
+        <div class="pill">
+            Tree Plantation
+            <span class="close">&times;</span>
+        </div>
+        <div class="pill">
+            Canada
+            <span class="close">&times;</span>
+        </div>
+        <div class="pill">
+            Toronto
+            <span class="close">&times;</span>
+        </div>
+        <div class="pill">
+            Montreal
+            <span class="close">&times;</span>
+        </div>
+        <div class="pill">
+            Environment
+            <span class="close">&times;</span>
+        </div>
+        <div class="pill">
+            Nutrition
+            <span class="close">&times;</span>
+        </div>
+        <div class="pill">
+            Anthropology
+            <span class="close">&times;</span>
+        </div>
+        <div class="pill">
+            Environmental Science
+            <span class="close">&times;</span>
+        </div>
+        <div class="pill closeAll">
+            Close all
+        </div>
+    </div>
+    </div>

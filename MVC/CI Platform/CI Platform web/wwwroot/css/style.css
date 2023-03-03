@@ -773,6 +773,7 @@ input:focus-visible {
         color: #414141;
         margin-right: 17px;
         margin-left: 17px;
+        padding-left:7px !important;
     }
 
         .search-bar .dropdown a img {

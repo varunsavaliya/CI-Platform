@@ -24,9 +24,14 @@ namespace CI_Platform_web.Controllers
             {
                 ViewBag.UserName = "Evan Donohue";
             }
-            var country = _context.Countries.ToList();
-            var countryall = new SelectList(country, "CountryId", "Name");
-            ViewBag.countryList = countryall;
+             var country = _context.Countries.ToList();
+            ViewBag.countryList = country;
+
+            var theme = _context.MissionThemes.ToList();
+            ViewBag.themeList = theme;
+
+            var skill = _context.Skills.ToList();
+            ViewBag.skillList = skill;
             return View();
         }
         public IActionResult GetCitiesByCountry(int countryId)
@@ -34,6 +39,7 @@ namespace CI_Platform_web.Controllers
             var cities = _context.Cities.Where(c => c.CountryId == countryId).ToList();
             return Json(cities);
         }
+
         public IActionResult MissionVolunteering()
         {
             return View();

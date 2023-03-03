@@ -1,5 +1,9 @@
-﻿@{
+﻿@using CI_Platform.Entities.DataModels;
+
+@{
     var countryList = ViewBag.countryList;
+    var themeList = ViewBag.themeList;
+    var skillList = ViewBag.skillList;
 }
 <div class="container">
     <div class="search-bar d-flex justify-content-between">
@@ -8,7 +12,7 @@
             <input type="text" placeholder="Search mission...">
         </div>
         <button class="navbar-toggler filter-icon" type="button" data-bs-toggle="offcanvas" aria-controls="offcanvasExample" href="#filters">
-            <img src="~/images/filter.png" />
+            <img class="navbar-toggler-icon" src="~/images/filter.png" />
         </button>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="filters" aria-labelledby="topmenulabel">
@@ -23,9 +27,9 @@
                         <img src="~/images/drop-down.png" alt="">
                     </a>
                     <ul class="dropdown-menu" id="countryDropdown">
-                        @foreach(SelectListItem country in countryList)
+                        @foreach(Country country in countryList)
                         {   
-                        <li value="@country.Value"><a class="dropdown-item" value="@country.Value"  href="#">@country.Text</a></li>
+                        <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId"  href="#">@country.Name</a></li>
                         }
                     </ul>
                 </div>
@@ -35,32 +39,9 @@
                         City
                         <img src="~/images/drop-down.png" alt="">
                     </a>
-                    <ul class="dropdown-menu" id="cityDropdown">
+                    <ul class="dropdown-menu" id="cityDropdownOffCanvas">
                        
-                        @*<li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>*@
+                       
                     </ul>
                 </div>
                 <!-- </li> -->
@@ -72,30 +53,16 @@
                         <img src="~/images/drop-down.png" alt="">
                     </a>
                     <ul class="dropdown-menu">
+                        @foreach(MissionTheme theme in themeList)
+                        {
                         <li>
                             <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">@theme.Title</label>
                             </div>
                         </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
+                        }
+                        
                     </ul>
                 </div>
                 <!-- </li> -->
@@ -107,30 +74,15 @@
                         <img src="~/images/drop-down.png" alt="">
                     </a>
                     <ul class="dropdown-menu">
+                        @foreach(Skill skill in skillList)
+                        {
                         <li>
                             <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">@skill.SkillName</label>
                             </div>
                         </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
+                        }
                     </ul>
                 </div>
                 <!-- </li> -->
@@ -149,10 +101,10 @@
                     Country
                     <img src="~/images/drop-down.png" alt="">
                 </a>
-                <ul class="dropdown-menu">
-                     @foreach(SelectListItem country in countryList)
+                <ul class="dropdown-menu" id="countryDropdown">
+                     @foreach(Country country in countryList)
                         {   
-                        <li><a class="dropdown-item" href="#">@country.Text</a></li>
+                        <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId"  href="#">@country.Name</a></li>
                         }
                 </ul>
             </div>
@@ -163,31 +115,8 @@
                     City
                     <img src="~/images/drop-down.png" alt="">
                 </a>
-                <ul class="dropdown-menu">
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
+                <ul class="dropdown-menu" id="cityDropdown">
+                        
                 </ul>
             </div>
 
@@ -197,31 +126,16 @@
                     Theme
                     <img src="~/images/drop-down.png" alt="">
                 </a>
-                <ul class="dropdown-menu">
-                    <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
+                <ul class="dropdown-menu" id="themeDropdown">
+                    @foreach(MissionTheme theme in themeList)
+                        {
                         <li>
                             <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">@theme.Title</label>
                             </div>
                         </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
+                        }
                 </ul>
             </div>
 
@@ -232,30 +146,15 @@
                     <img src="~/images/drop-down.png" alt="">
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
+                    @foreach(Skill skill in skillList)
+                        {
                         <li>
                             <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">@skill.SkillName</label>
                             </div>
                         </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                        </li>
+                        }
                 </ul>
             </div>
         </div>
