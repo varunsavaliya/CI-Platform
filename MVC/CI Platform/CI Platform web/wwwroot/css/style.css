@@ -801,9 +801,9 @@ input:focus-visible {
     .pill .close {
         color: #757575;
         position: absolute;
-        right: 5px;
+        right: 7px;
         top: 3px;
-        font-size: 22px;
+        font-size: 17px;
         line-height: 20px;
         text-align: center;
         cursor: pointer;

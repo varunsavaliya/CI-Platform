@@ -1,19 +1,24 @@
-﻿using CI_Platform.Entities.DataModels;
+﻿using Ci_Platform.Repositories.Interfaces;
+using CI_Platform.Entities.DataModels;
+using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace CI_Platform_web.Controllers
 {
     public class MissionController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IFilters _filters;
 
-        public MissionController(ApplicationDbContext context)
+        public MissionController(ApplicationDbContext context, IFilters filters)
         {
             _context = context;
+            _filters = filters;
         }
 
-        public IActionResult LandingPage()
+        public async Task<IActionResult> LandingPage()
         {
             if(HttpContext.Session.GetString("UserName") != null)
             {
@@ -22,21 +27,43 @@ namespace CI_Platform_web.Controllers
             }
             else
             {
-                ViewBag.UserName = "Evan Donohue";
+                ViewBag.UserName = "Login";
             }
-             var country = _context.Countries.ToList();
-            ViewBag.countryList = country;
 
-            var theme = _context.MissionThemes.ToList();
-            ViewBag.themeList = theme;
+            // methods for country, theme and skills is in IFilters
+            //var country = await _filters.GetCountriesAsync();
+            //ViewBag.countryList = country;
 
-            var skill = _context.Skills.ToList();
-            ViewBag.skillList = skill;
-            return View();
+            //var theme = await _filters.GetThemesAsync();
+            //ViewBag.themeList = theme;
+
+            //var skill = await _filters.GetSkillsAsyc();
+            //ViewBag.skillList = skill;
+
+            //// card integration 
+            //var missions = _context.Missions.Include(m => m.City).Include(m => m.Theme).Include(m => m.MissionRatings).ToList();
+            //ViewBag.missionList = missions;
+
+            var LandingView = new LandingPageModel();
+
+
+            LandingView.Country = await _filters.GetCountriesAsync();
+            LandingView.Theme = await _filters.GetThemesAsync();
+            LandingView.Skill = await _filters.GetSkillsAsyc();
+            LandingView.MissionList = _context.Missions.Include(m => m.City).Include(m => m.Theme).Include(m => m.MissionRatings).Include(m => m.MissionSkills).ThenInclude(ms=>ms.Skill).ToList();
+
+
+            //foreach (var mission in missions)
+            //{
+            //    double Rating = mission.MissionRatings.Rating;
+            //    ViewBag.AverageRatings[mission.MissionId] = averageRating;
+            //}
+
+            return View(LandingView);
         }
-        public IActionResult GetCitiesByCountry(int countryId)
+        public async Task<IActionResult> GetCitiesByCountry(int countryId)
         {
-            var cities = _context.Cities.Where(c => c.CountryId == countryId).ToList();
+            var cities = await _filters.GetCitiesByCountryAsync(countryId);
             return Json(cities);
         }
 

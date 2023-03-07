@@ -1,0 +1,22 @@
+INSERT INTO city (country_id, name, created_at)
+VALUES 
+    (25, 'Sydney', GETDATE()),
+    (25, 'Melbourne', GETDATE()),
+    (25, 'Brisbane', GETDATE()),
+    (25, 'Perth', GETDATE()),
+    (25, 'Adelaide', GETDATE()),
+    (25, 'Gold Coast', GETDATE()),
+    (25, 'Newcastle', GETDATE()),
+    (25, 'Canberra', GETDATE()),
+    (25, 'Sunshine Coast', GETDATE()),
+    (25, 'Wollongong', GETDATE()),
+    (25, 'Geelong', GETDATE()),
+    (25, 'Hobart', GETDATE()),
+    (25, 'Townsville', GETDATE()),
+    (25, 'Cairns', GETDATE()),
+    (25, 'Darwin', GETDATE()),
+    (25, 'Toowoomba', GETDATE()),
+    (25, 'Ballarat', GETDATE()),
+    (25, 'Bendigo', GETDATE()),
+    (25, 'Albury-Wodonga', GETDATE()),
+    (25, 'Launceston', GETDATE());

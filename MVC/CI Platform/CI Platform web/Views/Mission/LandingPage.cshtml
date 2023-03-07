@@ -1,16 +1,17 @@
-﻿@{
+﻿
+@{
     Layout = "_HeaderLayout";
     ViewData["Title"] = "LandingPage";
 }
 
-<partial name="_SearchBarPartial" />
+<partial name="_SearchBarPartial" id="searchbar-partialview"/>
 
 <div class="container">
 <div class="d-flex py-4">
         <h4>Explore <span>72 missions</span></h4>
 
         <div class="d-flex align-items-center ms-auto sort-div-right gap-4">
-            <div class="filter-box sort-box dropdown">
+            <div class="filter-box sort-box dropdown me-3">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <span>Sort by &nbsp;&nbsp;</span>
@@ -24,14 +25,17 @@
             </div>
 
             <ul class="d-flex align-items-center gap-2 nav nav-tabs">
-                <li class="active grid"><a data-toggle="tab" href="#GridView"><img class="p-1" src="~/images/grid.png" /></a></li>
-                <li class=" list"><a data-toggle="tab" href="#ListView"><img class="p-1" src="~/images/list.png" /></a></li>
+                <li class="active grid me-3"><a data-toggle="tab" href="#GridView"><img class="p-1" src="~/images/grid.png" /></a></li>
+                <li class=" list me-3"><a data-toggle="tab" href="#ListView"><img class="p-1" src="~/images/list.png" /></a></li>
             </ul>
   
         </div>
     </div>
     </div>
-    @*<partial name="_NoMissionFound" />*@
+<div class="no-mission-found d-none" >
+
+    <partial name="_NoMissionFound" />
+</div>
     <div class="tab-content">
         <div id="GridView" class="tab-pane active">
             <partial name="_GridViewPartial" />

@@ -27,7 +27,7 @@
                         <img src="~/images/drop-down.png" alt="">
                     </a>
                     <ul class="dropdown-menu" id="countryDropdown">
-                        @foreach(Country country in countryList)
+                        @foreach(Country country in Model.Country)
                         {   
                         <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId"  href="#">@country.Name</a></li>
                         }
@@ -52,14 +52,12 @@
                         Theme
                         <img src="~/images/drop-down.png" alt="">
                     </a>
-                    <ul class="dropdown-menu">
-                        @foreach(MissionTheme theme in themeList)
+                    <ul class="dropdown-menu" id="themeDropdown">
+                        @foreach(MissionTheme theme in Model.Theme)
                         {
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">@theme.Title</label>
-                            </div>
+                            <li class="ms-4 form-check">
+                                <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="@theme.MissionThemeId" name="themeCheckboxes[]" multiple>
+                                    <label class="form-check-label" for="@theme.MissionThemeId">@theme.Title</label>
                         </li>
                         }
                         
@@ -73,14 +71,12 @@
                         Skill
                         <img src="~/images/drop-down.png" alt="">
                     </a>
-                    <ul class="dropdown-menu">
-                        @foreach(Skill skill in skillList)
+                    <ul class="dropdown-menu" id="skillDropdown">
+                        @foreach(Skill skill in Model.Skill)
                         {
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">@skill.SkillName</label>
-                            </div>
+                            <li class="ms-4 form-check">
+                                <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="@skill.SkillId" name="skillCheckboxes[]" multiple>
+                                    <label class="form-check-label" for="@skill.SkillId">@skill.SkillName</label>
                         </li>
                         }
                     </ul>
@@ -102,7 +98,7 @@
                     <img src="~/images/drop-down.png" alt="">
                 </a>
                 <ul class="dropdown-menu" id="countryDropdown">
-                     @foreach(Country country in countryList)
+                     @foreach(Country country in Model.Country)
                         {   
                         <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId"  href="#">@country.Name</a></li>
                         }
@@ -127,13 +123,11 @@
                     <img src="~/images/drop-down.png" alt="">
                 </a>
                 <ul class="dropdown-menu" id="themeDropdown">
-                    @foreach(MissionTheme theme in themeList)
+                    @foreach(MissionTheme theme in Model.Theme)
                         {
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">@theme.Title</label>
-                            </div>
+                        <li class="ms-4 form-check">
+                                <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="@theme.MissionThemeId" name="themeCheckboxes[]" multiple>
+                                <label class="form-check-label" for="@theme.MissionThemeId">@theme.Title</label>
                         </li>
                         }
                 </ul>
@@ -145,14 +139,12 @@
                     Skill
                     <img src="~/images/drop-down.png" alt="">
                 </a>
-                <ul class="dropdown-menu">
-                    @foreach(Skill skill in skillList)
+                <ul class="dropdown-menu" id="skillDropdown">
+                    @foreach(Skill skill in Model.Skill)
                         {
-                        <li>
-                            <div class="dropdown-item mb-3 form-check">
-                            <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">@skill.SkillName</label>
-                            </div>
+                        <li class="ms-4 form-check">
+                                <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="@skill.SkillId" name="skillCheckboxes[]" multiple>
+                                <label class="form-check-label" for="@skill.SkillId">@skill.SkillName</label>
                         </li>
                         }
                 </ul>
@@ -163,7 +155,7 @@
 <div class="border-top"></div>
 <div class="container">
     <div class="searched-filters mt-3">
-        <div class="pill">
+        @*<div class="pill">
             Tree Plantation
             <span class="close">&times;</span>
         </div>
@@ -197,6 +189,6 @@
         </div>
         <div class="pill closeAll">
             Close all
-        </div>
+        </div>*@
     </div>
     </div>

@@ -15,6 +15,7 @@ builder.Services.AddScoped<IRegister, Register>();
 builder.Services.AddScoped<ILogin, Login>();
 builder.Services.AddScoped<IForgotPassword, ForgotPassword>();
 builder.Services.AddScoped<IResetPassword, ResetPassword>();
+builder.Services.AddScoped<IFilters, Filters>();
 
 // for use of session
 builder.Services.AddDistributedMemoryCache();

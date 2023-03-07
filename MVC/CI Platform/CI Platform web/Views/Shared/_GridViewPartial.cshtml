@@ -1,10 +1,37 @@
-﻿<div class="container">
+﻿@using CI_Platform.Entities.DataModels;
+@model CI_Platform.Entities.ViewModels.LandingPageModel;
+
+@{
+    //var cardList = ViewBag.missionList;
+}
+<div class="container">
 
             <div class="row">
 
             <!-- card 1 -->
+        @foreach(var card in Model.MissionList)
+        {
+
+            @*string startDateTimeString = card.StartDate.ToString();*@
+            @*var startDateTime = DateTime.Parse(startDateTimeString);*@
+            @*string startDate = startDateTimeString.split(' ');*@
+            @*<p>@card.MissionRatings.Rating</p>*@
+            @*var city = ApplicationDbContext.Cities.Find(card.CityId);*@
+                @*var avgRating = ViewBag.AverageRatings[card.MissionId];*@
+
+                @*if (card.MissionRatings != null && card.MissionRatings.Any())
+                {
+                    double averageRating = ViewBag.AverageRatings[card.MissionId];
+                    <p>Average rating: @averageRating</p>
+                }
+                else
+                {
+                    <p>No ratings yet</p>
+                }*@
+                @*<p>@avgRating</p>*@
             <div class="col col-md-6 col-lg-4">
                 <div class="card">
+                    <p class="d-none mission-country">@card.Country.Name</p>
                 <div class="card-image">
                     <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability.png" alt="Card Image">
 
@@ -12,7 +39,11 @@
                     <div class="card-items">
                         <div class="location">
                             <img src="~/images/pin.png" alt="">
-                            <p>Toronto</p>
+                            @*<p>Toronto</p>*@
+                            <p>@card.City.Name</p>
+                            @foreach(var skill in card.MissionSkills){
+                            <p class="mission-skills">@skill.Skill.SkillName</p>
+                            }
                         </div>
                         <div class="fav">
                             <img src="~/images/heart.png" alt="">
@@ -24,19 +55,23 @@
 
                     <!-- mission theme capsule -->
                     <div class="mission-theme">
-                        <h3>Environment</h3>
+                        @*<h3>Environment</h3>*@
+                        <h3>@card.Theme.Title</h3>
                     </div>
                 </div>
 
                 <!-- card content -->
                 <div class="card-content">
-                    <h2 class="card-title">Grow Trees - On the path to environment sustainibility</h2>
-                    <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
+                    @*<h2 class="card-title">Grow Trees - On the path to environment sustainibility</h2>*@
+                    <h2 class="card-title">@card.Title</h2>
+                    @*<p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>*@
+                    <p class="card-description">@card.ShortDescription</p>
 
                     <!-- organization and rating -->
                     <div class="organization-rating">
                         <div class="organization">
-                            <p>Tree Canada</p>
+                            @*<p>Tree Canada</p>*@
+                            <p>@card.OrganizationName</p>
                         </div>
                         <div class="rating">
                             <span><img src="~/images/selected-star.png" alt=""></span>
@@ -59,13 +94,14 @@
                         <div class="duration-detail d-flex align-items-center">
                             <img src="~/images/deadline.png" alt="">
                             <div class="d-flex flex-column">
-                                <p>09/01/2019</p>
-                                <p>Deadline</p>
+                                <p> @card.EndDate.Value.ToShortDateString() </p>
+                                @*<p>@startDate</p>*@
+                                <p>End Date</p>
                             </div>
                         </div>
 
                         <div class="mission-date">
-                            <p>From 10/01/2019 until 25/02/2019</p>
+                                <p>From @card.StartDate.Value.ToShortDateString() until @card.EndDate.Value.ToShortDateString()</p>
                         </div>
                     </div>
 
@@ -78,9 +114,10 @@
                 </div>
                 </div>
             </div>
+        }
 
 
-            <!-- card 2 -->
+            @*<!-- card 2 -->
             <div class="col col-md-6 col-lg-4">
             <div class="card">
                 <div class="card-image">
@@ -684,6 +721,6 @@
                 </div>
             </div>
             </div>
-
+*@
         </div>
     </div>

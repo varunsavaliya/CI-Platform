@@ -15,3 +15,37 @@ D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0
 D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\CI Platform.Entities.dll
 D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\CI Platform.Entities.pdb
 D:\Projects\New folder\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.csproj.CopyComplete
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\Ci Platform.Repositories.deps.json
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\Ci Platform.Repositories.runtimeconfig.json
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\Ci Platform.Repositories.dll
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\Ci Platform.Repositories.pdb
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.csproj.AssemblyReference.cache
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.AssemblyInfoInputs.cache
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.AssemblyInfo.cs
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.csproj.CoreCompileInputs.cache
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.csproj.CopyComplete
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.dll
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\refint\Ci Platform.Repositories.dll
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.pdb
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.genruntimeconfig.cache
+D:\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\ref\Ci Platform.Repositories.dll
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\Ci Platform.Repositories.deps.json
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\Ci Platform.Repositories.runtimeconfig.json
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\Ci Platform.Repositories.dll
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\ref\Ci Platform.Repositories.dll
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\Ci Platform.Repositories.pdb
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.csproj.AssemblyReference.cache
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.AssemblyInfoInputs.cache
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.AssemblyInfo.cs
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.csproj.CoreCompileInputs.cache
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.csproj.CopyComplete
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.dll
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\ref\Ci Platform.Repositories.dll
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.pdb
+D:\Projects\varun\MVC\CI Platform\Ci Platform.Repositories\obj\Debug\net6.0\Ci Platform.Repositories.genruntimeconfig.cache
