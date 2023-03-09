@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\varun\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj": {}
+    "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
+    "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
+        "projectUniqueName": "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
         "projectName": "CI Platform.Entities",
-        "projectPath": "D:\\Projects\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
+        "projectPath": "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
         "packagesPath": "C:\\Users\\pct35\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\varun\\MVC\\CI Platform\\CI Platform.Entities\\obj\\",
+        "outputPath": "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\CI Platform.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -91,14 +91,14 @@
         }
       }
     },
-    "D:\\Projects\\varun\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj": {
+    "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\varun\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj",
+        "projectUniqueName": "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj",
         "projectName": "Ci Platform.Repositories",
-        "projectPath": "D:\\Projects\\varun\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj",
+        "projectPath": "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj",
         "packagesPath": "C:\\Users\\pct35\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\varun\\MVC\\CI Platform\\Ci Platform.Repositories\\obj\\",
+        "outputPath": "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\Ci Platform.Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -120,8 +120,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Projects\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
-                "projectPath": "D:\\Projects\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj"
+              "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
+                "projectPath": "D:\\Projects\\New folder (2)\\varun1\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj"
               }
             }
           }

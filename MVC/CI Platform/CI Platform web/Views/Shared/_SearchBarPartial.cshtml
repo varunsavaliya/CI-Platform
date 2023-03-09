@@ -1,4 +1,5 @@
 ﻿@using CI_Platform.Entities.DataModels;
+@model CI_Platform.Entities.ViewModels.LandingPageModel;
 
 @{
     var countryList = ViewBag.countryList;
@@ -27,9 +28,9 @@
                         <img src="~/images/drop-down.png" alt="">
                     </a>
                     <ul class="dropdown-menu" id="countryDropdown">
-                        @foreach(Country country in Model.Country)
-                        {   
-                        <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId"  href="#">@country.Name</a></li>
+                        @foreach (var country in Model.Country)
+                        {
+                            <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId" href="#">@country.Name</a></li>
                         }
                     </ul>
                 </div>
@@ -40,8 +41,6 @@
                         <img src="~/images/drop-down.png" alt="">
                     </a>
                     <ul class="dropdown-menu" id="cityDropdownOffCanvas">
-                       
-                       
                     </ul>
                 </div>
                 <!-- </li> -->
@@ -53,14 +52,14 @@
                         <img src="~/images/drop-down.png" alt="">
                     </a>
                     <ul class="dropdown-menu" id="themeDropdown">
-                        @foreach(MissionTheme theme in Model.Theme)
+                        @foreach (var theme in Model.Theme)
                         {
                             <li class="ms-4 form-check">
-                                <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="@theme.MissionThemeId" name="themeCheckboxes[]" multiple>
-                                    <label class="form-check-label" for="@theme.MissionThemeId">@theme.Title</label>
-                        </li>
+                                <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="theme_@theme.MissionThemeId" name="themeCheckboxes" multiple>
+                                <label class="form-check-label" for="theme_@theme.MissionThemeId">@theme.Title</label>
+                            </li>
                         }
-                        
+
                     </ul>
                 </div>
                 <!-- </li> -->
@@ -72,12 +71,12 @@
                         <img src="~/images/drop-down.png" alt="">
                     </a>
                     <ul class="dropdown-menu" id="skillDropdown">
-                        @foreach(Skill skill in Model.Skill)
+                        @foreach (var skill in Model.Skill)
                         {
                             <li class="ms-4 form-check">
-                                <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="@skill.SkillId" name="skillCheckboxes[]" multiple>
-                                    <label class="form-check-label" for="@skill.SkillId">@skill.SkillName</label>
-                        </li>
+                                <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="skill_@skill.SkillId" name="skillCheckboxes" multiple>
+                                <label class="form-check-label" for="skill_@skill.SkillId">@skill.SkillName</label>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -98,10 +97,10 @@
                     <img src="~/images/drop-down.png" alt="">
                 </a>
                 <ul class="dropdown-menu" id="countryDropdown">
-                     @foreach(Country country in Model.Country)
-                        {   
-                        <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId"  href="#">@country.Name</a></li>
-                        }
+                    @foreach (var country in Model.Country)
+                    {
+                        <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId" href="#">@country.Name</a></li>
+                    }
                 </ul>
             </div>
 
@@ -112,7 +111,6 @@
                     <img src="~/images/drop-down.png" alt="">
                 </a>
                 <ul class="dropdown-menu" id="cityDropdown">
-                        
                 </ul>
             </div>
 
@@ -123,13 +121,13 @@
                     <img src="~/images/drop-down.png" alt="">
                 </a>
                 <ul class="dropdown-menu" id="themeDropdown">
-                    @foreach(MissionTheme theme in Model.Theme)
-                        {
+                    @foreach (var theme in Model.Theme)
+                    {
                         <li class="ms-4 form-check">
-                                <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="@theme.MissionThemeId" name="themeCheckboxes[]" multiple>
-                                <label class="form-check-label" for="@theme.MissionThemeId">@theme.Title</label>
+                            <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="theme_@theme.MissionThemeId" name="themeCheckboxes" multiple>
+                            <label class="form-check-label" for="theme_@theme.MissionThemeId">@theme.Title</label>
                         </li>
-                        }
+                    }
                 </ul>
             </div>
 
@@ -140,55 +138,55 @@
                     <img src="~/images/drop-down.png" alt="">
                 </a>
                 <ul class="dropdown-menu" id="skillDropdown">
-                    @foreach(Skill skill in Model.Skill)
-                        {
+                    @foreach (var skill in Model.Skill)
+                    {
                         <li class="ms-4 form-check">
-                                <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="@skill.SkillId" name="skillCheckboxes[]" multiple>
-                                <label class="form-check-label" for="@skill.SkillId">@skill.SkillName</label>
+                            <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="skill_@skill.SkillId" name="skillCheckboxes">
+                            <label class="form-check-label" for="skill_@skill.SkillId">@skill.SkillName</label>
                         </li>
-                        }
+                    }
                 </ul>
             </div>
         </div>
     </div>
-    </div>
+</div>
 <div class="border-top"></div>
 <div class="container">
     <div class="searched-filters mt-3">
         @*<div class="pill">
-            Tree Plantation
-            <span class="close">&times;</span>
+        Tree Plantation
+        <span class="close">&times;</span>
         </div>
         <div class="pill">
-            Canada
-            <span class="close">&times;</span>
+        Canada
+        <span class="close">&times;</span>
         </div>
         <div class="pill">
-            Toronto
-            <span class="close">&times;</span>
+        Toronto
+        <span class="close">&times;</span>
         </div>
         <div class="pill">
-            Montreal
-            <span class="close">&times;</span>
+        Montreal
+        <span class="close">&times;</span>
         </div>
         <div class="pill">
-            Environment
-            <span class="close">&times;</span>
+        Environment
+        <span class="close">&times;</span>
         </div>
         <div class="pill">
-            Nutrition
-            <span class="close">&times;</span>
+        Nutrition
+        <span class="close">&times;</span>
         </div>
         <div class="pill">
-            Anthropology
-            <span class="close">&times;</span>
+        Anthropology
+        <span class="close">&times;</span>
         </div>
         <div class="pill">
-            Environmental Science
-            <span class="close">&times;</span>
+        Environmental Science
+        <span class="close">&times;</span>
         </div>
         <div class="pill closeAll">
-            Close all
+        Close all
         </div>*@
     </div>
-    </div>
+</div>

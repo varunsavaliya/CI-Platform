@@ -376,6 +376,7 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(128)
                 .IsUnicode(false)
                 .HasColumnName("title");
+            entity.Property(e => e.TotalSeats).HasColumnName("total_seats");
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");

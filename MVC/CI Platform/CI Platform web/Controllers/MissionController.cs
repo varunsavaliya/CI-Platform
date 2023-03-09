@@ -50,7 +50,7 @@ namespace CI_Platform_web.Controllers
             LandingView.Country = await _filters.GetCountriesAsync();
             LandingView.Theme = await _filters.GetThemesAsync();
             LandingView.Skill = await _filters.GetSkillsAsyc();
-            LandingView.MissionList = _context.Missions.Include(m => m.City).Include(m => m.Theme).Include(m => m.MissionRatings).Include(m => m.MissionSkills).ThenInclude(ms=>ms.Skill).ToList();
+            LandingView.MissionList = _context.Missions.Include(m => m.City).Include(m => m.Theme).Include(m => m.MissionRatings).Include(m => m.MissionSkills).ThenInclude(ms=>ms.Skill).Include(m => m.GoalMissions).ToList();
 
 
             //foreach (var mission in missions)
