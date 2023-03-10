@@ -2,10 +2,12 @@
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using CI_Platform_web.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
+using System.Numerics;
 
 namespace CI_Platform_web.Controllers
 {
@@ -45,8 +47,15 @@ namespace CI_Platform_web.Controllers
                     // creating username for session to show on profile field
                     var sessionUser = _context.Users.Where(a => a.Email == obj.Email).FirstOrDefault();
                     HttpContext.Session.SetString("UserName", sessionUser.FirstName+" "+sessionUser.LastName);
+                    var userId = sessionUser.UserId;
+                    var session = HttpContext.Session;
 
+                    // Store a BigInt value in the session
+                    //session.SetLong("UserId", userId);
 
+                    // Retrieve the BigInt value from the session
+                    //var myBigIntValue = session.Get<BigInteger>("MyBigIntValue");
+                    HttpContext.Session.SetString("UserId", (sessionUser.UserId).ToString());
                     HttpContext.Session.SetString("IsLoggedIn", "True");
                     return RedirectToAction("LandingPage", "Mission");
                 }

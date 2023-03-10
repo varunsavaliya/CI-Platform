@@ -4,6 +4,7 @@ using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace CI_Platform_web.Controllers
 {
@@ -20,10 +21,11 @@ namespace CI_Platform_web.Controllers
 
         public async Task<IActionResult> LandingPage()
         {
-            if(HttpContext.Session.GetString("UserName") != null)
+            if (HttpContext.Session.GetString("UserName") != null)
             {
                 ViewBag.UserName = HttpContext.Session.GetString("UserName");
                 ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
+                ViewBag.UserId = HttpContext.Session.GetString("UserId");
             }
             else
             {
@@ -50,7 +52,7 @@ namespace CI_Platform_web.Controllers
             LandingView.Country = await _filters.GetCountriesAsync();
             LandingView.Theme = await _filters.GetThemesAsync();
             LandingView.Skill = await _filters.GetSkillsAsyc();
-            LandingView.MissionList = _context.Missions.Include(m => m.City).Include(m => m.Theme).Include(m => m.MissionRatings).Include(m => m.MissionSkills).ThenInclude(ms=>ms.Skill).Include(m => m.GoalMissions).ToList();
+            LandingView.MissionList = _context.Missions.Include(m => m.City).Include(m => m.Theme).Include(m => m.MissionRatings).Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill).Include(m => m.GoalMissions).Include(m => m.MissionApplications).Include(m => m.FavoriteMissions).ToList();
 
 
             //foreach (var mission in missions)
@@ -60,6 +62,31 @@ namespace CI_Platform_web.Controllers
             //}
 
             return View(LandingView);
+        }
+        [HttpPost]
+        public IActionResult AddToFavorites(int missionId)
+        {
+            string Id = HttpContext.Session.GetString("UserId");
+            long userId = long.Parse(Id);
+
+            // Check if the mission is already in favorites for the user
+            if (_context.FavoriteMissions.Any(fm => fm.MissionId == missionId && fm.UserId == userId))
+            {
+                // Mission is already in favorites, return an error message or redirect back to the mission page
+                var FavoriteMissionId = _context.FavoriteMissions.Where(fm => fm.MissionId == missionId && fm.UserId == userId).FirstOrDefault();
+                _context.FavoriteMissions.Remove(FavoriteMissionId);
+                _context.SaveChanges();
+                return Ok();
+
+                //return BadRequest("Mission is already in favorites.");
+            }
+
+            // Add the mission to favorites for the user
+            var favoriteMission = new FavoriteMission { MissionId = missionId, UserId = userId };
+            _context.FavoriteMissions.Add(favoriteMission);
+            _context.SaveChanges();
+
+            return Ok();
         }
         public async Task<IActionResult> GetCitiesByCountry(int countryId)
         {

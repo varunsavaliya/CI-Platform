@@ -362,14 +362,14 @@ $(document).ready(function () {
                 // Arrange Array Element In Descending order
                 dateArray.reverse();
                 dateArray = $.unique(dateArray)
-                for (var i = 0; i < dateArray.length; i++) {
+                for (let i = 0; i < dateArray.length; i++) {
                     $('.grid-card').each(function () {
                         if ($(this).find('.created-date').text() == dateArray[i]) {
                             $(this).parent().appendTo($(gridCardsContainer));
                         }
                     });
                 }
-                for (var i = 0; i < dateArray.length; i++) {
+                for (let i = 0; i < dateArray.length; i++) {
                     $('.list-card').each(function () {
                         if ($(this).find('.created-date').text() == dateArray[i]) {
                             $(this).parent().appendTo($(listCardsContainer));
@@ -380,7 +380,7 @@ $(document).ready(function () {
                 break;
             case 'Oldest':
                 let cardsDateForOldest = $('.card').find('.created-date')
-                var dateArray = [];
+                //let dateArray = [];
                 cardsDateForOldest.each(function (j) {
                     dateArray.push($(this).text());
                 });
@@ -400,7 +400,7 @@ $(document).ready(function () {
                     return dateA - dateB;
                 });
 
-                for (var i = 0; i < dateArray.length; i++) {
+                for (let i = 0; i < dateArray.length; i++) {
                     $('.grid-card').each(function () {
                         if ($(this).find('.created-date').text() == dateArray[i]) {
                             console.log(true)
@@ -421,14 +421,93 @@ $(document).ready(function () {
                 filter()
                 break;
             case 'Lowest available seats':
+                let seatsLeftForLowest = $('.card').find('.seats-left')
+                var seatsArray = [];
+                seatsLeftForLowest.each(function (j) {
+                    seatsArray.push($(this).text());
+                });
+                // Arrange  array Elemeny in Ascending order
+                seatsArray = $.unique(seatsArray)
+                seatsArray.sort()
 
-                console.log(selectedSortOption)
+                for (var i = 0; i < seatsArray.length; i++) {
+                    $('.grid-card').each(function () {
+                        if ($(this).find('.seats-left').text() == seatsArray[i]) {
+                            console.log(true)
+
+                            $(this).parent().appendTo($(gridCardsContainer));
+                        }
+                    });
+                }
+                for (var i = 0; i < seatsArray.length; i++) {
+                    $('.list-card').each(function () {
+                        if ($(this).find('.seats-left').text() == seatsArray[i]) {
+                            console.log(true)
+
+                            $(this).parent().appendTo($(listCardsContainer));
+                        }
+                    });
+                }
+                filter()
                 break;
             case 'Highest available seats':
-                console.log(selectedSortOption)
+                let seatsLeft = $('.card').find('.seats-left')
+                var seatsArray = [];
+                seatsLeft.each(function (j) {
+                    seatsArray.push($(this).text());
+                });
+                // Arrange  array Elemeny in Ascending order
+                seatsArray = $.unique(seatsArray)
+                seatsArray.sort()
+                seatsArray.reverse()
+                for (var i = 0; i < seatsArray.length; i++) {
+                    $('.grid-card').each(function () {
+                        if ($(this).find('.seats-left').text() == seatsArray[i]) {
+                            $(this).parent().appendTo($(gridCardsContainer));
+                        }
+                    });
+                }
+                for (var i = 0; i < seatsArray.length; i++) {
+                    $('.list-card').each(function () {
+                        if ($(this).find('.seats-left').text() == seatsArray[i]) {
+                            $(this).parent().appendTo($(listCardsContainer));
+                        }
+                    });
+                }
+                filter()
                 break;
             case 'My favourites':
-                console.log(selectedSortOption)
+                //let favButton = $('.bi-heart-fill');
+
+                $('.grid-card').each(function () {
+                    let favButton = $(this).find('.favorite-button');
+                    if (favButton.hasClass('bi-heart-fill')) {
+                        $(this).parent().show();
+                    }
+                    else {
+                        $(this).parent().hide();
+                    }
+                });
+                $('.list-card').each(function () {
+                    let favButton = $(this).find('.favorite-button');
+                    if (favButton.hasClass('bi-heart-fill')) {
+                        $(this).parent().show();
+                    }
+                    else {
+                        $(this).parent().hide();
+                    }
+                });
+
+                //$('.card').each(function () {
+                //    if ($(this).find('.bi-heart-fill')) {
+                //        $(this).parent().show();
+                //console.log(true)
+                //    }
+                //    else {
+                //        $(this).parent().hide();
+                //console.log(false)
+                //    }
+                //})
                 break;
             case 'Registration deadline':
                 let deadlines = $('.card').find('.deadline')
@@ -454,7 +533,6 @@ $(document).ready(function () {
                 for (var i = 0; i < dateArray.length; i++) {
                     $('.grid-card').each(function () {
                         if ($(this).find('.deadline').text() == dateArray[i]) {
-
                             $(this).parent().appendTo($(gridCardsContainer));
                         }
                     });
@@ -462,8 +540,6 @@ $(document).ready(function () {
                 for (var i = 0; i < dateArray.length; i++) {
                     $('.list-card').each(function () {
                         if ($(this).find('.deadline').text() == dateArray[i]) {
-                            console.log(true)
-
                             $(this).parent().appendTo($(listCardsContainer));
                         }
                     });
@@ -472,6 +548,55 @@ $(document).ready(function () {
                 break;
         }
     })
+    // add to favourite
+
+    $('.favorite-button').click(function () {
+        var button = $(this)
+        var missionId = $(this).data('mission-id');
+        $.ajax({
+            url: '/Mission/AddToFavorites',
+            type: 'POST',
+            data: { missionId: missionId },
+            success: function (result) {
+                // Show a success message or update the UI
+                //console.log(button.hasClass('empty-heart') && button.data('mission-id') === missionId)
+                //console.log(button.hasClass('filled-heart') && button.data('mission-id') === missionId)
+                console.log(missionId)
+                var allMissionId = $('.favorite-button')
+                allMissionId.each(function () {
+                    if ($(this).data('mission-id') === missionId) {
+                        if ($(this).hasClass('bi-heart')) {
+                            $(this).addClass('bi-heart-fill text-danger')
+                            $(this).removeClass('bi-heart text-light')
+                            console.log("added")
+                        }
+                        else {
+                            $(this).addClass('bi-heart text-light')
+                            $(this).removeClass('bi-heart-fill text-danger')
+                            console.log("remove")
+                        }
+                    }
+                })
+                //allMissionId.each(function () {
+                //})
+                //if (button.hasClass('filled-heart') && button.data('mission-id') === missionId) {
+
+                //    $('.empty-heart').show();
+                //    $('.filled-heart').hide();
+                //    console.log("remove")
+                //}
+            },
+            error: function (error) {
+                // Show an error message or handle the error
+                //$('.empty-heart').show();
+                //$('.filled-heart').hide();
+                console.log("error")
+
+            }
+        });
+    });
+
+
 
     // skills dropdown
 
@@ -698,4 +823,4 @@ $(document).ready(function () {
     //    $(this).remove();
     //})
 
-});
+})
