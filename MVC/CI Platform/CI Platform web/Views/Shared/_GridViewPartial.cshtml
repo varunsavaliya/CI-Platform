@@ -10,9 +10,9 @@
 
         <!-- card 1 -->
         @foreach (var card in Model.MissionList)
-        { 
-                                                <div class="col col-md-6 col-lg-4">
-                                                    <div class="card grid-card">
+        {
+            <div class="col col-md-6 col-lg-4">
+                <div class="card grid-card">
                     @{
                         double avgRating = 0;
                         @if (card.MissionRatings.Any())
@@ -23,22 +23,22 @@
                     @*for comparing skills with selected skills*@
                     @foreach (var skill in card.MissionSkills)
                     {
-                                                                                                <p class="d-none mission-skills">@skill.Skill.SkillName</p>
+                        <p class="d-none mission-skills">@skill.Skill.SkillName</p>
                     }
-                                                        <p class="d-none mission-country">@card.Country.Name</p>
-                                                        <p class="created-date">@card.CreatedAt</p>
+                    <p class="d-none mission-country">@card.Country.Name</p>
+                    <p class="created-date d-none">@card.CreatedAt.ToString("dd/MM/yyyy HH:mm:ss")</p>
 
-                                                        <div class="card-image">
-                                                            <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability.png" alt="Card Image">
+                    <div class="card-image">
+                        <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability.png" alt="Card Image">
 
-                                                            <!-- location favourite and pause mission  -->
+                        <!-- location favourite and pause mission  -->
                         <div class="card-items">
-                                                                <div class="location">
-                                                                    <img src="~/images/pin.png" alt="">
-                                                                    <p>@card.City.Name</p>
+                            <div class="location">
+                                <img src="~/images/pin.png" alt="">
+                                <p>@card.City.Name</p>
 
-                                                                </div>
-                                                                <div class="fav">
+                            </div>
+                            <div class="fav">
 
                                 @{
                                     var flag = 1;
@@ -47,714 +47,793 @@
                                 {
                                     @if (fm.UserId.Equals(UserId))
                                     {
-                                        <i class="bi bi-heart-fill favorite-button filled-heart text-danger"  data-mission-id="@card.MissionId"></i>
+                                        <i class="bi bi-heart-fill favorite-button filled-heart text-danger" data-mission-id="@card.MissionId"></i>
                                         flag = 0;
                                     }
 
                                 }
                                 @if (flag == 1)
                                 {
-                                       <i class="bi bi-heart favorite-button empty-heart text-light" data-mission-id="@card.MissionId"></i>
+                                    <i class="bi bi-heart favorite-button empty-heart text-light" data-mission-id="@card.MissionId"></i>
                                 }
 
 
                                 @*<p>@card.FavoriteMissions.Any(m => m.UserId.Equals(UserId))</p>*@
                                 @*<img src="~/images/heart.png" alt="" class="favorite-button" data-mission-id="@card.MissionId">*@
-                                                                </div>
-                                                                <div class="pause-mission-icon">
-                                                                    <img src="~/images/user.png" alt="">
-                                                                </div>
-                                                            </div>
+                            </div>
+                            <div class="pause-mission-icon">
 
-                                                            <!-- mission theme capsule -->
+
+                                <!-- Button trigger modal -->
+                                <img data-bs-toggle="modal" data-bs-target="#inviteVolunteer" src="~/images/user.png" alt="">
+
+                                <!-- Invite Volunteer Modal -->
+                                <div class="modal fade" id="inviteVolunteer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <a class="text-dark border-end pe-3" href="mailto:?subject=Check out this mission&amp;body=Here is the link to the mission page: @Url.Action("MissionVolunteering", "Mission", new { id = card.MissionId })">Share via Email</a>
+
+                                                <a class="ps-3 text-dark" href="whatsapp://send?text=Check out this mission: @Url.Action("MissionVolunteering", "Mission", new { id = card.MissionId })">Share via WhatsApp</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- mission theme capsule -->
                         <div class="mission-theme">
                             @*<h3>Environment</h3>*@
-                                                                <h3>@card.Theme.Title</h3>
-                                                            </div>
-                                                        </div>
+                            <h3>@card.Theme.Title</h3>
+                        </div>
+                    </div>
 
-                                                        <!-- card content -->
+                    <!-- card content -->
                     <div class="card-content">
-                                                            <h2 class="card-title">@card.Title</h2>
-                                                            <p class="card-description">@card.ShortDescription</p>
+                        <h2 class="card-title">@card.Title</h2>
+                        <p class="card-description">@card.ShortDescription</p>
 
-                                                            <!-- organization and rating -->
+                        <!-- organization and rating -->
                         <div class="organization-rating">
-                                                                <div class="organization">
-                                                                    <p>@card.OrganizationName</p>
-                                                                </div>
-                                                                <div class="rating">
-                                @for (int i = 0; i < avgRating; i++)
+                            <div class="organization">
+                                <p>@card.OrganizationName</p>
+                            </div>
+                            <div class="rating">
+                                @for (int i = 0; i < (int)avgRating; i++)
                                 {
-                                                                                                        <span><img src="~/images/selected-star.png" alt=""></span>
-                                }@for (int i = 0; i < 5 - avgRating; i++)
+                                    <span><img src="~/images/selected-star.png" alt=""></span>
+                                }@for (int i = 0; i < 5 - (int)avgRating; i++)
                                 {
-                                                                                                        <span><img src="~/images/star.png" alt=""></span>
+                                    <span><img src="~/images/star.png" alt=""></span>
                                 }
 
-                                                                </div>
-                                                            </div>
+                            </div>
+                        </div>
+                        @{
+                            DateTime? currentDate = @DateTime.Now;
+                            TimeSpan ts1 = new TimeSpan(1, 0, 0, 0);
+                            var deadline = @card.StartDate - ts1;
+                            bool isEnddatePassed = currentDate > card.EndDate;
+                            bool isOngoing = currentDate > card.StartDate;
+                            bool isDeadlinePassed = currentDate > deadline;
 
-                                                            <!-- seats and deadline -->
-                        <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
-                                                                <div class="seats-detail d-flex align-items-center">
-                                                                    <img src="~/images/Seats-left.png" alt="">
-                                                                    <div class="d-flex flex-column">
-                                    @{
-                                        var seatsFilled = 0;
-                                        @if (card.MissionApplications.Any(sl => sl.ApprovalStatus.Contains("published")))
-                                        {
-                                            seatsFilled = card.MissionApplications.Count(sl => sl.ApprovalStatus.Equals("published"));
-                                        }
-                                        var seatsLeft = card.TotalSeats - seatsFilled;
-                                    }
-                                                                        <p class="seats-left">@seatsLeft</p>
-                                                                        <p>Seats left</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="duration-detail d-flex align-items-center">
-                                                                    <img src="~/images/deadline.png" alt="">
-                                                                    <div class="d-flex flex-column">
-                                    @{
-                                        TimeSpan ts1 = new TimeSpan(1, 0, 0, 0);
-                                        var deadline = @card.StartDate - ts1;
-                                    }
-                                                                        <p class="deadline">@deadline.Value.ToShortDateString()</p>
-                                                                        <p>Deadline</p>
-                                                                    </div>
-                                                                </div>
+                            var seatsFilled = 0;
+                            if (card.MissionApplications.Any(sl => sl.ApprovalStatus.Contains("published")))
+                            {
+                                seatsFilled = card.MissionApplications.Count(sl => sl.ApprovalStatus.Equals("published"));
+                            }
+                            var seatsLeft = card.TotalSeats - seatsFilled;
 
-                                                                <div class="mission-date">
+                            bool isAlreadyApplied = card.MissionApplications.Any(ma => ma.UserId.Equals(UserId));
+                        }
+                        <!--  if mission deadline is passed, user already applied to mission or all seats are taken then only view details is shown -->
+                        @if (isEnddatePassed)
+                        {
+                            <div class="border-top">
+                                <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@card.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center">
+                                    View Details
+                                    <img src="~/images/right-arrow.png" alt="">
+                                    <img src="~/images/right-arrow2.png" alt="">
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+
+                            <!-- seats and deadline -->
+                            <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
+                                <div class="seats-detail d-flex align-items-center">
+                                    <img src="~/images/Seats-left.png" alt="">
+                                    <div class="d-flex flex-column">
+                                        <p class="seats-left">@seatsLeft</p>
+                                        <p>Seats left</p>
+                                    </div>
+                                </div>
+
                                 @if (card.MissionType == "Time")
                                 {
-                                                                                                            <p>From @card.StartDate.Value.ToShortDateString() until @card.EndDate.Value.ToShortDateString()</p>
+                                    <div class="duration-detail d-flex align-items-center">
+                                        <img src="~/images/deadline.png" alt="">
+                                        <div class="d-flex flex-column">
+                                            <p class="deadline">@deadline.Value.ToString("dd/MM/yyyy")</p>
+                                            <p>Deadline</p>
+                                        </div>
+                                    </div>
                                 }
                                 else
                                 {
                                     @foreach (var goal in card.GoalMissions)
                                     {
-                                                                                                                                                    <p>@goal.GoalObjectiveText</p>
+                                        <div class="duration-detail d-flex align-items-center">
+                                            <img src="~/images/achieved.png" alt="">
+                                            <div class="d-flex flex-column">
+                                                <div class="progress">
+                                                    <div class="progress-bar" role="progressbar" style="width: @goal.GoalValue%" aria-valuenow="@goal.GoalValue" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <p>@goal.GoalValue Achieved</p>
+                                            </div>
+                                        </div>
                                     }
                                 }
-                                                                </div>
-                                                            </div>
 
-                                                            <!-- apply button -->
-                        <button class="card-button d-flex justify-content-between align-items-center align-self-center">
-                                                                Apply
-                                                                <img src="~/images/right-arrow.png" alt="">
-                                                                <img src="~/images/right-arrow2.png" alt="">
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+                                <div class="mission-date">
+                                    @if (card.MissionType == "Time")
+                                    {
+                                        if (isOngoing)
+                                        {
+                                            <p>Ongoing Opportunity</p>
+                                        }
+                                        else
+                                        {
+                                            <p>From @card.StartDate.Value.ToString("dd/MM/yyyy") until @card.EndDate.Value.ToString("dd/MM/yyyy")</p>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        @foreach (var goal in card.GoalMissions)
+                                        {
+                                            <p>@goal.GoalObjectiveText</p>
+                                        }
+                                    }
+                                </div>
+                            </div>
+
+                            if (isDeadlinePassed || isAlreadyApplied || (seatsLeft == 0))
+                            {
+                                <!-- View details button -->
+                                <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@card.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center">
+                                    View Details
+                                    <img src="~/images/right-arrow.png" alt="">
+                                    <img src="~/images/right-arrow2.png" alt="">
+                                </a>
+                            }
+                            else
+                            {
+                                <!-- apply button -->
+                                <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new{ id=@card.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center">
+                                    Apply
+                                    <img src="~/images/right-arrow.png" alt="">
+                                    <img src="~/images/right-arrow2.png" alt="">
+                                </a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
         }
 
 
         @*<!-- card 2 -->
-            <div class="col col-md-6 col-lg-4">
-            <div class="card">
-            <div class="card-image">
-            <img src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" alt="Card Image">
-
-            <!-- location favourite and pause mission  -->
-            <div class="card-items">
-            <div class="location">
-            <img src="~/images/pin.png" alt="">
-            <p>Melbourne</p>
-            </div>
-            <div class="fav">
-            <img src="~/images/heart.png" alt="">
-            </div>
-            <div class="pause-mission-icon">
-            <img src="~/images/user.png" alt="">
-            </div>
-            </div>
-
-            <!-- mission theme capsule -->
-            <div class="mission-theme">
-            <h3>Environment</h3>
-            </div>
-            </div>
-
-            <!-- card content -->
-            <div class="card-content">
-            <h2 class="card-title">Education Supplies for Every Pair of Shoes Sold</h2>
-            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
-
-            <!-- organization and rating -->
-            <div class="organization-rating">
-            <div class="organization">
-            <p>Australian Paradise</p>
-            </div>
-            <div class="rating">
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            </div>
-            </div>
-
-            <!-- seats and deadline -->
-            <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
-            <div class="seats-detail d-flex align-items-center">
-            <img src="~/images/Already-volunteered.png" alt="">
-            <div class="d-flex flex-column">
-            <p>250</p>
-            <p>Already Volunteered</p>
-            </div>
-            </div>
-            <div class="duration-detail d-flex align-items-center">
-            <img src="~/images/deadline.png" alt="">
-            <div class="d-flex flex-column">
-            <p>09/01/2019</p>
-            <p>Deadline</p>
-            </div>
-            </div>
-
-            <div class="mission-date">
-            <p>From 10/01/2019 until 25/02/2019</p>
-            </div>
-            </div>
-
-            <!-- apply button -->
-            <button class="card-button d-flex justify-content-between align-items-center align-self-center">
-            Apply
-            <img src="~/images/right-arrow.png" alt="">
-            <img src="~/images/right-arrow2.png" alt="">
-            </button>
-            </div>
-            </div>
-            </div>
-
-
-            <!-- card 3 -->
-            <div class="col col-md-6 col-lg-4">
-            <div class="card">
-            <div class="card-image">
-            <img src="~/images/Nourish-the-Children-in--African-country.png" alt="Card Image">
-
-            <!-- location favourite and pause mission  -->
-            <div class="card-items">
-            <div class="location">
-            <img src="~/images/pin.png" alt="">
-            <p>Barcelona</p>
-            </div>
-            <div class="fav">
-            <img src="~/images/heart.png" alt="">
-            </div>
-            <div class="pause-mission-icon">
-            <img src="~/images/user.png" alt="">
-            </div>
-            </div>
-
-            <!-- mission theme capsule -->
-            <div class="mission-theme">
-            <h3>Nutrition</h3>
-            </div>
-            </div>
-
-            <!-- card content -->
-            <div class="card-content">
-            <h2 class="card-title">Nourish the Children in African country</h2>
-            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
-
-            <!-- organization and rating -->
-            <div class="organization-rating">
-            <div class="organization">
-            <p>The Hunger</p>
-            </div>
-            <div class="rating">
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            </div>
-            </div>
-
-            <!-- seats and deadline -->
-            <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
-            <div class="seats-detail d-flex align-items-center">
-            <img src="~/images/Seats-left.png" alt="">
-            <div class="d-flex flex-column">
-            <p>10</p>
-            <p>Seats left</p>
-            </div>
-            </div>
-            <div class="duration-detail d-flex align-items-center">
-            <img src="~/images/deadline.png" alt="">
-            <div class="d-flex flex-column">
-            <p>09/01/2019</p>
-            <p>Deadline</p>
-            </div>
-            </div>
-
-            <div class="mission-date">
-            <p>Ongoing Oportunity</p>
-            </div>
-            </div>
-
-            <!-- apply button -->
-            <button class="card-button d-flex justify-content-between align-items-center align-self-center">
-            Apply
-            <img src="~/images/right-arrow.png" alt="">
-            <img src="~/images/right-arrow2.png" alt="">
-            </button>
-            </div>
-            </div>
-            </div>
-
-
-            <!-- card 4 -->
-            <div class="col col-md-6 col-lg-4">
-            <div class="card">
-            <div class="card-image">
-            <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png" alt="Card Image">
-
-            <!-- location favourite and pause mission  -->
-            <div class="card-items">
-            <div class="location">
-            <img src="~/images/pin.png" alt="">
-            <p>London</p>
-            </div>
-            <div class="fav">
-            <img src="~/images/heart.png" alt="">
-            </div>
-            <div class="pause-mission-icon">
-            <img src="~/images/user.png" alt="">
-            </div>
-            </div>
-
-            <!-- mission theme capsule -->
-            <div class="mission-theme">
-            <h3>Environment</h3>
-            </div>
-            </div>
-
-            <!-- card content -->
-            <div class="card-content">
-            <h2 class="card-title">CSR initiative stands for Coffee and Farmer Equity</h2>
-            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
-
-            <!-- organization and rating -->
-            <div class="organization-rating">
-            <div class="organization">
-            <p>CSE Network</p>
-            </div>
-            <div class="rating">
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            </div>
-            </div>
-
-            <!-- seats and deadline -->
-            <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
-            <div class="seats-detail d-flex align-items-center">
-            <img src="~/images/Already-volunteered.png" alt="">
-            <div class="d-flex flex-column">
-            <p>250</p>
-            <p>Already volunteered</p>
-            </div>
-            </div>
-            <div class="duration-detail d-flex align-items-center">
-
-            </div>
-
-            <div class="mission-date">
-            <p>Ongoing Oportunity</p>
-            </div>
-            </div>
-
-            <!-- apply button -->
-            <button class="card-button d-flex justify-content-between align-items-center align-self-center">
-            Apply
-            <img src="~/images/right-arrow.png" alt="">
-            <img src="~/images/right-arrow2.png" alt="">
-            </button>
-            </div>
-            </div>
-            </div>
-
-
-            <!-- card 5 -->
-            <div class="col col-md-6 col-lg-4">
-            <div class="card">
-            <div class="card-image">
-            <img src="~/images/Animal-welfare-&-save-birds-campaign.png" alt="Card Image">
-
-            <!-- location favourite and pause mission  -->
-            <div class="card-items">
-            <div class="location">
-            <img src="~/images/pin.png" alt="">
-            <p>Cape Town</p>
-            </div>
-            <div class="fav">
-            <img src="~/images/heart.png" alt="">
-            </div>
-            <div class="pause-mission-icon">
-            <img src="~/images/user.png" alt="">
-            </div>
-            </div>
-
-            <!-- mission theme capsule -->
-            <div class="mission-theme">
-            <h3>Animals</h3>
-            </div>
-            </div>
-
-            <!-- card content -->
-            <div class="card-content">
-            <h2 class="card-title">Animal welfare & save birds campaign</h2>
-            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
-
-            <!-- organization and rating -->
-            <div class="organization-rating">
-            <div class="organization">
-            <p>JR Foundation</p>
-            </div>
-            <div class="rating">
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            </div>
-            </div>
-
-            <!-- seats and deadline -->
-            <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
-            <div class="seats-detail d-flex align-items-center">
-            <img src="~/images/Seats-left.png" alt="">
-            <div class="d-flex flex-column">
-            <p>10</p>
-            <p>Seats left</p>
-            </div>
-            </div>
-            <div class="duration-detail d-flex align-items-center">
-            <img src="~/images/achieved.png" alt="">
-            <div class="d-flex flex-column">
-            <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <p>8000 Achieved</p>
-            </div>
-            </div>
-
-            <div class="mission-date">
-            <p>Plant 10000 Trees</p>
-            </div>
-            </div>
-
-            <!-- apply button -->
-            <button class="card-button d-flex justify-content-between align-items-center align-self-center">
-            Apply
-            <img src="~/images/right-arrow.png" alt="">
-            <img src="~/images/right-arrow2.png" alt="">
-            </button>
-            </div>
-            </div>
-            </div>
-
-
-            <!-- card 6 -->
-            <div class="col col-md-6 col-lg-4">
-            <div class="card">
-            <div class="card-image">
-            <img src="~/images/Plantation-and-Afforestation-programme.png" alt="Card Image">
-
-            <!-- location favourite and pause mission  -->
-            <div class="card-items">
-            <div class="location">
-            <img src="~/images/pin.png" alt="">
-            <p>Paris</p>
-            </div>
-            <div class="fav">
-            <img src="~/images/heart.png" alt="">
-            </div>
-            <div class="pause-mission-icon">
-            <img src="~/images/user.png" alt="">
-            </div>
-            </div>
-
-            <!-- mission theme capsule -->
-            <div class="mission-theme">
-            <h3>Health</h3>
-            </div>
-            </div>
-
-            <!-- card content -->
-            <div class="card-content">
-            <h2 class="card-title">Plantation and Afforestation Programme</h2>
-            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
-
-            <!-- organization and rating -->
-            <div class="organization-rating">
-            <div class="organization">
-            <p>Amaze Doctors</p>
-            </div>
-            <div class="rating">
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            </div>
-            </div>
-
-            <!-- seats and deadline -->
-            <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
-            <!-- <div class="seats-detail d-flex align-items-center">
-            <img src="~/images/Seats-left.png" alt="">
-            <div class="d-flex flex-column">
-            <p>10</p>
-            <p>Seats left</p>
-            </div>
-            </div> -->
-            <div class="duration-detail d-flex align-items-center">
-            <img src="~/images/achieved.png" alt="">
-            <div class="d-flex flex-column">
-            <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <p>8000 Achieved</p>
-            </div>
-            </div>
-            <div class="seats-detail d-flex align-items-center">
-            </div>
-
-            <div class="mission-date">
-            <p>Plant 10000 Trees</p>
-            </div>
-            </div>
-
-            <!-- apply button -->
-            <button class="card-button d-flex justify-content-between align-items-center align-self-center">
-            Apply
-            <img src="~/images/right-arrow.png" alt="">
-            <img src="~/images/right-arrow2.png" alt="">
-            </button>
-            </div>
-            </div>
-            </div>
-
-
-            <!-- card 7 -->
-            <div class="col col-md-6 col-lg-4">
-            <div class="card">
-            <div class="card-image">
-            <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability.png" alt="Card Image">
-
-            <!-- location favourite and pause mission  -->
-            <div class="card-items">
-            <div class="location">
-            <img src="~/images/pin.png" alt="">
-            <p>New York</p>
-            </div>
-            <div class="fav">
-            <img src="~/images/heart.png" alt="">
-            </div>
-            <div class="pause-mission-icon">
-            <img src="~/images/user.png" alt="">
-            </div>
-            </div>
-
-            <!-- mission theme capsule -->
-            <div class="mission-theme">
-            <h3>Education</h3>
-            </div>
-            </div>
-
-            <!-- card content -->
-            <div class="card-content">
-            <h2 class="card-title">Grow Trees - On the path to environment sustainibility</h2>
-            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
-
-            <!-- organization and rating -->
-            <div class="organization-rating">
-            <div class="organization">
-            <p>Tree Canada</p>
-            </div>
-            <div class="rating">
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            </div>
-            </div>
-
-
-            <!-- apply button -->
-            <div class="border-top"></div>
-            <button class="card-button d-flex justify-content-between align-items-center align-self-center">
-            View Details
-            <img src="~/images/right-arrow.png" alt="">
-            <img src="~/images/right-arrow2.png" alt="">
-            </button>
-            </div>
-            </div>
-            </div>
-
-
-            <!-- card 8 -->
-            <div class="col col-md-6 col-lg-4">
-            <div class="card">
-            <div class="card-image">
-            <img src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" alt="Card Image">
-
-            <!-- location favourite and pause mission  -->
-            <div class="card-items">
-            <div class="location">
-            <img src="~/images/pin.png" alt="">
-            <p>Sydney</p>
-            </div>
-            <div class="fav">
-            <img src="~/images/heart.png" alt="">
-            </div>
-            <div class="pause-mission-icon">
-            <img src="~/images/user.png" alt="">
-            </div>
-            </div>
-
-            <!-- mission theme capsule -->
-            <div class="mission-theme">
-            <h3>Children</h3>
-            </div>
-            </div>
-
-            <!-- card content -->
-            <div class="card-content">
-            <h2 class="card-title">Education Supplies for Every Pair of Shoes Sold</h2>
-            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
-
-            <!-- organization and rating -->
-            <div class="organization-rating">
-            <div class="organization">
-            <p>Australian Paradise</p>
-            </div>
-            <div class="rating">
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            </div>
-            </div>
-
-            <!-- seats and deadline -->
-            <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
-            <div class="seats-detail d-flex align-items-center">
-            <img src="~/images/Already-volunteered.png" alt="">
-            <div class="d-flex flex-column">
-            <p>250</p>
-            <p>Already Volunteered</p>
-            </div>
-            </div>
-            <div class="duration-detail d-flex align-items-center">
-            <img src="~/images/deadline.png" alt="">
-            <div class="d-flex flex-column">
-            <p>09/01/2019</p>
-            <p>Deadline</p>
-            </div>
-            </div>
-
-            <div class="mission-date">
-            <p>From 10/01/2019 until 25/02/2019</p>
-            </div>
-            </div>
-
-            <!-- apply button -->
-            <button class="card-button d-flex justify-content-between align-items-center align-self-center">
-            Apply
-            <img src="~/images/right-arrow.png" alt="">
-            <img src="~/images/right-arrow2.png" alt="">
-            </button>
-            </div>
-            </div>
-            </div>
-
-
-            <!-- card 9 -->
-            <div class="col col-md-6 col-lg-4">
-            <div class="card">
-            <div class="card-image">
-            <img src="~/images/Nourish-the-Children-in--African-country.png" alt="Card Image">
-
-            <!-- location favourite and pause mission  -->
-            <div class="card-items">
-            <div class="location">
-            <img src="~/images/pin.png" alt="">
-            <p>Berlin</p>
-            </div>
-            <div class="fav">
-            <img src="~/images/heart.png" alt="">
-            </div>
-            <div class="pause-mission-icon">
-            <img src="~/images/user.png" alt="">
-            </div>
-            </div>
-
-            <!-- mission theme capsule -->
-            <div class="mission-theme">
-            <h3>Nutrition</h3>
-            </div>
-            </div>
-
-            <!-- card content -->
-            <div class="card-content">
-            <h2 class="card-title">Nourish the Children in African country</h2>
-            <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
-
-            <!-- organization and rating -->
-            <div class="organization-rating">
-            <div class="organization">
-            <p>The Hunger</p>
-            </div>
-            <div class="rating">
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/selected-star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            <span><img src="~/images/star.png" alt=""></span>
-            </div>
-            </div>
-
-            <!-- seats and deadline -->
-            <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
-            <div class="seats-detail d-flex align-items-center">
-            <img src="~/images/Seats-left.png" alt="">
-            <div class="d-flex flex-column">
-            <p>10</p>
-            <p>Seats left</p>
-            </div>
-            </div>
-            <div class="duration-detail d-flex align-items-center">
-            <img src="~/images/deadline.png" alt="">
-            <div class="d-flex flex-column">
-            <p>09/01/2019</p>
-            <p>Deadline</p>
-            </div>
-            </div>
-
-            <div class="mission-date">
-            <p>Ongoing Oportunity</p>
-            </div>
-            </div>
-
-            <!-- apply button -->
-            <button class="card-button d-flex justify-content-between align-items-center align-self-center">
-            Apply
-            <img src="~/images/right-arrow.png" alt="">
-            <img src="~/images/right-arrow2.png" alt="">
-            </button>
-            </div>
-            </div>
-            </div>
+        <div class="col col-md-6 col-lg-4">
+        <div class="card">
+        <div class="card-image">
+        <img src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" alt="Card Image">
+
+        <!-- location favourite and pause mission  -->
+        <div class="card-items">
+        <div class="location">
+        <img src="~/images/pin.png" alt="">
+        <p>Melbourne</p>
+        </div>
+        <div class="fav">
+        <img src="~/images/heart.png" alt="">
+        </div>
+        <div class="pause-mission-icon">
+        <img src="~/images/user.png" alt="">
+        </div>
+        </div>
+
+        <!-- mission theme capsule -->
+        <div class="mission-theme">
+        <h3>Environment</h3>
+        </div>
+        </div>
+
+        <!-- card content -->
+        <div class="card-content">
+        <h2 class="card-title">Education Supplies for Every Pair of Shoes Sold</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
+
+        <!-- organization and rating -->
+        <div class="organization-rating">
+        <div class="organization">
+        <p>Australian Paradise</p>
+        </div>
+        <div class="rating">
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        </div>
+        </div>
+
+        <!-- seats and deadline -->
+        <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
+        <div class="seats-detail d-flex align-items-center">
+        <img src="~/images/Already-volunteered.png" alt="">
+        <div class="d-flex flex-column">
+        <p>250</p>
+        <p>Already Volunteered</p>
+        </div>
+        </div>
+        <div class="duration-detail d-flex align-items-center">
+        <img src="~/images/deadline.png" alt="">
+        <div class="d-flex flex-column">
+        <p>09/01/2019</p>
+        <p>Deadline</p>
+        </div>
+        </div>
+
+        <div class="mission-date">
+        <p>From 10/01/2019 until 25/02/2019</p>
+        </div>
+        </div>
+
+        <!-- apply button -->
+        <button class="card-button d-flex justify-content-between align-items-center align-self-center">
+        Apply
+        <img src="~/images/right-arrow.png" alt="">
+        <img src="~/images/right-arrow2.png" alt="">
+        </button>
+        </div>
+        </div>
+        </div>
+
+
+        <!-- card 3 -->
+        <div class="col col-md-6 col-lg-4">
+        <div class="card">
+        <div class="card-image">
+        <img src="~/images/Nourish-the-Children-in--African-country.png" alt="Card Image">
+
+        <!-- location favourite and pause mission  -->
+        <div class="card-items">
+        <div class="location">
+        <img src="~/images/pin.png" alt="">
+        <p>Barcelona</p>
+        </div>
+        <div class="fav">
+        <img src="~/images/heart.png" alt="">
+        </div>
+        <div class="pause-mission-icon">
+        <img src="~/images/user.png" alt="">
+        </div>
+        </div>
+
+        <!-- mission theme capsule -->
+        <div class="mission-theme">
+        <h3>Nutrition</h3>
+        </div>
+        </div>
+
+        <!-- card content -->
+        <div class="card-content">
+        <h2 class="card-title">Nourish the Children in African country</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
+
+        <!-- organization and rating -->
+        <div class="organization-rating">
+        <div class="organization">
+        <p>The Hunger</p>
+        </div>
+        <div class="rating">
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        </div>
+        </div>
+
+        <!-- seats and deadline -->
+        <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
+        <div class="seats-detail d-flex align-items-center">
+        <img src="~/images/Seats-left.png" alt="">
+        <div class="d-flex flex-column">
+        <p>10</p>
+        <p>Seats left</p>
+        </div>
+        </div>
+        <div class="duration-detail d-flex align-items-center">
+        <img src="~/images/deadline.png" alt="">
+        <div class="d-flex flex-column">
+        <p>09/01/2019</p>
+        <p>Deadline</p>
+        </div>
+        </div>
+
+        <div class="mission-date">
+        <p>Ongoing Oportunity</p>
+        </div>
+        </div>
+
+        <!-- apply button -->
+        <button class="card-button d-flex justify-content-between align-items-center align-self-center">
+        Apply
+        <img src="~/images/right-arrow.png" alt="">
+        <img src="~/images/right-arrow2.png" alt="">
+        </button>
+        </div>
+        </div>
+        </div>
+
+
+        <!-- card 4 -->
+        <div class="col col-md-6 col-lg-4">
+        <div class="card">
+        <div class="card-image">
+        <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png" alt="Card Image">
+
+        <!-- location favourite and pause mission  -->
+        <div class="card-items">
+        <div class="location">
+        <img src="~/images/pin.png" alt="">
+        <p>London</p>
+        </div>
+        <div class="fav">
+        <img src="~/images/heart.png" alt="">
+        </div>
+        <div class="pause-mission-icon">
+        <img src="~/images/user.png" alt="">
+        </div>
+        </div>
+
+        <!-- mission theme capsule -->
+        <div class="mission-theme">
+        <h3>Environment</h3>
+        </div>
+        </div>
+
+        <!-- card content -->
+        <div class="card-content">
+        <h2 class="card-title">CSR initiative stands for Coffee and Farmer Equity</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
+
+        <!-- organization and rating -->
+        <div class="organization-rating">
+        <div class="organization">
+        <p>CSE Network</p>
+        </div>
+        <div class="rating">
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        </div>
+        </div>
+
+        <!-- seats and deadline -->
+        <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
+        <div class="seats-detail d-flex align-items-center">
+        <img src="~/images/Already-volunteered.png" alt="">
+        <div class="d-flex flex-column">
+        <p>250</p>
+        <p>Already volunteered</p>
+        </div>
+        </div>
+        <div class="duration-detail d-flex align-items-center">
+
+        </div>
+
+        <div class="mission-date">
+        <p>Ongoing Oportunity</p>
+        </div>
+        </div>
+
+        <!-- apply button -->
+        <button class="card-button d-flex justify-content-between align-items-center align-self-center">
+        Apply
+        <img src="~/images/right-arrow.png" alt="">
+        <img src="~/images/right-arrow2.png" alt="">
+        </button>
+        </div>
+        </div>
+        </div>
+
+
+        <!-- card 5 -->
+        <div class="col col-md-6 col-lg-4">
+        <div class="card">
+        <div class="card-image">
+        <img src="~/images/Animal-welfare-&-save-birds-campaign.png" alt="Card Image">
+
+        <!-- location favourite and pause mission  -->
+        <div class="card-items">
+        <div class="location">
+        <img src="~/images/pin.png" alt="">
+        <p>Cape Town</p>
+        </div>
+        <div class="fav">
+        <img src="~/images/heart.png" alt="">
+        </div>
+        <div class="pause-mission-icon">
+        <img src="~/images/user.png" alt="">
+        </div>
+        </div>
+
+        <!-- mission theme capsule -->
+        <div class="mission-theme">
+        <h3>Animals</h3>
+        </div>
+        </div>
+
+        <!-- card content -->
+        <div class="card-content">
+        <h2 class="card-title">Animal welfare & save birds campaign</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
+
+        <!-- organization and rating -->
+        <div class="organization-rating">
+        <div class="organization">
+        <p>JR Foundation</p>
+        </div>
+        <div class="rating">
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        </div>
+        </div>
+
+        <!-- seats and deadline -->
+        <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
+        <div class="seats-detail d-flex align-items-center">
+        <img src="~/images/Seats-left.png" alt="">
+        <div class="d-flex flex-column">
+        <p>10</p>
+        <p>Seats left</p>
+        </div>
+        </div>
+        <div class="duration-detail d-flex align-items-center">
+        <img src="~/images/achieved.png" alt="">
+        <div class="d-flex flex-column">
+        <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <p>8000 Achieved</p>
+        </div>
+        </div>
+
+        <div class="mission-date">
+        <p>Plant 10000 Trees</p>
+        </div>
+        </div>
+
+        <!-- apply button -->
+        <button class="card-button d-flex justify-content-between align-items-center align-self-center">
+        Apply
+        <img src="~/images/right-arrow.png" alt="">
+        <img src="~/images/right-arrow2.png" alt="">
+        </button>
+        </div>
+        </div>
+        </div>
+
+
+        <!-- card 6 -->
+        <div class="col col-md-6 col-lg-4">
+        <div class="card">
+        <div class="card-image">
+        <img src="~/images/Plantation-and-Afforestation-programme.png" alt="Card Image">
+
+        <!-- location favourite and pause mission  -->
+        <div class="card-items">
+        <div class="location">
+        <img src="~/images/pin.png" alt="">
+        <p>Paris</p>
+        </div>
+        <div class="fav">
+        <img src="~/images/heart.png" alt="">
+        </div>
+        <div class="pause-mission-icon">
+        <img src="~/images/user.png" alt="">
+        </div>
+        </div>
+
+        <!-- mission theme capsule -->
+        <div class="mission-theme">
+        <h3>Health</h3>
+        </div>
+        </div>
+
+        <!-- card content -->
+        <div class="card-content">
+        <h2 class="card-title">Plantation and Afforestation Programme</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
+
+        <!-- organization and rating -->
+        <div class="organization-rating">
+        <div class="organization">
+        <p>Amaze Doctors</p>
+        </div>
+        <div class="rating">
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        </div>
+        </div>
+
+        <!-- seats and deadline -->
+        <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
+        <!-- <div class="seats-detail d-flex align-items-center">
+        <img src="~/images/Seats-left.png" alt="">
+        <div class="d-flex flex-column">
+        <p>10</p>
+        <p>Seats left</p>
+        </div>
+        </div> -->
+        <div class="duration-detail d-flex align-items-center">
+        <img src="~/images/achieved.png" alt="">
+        <div class="d-flex flex-column">
+        <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <p>8000 Achieved</p>
+        </div>
+        </div>
+        <div class="seats-detail d-flex align-items-center">
+        </div>
+
+        <div class="mission-date">
+        <p>Plant 10000 Trees</p>
+        </div>
+        </div>
+
+        <!-- apply button -->
+        <button class="card-button d-flex justify-content-between align-items-center align-self-center">
+        Apply
+        <img src="~/images/right-arrow.png" alt="">
+        <img src="~/images/right-arrow2.png" alt="">
+        </button>
+        </div>
+        </div>
+        </div>
+
+
+        <!-- card 7 -->
+        <div class="col col-md-6 col-lg-4">
+        <div class="card">
+        <div class="card-image">
+        <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability.png" alt="Card Image">
+
+        <!-- location favourite and pause mission  -->
+        <div class="card-items">
+        <div class="location">
+        <img src="~/images/pin.png" alt="">
+        <p>New York</p>
+        </div>
+        <div class="fav">
+        <img src="~/images/heart.png" alt="">
+        </div>
+        <div class="pause-mission-icon">
+        <img src="~/images/user.png" alt="">
+        </div>
+        </div>
+
+        <!-- mission theme capsule -->
+        <div class="mission-theme">
+        <h3>Education</h3>
+        </div>
+        </div>
+
+        <!-- card content -->
+        <div class="card-content">
+        <h2 class="card-title">Grow Trees - On the path to environment sustainibility</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
+
+        <!-- organization and rating -->
+        <div class="organization-rating">
+        <div class="organization">
+        <p>Tree Canada</p>
+        </div>
+        <div class="rating">
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        </div>
+        </div>
+
+
+        <!-- apply button -->
+        <div class="border-top"></div>
+        <button class="card-button d-flex justify-content-between align-items-center align-self-center">
+        View Details
+        <img src="~/images/right-arrow.png" alt="">
+        <img src="~/images/right-arrow2.png" alt="">
+        </button>
+        </div>
+        </div>
+        </div>
+
+
+        <!-- card 8 -->
+        <div class="col col-md-6 col-lg-4">
+        <div class="card">
+        <div class="card-image">
+        <img src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" alt="Card Image">
+
+        <!-- location favourite and pause mission  -->
+        <div class="card-items">
+        <div class="location">
+        <img src="~/images/pin.png" alt="">
+        <p>Sydney</p>
+        </div>
+        <div class="fav">
+        <img src="~/images/heart.png" alt="">
+        </div>
+        <div class="pause-mission-icon">
+        <img src="~/images/user.png" alt="">
+        </div>
+        </div>
+
+        <!-- mission theme capsule -->
+        <div class="mission-theme">
+        <h3>Children</h3>
+        </div>
+        </div>
+
+        <!-- card content -->
+        <div class="card-content">
+        <h2 class="card-title">Education Supplies for Every Pair of Shoes Sold</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
+
+        <!-- organization and rating -->
+        <div class="organization-rating">
+        <div class="organization">
+        <p>Australian Paradise</p>
+        </div>
+        <div class="rating">
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        </div>
+        </div>
+
+        <!-- seats and deadline -->
+        <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
+        <div class="seats-detail d-flex align-items-center">
+        <img src="~/images/Already-volunteered.png" alt="">
+        <div class="d-flex flex-column">
+        <p>250</p>
+        <p>Already Volunteered</p>
+        </div>
+        </div>
+        <div class="duration-detail d-flex align-items-center">
+        <img src="~/images/deadline.png" alt="">
+        <div class="d-flex flex-column">
+        <p>09/01/2019</p>
+        <p>Deadline</p>
+        </div>
+        </div>
+
+        <div class="mission-date">
+        <p>From 10/01/2019 until 25/02/2019</p>
+        </div>
+        </div>
+
+        <!-- apply button -->
+        <button class="card-button d-flex justify-content-between align-items-center align-self-center">
+        Apply
+        <img src="~/images/right-arrow.png" alt="">
+        <img src="~/images/right-arrow2.png" alt="">
+        </button>
+        </div>
+        </div>
+        </div>
+
+
+        <!-- card 9 -->
+        <div class="col col-md-6 col-lg-4">
+        <div class="card">
+        <div class="card-image">
+        <img src="~/images/Nourish-the-Children-in--African-country.png" alt="Card Image">
+
+        <!-- location favourite and pause mission  -->
+        <div class="card-items">
+        <div class="location">
+        <img src="~/images/pin.png" alt="">
+        <p>Berlin</p>
+        </div>
+        <div class="fav">
+        <img src="~/images/heart.png" alt="">
+        </div>
+        <div class="pause-mission-icon">
+        <img src="~/images/user.png" alt="">
+        </div>
+        </div>
+
+        <!-- mission theme capsule -->
+        <div class="mission-theme">
+        <h3>Nutrition</h3>
+        </div>
+        </div>
+
+        <!-- card content -->
+        <div class="card-content">
+        <h2 class="card-title">Nourish the Children in African country</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus odit sequi doloribus, exercitationem...</p>
+
+        <!-- organization and rating -->
+        <div class="organization-rating">
+        <div class="organization">
+        <p>The Hunger</p>
+        </div>
+        <div class="rating">
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/selected-star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        <span><img src="~/images/star.png" alt=""></span>
+        </div>
+        </div>
+
+        <!-- seats and deadline -->
+        <div class="mission-details d-flex justify-content-around border-top border-bottom p-3">
+        <div class="seats-detail d-flex align-items-center">
+        <img src="~/images/Seats-left.png" alt="">
+        <div class="d-flex flex-column">
+        <p>10</p>
+        <p>Seats left</p>
+        </div>
+        </div>
+        <div class="duration-detail d-flex align-items-center">
+        <img src="~/images/deadline.png" alt="">
+        <div class="d-flex flex-column">
+        <p>09/01/2019</p>
+        <p>Deadline</p>
+        </div>
+        </div>
+
+        <div class="mission-date">
+        <p>Ongoing Oportunity</p>
+        </div>
+        </div>
+
+        <!-- apply button -->
+        <button class="card-button d-flex justify-content-between align-items-center align-self-center">
+        Apply
+        <img src="~/images/right-arrow.png" alt="">
+        <img src="~/images/right-arrow2.png" alt="">
+        </button>
+        </div>
+        </div>
+        </div>
         *@
     </div>
 </div>

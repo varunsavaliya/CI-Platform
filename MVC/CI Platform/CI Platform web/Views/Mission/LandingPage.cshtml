@@ -1,13 +1,12 @@
-﻿
-@{
+﻿@{
     Layout = "_HeaderLayout";
     ViewData["Title"] = "LandingPage";
 }
 
-<partial name="_SearchBarPartial" id="searchbar-partialview"/>
+<partial name="_SearchBarPartial" id="searchbar-partialview" />
 
 <div class="container">
-<div class="d-flex py-4">
+    <div class="d-flex py-4">
         <h4>Explore <span>72 missions</span></h4>
 
         <div class="d-flex align-items-center ms-auto sort-div-right gap-4">
@@ -31,53 +30,53 @@
                 <li class="active grid me-3"><a data-toggle="tab" href="#GridView"><img class="p-1" src="~/images/grid.png" /></a></li>
                 <li class=" list me-3"><a data-toggle="tab" href="#ListView"><img class="p-1" src="~/images/list.png" /></a></li>
             </ul>
-  
+
         </div>
     </div>
-    </div>
-<div class="no-mission-found d-none" >
+</div>
+<div class="no-mission-found d-none">
 
     <partial name="_NoMissionFound" />
 </div>
-    <div class="tab-content">
-        <div id="GridView" class="tab-pane active">
-            <partial name="_GridViewPartial" />
-        </div>
-        <div id="ListView" class="tab-pane">
-            <partial name="_ListViewPartial" />
-        </div>
+<div class="tab-content">
+    <div id="GridView" class="tab-pane active">
+        <partial name="_GridViewPartial" />
     </div>
+    <div id="ListView" class="tab-pane">
+        <partial name="_ListViewPartial" />
+    </div>
+</div>
 
-    
+
 @*pagination*@
 <div class="container">
-<nav aria-label="Page navigation example" class="pagination justify-content-center">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true"><img src="~/images/previous.png" /></span>
-      </a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true"><img src="~/images/left.png" /></span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item active"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true"><img src="~/images/right-arrow1.png" /></span>
-      </a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true"><img src="~/images/next.png" /></span>
-      </a>
-    </li>
-  </ul>
-</nav>
+    <nav aria-label="Page navigation example" class="pagination justify-content-center">
+        <ul class="pagination" id="pagination-container">
+            <li class="page-item">
+                <a class="pagination-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true"><img src="~/images/previous.png" /></span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="pagination-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true"><img src="~/images/left.png" /></span>
+                </a>
+            </li>
+            @*<li class="page-item"><a class="pagination-link" data-page="1" href="#">1</a></li>
+                <li class="page-item"><a class="pagination-link" data-page="2" href="#">2</a></li>
+                <li class="page-item active"><a class="pagination-link" data-page="3" href="#">3</a></li>
+                <li class="page-item"><a class="pagination-link" data-page="4" href="#">4</a></li>
+                <li class="page-item"><a class="pagination-link" data-page="5" href="#">5</a></li>*@
+            <li class="page-item">
+                <a class="pagination-link" href="#" aria-label="Next">
+                    <span aria-hidden="true"><img src="~/images/right-arrow1.png" /></span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="pagination-link" href="#" aria-label="Next">
+                    <span aria-hidden="true"><img src="~/images/next.png" /></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>

@@ -88,15 +88,65 @@ namespace CI_Platform_web.Controllers
 
             return Ok();
         }
+
+
         public async Task<IActionResult> GetCitiesByCountry(int countryId)
         {
             var cities = await _filters.GetCitiesByCountryAsync(countryId);
             return Json(cities);
         }
 
-        public IActionResult MissionVolunteering()
+        public IActionResult MissionVolunteering(int id)
         {
-            return View();
+            if (HttpContext.Session.GetString("UserName") != null)
+            {
+                ViewBag.UserName = HttpContext.Session.GetString("UserName");
+                ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
+                ViewBag.UserId = HttpContext.Session.GetString("UserId");
+            }
+            else
+            {
+                ViewBag.UserName = "Login";
+            }
+            Mission missionDetail = _context.Missions.Include(m=>m.MissionApplications).Include(m=>m.MissionRatings).Include(m => m.City).Include(m => m.Theme).Include(m=>m.FavoriteMissions).Include(m => m.GoalMissions).FirstOrDefault(m => m.MissionId == id);
+            if(missionDetail == null)
+            {
+                return NotFound();
+            }
+            var missionAllDetail = new MissionVolunteeringModel
+            {
+                mission = missionDetail
+            };
+                       return View(missionAllDetail);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateRating(int missionId, int userId, int rating)
+        {
+            MissionRating missionRating = _context.MissionRatings.SingleOrDefault(mr => mr.MissionId == missionId && mr.UserId == userId);
+
+            // if mission rating is not there by this user then add it
+            if( missionRating == null)
+            {
+                missionRating = new MissionRating
+                {
+                    MissionId = missionId,
+                    UserId = userId
+                };
+                _context.Add(missionRating);
+            }
+
+            // Update the rating in the database if rating is already there
+            missionRating.Rating = rating;
+            _context.SaveChanges();
+            return Ok(); // Return a success status code
+        }
+
+        public IActionResult Apply(MissionApplication application)
+        {
+            _context.MissionApplications.Add(application);
+            _context.SaveChanges();
+            return Ok();
         }
         public IActionResult StoriesListing()
         {

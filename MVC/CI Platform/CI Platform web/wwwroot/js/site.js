@@ -1,29 +1,70 @@
-﻿// search mission functionality
+﻿
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//function paginate(currentPage, itemsPerPage, totalItems) {
+//    // Calculate the starting and ending indices for the current page
+//    var startIndex = (currentPage - 1) * itemsPerPage;
+//    var endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+
+//    // Get the array of items to be displayed on the current page
+//    var currentItems = allCards.slice(startIndex, endIndex);
+
+//    // Update the HTML for the current items
+//    $('.card').each(function (index) {
+//        if (index >= startIndex && index < endIndex) {
+//            // Show the card if it's part of the current page
+//            $(this).parent().show();
+//            console.log("hi")
+//        } else {
+//            // Hide the card if it's not part of the current page
+//            $(this).parent().hide();
+//        }
+//    });
+
+//    // Update the pagination links to reflect the current page
+//    $('#pagination-container .pagination-link').removeClass('active');
+//    $('#pagination-container .pagination-link[data-page="' + currentPage + '"]').addClass('active');
+//}
+//$(document).on('click', '.pagination-link', function (e) {
+//    e.preventDefault();
+//    var currentPage = parseInt($(this).attr('data-page'));
+//    paginate(currentPage, itemsPerPage, totalCards);
+//});
+
+//let allCards = $('.card:visible');
+//let itemsPerPage = 3;
+//let totalCards = allCards.length;
+//console.log(totalCards)
+//paginate(1, itemsPerPage, totalCards);
+
+//
+////////////////////////////////////////////////////////////////////////////
+
+
+// search mission functionality
 
 $(document).ready(function () {
-    let cards = $(".card");
-    let noMissionFounud = $(".no-mission-found");
-    $(".search-field input").keyup(function () {
-        let searchText = $(".search-field input").val().toLowerCase();
-        let cardsVisible = false;
-        cards.each(function () {
 
-            let cardTitle = $(this).find(".card-title").text().toLowerCase();
-            if (cardTitle.includes(searchText)) {
-                $(this).parent().show();
-                cardsVisible = true;
-            } else {
-                $(this).parent().hide();
-            }
-        });
+    //let noMissionFounud = $(".no-mission-found");
+    //$(".search-field input").keyup(function () {
+    //    let searchText = $(this).val().toLowerCase();
+    //    $(".card").each(function () {
 
-        console.log(cardsVisible)
-        if (!cardsVisible) {
-            $(".no-mission-found").show();
-        } else {
-            $(".no-mission-found").hide();
-        }
-    });
+    //        let cardTitle = $(this).find(".card-title").text().toLowerCase();
+    //        if (cardTitle.includes(searchText)) {
+    //            $(this).parent().show();
+    //        } else {
+    //            $(this).parent().hide();
+    //        }
+    //    if ($('.card:visible').length == 0) {
+    //        $(".no-mission-found").show();
+    //    } else {
+    //        $(".no-mission-found").hide();
+    //    }
+    //    });
+
+    //});
 
 
     // cities according to country
@@ -190,6 +231,7 @@ $(document).ready(function () {
 
     // function for filter all cards when clicked
     function filter() {
+
         let selectedCities = $('input[type="checkbox"][name="cityCheckboxes"]:checked').map(function () {
             return $(this).next('label');
         }).get();
@@ -325,6 +367,7 @@ $(document).ready(function () {
         let dropdown = $(this);
         $(this).on('change', 'input[type="checkbox"]', function (e) {
             filter();
+
         });
     });
 
@@ -339,12 +382,14 @@ $(document).ready(function () {
         var dateArray = [];
         switch (selectedSortOption) {
             case 'Newest':
+                dateArray = [];
+
+                //console.log(dateArray)
                 let cardsDateForNewest = $('.card').find('.created-date');
                 cardsDateForNewest.each(function (j) {
                     dateArray.push($(this).text());
                 });
-                dateArray = $.unique(dateArray)
-                // Arrange  array Elemeny in Ascending order
+
                 dateArray.sort(function (a, b) {
                     var dateA = new Date(
                         parseInt(a.substring(6)),
@@ -358,10 +403,11 @@ $(document).ready(function () {
                     );
                     return dateA - dateB;
                 });
+                dateArray = $.unique(dateArray)
 
                 // Arrange Array Element In Descending order
                 dateArray.reverse();
-                dateArray = $.unique(dateArray)
+                //console.log(newestDateArray)
                 for (let i = 0; i < dateArray.length; i++) {
                     $('.grid-card').each(function () {
                         if ($(this).find('.created-date').text() == dateArray[i]) {
@@ -379,6 +425,7 @@ $(document).ready(function () {
                 filter()
                 break;
             case 'Oldest':
+                dateArray = [];
                 let cardsDateForOldest = $('.card').find('.created-date')
                 //let dateArray = [];
                 cardsDateForOldest.each(function (j) {
@@ -386,6 +433,12 @@ $(document).ready(function () {
                 });
                 // Arrange  array Elemeny in Ascending order
                 dateArray = $.unique(dateArray)
+                //dateArray.sort(function (a, b) {
+                //    var dateA = new Date(a);
+                //    var dateB = new Date(b);
+                //    return dateA - dateB;
+                //});
+
                 dateArray.sort(function (a, b) {
                     var dateA = new Date(
                         parseInt(a.substring(6)),
@@ -497,17 +550,6 @@ $(document).ready(function () {
                         $(this).parent().hide();
                     }
                 });
-
-                //$('.card').each(function () {
-                //    if ($(this).find('.bi-heart-fill')) {
-                //        $(this).parent().show();
-                //console.log(true)
-                //    }
-                //    else {
-                //        $(this).parent().hide();
-                //console.log(false)
-                //    }
-                //})
                 break;
             case 'Registration deadline':
                 let deadlines = $('.card').find('.deadline')
@@ -550,8 +592,8 @@ $(document).ready(function () {
     })
     // add to favourite
 
+
     $('.favorite-button').click(function () {
-        var button = $(this)
         var missionId = $(this).data('mission-id');
         $.ajax({
             url: '/Mission/AddToFavorites',
@@ -559,8 +601,6 @@ $(document).ready(function () {
             data: { missionId: missionId },
             success: function (result) {
                 // Show a success message or update the UI
-                //console.log(button.hasClass('empty-heart') && button.data('mission-id') === missionId)
-                //console.log(button.hasClass('filled-heart') && button.data('mission-id') === missionId)
                 console.log(missionId)
                 var allMissionId = $('.favorite-button')
                 allMissionId.each(function () {
@@ -568,32 +608,90 @@ $(document).ready(function () {
                         if ($(this).hasClass('bi-heart')) {
                             $(this).addClass('bi-heart-fill text-danger')
                             $(this).removeClass('bi-heart text-light')
+                            $(this).next('span').text('Remove From Favorites')
                             console.log("added")
                         }
                         else {
                             $(this).addClass('bi-heart text-light')
                             $(this).removeClass('bi-heart-fill text-danger')
+                            $(this).next('span').text('Add to Favorites')
+
                             console.log("remove")
                         }
                     }
                 })
-                //allMissionId.each(function () {
-                //})
-                //if (button.hasClass('filled-heart') && button.data('mission-id') === missionId) {
-
-                //    $('.empty-heart').show();
-                //    $('.filled-heart').hide();
-                //    console.log("remove")
-                //}
             },
             error: function (error) {
                 // Show an error message or handle the error
-                //$('.empty-heart').show();
-                //$('.filled-heart').hide();
                 console.log("error")
 
             }
         });
+    });
+
+
+    // rating functionality on volunteering mission page
+
+    // Get all star elements
+    var stars = $('.star-capsule').find('i');
+
+    // Add click event listener to each star
+    stars.click(function () {
+        var missionId = $('.favorite-button').data('mission-id');
+
+        // Get the index of the clicked star
+        var index = $(this).data('star');
+
+        // Remove text-warning class from all stars
+        stars.removeClass('text-warning');
+
+        // Add text-warning class to all stars up to the clicked star
+        for (var i = 1; i <= index; i++) {
+            stars.filter('[data-star=' + i + ']').addClass('text-warning');
+        }
+
+        // Make AJAX call to update rating in database
+        $.ajax({
+            type: 'POST',
+            url: "/Mission/UpdateRating",
+            data: { missionId: missionId, userId: userId, rating: index }, // Replace "yourMissionId" and "yourUserId" with the actual values
+            success: function (data) {
+                // Handle the response from the server if needed
+                console.log("success")
+            },
+            error: function () {
+                // Handle the error if needed
+                console.log("error")
+
+            }
+        });
+    });
+
+    // mission application functionality (pending)
+
+    $('#confirmApply').click(function () {
+        var missionId = $('.favorite-button').data('mission-id');
+
+            // Submit application here
+            var application = {
+                MissionId: missionId,
+                UserId: userId,
+                AppliedAt: new Date(),
+                ApprovalStatus: 'pending'
+            };
+            $.ajax({
+                url: '/Mission/Apply',
+                type: 'POST',
+                data: application,
+                success: function (response) {
+                    // Handle success here
+                    $("#applyButton").text("Applied").prop("disabled", true);
+                },
+                error: function (error) {
+                    // Handle error here
+                }
+            });
+        $('#confirmationModal').modal('hide');
     });
 
 
