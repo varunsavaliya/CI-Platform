@@ -47,24 +47,25 @@
 $(document).ready(function () {
 
     //let noMissionFounud = $(".no-mission-found");
-    //$(".search-field input").keyup(function () {
-    //    let searchText = $(this).val().toLowerCase();
-    //    $(".card").each(function () {
+    $(".search-field input").keyup(function () {
+        let searchText = $(this).val().toLowerCase();
+        getMission()
+        $(".card").each(function () {
 
-    //        let cardTitle = $(this).find(".card-title").text().toLowerCase();
-    //        if (cardTitle.includes(searchText)) {
-    //            $(this).parent().show();
-    //        } else {
-    //            $(this).parent().hide();
-    //        }
-    //    if ($('.card:visible').length == 0) {
-    //        $(".no-mission-found").show();
-    //    } else {
-    //        $(".no-mission-found").hide();
-    //    }
-    //    });
+            let cardTitle = $(this).find(".card-title").text().toLowerCase();
+            if (cardTitle.includes(searchText)) {
+                $(this).parent().show();
+            } else {
+                $(this).parent().hide();
+            }
+            if ($('.card:visible').length == 0) {
+                $(".no-mission-found").show();
+            } else {
+                $(".no-mission-found").hide();
+            }
+        });
 
-    //});
+    });
 
 
     // cities according to country
@@ -192,15 +193,16 @@ $(document).ready(function () {
         var countryId = $(this).val();
         getCitiesByCountry(countryId);
 
-        selectedCountry = $(this).find('a').text();
-        $('.card').each(function () {
-            var cardCountry = $(this).find('.mission-country').text();
-            if (selectedCountry.toLowerCase() == cardCountry.toLowerCase()) {
-                $(this).parent().show();
-            } else {
-                $(this).parent().hide();
-            }
-        });
+        selectedCountry = $(this).val();
+        getMission()
+        //$('.card').each(function () {
+        //    var cardCountry = $(this).find('.mission-country').text();
+        //    if (selectedCountry.toLowerCase() == cardCountry.toLowerCase()) {
+        //        $(this).parent().show();
+        //    } else {
+        //        $(this).parent().hide();
+        //    }
+        //});
         filter()
 
     });
@@ -365,7 +367,9 @@ $(document).ready(function () {
     // for all dropdown
     allDropdowns.each(function () {
         let dropdown = $(this);
+
         $(this).on('change', 'input[type="checkbox"]', function (e) {
+            getMission();
             filter();
 
         });
@@ -373,10 +377,10 @@ $(document).ready(function () {
 
 
     // sortBy functionality
-
+    let selectedSortOption = null;
     $('#sortByDropdown li').on('click', function () {
         selectedSortOption = $(this).find('a').text();
-
+        getMission()
         let gridCardsContainer = $('.grid-card').parent().parent();
         let listCardsContainer = $('.list-card').parent().parent();
         var dateArray = [];
@@ -672,31 +676,81 @@ $(document).ready(function () {
     $('#confirmApply').click(function () {
         var missionId = $('.favorite-button').data('mission-id');
 
-            // Submit application here
-            var application = {
-                MissionId: missionId,
-                UserId: userId,
-                AppliedAt: new Date(),
-                ApprovalStatus: 'pending'
-            };
-            $.ajax({
-                url: '/Mission/Apply',
-                type: 'POST',
-                data: application,
-                success: function (response) {
-                    // Handle success here
-                    $("#applyButton").text("Applied").prop("disabled", true);
-                },
-                error: function (error) {
-                    // Handle error here
-                }
-            });
+        // Submit application here
+        var application = {
+            MissionId: missionId,
+            UserId: userId,
+            AppliedAt: new Date(),
+            ApprovalStatus: 'pending'
+        };
+        $.ajax({
+            url: '/Mission/Apply',
+            type: 'POST',
+            data: application,
+            success: function (response) {
+                // Handle success here
+                $("#applyButton").text("Applied").prop("disabled", true);
+            },
+            error: function (error) {
+                // Handle error here
+            }
+        });
         $('#confirmationModal').modal('hide');
     });
 
 
+    function getMission() {
+        let searchText = $(".search-field input").val().toLowerCase();
 
-    // skills dropdown
+        let selectedCities = $('input[type="checkbox"][name="cityCheckboxes"]:checked').map(function () {
+            return $(this).val();
+        }).get();
+
+        let selectedThemes = $('input[type="checkbox"][name="themeCheckboxes"]:checked').map(function () {
+            return $(this).val();
+        }).get();
+
+        let selectedSkills = $('input[type="checkbox"][name="skillCheckboxes"]:checked').map(function () {
+            return $(this).val();
+        }).get();
+
+
+
+        let inputData = {
+            selectedCountry: selectedCountry !== "" ? selectedCountry : null,
+            selectedCities: selectedCities !== "" ? selectedCities : null,
+            selectedThemes: selectedThemes !== "" ? selectedThemes : null,
+            selectedSkills: selectedSkills !== "" ? selectedSkills : null,
+            searchText: searchText !== "" ? searchText : null,
+            selectedSortOption: selectedSortOption !== undefined ? selectedSortOption : null,
+            userId: userId
+        }
+
+        console.log(inputData)
+
+        $.ajax({
+            url: '/Mission/LandingPage',
+            type: 'POST',
+            data: inputData,
+            success: function (response) {
+                // Handle success here
+                console.log("hi");
+            },
+            error: function (error) {
+                // Handle error here
+            }
+        });
+    }
+
+
+
+    //    if (selectedSkills.length === 0) {
+    //        // If no themes are selected, show all cards
+    //        console.log("no themes and skills selected")
+    //        $('.card').parent().show();
+    //    } else {
+    //        // Otherwise, loop over all cards and compare themes and cities
+    //        $('.card').each(function () { // skills dropdown
 
     //$('.dropdown #skillDropdown').on('change', 'input[type="checkbox"]', function () {
     //    //console.log("on chnging the dropdown")
@@ -708,15 +762,6 @@ $(document).ready(function () {
     //    //var selectedSkills = $('input[name="skillCheckboxes[]"]:checked').map(function () {
     //    //    return $(this).next('label');
     //    //}).get();
-
-
-    //    if (selectedSkills.length === 0) {
-    //        // If no themes are selected, show all cards
-    //        console.log("no themes and skills selected")
-    //        $('.card').parent().show();
-    //    } else {
-    //        // Otherwise, loop over all cards and compare themes and cities
-    //        $('.card').each(function () {
     //            //var cardSkills = $(this).find('mission-skills').text();
     //            var cardSkills = $(this).find('.mission-skills').map(function () {
     //                return $(this).text();
