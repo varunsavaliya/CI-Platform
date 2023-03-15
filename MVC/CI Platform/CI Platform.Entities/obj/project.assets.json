@@ -4077,11 +4077,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\main\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
+      "projectUniqueName": "D:\\Projects\\main1\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
       "projectName": "CI Platform.Entities",
-      "projectPath": "D:\\Projects\\main\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
+      "projectPath": "D:\\Projects\\main1\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
       "packagesPath": "C:\\Users\\pct35\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\main\\varun\\MVC\\CI Platform\\CI Platform.Entities\\obj\\",
+      "outputPath": "D:\\Projects\\main1\\varun\\MVC\\CI Platform\\CI Platform.Entities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

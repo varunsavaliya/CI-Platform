@@ -1,4 +1,7 @@
-﻿@{
+﻿@model CI_Platform.Entities.ViewModels.LandingPageModel
+@*@model CI_Platform.Entities.ViewModels.GetMissions;*@
+
+@{
     Layout = "_HeaderLayout";
     ViewData["Title"] = "LandingPage";
 }
@@ -11,18 +14,18 @@
 
         <div class="d-flex align-items-center ms-auto sort-div-right gap-4">
             <div class="filter-box sort-box dropdown me-3">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <span>Sort by &nbsp;&nbsp;</span>
                     <img class="dropdown-icon" src="~/images/drop-down.png" alt="" />
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="sortByDropdown">
-                    <li><a class="dropdown-item" href="#">Newest</a></li>
-                    <li><a class="dropdown-item" href="#">Oldest</a></li>
-                    <li><a class="dropdown-item" href="#">Lowest available seats</a></li>
-                    <li><a class="dropdown-item" href="#">Highest available seats</a></li>
-                    <li><a class="dropdown-item" href="#">My favourites</a></li>
-                    <li><a class="dropdown-item" href="#">Registration deadline</a></li>
+                    <li><a class="dropdown-item">Newest</a></li>
+                    <li><a class="dropdown-item">Oldest</a></li>
+                    <li><a class="dropdown-item">Lowest available seats</a></li>
+                    <li><a class="dropdown-item">Highest available seats</a></li>
+                    <li><a class="dropdown-item">My favourites</a></li>
+                    <li><a class="dropdown-item">Registration deadline</a></li>
                 </ul>
             </div>
 
@@ -38,13 +41,18 @@
 
     <partial name="_NoMissionFound" />
 </div>
-<div class="tab-content">
+<div class="tab-content card-container-list-grid">
+
+    <!--
     <div id="GridView" class="tab-pane active">
-        <partial name="_GridViewPartial" />
+        @*<partial name="_GridViewPartial"/>*@
+        @*<partial name="_GridViewPartial" model="Model.MissionList"/>*@
+        @*@Html.Partial("_GridViewPartial", Model.MissionList);*@
     </div>
     <div id="ListView" class="tab-pane">
-        <partial name="_ListViewPartial" />
+        @*<partial name="_ListViewPartial" />*@
     </div>
+    -->
 </div>
 
 
@@ -53,27 +61,27 @@
     <nav aria-label="Page navigation example" class="pagination justify-content-center">
         <ul class="pagination" id="pagination-container">
             <li class="page-item">
-                <a class="pagination-link" href="#" aria-label="Previous">
+                <a class="pagination-link first-page" aria-label="Previous">
                     <span aria-hidden="true"><img src="~/images/previous.png" /></span>
                 </a>
             </li>
             <li class="page-item">
-                <a class="pagination-link" href="#" aria-label="Previous">
+                <a class="pagination-link previous-page" aria-label="Previous">
                     <span aria-hidden="true"><img src="~/images/left.png" /></span>
                 </a>
             </li>
-            @*<li class="page-item"><a class="pagination-link" data-page="1" href="#">1</a></li>
-                <li class="page-item"><a class="pagination-link" data-page="2" href="#">2</a></li>
-                <li class="page-item active"><a class="pagination-link" data-page="3" href="#">3</a></li>
-                <li class="page-item"><a class="pagination-link" data-page="4" href="#">4</a></li>
-                <li class="page-item"><a class="pagination-link" data-page="5" href="#">5</a></li>*@
+            <li class="page-item"><a class="pagination-link" data-page="1">1</a></li>
+                <li class="page-item"><a class="pagination-link" data-page="2">2</a></li>
+                <li class="page-item active"><a class="pagination-link" data-page="3">3</a></li>
+                <li class="page-item"><a class="pagination-link" data-page="4">4</a></li>
+                <li class="page-item"><a class="pagination-link" data-page="5">5</a></li>
             <li class="page-item">
-                <a class="pagination-link" href="#" aria-label="Next">
+                <a class="pagination-link next-page" aria-label="Next">
                     <span aria-hidden="true"><img src="~/images/right-arrow1.png" /></span>
                 </a>
             </li>
             <li class="page-item">
-                <a class="pagination-link" href="#" aria-label="Next">
+                <a class="pagination-link last-page" aria-label="Next">
                     <span aria-hidden="true"><img src="~/images/next.png" /></span>
                 </a>
             </li>

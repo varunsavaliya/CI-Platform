@@ -45,7 +45,10 @@
 // search mission functionality
 
 $(document).ready(function () {
+    let selectedCountry = null;
+    let selectedSortOption = null;
 
+    getMission()
     //let noMissionFounud = $(".no-mission-found");
     $(".search-field input").keyup(function () {
         let searchText = $(this).val().toLowerCase();
@@ -148,7 +151,8 @@ $(document).ready(function () {
                     if (searchedFilters.children('.pill').length === 1) {
                         searchedFilters.children('.closeAll').remove();
                     }
-                    filter()
+                    getMission();
+                    //filter()
                 });
 
                 // Add "Close All" button
@@ -157,7 +161,8 @@ $(document).ready(function () {
                     searchedFilters.children('.closeAll').click(function () {
                         allDropdowns.find('input[type="checkbox"]').prop('checked', false);
                         searchedFilters.empty();
-                        filter()
+                        getMission();
+                        //filter()
                     });
 
                     //add the pill before the close icon
@@ -187,7 +192,6 @@ $(document).ready(function () {
     })
 
     // declared globally because we have to use it in another function
-    let selectedCountry = null;
 
     $("#countryDropdown li").click(function () {
         var countryId = $(this).val();
@@ -203,166 +207,166 @@ $(document).ready(function () {
         //        $(this).parent().hide();
         //    }
         //});
-        filter()
+        //filter()
 
     });
 
     // three functions for comparing city theme and skills
-    function compareCity(selectedCities, cardCity) {
-        let isMatch = selectedCities.some(function (selectedCity) {
-            return cardCity.trim() == selectedCity.text().trim();
-        })
-        return isMatch;
-    }
+    //function compareCity(selectedCities, cardCity) {
+    //    let isMatch = selectedCities.some(function (selectedCity) {
+    //        return cardCity.trim() == selectedCity.text().trim();
+    //    })
+    //    return isMatch;
+    //}
 
-    function compareTheme(selectedThemes, cardTheme) {
-        let isMatch = selectedThemes.some(function (selectedTheme) {
-            return cardTheme === selectedTheme.text();
-        })
-        return isMatch;
-    }
+    //function compareTheme(selectedThemes, cardTheme) {
+    //    let isMatch = selectedThemes.some(function (selectedTheme) {
+    //        return cardTheme === selectedTheme.text();
+    //    })
+    //    return isMatch;
+    //}
 
-    function compareSkill(selectedSkills, cardSkills) {
-        let isMatch = selectedSkills.some(function (selectedSkill) {
-            return cardSkills.some(function (cardSkill) {
-                return cardSkill === selectedSkill.text();
-            })
-        })
-        return isMatch;
-    }
+    //function compareSkill(selectedSkills, cardSkills) {
+    //    let isMatch = selectedSkills.some(function (selectedSkill) {
+    //        return cardSkills.some(function (cardSkill) {
+    //            return cardSkill === selectedSkill.text();
+    //        })
+    //    })
+    //    return isMatch;
+    //}
 
     // function for filter all cards when clicked
-    function filter() {
+    //function filter() {
 
-        let selectedCities = $('input[type="checkbox"][name="cityCheckboxes"]:checked').map(function () {
-            return $(this).next('label');
-        }).get();
+    //    let selectedCities = $('input[type="checkbox"][name="cityCheckboxes"]:checked').map(function () {
+    //        return $(this).next('label');
+    //    }).get();
 
-        let selectedThemes = $('input[type="checkbox"][name="themeCheckboxes"]:checked').map(function () {
-            return $(this).next('label');
-        }).get();
+    //    let selectedThemes = $('input[type="checkbox"][name="themeCheckboxes"]:checked').map(function () {
+    //        return $(this).next('label');
+    //    }).get();
 
-        let selectedSkills = $('input[type="checkbox"][name="skillCheckboxes"]:checked').map(function () {
-            return $(this).next('label');
-        }).get();
-        let atleastOneCity = (selectedCities.length !== 0);
-        let noCity = (selectedCities.length === 0);
+    //    let selectedSkills = $('input[type="checkbox"][name="skillCheckboxes"]:checked').map(function () {
+    //        return $(this).next('label');
+    //    }).get();
+    //    let atleastOneCity = (selectedCities.length !== 0);
+    //    let noCity = (selectedCities.length === 0);
 
-        let atleastOneTheme = (selectedThemes.length !== 0);
-        let noTheme = (selectedThemes.length === 0);
+    //    let atleastOneTheme = (selectedThemes.length !== 0);
+    //    let noTheme = (selectedThemes.length === 0);
 
-        let atleastOneSkill = (selectedSkills.length !== 0);
-        let noSkill = (selectedSkills.length === 0);
+    //    let atleastOneSkill = (selectedSkills.length !== 0);
+    //    let noSkill = (selectedSkills.length === 0);
 
-        if (noCity && noTheme && noSkill && selectedCountry == null) {
-            // If no themes are selected, show all cards
-            console.log("no themes and skills selected")
-            $('.card').parent().show();
-        } else {
-            // Otherwise, loop over all cards and compare themes and cities and skills
-            $('.card').each(function () {
-                var cardCountry = $(this).find('.mission-country').text();
-                let cardCity = $(this).find('.location').text();
-                let cardTheme = $(this).find('.mission-theme h3').text();
-                let cardSkills = $(this).find('.mission-skills').map(function () {
-                    return $(this).text();
-                }).get();
-                if (selectedCountry != null) {
-                    if (atleastOneCity) {
-                        if (atleastOneTheme) {
-                            if (atleastOneSkill) {
-                                let isMatch = (selectedCountry == cardCountry) && compareCity(selectedCities, cardCity) && compareTheme(selectedThemes, cardTheme) && compareSkill(selectedSkills, cardSkills);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                            else {
-                                let isMatch = (selectedCountry == cardCountry) && compareCity(selectedCities, cardCity) && compareTheme(selectedThemes, cardTheme);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                        }
-                        else {
-                            if (atleastOneSkill) {
-                                let isMatch = (selectedCountry == cardCountry) && compareCity(selectedCities, cardCity) && compareSkill(selectedSkills, cardSkills);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                            else {
-                                let isMatch = (selectedCountry == cardCountry) && compareCity(selectedCities, cardCity);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                        }
-                    }
-                    else {
-                        if (atleastOneTheme) {
-                            if (atleastOneSkill) {
-                                let isMatch = (selectedCountry == cardCountry) && compareTheme(selectedThemes, cardTheme) && compareSkill(selectedSkills, cardSkills);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                            else {
-                                let isMatch = (selectedCountry == cardCountry) && compareTheme(selectedThemes, cardTheme);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                        }
-                        else {
-                            if (atleastOneSkill) {
-                                let isMatch = (selectedCountry == cardCountry) && compareSkill(selectedSkills, cardSkills);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                            else {
-                                let isMatch = (selectedCountry == cardCountry);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //    if (noCity && noTheme && noSkill && selectedCountry == null) {
+    //        // If no themes are selected, show all cards
+    //        console.log("no themes and skills selected")
+    //        $('.card').parent().show();
+    //    } else {
+    //        // Otherwise, loop over all cards and compare themes and cities and skills
+    //        $('.card').each(function () {
+    //            var cardCountry = $(this).find('.mission-country').text();
+    //            let cardCity = $(this).find('.location').text();
+    //            let cardTheme = $(this).find('.mission-theme h3').text();
+    //            let cardSkills = $(this).find('.mission-skills').map(function () {
+    //                return $(this).text();
+    //            }).get();
+    //            if (selectedCountry != null) {
+    //                if (atleastOneCity) {
+    //                    if (atleastOneTheme) {
+    //                        if (atleastOneSkill) {
+    //                            let isMatch = (selectedCountry == cardCountry) && compareCity(selectedCities, cardCity) && compareTheme(selectedThemes, cardTheme) && compareSkill(selectedSkills, cardSkills);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                        else {
+    //                            let isMatch = (selectedCountry == cardCountry) && compareCity(selectedCities, cardCity) && compareTheme(selectedThemes, cardTheme);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                    }
+    //                    else {
+    //                        if (atleastOneSkill) {
+    //                            let isMatch = (selectedCountry == cardCountry) && compareCity(selectedCities, cardCity) && compareSkill(selectedSkills, cardSkills);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                        else {
+    //                            let isMatch = (selectedCountry == cardCountry) && compareCity(selectedCities, cardCity);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                    }
+    //                }
+    //                else {
+    //                    if (atleastOneTheme) {
+    //                        if (atleastOneSkill) {
+    //                            let isMatch = (selectedCountry == cardCountry) && compareTheme(selectedThemes, cardTheme) && compareSkill(selectedSkills, cardSkills);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                        else {
+    //                            let isMatch = (selectedCountry == cardCountry) && compareTheme(selectedThemes, cardTheme);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                    }
+    //                    else {
+    //                        if (atleastOneSkill) {
+    //                            let isMatch = (selectedCountry == cardCountry) && compareSkill(selectedSkills, cardSkills);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                        else {
+    //                            let isMatch = (selectedCountry == cardCountry);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
 
-                            }
-                        }
-                    }
-                }
-                else {
-                    if (atleastOneCity) {
-                        if (atleastOneTheme) {
-                            if (atleastOneSkill) {
-                                let isMatch = compareCity(selectedCities, cardCity) && compareTheme(selectedThemes, cardTheme) && compareSkill(selectedSkills, cardSkills);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                            else {
-                                let isMatch = compareCity(selectedCities, cardCity) && compareTheme(selectedThemes, cardTheme);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                        }
-                        else {
-                            if (atleastOneSkill) {
-                                let isMatch = compareCity(selectedCities, cardCity) && compareSkill(selectedSkills, cardSkills);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                            else {
-                                let isMatch = compareCity(selectedCities, cardCity);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                        }
-                    }
-                    else {
-                        if (atleastOneTheme) {
-                            if (atleastOneSkill) {
-                                let isMatch = compareTheme(selectedThemes, cardTheme) && compareSkill(selectedSkills, cardSkills);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                            else {
-                                let isMatch = compareTheme(selectedThemes, cardTheme);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                        }
-                        else {
-                            if (atleastOneSkill) {
-                                let isMatch = compareSkill(selectedSkills, cardSkills);
-                                (isMatch) ? $(this).parent().show() : $(this).parent().hide();
-                            }
-                            else {
-                                $(this).parent().show();
-                            }
-                        }
-                    }
-                }
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //            else {
+    //                if (atleastOneCity) {
+    //                    if (atleastOneTheme) {
+    //                        if (atleastOneSkill) {
+    //                            let isMatch = compareCity(selectedCities, cardCity) && compareTheme(selectedThemes, cardTheme) && compareSkill(selectedSkills, cardSkills);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                        else {
+    //                            let isMatch = compareCity(selectedCities, cardCity) && compareTheme(selectedThemes, cardTheme);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                    }
+    //                    else {
+    //                        if (atleastOneSkill) {
+    //                            let isMatch = compareCity(selectedCities, cardCity) && compareSkill(selectedSkills, cardSkills);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                        else {
+    //                            let isMatch = compareCity(selectedCities, cardCity);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                    }
+    //                }
+    //                else {
+    //                    if (atleastOneTheme) {
+    //                        if (atleastOneSkill) {
+    //                            let isMatch = compareTheme(selectedThemes, cardTheme) && compareSkill(selectedSkills, cardSkills);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                        else {
+    //                            let isMatch = compareTheme(selectedThemes, cardTheme);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                    }
+    //                    else {
+    //                        if (atleastOneSkill) {
+    //                            let isMatch = compareSkill(selectedSkills, cardSkills);
+    //                            (isMatch) ? $(this).parent().show() : $(this).parent().hide();
+    //                        }
+    //                        else {
+    //                            $(this).parent().show();
+    //                        }
+    //                    }
+    //                }
+    //            }
 
-            });
-        }
-    }
+    //        });
+    //    }
+    //}
 
     // for all dropdown
     allDropdowns.each(function () {
@@ -370,230 +374,234 @@ $(document).ready(function () {
 
         $(this).on('change', 'input[type="checkbox"]', function (e) {
             getMission();
-            filter();
+            //filter();
 
         });
     });
 
-
-    // sortBy functionality
-    let selectedSortOption = null;
     $('#sortByDropdown li').on('click', function () {
         selectedSortOption = $(this).find('a').text();
         getMission()
-        let gridCardsContainer = $('.grid-card').parent().parent();
-        let listCardsContainer = $('.list-card').parent().parent();
-        var dateArray = [];
-        switch (selectedSortOption) {
-            case 'Newest':
-                dateArray = [];
+    });
 
-                //console.log(dateArray)
-                let cardsDateForNewest = $('.card').find('.created-date');
-                cardsDateForNewest.each(function (j) {
-                    dateArray.push($(this).text());
-                });
 
-                dateArray.sort(function (a, b) {
-                    var dateA = new Date(
-                        parseInt(a.substring(6)),
-                        parseInt(a.substring(3, 5)) - 1,
-                        parseInt(a.substring(0, 2))
-                    );
-                    var dateB = new Date(
-                        parseInt(b.substring(6)),
-                        parseInt(b.substring(3, 5)) - 1,
-                        parseInt(b.substring(0, 2))
-                    );
-                    return dateA - dateB;
-                });
-                dateArray = $.unique(dateArray)
+    // sortBy functionality
+    //$('#sortByDropdown li').on('click', function () {
+    //    selectedSortOption = $(this).find('a').text();
+    //    getMission()
+    //    let gridCardsContainer = $('.grid-card').parent().parent();
+    //    let listCardsContainer = $('.list-card').parent().parent();
+    //    var dateArray = [];
+    //    switch (selectedSortOption) {
+    //        case 'Newest':
+    //            dateArray = [];
 
-                // Arrange Array Element In Descending order
-                dateArray.reverse();
-                //console.log(newestDateArray)
-                for (let i = 0; i < dateArray.length; i++) {
-                    $('.grid-card').each(function () {
-                        if ($(this).find('.created-date').text() == dateArray[i]) {
-                            $(this).parent().appendTo($(gridCardsContainer));
-                        }
-                    });
-                }
-                for (let i = 0; i < dateArray.length; i++) {
-                    $('.list-card').each(function () {
-                        if ($(this).find('.created-date').text() == dateArray[i]) {
-                            $(this).parent().appendTo($(listCardsContainer));
-                        }
-                    });
-                }
-                filter()
-                break;
-            case 'Oldest':
-                dateArray = [];
-                let cardsDateForOldest = $('.card').find('.created-date')
-                //let dateArray = [];
-                cardsDateForOldest.each(function (j) {
-                    dateArray.push($(this).text());
-                });
-                // Arrange  array Elemeny in Ascending order
-                dateArray = $.unique(dateArray)
-                //dateArray.sort(function (a, b) {
-                //    var dateA = new Date(a);
-                //    var dateB = new Date(b);
-                //    return dateA - dateB;
-                //});
+    //            //console.log(dateArray)
+    //            let cardsDateForNewest = $('.card').find('.created-date');
+    //            cardsDateForNewest.each(function (j) {
+    //                dateArray.push($(this).text());
+    //            });
 
-                dateArray.sort(function (a, b) {
-                    var dateA = new Date(
-                        parseInt(a.substring(6)),
-                        parseInt(a.substring(3, 5)) - 1,
-                        parseInt(a.substring(0, 2))
-                    );
-                    var dateB = new Date(
-                        parseInt(b.substring(6)),
-                        parseInt(b.substring(3, 5)) - 1,
-                        parseInt(b.substring(0, 2))
-                    );
-                    return dateA - dateB;
-                });
+    //            dateArray.sort(function (a, b) {
+    //                var dateA = new Date(
+    //                    parseInt(a.substring(6)),
+    //                    parseInt(a.substring(3, 5)) - 1,
+    //                    parseInt(a.substring(0, 2))
+    //                );
+    //                var dateB = new Date(
+    //                    parseInt(b.substring(6)),
+    //                    parseInt(b.substring(3, 5)) - 1,
+    //                    parseInt(b.substring(0, 2))
+    //                );
+    //                return dateA - dateB;
+    //            });
+    //            dateArray = $.unique(dateArray)
 
-                for (let i = 0; i < dateArray.length; i++) {
-                    $('.grid-card').each(function () {
-                        if ($(this).find('.created-date').text() == dateArray[i]) {
-                            console.log(true)
+    //            // Arrange Array Element In Descending order
+    //            dateArray.reverse();
+    //            //console.log(newestDateArray)
+    //            for (let i = 0; i < dateArray.length; i++) {
+    //                $('.grid-card').each(function () {
+    //                    if ($(this).find('.created-date').text() == dateArray[i]) {
+    //                        $(this).parent().appendTo($(gridCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            for (let i = 0; i < dateArray.length; i++) {
+    //                $('.list-card').each(function () {
+    //                    if ($(this).find('.created-date').text() == dateArray[i]) {
+    //                        $(this).parent().appendTo($(listCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            filter()
+    //            break;
+    //        case 'Oldest':
+    //            dateArray = [];
+    //            let cardsDateForOldest = $('.card').find('.created-date')
+    //            //let dateArray = [];
+    //            cardsDateForOldest.each(function (j) {
+    //                dateArray.push($(this).text());
+    //            });
+    //            // Arrange  array Elemeny in Ascending order
+    //            dateArray = $.unique(dateArray)
+    //            //dateArray.sort(function (a, b) {
+    //            //    var dateA = new Date(a);
+    //            //    var dateB = new Date(b);
+    //            //    return dateA - dateB;
+    //            //});
 
-                            $(this).parent().appendTo($(gridCardsContainer));
-                        }
-                    });
-                }
-                for (var i = 0; i < dateArray.length; i++) {
-                    $('.list-card').each(function () {
-                        if ($(this).find('.created-date').text() == dateArray[i]) {
-                            console.log(true)
+    //            dateArray.sort(function (a, b) {
+    //                var dateA = new Date(
+    //                    parseInt(a.substring(6)),
+    //                    parseInt(a.substring(3, 5)) - 1,
+    //                    parseInt(a.substring(0, 2))
+    //                );
+    //                var dateB = new Date(
+    //                    parseInt(b.substring(6)),
+    //                    parseInt(b.substring(3, 5)) - 1,
+    //                    parseInt(b.substring(0, 2))
+    //                );
+    //                return dateA - dateB;
+    //            });
 
-                            $(this).parent().appendTo($(listCardsContainer));
-                        }
-                    });
-                }
-                filter()
-                break;
-            case 'Lowest available seats':
-                let seatsLeftForLowest = $('.card').find('.seats-left')
-                var seatsArray = [];
-                seatsLeftForLowest.each(function (j) {
-                    seatsArray.push($(this).text());
-                });
-                // Arrange  array Elemeny in Ascending order
-                seatsArray = $.unique(seatsArray)
-                seatsArray.sort()
+    //            for (let i = 0; i < dateArray.length; i++) {
+    //                $('.grid-card').each(function () {
+    //                    if ($(this).find('.created-date').text() == dateArray[i]) {
+    //                        console.log(true)
 
-                for (var i = 0; i < seatsArray.length; i++) {
-                    $('.grid-card').each(function () {
-                        if ($(this).find('.seats-left').text() == seatsArray[i]) {
-                            console.log(true)
+    //                        $(this).parent().appendTo($(gridCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            for (var i = 0; i < dateArray.length; i++) {
+    //                $('.list-card').each(function () {
+    //                    if ($(this).find('.created-date').text() == dateArray[i]) {
+    //                        console.log(true)
 
-                            $(this).parent().appendTo($(gridCardsContainer));
-                        }
-                    });
-                }
-                for (var i = 0; i < seatsArray.length; i++) {
-                    $('.list-card').each(function () {
-                        if ($(this).find('.seats-left').text() == seatsArray[i]) {
-                            console.log(true)
+    //                        $(this).parent().appendTo($(listCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            filter()
+    //            break;
+    //        case 'Lowest available seats':
+    //            let seatsLeftForLowest = $('.card').find('.seats-left')
+    //            var seatsArray = [];
+    //            seatsLeftForLowest.each(function (j) {
+    //                seatsArray.push($(this).text());
+    //            });
+    //            // Arrange  array Elemeny in Ascending order
+    //            seatsArray = $.unique(seatsArray)
+    //            seatsArray.sort()
 
-                            $(this).parent().appendTo($(listCardsContainer));
-                        }
-                    });
-                }
-                filter()
-                break;
-            case 'Highest available seats':
-                let seatsLeft = $('.card').find('.seats-left')
-                var seatsArray = [];
-                seatsLeft.each(function (j) {
-                    seatsArray.push($(this).text());
-                });
-                // Arrange  array Elemeny in Ascending order
-                seatsArray = $.unique(seatsArray)
-                seatsArray.sort()
-                seatsArray.reverse()
-                for (var i = 0; i < seatsArray.length; i++) {
-                    $('.grid-card').each(function () {
-                        if ($(this).find('.seats-left').text() == seatsArray[i]) {
-                            $(this).parent().appendTo($(gridCardsContainer));
-                        }
-                    });
-                }
-                for (var i = 0; i < seatsArray.length; i++) {
-                    $('.list-card').each(function () {
-                        if ($(this).find('.seats-left').text() == seatsArray[i]) {
-                            $(this).parent().appendTo($(listCardsContainer));
-                        }
-                    });
-                }
-                filter()
-                break;
-            case 'My favourites':
-                //let favButton = $('.bi-heart-fill');
+    //            for (var i = 0; i < seatsArray.length; i++) {
+    //                $('.grid-card').each(function () {
+    //                    if ($(this).find('.seats-left').text() == seatsArray[i]) {
+    //                        console.log(true)
 
-                $('.grid-card').each(function () {
-                    let favButton = $(this).find('.favorite-button');
-                    if (favButton.hasClass('bi-heart-fill')) {
-                        $(this).parent().show();
-                    }
-                    else {
-                        $(this).parent().hide();
-                    }
-                });
-                $('.list-card').each(function () {
-                    let favButton = $(this).find('.favorite-button');
-                    if (favButton.hasClass('bi-heart-fill')) {
-                        $(this).parent().show();
-                    }
-                    else {
-                        $(this).parent().hide();
-                    }
-                });
-                break;
-            case 'Registration deadline':
-                let deadlines = $('.card').find('.deadline')
-                var dateArray = [];
-                deadlines.each(function (j) {
-                    dateArray.push($(this).text());
-                });
-                dateArray.sort(function (a, b) {
-                    var dateA = new Date(
-                        parseInt(a.substring(6)),
-                        parseInt(a.substring(3, 5)) - 1,
-                        parseInt(a.substring(0, 2))
-                    );
-                    var dateB = new Date(
-                        parseInt(b.substring(6)),
-                        parseInt(b.substring(3, 5)) - 1,
-                        parseInt(b.substring(0, 2))
-                    );
-                    return dateA - dateB;
-                });
-                // Arrange  array Elemeny in Ascending order
-                console.log(dateArray)
-                for (var i = 0; i < dateArray.length; i++) {
-                    $('.grid-card').each(function () {
-                        if ($(this).find('.deadline').text() == dateArray[i]) {
-                            $(this).parent().appendTo($(gridCardsContainer));
-                        }
-                    });
-                }
-                for (var i = 0; i < dateArray.length; i++) {
-                    $('.list-card').each(function () {
-                        if ($(this).find('.deadline').text() == dateArray[i]) {
-                            $(this).parent().appendTo($(listCardsContainer));
-                        }
-                    });
-                }
-                filter()
-                break;
-        }
-    })
+    //                        $(this).parent().appendTo($(gridCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            for (var i = 0; i < seatsArray.length; i++) {
+    //                $('.list-card').each(function () {
+    //                    if ($(this).find('.seats-left').text() == seatsArray[i]) {
+    //                        console.log(true)
+
+    //                        $(this).parent().appendTo($(listCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            filter()
+    //            break;
+    //        case 'Highest available seats':
+    //            let seatsLeft = $('.card').find('.seats-left')
+    //            var seatsArray = [];
+    //            seatsLeft.each(function (j) {
+    //                seatsArray.push($(this).text());
+    //            });
+    //            // Arrange  array Elemeny in Ascending order
+    //            seatsArray = $.unique(seatsArray)
+    //            seatsArray.sort()
+    //            seatsArray.reverse()
+    //            for (var i = 0; i < seatsArray.length; i++) {
+    //                $('.grid-card').each(function () {
+    //                    if ($(this).find('.seats-left').text() == seatsArray[i]) {
+    //                        $(this).parent().appendTo($(gridCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            for (var i = 0; i < seatsArray.length; i++) {
+    //                $('.list-card').each(function () {
+    //                    if ($(this).find('.seats-left').text() == seatsArray[i]) {
+    //                        $(this).parent().appendTo($(listCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            filter()
+    //            break;
+    //        case 'My favourites':
+    //            //let favButton = $('.bi-heart-fill');
+
+    //            $('.grid-card').each(function () {
+    //                let favButton = $(this).find('.favorite-button');
+    //                if (favButton.hasClass('bi-heart-fill')) {
+    //                    $(this).parent().show();
+    //                }
+    //                else {
+    //                    $(this).parent().hide();
+    //                }
+    //            });
+    //            $('.list-card').each(function () {
+    //                let favButton = $(this).find('.favorite-button');
+    //                if (favButton.hasClass('bi-heart-fill')) {
+    //                    $(this).parent().show();
+    //                }
+    //                else {
+    //                    $(this).parent().hide();
+    //                }
+    //            });
+    //            break;
+    //        case 'Registration deadline':
+    //            let deadlines = $('.card').find('.deadline')
+    //            var dateArray = [];
+    //            deadlines.each(function (j) {
+    //                dateArray.push($(this).text());
+    //            });
+    //            dateArray.sort(function (a, b) {
+    //                var dateA = new Date(
+    //                    parseInt(a.substring(6)),
+    //                    parseInt(a.substring(3, 5)) - 1,
+    //                    parseInt(a.substring(0, 2))
+    //                );
+    //                var dateB = new Date(
+    //                    parseInt(b.substring(6)),
+    //                    parseInt(b.substring(3, 5)) - 1,
+    //                    parseInt(b.substring(0, 2))
+    //                );
+    //                return dateA - dateB;
+    //            });
+    //            // Arrange  array Elemeny in Ascending order
+    //            console.log(dateArray)
+    //            for (var i = 0; i < dateArray.length; i++) {
+    //                $('.grid-card').each(function () {
+    //                    if ($(this).find('.deadline').text() == dateArray[i]) {
+    //                        $(this).parent().appendTo($(gridCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            for (var i = 0; i < dateArray.length; i++) {
+    //                $('.list-card').each(function () {
+    //                    if ($(this).find('.deadline').text() == dateArray[i]) {
+    //                        $(this).parent().appendTo($(listCardsContainer));
+    //                    }
+    //                });
+    //            }
+    //            filter()
+    //            break;
+    //    }
+    //})
     // add to favourite
 
 
@@ -698,8 +706,57 @@ $(document).ready(function () {
         $('#confirmationModal').modal('hide');
     });
 
+    // pagination
+    $('.pagination li').click(function () {
+        let currentPage;
+
+        $('.pagination li').each(function () {
+            if ($(this).hasClass('active')) {
+
+                currentPage = $(this).find('a').data('page');
+                $(this).removeClass('active');
+            }
+        })
+        let pageNo = currentPage;
+        console.log(currentPage)
+
+        debugger
+        if ($(this).find('a').hasClass(' first-page')) {
+            pageNo = 1;
+            currentPage = pageNo;
+            if ($(this).find('a').data('page') === pageNo) {
+                $(this).addClass('active')
+            }
+        }
+        else if ($(this).find('a').hasClass('last-page')) {
+            pageNo = 5;
+            currentPage = pageNo;
+
+        }
+        else if ($(this).find('a').hasClass('previous-page')) {
+            pageNo = currentPage - 1;
+            if ($(this).find('a').data('page') === pageNo) {
+                $(this).addClass('active')
+            }
+            currentPage = pageNo;
+
+        } else if ($(this).find('a').hasClass('next-page')) {
+            pageNo = currentPage + 1;
+            currentPage = pageNo;
+
+        } else {
+            $(this).addClass('active')
+
+            pageNo = $(this).find('a').data('page');
+            currentPage = pageNo;
+
+        }
+        console.log(pageNo)
+    })
+
 
     function getMission() {
+        console.log(selectedSortOption)
         let searchText = $(".search-field input").val().toLowerCase();
 
         let selectedCities = $('input[type="checkbox"][name="cityCheckboxes"]:checked').map(function () {
@@ -714,19 +771,17 @@ $(document).ready(function () {
             return $(this).val();
         }).get();
 
-
-
         let inputData = {
             selectedCountry: selectedCountry !== "" ? selectedCountry : null,
-            selectedCities: selectedCities !== "" ? selectedCities : null,
-            selectedThemes: selectedThemes !== "" ? selectedThemes : null,
-            selectedSkills: selectedSkills !== "" ? selectedSkills : null,
+            selectedCities: selectedCities !== "" ? selectedCities.join() : null,
+            selectedThemes: selectedThemes !== "" ? selectedThemes.join() : null,
+            selectedSkills: selectedSkills !== "" ? selectedSkills.join() : null,
             searchText: searchText !== "" ? searchText : null,
             selectedSortOption: selectedSortOption !== undefined ? selectedSortOption : null,
-            userId: userId
+            userId: userId,
+            pageSize: 6,
+            pageNo: 1
         }
-
-        console.log(inputData)
 
         $.ajax({
             url: '/Mission/LandingPage',
@@ -734,9 +789,14 @@ $(document).ready(function () {
             data: inputData,
             success: function (response) {
                 // Handle success here
-                console.log("hi");
+
+                var cardsContainer = $('.card-container-list-grid');
+                cardsContainer.empty();
+                cardsContainer.append(response)
             },
             error: function (error) {
+                console.log(error);
+
                 // Handle error here
             }
         });

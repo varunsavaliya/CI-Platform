@@ -30,7 +30,7 @@
                     <ul class="dropdown-menu" id="countryDropdown">
                         @foreach (var country in Model.Country)
                         {
-                            <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId" href="#">@country.Name</a></li>
+                            <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId">@country.Name</a></li>
                         }
                     </ul>
                 </div>
@@ -99,7 +99,7 @@
                 <ul class="dropdown-menu" id="countryDropdown">
                     @foreach (var country in Model.Country)
                     {
-                        <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId" href="#">@country.Name</a></li>
+                        <li value="@country.CountryId"><a class="dropdown-item" value="@country.CountryId">@country.Name</a></li>
                     }
                 </ul>
             </div>
