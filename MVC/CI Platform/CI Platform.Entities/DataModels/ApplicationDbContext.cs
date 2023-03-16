@@ -70,7 +70,7 @@ public partial class ApplicationDbContext : DbContext
     {
         modelBuilder.Entity<Admin>(entity =>
         {
-            entity.HasKey(e => e.AdminId).HasName("PK__admin__43AA414120946997");
+            entity.HasKey(e => e.AdminId).HasName("PK__admin__43AA414178875920");
 
             entity.ToTable("admin");
 
@@ -136,7 +136,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<City>(entity =>
         {
-            entity.HasKey(e => e.CityId).HasName("PK__city__031491A889E4D3F6");
+            entity.HasKey(e => e.CityId).HasName("PK__city__031491A84A0BD9B5");
 
             entity.ToTable("city");
 
@@ -165,7 +165,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<CmsTable>(entity =>
         {
-            entity.HasKey(e => e.CmsPageId).HasName("PK__cms_tabl__B46D5B5207DE0BD7");
+            entity.HasKey(e => e.CmsPageId).HasName("PK__cms_tabl__B46D5B52A03AD05E");
 
             entity.ToTable("cms_table");
 
@@ -198,7 +198,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Comment>(entity =>
         {
-            entity.HasKey(e => e.CommentId).HasName("PK__comment__E7957687D6F0FDC3");
+            entity.HasKey(e => e.CommentId).HasName("PK__comment__E79576870B7A9907");
 
             entity.ToTable("comment");
 
@@ -234,7 +234,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Country>(entity =>
         {
-            entity.HasKey(e => e.CountryId).HasName("PK__country__7E8CD0551201A955");
+            entity.HasKey(e => e.CountryId).HasName("PK__country__7E8CD0550AD5C5CD");
 
             entity.ToTable("country");
 
@@ -261,7 +261,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<FavoriteMission>(entity =>
         {
-            entity.HasKey(e => e.FavouriteMissionId).HasName("PK__favorite__94E4D8CA1C7B475C");
+            entity.HasKey(e => e.FavouriteMissionId).HasName("PK__favorite__94E4D8CA0C3F44DC");
 
             entity.ToTable("favorite_mission");
 
@@ -292,7 +292,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<GoalMission>(entity =>
         {
-            entity.HasKey(e => e.GoalMissionId).HasName("PK__goal_mis__358E02C710C20250");
+            entity.HasKey(e => e.GoalMissionId).HasName("PK__goal_mis__358E02C74D569CF3");
 
             entity.ToTable("goal_mission");
 
@@ -323,7 +323,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Mission>(entity =>
         {
-            entity.HasKey(e => e.MissionId).HasName("PK__mission__B5419AB2F9A24782");
+            entity.HasKey(e => e.MissionId).HasName("PK__mission__B5419AB2874E6EBD");
 
             entity.ToTable("mission");
 
@@ -399,7 +399,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<MissionApplication>(entity =>
         {
-            entity.HasKey(e => e.MissionApplicationId).HasName("PK__mission___DF92838A655E93D5");
+            entity.HasKey(e => e.MissionApplicationId).HasName("PK__mission___DF92838A96B7882D");
 
             entity.ToTable("mission_application");
 
@@ -438,7 +438,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<MissionDocument>(entity =>
         {
-            entity.HasKey(e => e.MissionDocumentId).HasName("PK__mission___E80E0CC866F7EF39");
+            entity.HasKey(e => e.MissionDocumentId).HasName("PK__mission___E80E0CC860AD8E30");
 
             entity.ToTable("mission_document");
 
@@ -471,7 +471,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<MissionInvite>(entity =>
         {
-            entity.HasKey(e => e.MissionInviteId).HasName("PK__mission___A97ED158B7A37207");
+            entity.HasKey(e => e.MissionInviteId).HasName("PK__mission___A97ED15868B8F8CF");
 
             entity.ToTable("mission_invite");
 
@@ -508,7 +508,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<MissionMedium>(entity =>
         {
-            entity.HasKey(e => e.MissionMediaId).HasName("PK__mission___848A78E80DAB1B6A");
+            entity.HasKey(e => e.MissionMediaId).HasName("PK__mission___848A78E87A219B42");
 
             entity.ToTable("mission_media");
 
@@ -548,7 +548,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<MissionRating>(entity =>
         {
-            entity.HasKey(e => e.MissionRatingId).HasName("PK__mission___320E5172AD8D984B");
+            entity.HasKey(e => e.MissionRatingId).HasName("PK__mission___320E5172D90C13A6");
 
             entity.ToTable("mission_rating");
 
@@ -580,7 +580,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<MissionSkill>(entity =>
         {
-            entity.HasKey(e => e.MissionSkillId).HasName("PK__mission___82712008EC2D83C6");
+            entity.HasKey(e => e.MissionSkillId).HasName("PK__mission___8271200854EAA005");
 
             entity.ToTable("mission_skill");
 
@@ -610,7 +610,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<MissionTheme>(entity =>
         {
-            entity.HasKey(e => e.MissionThemeId).HasName("PK__mission___4925C5AC0FE5D744");
+            entity.HasKey(e => e.MissionThemeId).HasName("PK__mission___4925C5AC7FC76756");
 
             entity.ToTable("mission_theme");
 
@@ -655,7 +655,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Skill>(entity =>
         {
-            entity.HasKey(e => e.SkillId).HasName("PK__skill__FBBA83790CDEFEE0");
+            entity.HasKey(e => e.SkillId).HasName("PK__skill__FBBA83799FB13984");
 
             entity.ToTable("skill");
 
@@ -681,7 +681,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Story>(entity =>
         {
-            entity.HasKey(e => e.StoryId).HasName("PK__story__66339C56B0A98D8A");
+            entity.HasKey(e => e.StoryId).HasName("PK__story__66339C56CB5C48ED");
 
             entity.ToTable("story");
 
@@ -730,7 +730,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<StoryInvite>(entity =>
         {
-            entity.HasKey(e => e.StoryInviteId).HasName("PK__story_in__04497867E278CB52");
+            entity.HasKey(e => e.StoryInviteId).HasName("PK__story_in__044978671FD4452D");
 
             entity.ToTable("story_invite");
 
@@ -752,7 +752,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<StoryMedium>(entity =>
         {
-            entity.HasKey(e => e.StoryMediaId).HasName("PK__story_me__29BD053C5AECFA38");
+            entity.HasKey(e => e.StoryMediaId).HasName("PK__story_me__29BD053CA9A305E5");
 
             entity.ToTable("story_media");
 
@@ -784,7 +784,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<Timesheet>(entity =>
         {
-            entity.HasKey(e => e.TimesheetId).HasName("PK__timeshee__7BBF5068EE3301C5");
+            entity.HasKey(e => e.TimesheetId).HasName("PK__timeshee__7BBF5068E4F4F744");
 
             entity.ToTable("timesheet");
 
@@ -905,7 +905,7 @@ public partial class ApplicationDbContext : DbContext
 
         modelBuilder.Entity<UserSkill>(entity =>
         {
-            entity.HasKey(e => e.UserSkillId).HasName("PK__user_ski__FD3B576BC4F8975F");
+            entity.HasKey(e => e.UserSkillId).HasName("PK__user_ski__FD3B576B3A997B0D");
 
             entity.ToTable("user_skill");
 

@@ -981,7 +981,7 @@ input:focus-visible {
     bottom: 31%;
     right: 10px;
     background: rgba(0, 0, 0, 0.4);
-    padding: 8px 10px 5px 10px;
+    padding: 10px 10px 8px 10px;
     border-radius: 50%;
 }
     .card-items .fav i{
@@ -1168,11 +1168,13 @@ input:focus-visible {
 }
 
     .pagination li a {
-    padding: 5px 11px;
-    cursor:pointer;
-        text-decoration:none;
+        padding: 5px 11px;
+        cursor: pointer;
+        text-decoration: none;
         border-radius: 4px;
-        color:#414141;
+        color: #414141;
+        border: 1px solid #d0d0d0;
+        /*padding-bottom: 8px;*/
     }
 
 .pagination .active a {

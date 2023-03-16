@@ -43,11 +43,11 @@
 
 
 // search mission functionality
-
 $(document).ready(function () {
+    // pages for pagination
+
     let selectedCountry = null;
     let selectedSortOption = null;
-
     getMission()
     //let noMissionFounud = $(".no-mission-found");
     $(".search-field input").keyup(function () {
@@ -604,8 +604,7 @@ $(document).ready(function () {
     //})
     // add to favourite
 
-
-    $('.favorite-button').click(function () {
+    $(document).on('click', 'i.favorite-button', function () {
         var missionId = $(this).data('mission-id');
         $.ajax({
             url: '/Mission/AddToFavorites',
@@ -621,14 +620,11 @@ $(document).ready(function () {
                             $(this).addClass('bi-heart-fill text-danger')
                             $(this).removeClass('bi-heart text-light')
                             $(this).next('span').text('Remove From Favorites')
-                            console.log("added")
                         }
                         else {
                             $(this).addClass('bi-heart text-light')
                             $(this).removeClass('bi-heart-fill text-danger')
                             $(this).next('span').text('Add to Favorites')
-
-                            console.log("remove")
                         }
                     }
                 })
@@ -706,58 +702,13 @@ $(document).ready(function () {
         $('#confirmationModal').modal('hide');
     });
 
-    // pagination
-    $('.pagination li').click(function () {
-        let currentPage;
-
-        $('.pagination li').each(function () {
-            if ($(this).hasClass('active')) {
-
-                currentPage = $(this).find('a').data('page');
-                $(this).removeClass('active');
-            }
-        })
-        let pageNo = currentPage;
-        console.log(currentPage)
-
-        debugger
-        if ($(this).find('a').hasClass(' first-page')) {
-            pageNo = 1;
-            currentPage = pageNo;
-            if ($(this).find('a').data('page') === pageNo) {
-                $(this).addClass('active')
-            }
-        }
-        else if ($(this).find('a').hasClass('last-page')) {
-            pageNo = 5;
-            currentPage = pageNo;
-
-        }
-        else if ($(this).find('a').hasClass('previous-page')) {
-            pageNo = currentPage - 1;
-            if ($(this).find('a').data('page') === pageNo) {
-                $(this).addClass('active')
-            }
-            currentPage = pageNo;
-
-        } else if ($(this).find('a').hasClass('next-page')) {
-            pageNo = currentPage + 1;
-            currentPage = pageNo;
-
-        } else {
-            $(this).addClass('active')
-
-            pageNo = $(this).find('a').data('page');
-            currentPage = pageNo;
-
-        }
-        console.log(pageNo)
-    })
 
 
-    function getMission() {
-        console.log(selectedSortOption)
-        let searchText = $(".search-field input").val().toLowerCase();
+    
+
+
+    function getMission(pageNo) {
+        let searchText = $(".search-field input").val();
 
         let selectedCities = $('input[type="checkbox"][name="cityCheckboxes"]:checked').map(function () {
             return $(this).val();
@@ -770,6 +721,7 @@ $(document).ready(function () {
         let selectedSkills = $('input[type="checkbox"][name="skillCheckboxes"]:checked').map(function () {
             return $(this).val();
         }).get();
+        let pageSize = 6;
 
         let inputData = {
             selectedCountry: selectedCountry !== "" ? selectedCountry : null,
@@ -779,8 +731,8 @@ $(document).ready(function () {
             searchText: searchText !== "" ? searchText : null,
             selectedSortOption: selectedSortOption !== undefined ? selectedSortOption : null,
             userId: userId,
-            pageSize: 6,
-            pageNo: 1
+            pageSize: pageSize,
+            pageNo: pageNo !== undefined ? pageNo : 1
         }
 
         $.ajax({
@@ -793,6 +745,116 @@ $(document).ready(function () {
                 var cardsContainer = $('.card-container-list-grid');
                 cardsContainer.empty();
                 cardsContainer.append(response)
+
+                var totalRecords = document.getElementById('total-records').innerText;
+                let totalPages = Math.ceil(totalRecords / pageSize);
+                console.log(totalRecords)
+                console.log(totalPages)
+
+                if (totalPages <= 1) {
+                    $('#pagination-container').parent().parent().hide();
+                }
+                let paginationHTML = `
+  <li class="page-item">
+    <a class="pagination-link first-page" aria-label="Previous">
+      <span aria-hidden="true"><img src="/images/previous.png" /></span>
+    </a>
+  </li>
+  <li class="page-item">
+    <a class="pagination-link previous-page" aria-label="Previous">
+      <span aria-hidden="true"><img src="/images/left.png" /></span>
+    </a>
+  </li>`;
+
+                for (let i = 1; i <= totalPages; i++) {
+                    let activeClass = '';
+                    if (i === (pageNo === undefined ? 1 : pageNo)) {
+                        activeClass = ' active';
+                    }
+                    paginationHTML += `
+    <li class="page-item ${activeClass}">
+        <a class="pagination-link" data-page="${i}">${i}</a>
+    </li>`;
+                }
+
+                paginationHTML += `
+  <li class="page-item">
+    <a class="pagination-link next-page" aria-label="Next">
+      <span aria-hidden="true"><img src="/images/right-arrow1.png" /></span>
+    </a>
+  </li>
+  <li class="page-item">
+    <a class="pagination-link last-page" aria-label="Next">
+      <span aria-hidden="true"><img src="/images/next.png" /></span>
+    </a>
+  </li>`;
+
+                $('#pagination-container').empty()
+                $('#pagination-container').append(paginationHTML)
+
+
+                // pagination
+                let currentPage;
+
+                $(document).on('click', '.pagination li', (function () {
+                    $('.pagination li').each(function () {
+                        if ($(this).hasClass('active')) {
+
+                            currentPage = $(this).find('a').data('page');
+                            $(this).removeClass('active');
+                        }
+                    })
+                    pageNo = currentPage;
+                    if ($(this).find('a').hasClass('first-page')) {
+                        pageNo = 1;
+                        currentPage = pageNo;
+                        $('.pagination li').find('a').each(function () {
+                            if ($(this).data('page') == 1) {
+                                $(this).parent().addClass('active')
+                            }
+                        })
+                    }
+                    else if ($(this).find('a').hasClass('last-page')) {
+                        pageNo = totalPages;
+                        currentPage = pageNo;
+                        $('.pagination li').find('a').each(function () {
+                            if ($(this).data('page') == totalPages) {
+                                $(this).parent().addClass('active')
+                            }
+                        })
+                    }
+                    else if ($(this).find('a').hasClass('previous-page')) {
+                        if (currentPage > totalPages) {
+                        pageNo = currentPage - 1;
+                        }
+                        $('.pagination li').find('a').each(function () {
+                            if ($(this).data('page') == pageNo) {
+                                $(this).parent().addClass('active')
+                            }
+                        })
+                        currentPage = pageNo;
+
+                    } else if ($(this).find('a').hasClass('next-page')) {
+                        if (currentPage < totalPages) {
+                            pageNo = currentPage + 1;
+                        }
+
+                        $('.pagination li').find('a').each(function () {
+                            if ($(this).data('page') == pageNo) {
+                                $(this).parent().addClass('active')
+                            }
+                        })
+                        currentPage = pageNo;
+
+                    } else {
+                        $(this).addClass('active')
+
+                        pageNo = $(this).find('a').data('page');
+                        currentPage = pageNo;
+
+                    }
+                    getMission(pageNo);
+                }));
             },
             error: function (error) {
                 console.log(error);

@@ -19,6 +19,7 @@ namespace CI_Platform.Entities.ViewModels
         public List<MissionSkill> MissionSkills { get; set; }
 
         public List<Mission> MissionList { get; set; }
+        public long totalRecords { get; set; }
     }
 }
 

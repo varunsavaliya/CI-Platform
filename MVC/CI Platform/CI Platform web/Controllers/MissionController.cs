@@ -159,81 +159,91 @@ namespace CI_Platform_web.Controllers
             int pageSize = inputData.pageSize;
             int pageNo = inputData.pageNo;
 
-            var response = _context.Missions.FromSql($"exec spGetMission @searchText={searchText}, @countryId={selectedCountry}, @cityId={selectedCities}, @themeId={selectedThemes}, @skillId={selectedSkills}, @sortCase = {selectedSortOption}, @userId = {userId}");
+            //SqlParameter totalRecordsParam = new SqlParameter("@TotalRecords", SqlDbType.Int);
+            //totalRecordsParam.Direction = ParameterDirection.Output;
 
-            var items = await response.ToListAsync();
+            //var response = _context.Missions.FromSql($"exec spGetMission @searchText={searchText}, @countryId={selectedCountry}, @cityId={selectedCities}, @themeId={selectedThemes}, @skillId={selectedSkills}, @sortCase = {selectedSortOption}, @userId = {userId}, @pageNo={pageNo}, @TotalRecords=@TotalRecords output", totalRecordsParam);
 
-            var MissionIds = items.Select(m => m.MissionId).ToList();
+            //int totalRecords = (int)totalRecordsParam.Value;
+
+            //var items = await response.ToListAsync();
+
+            //var MissionIds = items.Select(m => m.MissionId).ToList();
 
 
-            vm.MissionList = _context.Missions.Where(m => MissionIds.Contains(m.MissionId))
-                .Include(m => m.City)
-                .Include(m => m.Country)
-                .Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill)
-                .Include(m => m.Theme)
-                .Include(m => m.MissionRatings)
-                .Include(m => m.GoalMissions)
-                .Include(m => m.MissionApplications)
-                .Include(m => m.MissionMedia).ToList().OrderBy(ml => MissionIds.IndexOf(ml.MissionId)).ToList();
 
 
             //return PartialView("_GridView", vm);
 
-            //string connectionString = "Data Source = PCT35\\SQL2017; Initial Catalog = CI_Platform; User ID = sa; Password = Tatva@123; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False"; // Replace with your actual connection string
+            string connectionString = "Data Source = PCT35\\SQL2017; Initial Catalog = CI_Platform; User ID = sa; Password = Tatva@123; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False"; // Replace with your actual connection string
 
-            //using (SqlConnection connection = new SqlConnection(connectionString))
-            //{
-            //    connection.Open();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
-            //    // Call the stored procedure
-            //    SqlCommand command = new SqlCommand("spGetMission", connection);
-            //    command.CommandType = CommandType.StoredProcedure;
-            //    command.Parameters.Add("@countryId", SqlDbType.VarChar).Value = selectedCountry != null ? selectedCountry : 1;
-            //    command.Parameters.Add("@cityId", SqlDbType.VarChar).Value = selectedCities != null ? string.Join(",", selectedCities) : null;
-            //    command.Parameters.Add("@themeId", SqlDbType.VarChar).Value = selectedThemes != null ? string.Join(",", selectedThemes) : null;
-            //    command.Parameters.Add("@skillId", SqlDbType.VarChar).Value = selectedSkills != null ? string.Join(",", selectedSkills) : null;
-            //    command.Parameters.Add("@searchText", SqlDbType.VarChar).Value = searchText;
-            //    command.Parameters.Add("@sortCase", SqlDbType.VarChar).Value = selectedSortOption;
-            //    command.Parameters.Add("@userId", SqlDbType.VarChar).Value = userId;
-            //    command.Parameters.Add("@pageSize", SqlDbType.Int).Value = pageSize;
-            //    command.Parameters.Add("@pageNo", SqlDbType.Int).Value = pageNo;
-            //    SqlDataReader reader = command.ExecuteReader();
+                // Call the stored procedure
+                SqlCommand command = new SqlCommand("spGetMission", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add("@countryId", SqlDbType.VarChar).Value = selectedCountry != null ? selectedCountry : null;
+                command.Parameters.Add("@cityId", SqlDbType.VarChar).Value = selectedCities != null ? string.Join(",", selectedCities) : null;
+                command.Parameters.Add("@themeId", SqlDbType.VarChar).Value = selectedThemes != null ? string.Join(",", selectedThemes) : null;
+                command.Parameters.Add("@skillId", SqlDbType.VarChar).Value = selectedSkills != null ? string.Join(",", selectedSkills) : null;
+                command.Parameters.Add("@searchText", SqlDbType.VarChar).Value = searchText;
+                command.Parameters.Add("@sortCase", SqlDbType.VarChar).Value = selectedSortOption;
+                command.Parameters.Add("@userId", SqlDbType.VarChar).Value = userId;
+                command.Parameters.Add("@pageSize", SqlDbType.Int).Value = pageSize;
+                command.Parameters.Add("@pageNo", SqlDbType.Int).Value = pageNo;
+                //SqlParameter totalRecordsParameter = new SqlParameter("@TotalRecords", SqlDbType.Int);
+                //totalRecordsParameter.Direction = ParameterDirection.Output;
+                //command.Parameters.Add(totalRecordsParameter);
+                SqlDataReader reader = command.ExecuteReader();
 
-            //    // Read the results
-            //    List<long> missionIds = new List<long>();
-            //    while (reader.Read())
-            //    {
-            //        //Mission mission = new Mission();
-            //        //missions.MissionId = reader.GetInt64(reader.GetOrdinal("mission_id"));
-            //        long missionId = reader.GetInt64("mission_id");
-            //        //mission.Title = reader.GetString(1);
-            //        //mission.Country = reader.GetString(2);
-            //        //mission.City = reader.GetString(3);
-            //        //mission.Theme = reader.GetString(4);
-            //        //mission.Skills = reader.GetString(5);
-            //        //mission.Duration = reader.GetString(6);
-            //        //mission.StartDate = reader.GetDateTime(7);
-            //        //mission.EndDate = reader.GetDateTime(8);
-            //        //mission.Description = reader.GetString(9);
-            //        missionIds.Add(missionId);
-            //    }
-            //    foreach (long missionId in missionIds)
-            //    {
-            //        Mission mission = _context.Missions.Include(m => m.City).Include(m => m.Country).Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill).Include(m => m.GoalMissions).Include(m => m.MissionRatings).FirstOrDefault(m => m.MissionId == missionId);
+                // Read the results
+                List<long> missionIds = new List<long>();
+                while (reader.Read())
+                {
+                    long totalRecords = reader.GetInt32("TotalRecords");
+                ViewBag.totalRecords = totalRecords;
+                }
+                reader.NextResult();
 
-            //        if (mission != null)
-            //        {
-            //            missions.Add(mission);
-            //        }
-            //    }
-            //    vm.MissionList = missions;
-            //    vm.Country = await _filters.GetCountriesAsync();
-            //    vm.Theme = await _filters.GetThemesAsync();
-            //    vm.Skill = await _filters.GetSkillsAsyc();
+                while (reader.Read())
+                {
+                    //Mission mission = new Mission();
+                    //missions.MissionId = reader.GetInt64(reader.GetOrdinal("mission_id"));
+                    long missionId = reader.GetInt64("mission_id");
+                    //mission.Title = reader.GetString(1);
+                    //mission.Country = reader.GetString(2);
+                    //mission.City = reader.GetString(3);
+                    //mission.Theme = reader.GetString(4);
+                    //mission.Skills = reader.GetString(5);
+                    //mission.Duration = reader.GetString(6);
+                    //mission.StartDate = reader.GetDateTime(7);
+                    //mission.EndDate = reader.GetDateTime(8);
+                    //mission.Description = reader.GetString(9);
+                    missionIds.Add(missionId);
+                }
+               
 
-            //    connection.Close();
-            //}
-            //vm.MissionList = missions;
+                foreach (long missionId in missionIds)
+                {
+                    Mission mission = _context.Missions.Include(m => m.City).Include(m => m.Country).Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill).Include(m => m.GoalMissions).Include(m => m.FavoriteMissions).Include(m => m.MissionRatings).FirstOrDefault(m => m.MissionId == missionId);
+
+                    if (mission != null)
+                    {
+                        missions.Add(mission);
+                    }
+                }
+
+                //missions = missions.OrderBy(ml => MissionIds.IndexOf(ml.MissionId)).ToList();
+                vm.MissionList = missions;
+                vm.Country = await _filters.GetCountriesAsync();
+                vm.Theme = await _filters.GetThemesAsync();
+                vm.Skill = await _filters.GetSkillsAsyc();
+
+                connection.Close();
+            }
+            vm.MissionList = missions;
             vm.Country = await _filters.GetCountriesAsync();
             vm.Theme = await _filters.GetThemesAsync();
             vm.Skill = await _filters.GetSkillsAsyc();
@@ -246,7 +256,7 @@ namespace CI_Platform_web.Controllers
             //}
 
             //return Json(missions);
-            return PartialView("_GridViewPartial", vm);
+            return PartialView("_GridListPartial", vm);
         }
 
 
