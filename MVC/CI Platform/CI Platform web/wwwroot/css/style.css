@@ -120,10 +120,14 @@ body {
     margin-top: 22px !important;
 }
 
-    .loginbtn:hover {
-        color: #ffffff !important;
-        background-color: #F88634;
-    }
+.validation-summary-errors ul{
+    list-style:none;
+}
+
+.loginbtn:hover {
+    color: #ffffff !important;
+    background-color: #F88634;
+}
 
 .formcontent p a,
 .formdiv .privacy a {
@@ -923,13 +927,20 @@ input:focus-visible {
     border-radius: 50%;
 }
 
-/*Grid view styling*/
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+.totalMissionsLine {
+    font-size:1.2rem;
+    font-weight:300;
 }
+    .totalMissionsLine span{
+        font-size:1.5rem;
+    font-weight:400;
+    }
+    /*Grid view styling*/
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
 
 .card {
     box-shadow: 0 0px 3px 0 rgb(0 0 0 / 20%);
@@ -1382,7 +1393,21 @@ color:#414141;
     color:#fff;
 }
 
-.vmbtn .text-light{
+.published-btn {
+    background-color: #fff;
+    color: #399244;
+    border: 1px solid #399244;
+    border-radius: 23px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: max-content;
+}
+
+
+.vmbtn .text-light {
     color: #414141 !important;
 }
     .vmbtn:hover .text-light {
@@ -1486,21 +1511,30 @@ color:#414141;
     color:#414141;
 }
 
-.show-comments{
-    height:400px;
-    /*overflow-y:scroll;*/
-    border:7px solid #b1b1b1;
+.show-comments {
+    height: 400px;
+    overflow-y: scroll;
+    border: 7px solid #f7f7f7;
+    overflow-x: hidden;
 }
 
-.comment {
-    border-bottom: 4px solid #b1b1b1;
-}
-
-    .comment div div img {
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
+    .show-comments .comment {
+        border-bottom: 4px solid #f7f7f7;
     }
+
+        .show-comments .comment .comment-user{
+            font-size:1rem;
+            margin-bottom:0;
+        }
+        .show-comments .comment .comment-time{
+            font-size:0.8em;
+        }
+
+        .comment div div img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+        }
     .comment div div p{
         font-size:14px;
         color:#414141;

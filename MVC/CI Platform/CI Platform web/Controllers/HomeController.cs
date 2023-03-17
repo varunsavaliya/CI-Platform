@@ -42,22 +42,31 @@ namespace CI_Platform_web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_login.ComparePassword(obj))
+                if (_login.IsRegistered(obj))
                 {
-                    // creating username for session to show on profile field
-                    var sessionUser = _context.Users.Where(a => a.Email == obj.Email).FirstOrDefault();
-                    HttpContext.Session.SetString("UserName", sessionUser.FirstName+" "+sessionUser.LastName);
-                    var userId = sessionUser.UserId;
-                    var session = HttpContext.Session;
 
-                    // Store a BigInt value in the session
-                    //session.SetLong("UserId", userId);
+                    if (_login.ComparePassword(obj))
+                    {
+                        // creating username for session to show on profile field
+                        var sessionUser = _context.Users.Where(a => a.Email == obj.Email).FirstOrDefault();
+                        HttpContext.Session.SetString("UserName", sessionUser.FirstName + " " + sessionUser.LastName);
+                        var userId = sessionUser.UserId;
+                        var session = HttpContext.Session;
 
-                    // Retrieve the BigInt value from the session
-                    //var myBigIntValue = session.Get<BigInteger>("MyBigIntValue");
-                    HttpContext.Session.SetString("UserId", (sessionUser.UserId).ToString());
-                    HttpContext.Session.SetString("IsLoggedIn", "True");
-                    return RedirectToAction("LandingPage", "Mission");
+                        // Retrieve the BigInt value from the session
+                        HttpContext.Session.SetString("UserId", (sessionUser.UserId).ToString());
+                        HttpContext.Session.SetString("IsLoggedIn", "True");
+                        return RedirectToAction("LandingPage", "Mission");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Password is incorrect");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Email is incorrect");
+
                 }
             }
             return View();
@@ -68,7 +77,7 @@ namespace CI_Platform_web.Controllers
         {
             return View();
         }
-        
+
         public IActionResult Forgot_Password()
         {
             return View();
@@ -83,7 +92,6 @@ namespace CI_Platform_web.Controllers
 
             if (ModelState.IsValid)
             {
-                //var data = _context.Users.Where(e => e.Email == model.email).FirstOrDefault();
                 var data = _forgotPassword.BindData(model);
 
                 if (_forgotPassword.IsRegistered(data))
@@ -162,9 +170,9 @@ namespace CI_Platform_web.Controllers
             {
                 if (_register.IsRegistered(obj))
                 {
-                _register.Add(obj);
-                _register.Save();
-                return RedirectToAction("Index", "Home");
+                    _register.Add(obj);
+                    _register.Save();
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

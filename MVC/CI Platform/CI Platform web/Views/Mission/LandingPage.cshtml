@@ -4,13 +4,14 @@
 @{
     Layout = "_HeaderLayout";
     ViewData["Title"] = "LandingPage";
+    //int totalCards = ViewBag.totalRecords;
 }
 
 <partial name="_SearchBarPartial" id="searchbar-partialview" />
 
 <div class="container">
     <div class="d-flex py-4">
-        <h4>Explore <span>72 missions</span></h4>
+        <h4 class="totalMissionsLine">Explore <span class="totalMissions">@*@totalCards missions*@</span></h4>
 
         <div class="d-flex align-items-center ms-auto sort-div-right gap-4">
             <div class="filter-box sort-box dropdown me-3">
