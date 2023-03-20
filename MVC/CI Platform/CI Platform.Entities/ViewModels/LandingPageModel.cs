@@ -20,6 +20,7 @@ namespace CI_Platform.Entities.ViewModels
 
         public List<Mission> MissionList { get; set; }
         public long totalRecords { get; set; }
+        public List<User> Users { get; set; }
     }
 }
 

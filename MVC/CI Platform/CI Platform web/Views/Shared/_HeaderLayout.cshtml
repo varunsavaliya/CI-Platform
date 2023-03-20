@@ -1,8 +1,8 @@
 ﻿@{
     var UserName = ViewBag.UserName;
     var IsLoggedIn = ViewBag.IsLoggedIn;
-     var UserId = ViewBag.UserId;
-    UserId = long.Parse(UserId);
+     var UserId = Convert.ToInt64(ViewBag.UserId);
+    //UserId = long.Parse(UserId);
 }
 <script>
     var userId = @Html.Raw(Json.Serialize(UserId));

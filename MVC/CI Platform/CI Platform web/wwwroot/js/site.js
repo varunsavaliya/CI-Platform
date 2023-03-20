@@ -317,6 +317,7 @@ $(document).ready(function () {
 
                     $('#pagination-container').empty()
                     $('#pagination-container').append(paginationHTML)
+                    $('#pagination-container').parent().parent().show();
                 }
 
                 // pagination
@@ -350,7 +351,8 @@ $(document).ready(function () {
                         })
                     }
                     else if ($(this).find('a').hasClass('previous-page')) {
-                        if (currentPage > totalPages) {
+                     
+                        if (currentPage > 1) {
                             pageNo = currentPage - 1;
                         }
                         $('.pagination li').find('a').each(function () {
@@ -409,4 +411,31 @@ $(document).ready(function () {
             }
         })
     })
+
+
+    // for volunteering mission page
+    $('#all-users span').on('click', '.invite-button', function (e) {
+        e.preventDefault();
+        let ToUserID = $(this).parent().parent().find('#user-name').data('userid');
+        console.log(ToUserID)
+
+        Invite(ToUserID)
+    })
+    // invite co-worker
+    function Invite(ToUserID) {
+
+        let MissionId = $('.invite-button').data('mission-id');
+        //let InviteUserId = $('#user-name').data('userID');
+        console.log(MissionId)
+        $.ajax({
+            url: '/Mission/MissionInvite',
+            type: 'POST',
+            data: { ToUserId: ToUserID, MissionId: MissionId, FromUserId: userId },
+            success: function (response) {
+                console.log($('.Invited-' + ToUserID))
+                $('.Invited-'+ToUserID).html(' <button class="btn btn-success" data-mission-Id="@md.MissionId">Invited</button>');
+                console.log("done")
+            }
+        })
+    }
 })

@@ -14,21 +14,15 @@ namespace CI_Platform_web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IRegister _register;
-        private readonly ILogin _login;
-        private readonly IForgotPassword _forgotPassword;
-        private readonly IResetPassword _passwordReset;
+        private readonly IAuthentication _Authentication;
         private readonly ApplicationDbContext _context;
 
 
-        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger, IRegister register, ILogin login, IForgotPassword forgotPassword, IResetPassword passwordReset)
+        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger, IAuthentication authentication)
         {
             _context = context;
             _logger = logger;
-            _register = register;
-            _login = login;
-            _forgotPassword = forgotPassword;
-            _passwordReset = passwordReset;
+            _Authentication = authentication;
         }
 
         public IActionResult Index()
@@ -42,10 +36,10 @@ namespace CI_Platform_web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_login.IsRegistered(obj))
+                if (_Authentication.IsRegistered(obj))
                 {
 
-                    if (_login.ComparePassword(obj))
+                    if (_Authentication.ComparePassword(obj))
                     {
                         // creating username for session to show on profile field
                         var sessionUser = _context.Users.Where(a => a.Email == obj.Email).FirstOrDefault();
@@ -92,15 +86,15 @@ namespace CI_Platform_web.Controllers
 
             if (ModelState.IsValid)
             {
-                var data = _forgotPassword.BindData(model);
+                var data = _Authentication.BindData(model);
 
-                if (_forgotPassword.IsRegistered(data))
+                if (_Authentication.IsRegistered(data))
                 {
 
-                    var token = _forgotPassword.GenerateToken();
+                    var token = _Authentication.GenerateToken();
                     var PasswordResetLink = Url.Action("Reset_Password", "Home", new { Email = model.email, Token = token }, Request.Scheme);
 
-                    _forgotPassword.SendMail(token, PasswordResetLink, model);
+                    _Authentication.SendMail(token, PasswordResetLink, model);
 
                     ModelState.Clear();
                     model.emailSent = true;
@@ -141,7 +135,7 @@ namespace CI_Platform_web.Controllers
 
             if (ResetPasswordData)
             {
-                _passwordReset.ResetPass(model);
+                _Authentication.ResetPass(model);
                 model.PasswordChanged = true;
                 //return RedirectToAction("Index");
             }
@@ -151,11 +145,6 @@ namespace CI_Platform_web.Controllers
             }
             return View(model);
         }
-
-        //public IActionResult Reset_Password()
-        //{
-        //    return View();
-        //} 
 
         public IActionResult Registration()
         {
@@ -168,10 +157,10 @@ namespace CI_Platform_web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_register.IsRegistered(obj))
+                if (_Authentication.IsRegistered(obj))
                 {
-                    _register.Add(obj);
-                    _register.Save();
+                    _Authentication.Add(obj);
+                    _Authentication.Save();
                     return RedirectToAction("Index", "Home");
                 }
                 else

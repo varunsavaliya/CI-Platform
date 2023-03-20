@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System.Net;
+using System.Net.Mail;
 using System.Reflection;
 using System.Security.Claims;
 
@@ -80,6 +82,7 @@ namespace CI_Platform_web.Controllers
             //var items = await response.ToListAsync();
 
             //var MissionIds = items.Select(m => m.MissionId).ToList();
+            var users = _context.Users./*Where(u => u.UserId != (long)userId).*/ToList();
 
             IConfigurationRoot _configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
 
@@ -94,7 +97,7 @@ namespace CI_Platform_web.Controllers
                 command.Parameters.Add("@countryId", SqlDbType.VarChar).Value = selectedCountry != null ? selectedCountry : null;
                 command.Parameters.Add("@cityId", SqlDbType.VarChar).Value = selectedCities != null ? string.Join(",", selectedCities) : null;
                 command.Parameters.Add("@themeId", SqlDbType.VarChar).Value = selectedThemes != null ? string.Join(",", selectedThemes) : null;
-                command.Parameters.Add("@skillId", SqlDbType.VarChar).Value = selectedSkills != null ? string.Join(",", selectedSkills) : null;
+                command.Parameters.Add("@skillId", SqlDbType.NVarChar).Value = selectedSkills != null ? string.Join(",", selectedSkills) : null;
                 command.Parameters.Add("@searchText", SqlDbType.VarChar).Value = searchText;
                 command.Parameters.Add("@sortCase", SqlDbType.VarChar).Value = selectedSortOption;
                 command.Parameters.Add("@userId", SqlDbType.VarChar).Value = userId;
@@ -107,7 +110,7 @@ namespace CI_Platform_web.Controllers
                 while (reader.Read())
                 {
                     long totalRecords = reader.GetInt32("TotalRecords");
-                ViewBag.totalRecords = totalRecords;
+                    ViewBag.totalRecords = totalRecords;
                 }
                 reader.NextResult();
 
@@ -133,6 +136,7 @@ namespace CI_Platform_web.Controllers
                 connection.Close();
             }
             vm.MissionList = missions;
+            vm.Users = users;
             return PartialView("_GridListPartial", vm);
         }
 
@@ -175,7 +179,6 @@ namespace CI_Platform_web.Controllers
             _context.SaveChanges();
             return View();
         }
-        
 
         public IActionResult MissionVolunteering(int id)
         {
@@ -189,17 +192,136 @@ namespace CI_Platform_web.Controllers
             {
                 ViewBag.UserName = "Login";
             }
-            Mission missionDetail = _context.Missions.Include(m => m.MissionApplications).ThenInclude(ma => ma.User).Include(m => m.MissionRatings).Include(m => m.City).Include(m => m.Theme).Include(m => m.FavoriteMissions).Include(m => m.GoalMissions).Include(m=>m.Comments).ThenInclude(c=>c.User).Include(m=>m.MissionSkills).ThenInclude(ms=>ms.Skill).FirstOrDefault(m => m.MissionId == id);
+
+            // Retrieve the mission detail for the given ID
+            Mission missionDetail = _context.Missions.Include(m => m.MissionApplications)
+                                                     .ThenInclude(ma => ma.User)
+                                                     .Include(m => m.MissionRatings)
+                                                     .Include(m => m.City)
+                                                     .Include(m => m.Theme)
+                                                     .Include(m => m.FavoriteMissions)
+                                                     .Include(m => m.GoalMissions)
+                                                     .Include(m => m.Comments).ThenInclude(c => c.User)
+                                                     .Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill)
+                                                     .FirstOrDefault(m => m.MissionId == id);
+
             if (missionDetail == null)
             {
                 return NotFound();
             }
-            var missionAllDetail = new MissionVolunteeringModel
+
+            // Retrieve the related missions
+            var relatedMissions = _context.Missions.Include(m => m.City)
+                                                    .Include(m => m.Theme)
+                                                    .Include(m => m.Country)
+                                                    .Include(m => m.MissionApplications)
+                                                    .Include(m => m.MissionRatings)
+                                                     .Include(m => m.FavoriteMissions)
+                                                     .Include(m => m.GoalMissions)
+                                                     .Include(m => m.Comments).ThenInclude(c => c.User)
+                                                     .Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill)
+                                                    .Where(m => m.MissionId != id && m.CityId == missionDetail.CityId)
+                                                    .Take(3)
+                                                    .ToList();
+
+            // If there are not enough related missions based on city, retrieve based on theme
+            if (relatedMissions.Count() < 3)
             {
-                mission = missionDetail
+                var additionalMissions = _context.Missions.Include(m => m.City)
+                                                          .Include(m => m.Theme)
+                                                          .Where(m => m.MissionId != id && m.ThemeId == missionDetail.ThemeId && !relatedMissions.Contains(m))
+                                                          .Include(m => m.Country)
+                                                    .Include(m => m.MissionApplications)
+                                                    .Include(m => m.MissionRatings)
+                                                     .Include(m => m.FavoriteMissions)
+                                                     .Include(m => m.GoalMissions)
+                                                     .Include(m => m.Comments).ThenInclude(c => c.User)
+                                                     .Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill)
+                                                          .Take(3 - relatedMissions.Count())
+                                                          .ToList();
+                relatedMissions.AddRange(additionalMissions);
+            }
+
+            // If there are still not enough related missions, retrieve based on country
+            if (relatedMissions.Count() < 3)
+            {
+                var additionalMissions = _context.Missions.Include(m => m.City)
+                                                          .Include(m => m.Theme)
+                                                          .Where(m => m.MissionId != id && m.CountryId == missionDetail.CountryId && !relatedMissions.Contains(m))
+                                                          .Include(m => m.Country)
+                                                    .Include(m => m.MissionApplications)
+                                                    .Include(m => m.MissionRatings)
+                                                     .Include(m => m.FavoriteMissions)
+                                                     .Include(m => m.GoalMissions)
+                                                     .Include(m => m.Comments).ThenInclude(c => c.User)
+                                                     .Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill)
+                                                          .Take(3 - relatedMissions.Count())
+                                                          .ToList();
+                relatedMissions.AddRange(additionalMissions);
+            }
+
+            // Create the ViewModel and pass it to the view
+            var users = _context.Users.ToList();
+            var missionVolunteeringModel = new MissionVolunteeringModel
+            {
+                mission = missionDetail,
+                RelatedMissions = relatedMissions,
+                UserList = users
             };
-            return View(missionAllDetail);
+
+
+
+            return View(missionVolunteeringModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> MissionInvite(long ToUserId, long MissionId, long FromUserId, MissionVolunteeringModel viewmodel)
+        {
+            var missionInvite = new MissionInvite()
+            {
+                FromUserId = FromUserId,
+                ToUserId = ToUserId,
+                MissionId = MissionId,
+            };
+
+            _context.MissionInvites.Add(missionInvite);
+            await _context.SaveChangesAsync();
+
+            var MissionLink = Url.Action("VolunteerMission", "Home", new { id = MissionId }, Request.Scheme);
+            viewmodel.Link = MissionLink;
+
+            //await _volunteerMissionInterface.SendInvitationToCoWorker(ToUserId, FromUserId, viewmodel);
+
+            var Email = await _context.Users.Where(u => u.UserId == ToUserId).FirstOrDefaultAsync();
+
+            var Sender = await _context.Users.Where(su => su.UserId == FromUserId).FirstOrDefaultAsync();
+
+            var fromEmail = new MailAddress("akshayghadiya28@gmail.com");
+            var toEmail = new MailAddress(Email.Email);
+            var fromEmailPassword = "dmsmefwcumhbtthp";
+            string subject = "Mission Invitation";
+            string body = "You Have Reciever Mission Invitation From " + Sender.FirstName + " " + Sender.LastName + " For:\n\n" + viewmodel.Link;
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+
+            var message = new MailMessage(fromEmail, toEmail);
+            message.Subject = subject;
+            message.Body = body;
+            message.IsBodyHtml = true;
+
+            await smtp.SendMailAsync(message);
+
+            return Json(new { success = true });
+        }
+
 
         [HttpPost]
         public IActionResult UpdateRating(int missionId, int userId, int rating)
@@ -224,7 +346,7 @@ namespace CI_Platform_web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Apply(long missionId,long userId)
+        public IActionResult Apply(long missionId, long userId)
         {
             MissionApplication application = new MissionApplication();
             application.MissionId = missionId;

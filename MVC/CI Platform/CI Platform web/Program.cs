@@ -11,10 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("DefaultConnection")
     )); ;
-builder.Services.AddScoped<IRegister, Register>();
-builder.Services.AddScoped<ILogin, Login>();
-builder.Services.AddScoped<IForgotPassword, ForgotPassword>();
-builder.Services.AddScoped<IResetPassword, ResetPassword>();
+builder.Services.AddScoped<IAuthentication, Authentication>();
 builder.Services.AddScoped<IFilters, Filters>();
 
 // for use of session

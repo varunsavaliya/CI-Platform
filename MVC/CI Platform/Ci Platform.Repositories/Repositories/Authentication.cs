@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace Ci_Platform.Repositories.Repositories
 {
-    public class ForgotPassword : Repository<User>, IForgotPassword
+    public class Authentication : Repository<User>, IAuthentication
     {
         public ApplicationDbContext _context;
-        public ForgotPassword(ApplicationDbContext context) : base(context)
+        public Authentication(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
@@ -58,9 +58,9 @@ namespace Ci_Platform.Repositories.Repositories
             _context.SaveChanges();
 
 
-            var fromEmail = new MailAddress("d41677656@gmail.com");
+            var fromEmail = new MailAddress("akshayghadiya28@gmail.com");
             var toEmail = new MailAddress(model.email);
-            var fromEmailPassword = "wrazrtzeetuuhzrr";
+            var fromEmailPassword = "dmsmefwcumhbtthp";
             string subject = "Reset Password";
             string body = PasswordResetLink;
 
@@ -82,6 +82,17 @@ namespace Ci_Platform.Repositories.Repositories
             smtp.Send(message);
         }
 
+        public void ResetPass(PasswordResetModel model)
+        {
+            var x = _context.Users.FirstOrDefault(e => e.Email == model.Email);
 
+
+            x.Password = model.password;
+
+
+            _context.Users.Update(x);
+            _context.SaveChanges();
+
+        }
     }
 }

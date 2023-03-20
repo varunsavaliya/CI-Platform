@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Ci_Platform.Repositories.Interfaces
 {
-    public interface IForgotPassword : IRepository<User>
+    public interface IAuthentication : IRepository<User>
     {
         public PasswordReset BindData(ForgotPasswordModel model);
         public string GenerateToken();
         public void SendMail(string token, string PasswordResetLink, ForgotPasswordModel model);
-
+        public void ResetPass(PasswordResetModel model);
     }
 }
