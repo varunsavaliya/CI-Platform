@@ -672,9 +672,12 @@ nav .right {
         /*padding: 6px 0;*/
         /* line-height: 7px; */
     /*}*/
-.search-bar .dropdown-menu li {
-    padding: 4px 0;
-}
+    .search-bar .dropdown-menu li, .search-bar .dropdown-menu li input {
+        padding: 4px 0;
+        cursor: pointer;
+    }
+
+
 
     .dropdown-item {
         white-space: normal;

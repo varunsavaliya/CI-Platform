@@ -50,11 +50,13 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public async Task<IActionResult> LandingPage(InputData inputData)
         {
+            var UserId = "";
             if (HttpContext.Session.GetString("UserName") != null)
             {
                 ViewBag.UserName = HttpContext.Session.GetString("UserName");
                 ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
-                ViewBag.UserId = HttpContext.Session.GetString("UserId");
+                UserId = HttpContext.Session.GetString("UserId");
+                ViewBag.UserId = UserId;
             }
             else
             {
@@ -82,7 +84,7 @@ namespace CI_Platform_web.Controllers
             //var items = await response.ToListAsync();
 
             //var MissionIds = items.Select(m => m.MissionId).ToList();
-            var users = _context.Users./*Where(u => u.UserId != (long)userId).*/ToList();
+            var users = _context.Users.Where(u => u.UserId != Convert.ToInt64(UserId)).ToList();
 
             IConfigurationRoot _configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
 
@@ -182,11 +184,13 @@ namespace CI_Platform_web.Controllers
 
         public IActionResult MissionVolunteering(int id)
         {
+            var UserId = "";
             if (HttpContext.Session.GetString("UserName") != null)
             {
                 ViewBag.UserName = HttpContext.Session.GetString("UserName");
                 ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
-                ViewBag.UserId = HttpContext.Session.GetString("UserId");
+                UserId = HttpContext.Session.GetString("UserId");
+                ViewBag.UserId = UserId;
             }
             else
             {
@@ -261,7 +265,7 @@ namespace CI_Platform_web.Controllers
             }
 
             // Create the ViewModel and pass it to the view
-            var users = _context.Users.ToList();
+            var users = _context.Users.Where(u => u.UserId != Convert.ToInt64(UserId) || u.MissionApplications.Any(ma => ma.MissionId == id && ma.ApprovalStatus != "PUBLISHED")).ToList();
             var missionVolunteeringModel = new MissionVolunteeringModel
             {
                 mission = missionDetail,
@@ -300,7 +304,7 @@ namespace CI_Platform_web.Controllers
             var toEmail = new MailAddress(Email.Email);
             var fromEmailPassword = "dmsmefwcumhbtthp";
             string subject = "Mission Invitation";
-            string body = "You Have Reciever Mission Invitation From " + Sender.FirstName + " " + Sender.LastName + " For:\n\n" + viewmodel.Link;
+            string body = "You Have Recieved Mission Invitation From " + Sender.FirstName + " " + Sender.LastName + " For:\n\n" + viewmodel.Link;
 
             var smtp = new SmtpClient
             {

@@ -1,18 +1,22 @@
-﻿// search mission functionality
-
-$(document).ready(function () {
-    // pages for pagination
-
+﻿$(document).ready(function () {
+    // declared globally because we have to use it in another function
+    var currentUrl = window.location.href;
     let selectedCountry = null;
     let selectedSortOption = null;
-    getMission()
-    $(".search-field input").keyup(function () {
+    if (currentUrl.includes("LandingPage")) {
         getMission()
+    } else if (currentUrl.includes("StoriesListing")) {
+        getStory()
+    }
+    $(".search-field input").keyup(function () {
+        if (currentUrl.includes("LandingPage")) {
+            getMission()
+        } else if (currentUrl.includes("StoriesListing")) {
+            getStory()
+        }
     });
 
-
     // cities according to country
-
     function getCitiesByCountry(countryId) {
         $.ajax({
             type: "GET",
@@ -24,17 +28,14 @@ $(document).ready(function () {
                 dropdown.empty();
                 var items = "";
                 $(data).each(function (i, item) {
-                    //items += "<option value=" + this.value + ">" + this.text + "</option>"
                     items += `<li class="form-check ps-4"><input type="checkbox" class="form-check-input me-2" name="cityCheckboxes" id=` + item.cityId + ` value=` + item.cityId + ` multiple><label class="form-check-label" for=` + item.cityId + `>` + item.name + `</label></li>`
                 })
                 dropdown.html(items);
-
 
                 var dropdown = $("#cityDropdownOffCanvas");
                 dropdown.empty();
                 var items = "";
                 $(data).each(function (i, item) {
-                    //items += "<option value=" + this.value + ">" + this.text + "</option>"
                     items += `<li class="form-check ps-4"><input type="checkbox" class="form-check-input me-2" name="cityCheckboxes" id=` + item.cityId + ` value=` + item.cityId + ` multiple><label class="form-check-label" for=` + item.cityId + `>` + item.name + `</label></li>`
                 })
                 dropdown.html(items);
@@ -43,7 +44,6 @@ $(document).ready(function () {
     }
 
     // functionality : when user check any filter then it will add as pill after search bar
-
     let cityDropdown = $("#cityDropdown");
     let searchedFilters = $(".searched-filters");
     let allDropdowns = $('.dropdown ul');
@@ -67,7 +67,6 @@ $(document).ready(function () {
                 let closeIcon = $('<span></span>').addClass('close').html('x');
                 pill.append(closeIcon);
 
-
                 // for closing the pill when clicking on close icon
                 closeIcon.click(function () {
                     const pillToRemove = $(this).closest('.pill');
@@ -78,7 +77,11 @@ $(document).ready(function () {
                     if (searchedFilters.children('.pill').length === 1) {
                         searchedFilters.children('.closeAll').remove();
                     }
-                    getMission();
+                    if (currentUrl.includes("LandingPage")) {
+                        getMission()
+                    } else if (currentUrl.includes("StoriesListing")) {
+                        getStory()
+                    }
                 });
 
                 // Add "Close All" button
@@ -87,17 +90,18 @@ $(document).ready(function () {
                     searchedFilters.children('.closeAll').click(function () {
                         allDropdowns.find('input[type="checkbox"]').prop('checked', false);
                         searchedFilters.empty();
-                        getMission();
+                        if (currentUrl.includes("LandingPage")) {
+                            getMission()
+                        } else if (currentUrl.includes("StoriesListing")) {
+                            getStory()
+                        }
                     });
-
                     //add the pill before the close icon
                     searchedFilters.prepend(pill);
-
                 }
                 else {
                     searchedFilters.children('.closeAll').before(pill);
                 }
-
             }
             // if the checkbox is not checked then we have to check for its value if it is exists in the pills section then we have to remove it
             else {
@@ -116,33 +120,40 @@ $(document).ready(function () {
         });
     })
 
-    // declared globally because we have to use it in another function
-
     $("#countryDropdown li").click(function () {
         var countryId = $(this).val();
         getCitiesByCountry(countryId);
 
         selectedCountry = $(this).val();
-        getMission()
+        if (currentUrl.includes("LandingPage")) {
+            getMission()
+        } else if (currentUrl.includes("StoriesListing")) {
+            getStory()
+        }
 
     });
 
     // for all dropdown
     allDropdowns.each(function () {
-        let dropdown = $(this);
-
         $(this).on('change', 'input[type="checkbox"]', function (e) {
-            getMission();
+            if (currentUrl.includes("LandingPage")) {
+                getMission()
+            } else if (currentUrl.includes("StoriesListing")) {
+                getStory()
+            }
         });
     });
 
     $('#sortByDropdown li').on('click', function () {
         selectedSortOption = $(this).find('a').text();
-        getMission()
+        if (currentUrl.includes("LandingPage")) {
+            getMission()
+        } else if (currentUrl.includes("StoriesListing")) {
+            getStory()
+        }
     });
 
     // add to favourite
-
     $(document).on('click', 'i.favorite-button', function () {
         var missionId = $(this).data('mission-id');
         $.ajax({
@@ -150,8 +161,6 @@ $(document).ready(function () {
             type: 'POST',
             data: { missionId: missionId },
             success: function (result) {
-                // Show a success message or update the UI
-                console.log(missionId)
                 var allMissionId = $('.favorite-button')
                 allMissionId.each(function () {
                     if ($(this).data('mission-id') === missionId) {
@@ -169,40 +178,50 @@ $(document).ready(function () {
                 })
             },
             error: function (error) {
-                // Show an error message or handle the error
-                console.log("error")
 
             }
         });
     });
 
+    // swiper images both arrows
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+    });
+    var swiper2 = new Swiper(".mySwiper2", {
+        loop: true,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+            swiper: swiper,
+        },
+    });
 
     // rating functionality on volunteering mission page
-
     // Get all star elements
     var stars = $('.star-capsule').find('i');
-
     // Add click event listener to each star
     stars.click(function () {
         var missionId = $('.favorite-button').data('mission-id');
         // Get the index of the clicked star
         var index = $(this).data('star');
-
-        // Make AJAX call to update rating in database
         $.ajax({
             type: 'POST',
             url: "/Mission/UpdateRating",
-            data: { missionId: missionId, userId: userId, rating: index }, // Replace "yourMissionId" and "yourUserId" with the actual values
+            data: { missionId: missionId, userId: userId, rating: index },
             success: function (data) {
-
                 // Remove text-warning class from all stars
                 stars.removeClass('text-warning');
-
                 // Add text-warning class to all stars up to the clicked star
                 for (var i = 1; i <= index; i++) {
                     stars.filter('[data-star=' + i + ']').addClass('text-warning');
                 }
-
             },
             error: function () {
 
@@ -210,23 +229,21 @@ $(document).ready(function () {
         });
     });
 
-    // mission application functionality (pending)
-
+    // mission application functionality
     $('#confirmation').click(function () {
         var missionId = $('.favorite-button').data('mission-id');
-
         // Submit application here
         $.ajax({
             url: '/Mission/Apply',
             type: 'POST',
             data: {
-                MissionId: missionId, UserId: userId},
+                MissionId: missionId, UserId: userId
+            },
             success: function (response) {
-                // Handle success here
                 $(".apply-btn").text("Applied").addClass('published-btn').removeClass('card-btn');
             },
             error: function (error) {
-                // Handle error here
+
             }
         });
         $('#confirmationModal').modal('hide');
@@ -265,18 +282,16 @@ $(document).ready(function () {
             type: 'POST',
             data: inputData,
             success: function (response) {
-                // Handle success here
-
                 var cardsContainer = $('.card-container-list-grid');
                 cardsContainer.empty();
                 cardsContainer.append(response)
+
                 if (document.getElementById('total-records') !== null) {
                     var totalRecords = document.getElementById('total-records').innerText;
                 }
                 let totalPages = Math.ceil(totalRecords / pageSize);
 
                 if (totalPages <= 1) {
-                    console.log("true")
                     $('#pagination-container').parent().parent().hide();
                 }
                 else {
@@ -351,7 +366,7 @@ $(document).ready(function () {
                         })
                     }
                     else if ($(this).find('a').hasClass('previous-page')) {
-                     
+
                         if (currentPage > 1) {
                             pageNo = currentPage - 1;
                         }
@@ -376,66 +391,200 @@ $(document).ready(function () {
 
                     } else {
                         $(this).addClass('active')
-
                         pageNo = $(this).find('a').data('page');
                         currentPage = pageNo;
 
                     }
-                    getMission(pageNo);
+                    getMission(pageNo)
                 }));
                 $('.totalMissions').text(totalRecords + ' Missions')
             },
             error: function (error) {
-                console.log(error);
 
-                // Handle error here
             }
         });
     }
 
+    // function for stories with search, filter, pagination
+    function getStory(pageNo) {
+        let searchText = $(".search-field input").val();
+
+        let selectedCities = $('input[type="checkbox"][name="cityCheckboxes"]:checked').map(function () {
+            return $(this).val();
+        }).get();
+
+        let selectedThemes = $('input[type="checkbox"][name="themeCheckboxes"]:checked').map(function () {
+            return $(this).val();
+        }).get();
+
+        let selectedSkills = $('input[type="checkbox"][name="skillCheckboxes"]:checked').map(function () {
+            return $(this).val();
+        }).get();
+        let pageSize = 3;
+
+        let inputData = {
+            selectedCountry: selectedCountry !== "" ? selectedCountry : null,
+            selectedCities: selectedCities !== "" ? selectedCities.join() : null,
+            selectedThemes: selectedThemes !== "" ? selectedThemes.join() : null,
+            selectedSkills: selectedSkills !== "" ? selectedSkills.join() : null,
+            searchText: searchText !== "" ? searchText : null,
+            pageSize: pageSize,
+            pageNo: pageNo !== undefined ? pageNo : 1
+        }
+
+        $.ajax({
+            url: '/Story/StoriesListing',
+            type: 'POST',
+            data: inputData,
+            success: function (response) {
+                let storiesContainer = $('#story-container');
+                storiesContainer.empty();
+                storiesContainer.append(response);
+
+
+                if (document.getElementById('total-stories') !== null) {
+                    var totalRecords = document.getElementById('total-stories').innerText;
+                }
+                let totalPages = Math.ceil(totalRecords / pageSize);
+
+                if (totalPages <= 1) {
+                    $('#pagination-container').parent().parent().hide();
+                }
+                else {
+                    let paginationHTML = `
+                                      <li class="page-item">
+                                        <a class="pagination-link first-page" aria-label="Previous">
+                                          <span aria-hidden="true"><img src="/images/previous.png" /></span>
+                                        </a>
+                                      </li>
+                                      <li class="page-item">
+                                        <a class="pagination-link previous-page" aria-label="Previous">
+                                          <span aria-hidden="true"><img src="/images/left.png" /></span>
+                                        </a>
+                                      </li>`;
+
+                    for (let i = 1; i <= totalPages; i++) {
+                        let activeClass = '';
+                        if (i === (pageNo === undefined ? 1 : pageNo)) {
+                            activeClass = ' active';
+                        }
+                        paginationHTML += `
+                                        <li class="page-item ${activeClass}">
+                                            <a class="pagination-link" data-page="${i}">${i}</a>
+                                        </li>`;
+                    }
+
+                    paginationHTML += `
+                                      <li class="page-item">
+                                        <a class="pagination-link next-page" aria-label="Next">
+                                          <span aria-hidden="true"><img src="/images/right-arrow1.png" /></span>
+                                        </a>
+                                      </li>
+                                      <li class="page-item">
+                                        <a class="pagination-link last-page" aria-label="Next">
+                                          <span aria-hidden="true"><img src="/images/next.png" /></span>
+                                        </a>
+                                      </li>`;
+
+                    $('#pagination-container').empty()
+                    $('#pagination-container').append(paginationHTML)
+                    $('#pagination-container').parent().parent().show();
+                }
+
+                // pagination
+                let currentPage;
+
+                $(document).on('click', '.pagination li', (function () {
+                    $('.pagination li').each(function () {
+                        if ($(this).hasClass('active')) {
+
+                            currentPage = $(this).find('a').data('page');
+                            $(this).removeClass('active');
+                        }
+                    })
+                    pageNo = currentPage;
+                    if ($(this).find('a').hasClass('first-page')) {
+                        pageNo = 1;
+                        currentPage = pageNo;
+                        $('.pagination li').find('a').each(function () {
+                            if ($(this).data('page') == 1) {
+                                $(this).parent().addClass('active')
+                            }
+                        })
+                    }
+                    else if ($(this).find('a').hasClass('last-page')) {
+                        pageNo = totalPages;
+                        currentPage = pageNo;
+                        $('.pagination li').find('a').each(function () {
+                            if ($(this).data('page') == totalPages) {
+                                $(this).parent().addClass('active')
+                            }
+                        })
+                    }
+                    else if ($(this).find('a').hasClass('previous-page')) {
+
+                        if (currentPage > 1) {
+                            pageNo = currentPage - 1;
+                        }
+                        $('.pagination li').find('a').each(function () {
+                            if ($(this).data('page') == pageNo) {
+                                $(this).parent().addClass('active')
+                            }
+                        })
+                        currentPage = pageNo;
+
+                    } else if ($(this).find('a').hasClass('next-page')) {
+                        if (currentPage < totalPages) {
+                            pageNo = currentPage + 1;
+                        }
+
+                        $('.pagination li').find('a').each(function () {
+                            if ($(this).data('page') == pageNo) {
+                                $(this).parent().addClass('active')
+                            }
+                        })
+                        currentPage = pageNo;
+
+                    } else {
+                        $(this).addClass('active')
+                        pageNo = $(this).find('a').data('page');
+                        currentPage = pageNo;
+                    }
+                    getStory(pageNo)
+                }));
+            }
+        })
+    }
+
     // add comment in mission volunteering page
-    //console.log($('#add-comment'))
     $('#comment-form').submit(function (e) {
         e.preventDefault()
         var formData = $(this).serialize();
-        console.log(formData)
         $.ajax({
             url: '/Mission/AddComment',
             type: 'POST',
             data: formData,
             success: function (response) {
-                $('.comment-box').empty()   
+                $('.comment-box').empty()
             },
             error: function (error) {
-                console.log(error)
+
             }
         })
     })
 
-
     // for volunteering mission page
-    $('#all-users span').on('click', '.invite-button', function (e) {
+    $(document).on('click', '.invite-button', function (e) {
         e.preventDefault();
         let ToUserID = $(this).parent().parent().find('#user-name').data('userid');
-        console.log(ToUserID)
-
-        Invite(ToUserID)
-    })
-    // invite co-worker
-    function Invite(ToUserID) {
-
-        let MissionId = $('.invite-button').data('mission-id');
-        //let InviteUserId = $('#user-name').data('userID');
-        console.log(MissionId)
+        let MissionId = $(this).data('mission-id');
         $.ajax({
             url: '/Mission/MissionInvite',
             type: 'POST',
             data: { ToUserId: ToUserID, MissionId: MissionId, FromUserId: userId },
             success: function (response) {
-                console.log($('.Invited-' + ToUserID))
-                $('.Invited-'+ToUserID).html(' <button class="btn btn-success" data-mission-Id="@md.MissionId">Invited</button>');
-                console.log("done")
+                $('.Invited-' + ToUserID).html(' <button class="btn btn-success" data-mission-Id="@card.MissionId">Invited</button>');
             }
         })
-    }
+    })
 })

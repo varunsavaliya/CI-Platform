@@ -71,19 +71,15 @@ else
                                             {
                                                 <i class="bi bi-heart favorite-button empty-heart text-light" data-mission-id="@card.MissionId"></i>
                                             }
-
-
-                                            @*<p>@card.FavoriteMissions.Any(m => m.UserId.Equals(UserId))</p>*@
-                                            @*<img src="~/images/heart.png" alt="" class="favorite-button" data-mission-id="@card.MissionId">*@
                                         </div>
                                         <div class="pause-mission-icon">
 
 
                                             <!-- Button trigger modal -->
-                                <img data-bs-toggle="modal" data-bs-target="#inviteVolunteer" src="~/images/user.png" alt="">
+                                <img data-bs-toggle="modal" data-bs-target="#inviteVolunteer_@card.MissionId" src="~/images/user.png" alt="">
 
                                             <!-- Invite Volunteer Modal -->
-                                <div class="modal fade" id="inviteVolunteer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="inviteVolunteer_@card.MissionId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -93,14 +89,9 @@ else
                                                         <div class="modal-body" id="all-users">
                                                             @foreach (var u in Model.Users)
                                                             {
-
-                                                                <div class="mt-2" style="display : flex; justify-content : space-between;">
-
+                                                                <div class="mt-2 d-flex justify-content-between">
                                                                     <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
-
-
-                                                                    <span style="margin-left : 6%;" class="invited-@u.UserId"><button @*onclick="Invite(@u.UserId)"*@ class="btn btn-primary model-button invite-button" data-mission-Id="@card.MissionId">Invite</button></span>
-
+                                                                    <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@card.MissionId">Invite</button></span>
                                                                 </div>
                                                             }
 

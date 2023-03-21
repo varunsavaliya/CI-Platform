@@ -184,12 +184,12 @@
                                         @foreach (var u in Model.UserList)
                                                 {
 
-                                                    <div class="mt-2" style="display : flex; justify-content : space-between;">
+                                                    <div class="mt-2 d-flex justify-content-between">
                                                         
                                                         <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
 
                                                         
-                                                         <span style="margin-left : 6%;" class="invited-@u.UserId"><button @*onclick="Invite(@u.UserId)"*@ class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.MissionId">Invite</button></span>
+                                                         <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.MissionId">Invite</button></span>
                                                        
                                                 </div>
                                                 }
