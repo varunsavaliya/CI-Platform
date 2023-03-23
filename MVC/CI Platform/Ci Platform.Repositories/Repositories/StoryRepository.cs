@@ -30,5 +30,15 @@ namespace Ci_Platform.Repositories.Repositories
 
             return stories;
         }
+        
+        public async Task<List<Mission>> GetMissionsByUser(long userId)
+        {
+            List<Mission> missions = new List<Mission>();
+            missions = await _context.Missions
+                .Where(m => m.MissionApplications.Any(ma => ma.UserId == userId && ma.ApprovalStatus == "PUBLISHED"))
+                             .ToListAsync();
+
+            return missions;
+        }
     }
 }

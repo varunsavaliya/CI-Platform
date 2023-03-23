@@ -31,8 +31,8 @@
             </div>
 
             <ul class="d-flex align-items-center gap-2 nav nav-tabs">
-                <li class="active grid me-3"><a data-toggle="tab" href="#GridView"><img class="p-1" src="~/images/grid.png" /></a></li>
-                <li class=" list me-3"><a data-toggle="tab" href="#ListView"><img class="p-1" src="~/images/list.png" /></a></li>
+                <li class="active grid me-3" onclick="show_grid()"><a data-toggle="tab" href="#GridView"><img class="p-1" src="~/images/grid.png" /></a></li>
+                <li class=" list me-3" onclick="show_list()"><a data-toggle="tab" href="#ListView"><img class="p-1" src="~/images/list.png" /></a></li>
             </ul>
 
         </div>
@@ -62,3 +62,17 @@
         </ul>
     </nav>
 </div>
+
+<script>
+function show_grid() {
+document.getElementById("GridView").style.display = "block";
+document.getElementById("ListView").style.display = "none";
+localStorage.setItem('view', 0);
+}
+
+function show_list() {
+document.getElementById("ListView").style.display = "block";
+document.getElementById("GridView").style.display = "none";
+localStorage.setItem('view', 1);
+}
+</script>

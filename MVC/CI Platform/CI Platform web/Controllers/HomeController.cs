@@ -50,7 +50,7 @@ namespace CI_Platform_web.Controllers
                         // Retrieve the BigInt value from the session
                         HttpContext.Session.SetString("UserId", (sessionUser.UserId).ToString());
                         HttpContext.Session.SetString("IsLoggedIn", "True");
-                        return RedirectToAction("LandingPage", "Mission");
+                        return RedirectToAction("ShareStory", "Story");
                     }
                     else
                     {
@@ -179,11 +179,7 @@ namespace CI_Platform_web.Controllers
         }
 
 
-        public IActionResult ShareStory()
-        {
-            return View();
-        }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

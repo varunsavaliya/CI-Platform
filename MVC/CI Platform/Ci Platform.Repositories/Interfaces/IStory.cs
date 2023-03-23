@@ -11,5 +11,6 @@ namespace Ci_Platform.Repositories.Interfaces
     public interface IStory
     {
         public Task<List<Story>> GetStories(List<long> storyIds);
+        public Task<List<Mission>> GetMissionsByUser(long userId);
     }
 }

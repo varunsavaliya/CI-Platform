@@ -177,6 +177,7 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public IActionResult AddComment(Comment formData)
         {
+            
             _context.Comments.Add(formData);
             _context.SaveChanges();
             return View();
