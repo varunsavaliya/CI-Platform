@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Ci_Platform.Repositories.Repositories
 {
-    public class StoryRepository : IStory
+    public class StoryRepository : Repository<Story> ,IStory
     {
         private ApplicationDbContext _context;
 
-        public StoryRepository(ApplicationDbContext context)
+        public StoryRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }

@@ -12,6 +12,7 @@ namespace CI_Platform_web.Controllers
         private readonly IFilters _filters;
         private readonly IStory _story;
 
+
         public StoryController(IFilters filters, IStory story)
         {
             _filters = filters;
@@ -112,8 +113,44 @@ namespace CI_Platform_web.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ShareStory(StoriesListingModel storiesListingModel)
+        public async Task<IActionResult> SaveStory(ShareStoryModel model)
+        {
+            var UserId = "";
+            if (HttpContext.Session.GetString("UserName") != null)
+            {
+                UserId = HttpContext.Session.GetString("UserId");
+                ViewBag.UserName = HttpContext.Session.GetString("UserName");
+                ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
+                ViewBag.UserId = UserId;
+            }
+            else
+            {
+                ViewBag.UserName = "Login";
+            }
+            ShareStoryModel viewModel = new ShareStoryModel()
+            {
+                missionListByUser = await _story.GetMissionsByUser(Convert.ToInt64(UserId))
+            };
+
+            Story story = new Story()
+            {
+                UserId = Convert.ToInt64(UserId),
+                MissionId = model.selectMission,
+                Title = model.storyTitle,
+                Description = model.Story,
+                Status = "DRAFT"
+            };
+
+            //_story.Add(story);
+            //_story.Save();
+
+            List<IFormFile> images = model.Images;
+
+            return View("ShareStory",viewModel);
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> SubmitStory(ShareStoryModel model)
         {
             var UserId = "";
             if (HttpContext.Session.GetString("UserName") != null)
@@ -127,16 +164,8 @@ namespace CI_Platform_web.Controllers
             {
                 ViewBag.UserName = "Login";
             }
-            ShareStoryModel viewModel = new ShareStoryModel()
-            {
-                missionListByUser = await _story.GetMissionsByUser(Convert.ToInt64(UserId))
-            };
-            if (ModelState.IsValid)
-            {
-                return View(viewModel);
-            }
-            return View(viewModel);
-        }
 
+            return View();
+        }
     }
 }

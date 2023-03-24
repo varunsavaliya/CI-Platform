@@ -703,7 +703,6 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("description");
             entity.Property(e => e.MissionId).HasColumnName("mission_id");
             entity.Property(e => e.PublishedAt)
-                .HasDefaultValueSql("('null')")
                 .HasColumnType("datetime")
                 .HasColumnName("published_at");
             entity.Property(e => e.Status)

@@ -1,4 +1,6 @@
 ﻿using CI_Platform.Entities.DataModels;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -16,13 +18,17 @@ namespace CI_Platform.Entities.ViewModels
         [Required(ErrorMessage ="Enter story title")]
         public string storyTitle { get; set; }
 
-        [Required(ErrorMessage = "Please enter a date")]
-        [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
+        //[Required(ErrorMessage = "Please enter a date")]
+        //[DataType(DataType.Date)]
+        //public DateTime Date { get; set; }
 
-        [Required(ErrorMessage = "Please enter your story")]
+        //[Required(ErrorMessage = "Please enter your story")]
+        //[ValidateNever]
         public string Story { get; set; }
+
+        [ValidateNever]
+        public List<IFormFile> Images { get; set; }
+        [ValidateNever]
         public List<Mission> missionListByUser { get; set; }
-        //public List<Mission> MissionListByUser { get; set; }
     }
 }

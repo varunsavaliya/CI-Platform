@@ -588,26 +588,29 @@
         })
     })
 
+    $(document).on('keyup', '.note-editable', function () {
+        var form = $('.StoryForm');
+        var actualTextBox = form.find('#actual_text');
+        var text = $(this).html();
+        actualTextBox.val(text);
+    })
+
 
     // drag and drop images in share your story page
+    var allfiles = [];
+    var fileInput = document.getElementById('actual-file-input');
 
-    var dropzone = $('#dropzone');
-    var imageList = $('#image-list');
+    function handleFiles(e) {
 
-    // Handle file drop event
-    dropzone.on('drop', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+        // Add dropped images or selected images to the list
+        var files = e.target.files || e.originalEvent.dataTransfer.files;
 
-        // Remove dropzone highlight
-        dropzone.removeClass('dragover');
-
-        // Add dropped images to the list
-        var files = e.originalEvent.dataTransfer.files;
-     
+        // Add selected images to the list
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
             var reader = new FileReader();
+            allfiles.push(files[i]);
+            //formData.append('file', file);
 
             // Create image preview and close icon
             reader.onload = function (e) {
@@ -621,18 +624,51 @@
                 // Handle close icon click event
                 closeIcon.on('click', function () {
                     item.remove();
+                    allfiles.splice(allfiles.indexOf(file), 1);
+                    console.log(allfiles)
+
                 });
             };
 
             // Read image file as data URL
             reader.readAsDataURL(file);
+
+        }
+        //var fileList = fileInput.files;
+        //    for (var i = 0; i < allfiles.length; i++) {
+        //        fileList[i] = allfiles[i];
+        //    }
+
+        // Create a new DataTransfer object
+        var dataTransfer = new DataTransfer();
+
+        // Loop through all the files in the allfiles array and add them to the DataTransfer object
+        for (var i = 0; i < allfiles.length; i++) {
+            dataTransfer.items.add(allfiles[i]);
         }
 
-        console.log(imageList)
-        imageList.children('img').each(function () {
-            var src = $(this).attr('src'); // Get the src attribute of the current image
-            console.log(src); // Log the src attribute to the console
-        });
+        // Create a new FileList object from the DataTransfer object
+        var fileList = dataTransfer.files;
+
+
+        fileInput.files = fileList;
+            console.log(fileList)
+        console.log(fileInput.files)
+    }
+
+
+    //var allfiles = new DataTransfer().files;
+    var dropzone = $('#dropzone');
+    var imageList = $('#image-list');
+
+    // Handle file drop event
+    dropzone.on('drop', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Remove dropzone highlight
+        dropzone.removeClass('dragover');
+        handleFiles(e);
     });
 
     // Handle file dragover event
@@ -653,39 +689,21 @@
         dropzone.removeClass('dragover');
     });
 
+
     // Handle file input change event
     $('#file-input').on('change', function (e) {
-        var files = e.target.files;
-       
-        // Add selected images to the list
-        for (var i = 0; i < files.length; i++) {
-            var file = files[i];
-            var reader = new FileReader();
-
-            // Create image preview and close icon
-            reader.onload = function (e) {
-                var image = $('<img>').attr('src', e.target.result);
-                var closeIcon = $('<span>').addClass('close-icon').text('x');
-
-                // Add image and close icon to the list
-                var item = $('<div>').addClass('image-item').append(image).append(closeIcon);
-                imageList.append(item);
-
-                // Handle close icon click event
-                closeIcon.on('click', function () {
-                    item.remove();
-                    debugger
-                    delete files.file;
-                    console.log(files)
-                });
-            };
-
-            // Read image file as data URL
-            reader.readAsDataURL(file);
-
-
-        }
+        handleFiles(e);
     });
+
+
+    //$('#file-input').on('blur', function (e) {
+    //    var fileList = new FileList();
+    //    for (var i = 0; i < files.length; i++) {
+    //        fileList[i] = files[i];
+    //    }
+    //    console.log(fileList)
+    //})
+    
 
 
     $('#editor').summernote({
