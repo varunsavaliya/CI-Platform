@@ -599,7 +599,7 @@
     // drag and drop images in share your story page
     var allfiles = [];
     var fileInput = document.getElementById('actual-file-input');
-
+    var fileList;
     function handleFiles(e) {
 
         // Add dropped images or selected images to the list
@@ -634,6 +634,7 @@
             reader.readAsDataURL(file);
 
         }
+
         //var fileList = fileInput.files;
         //    for (var i = 0; i < allfiles.length; i++) {
         //        fileList[i] = allfiles[i];
@@ -648,12 +649,17 @@
         }
 
         // Create a new FileList object from the DataTransfer object
-        var fileList = dataTransfer.files;
+        fileList = dataTransfer.files;
 
+        // Update the value of the fileList input field
+        //var fileListInput = $('#file-list-input');
+        //fileInput.val(JSON.stringify(fileList));
 
-        fileInput.files = fileList;
-            console.log(fileList)
-        console.log(fileInput.files)
+        //console.log(fileInput.val())
+        //fileInput.files = fileList;
+        //fileInput.val(fileList);
+        //    console.log(fileList)
+        //console.log(fileInput.files)
     }
 
 
@@ -693,18 +699,7 @@
     // Handle file input change event
     $('#file-input').on('change', function (e) {
         handleFiles(e);
-    });
-
-
-    //$('#file-input').on('blur', function (e) {
-    //    var fileList = new FileList();
-    //    for (var i = 0; i < files.length; i++) {
-    //        fileList[i] = files[i];
-    //    }
-    //    console.log(fileList)
-    //})
-    
-
+    });  
 
     $('#editor').summernote({
         height: 200, // set the height of the editor
@@ -713,4 +708,57 @@
             ['style', ['bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'underline']]
         ]
     });
+
+    // getting all data from form and add it to the formdata
+    var formDetails = new FormData();
+    let missionId;
+    $('#select-mission').on('change', function () {
+         missionId = $(this).val();
+    formDetails.append("missionId", missionId);
+    console.log(missionId)
+    });
+    let storyTitle;
+    $('#storyTitle').on('change', function () {
+        storyTitle = $(this).val();
+        console.log(storyTitle)
+    })
+    let story;
+    $('.note-editable').on('blur', function () {
+        story = $(this).html();
+        console.log(story)
+    })
+
+
+
+
+
+
+    $('#Save-btn').click(function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        formDetails.append("storyTitle", storyTitle);
+        formDetails.append("story", story);
+        formDetails.append("images", allfiles);
+
+        console.log("hello0");
+        $.ajax({
+            url: '/Story/SaveStory',
+            type: 'POST',
+            data: formDetails,
+            processData: false,
+            contentType: false,
+
+            success: function (result) {
+                
+                
+            },
+            error: function (error) {
+
+            }
+        });
+    })
+
+    
 })

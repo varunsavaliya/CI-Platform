@@ -5,92 +5,93 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CI_Platform_web
 build_property.RootNamespace = CI_Platform_web
-build_property.ProjectDir = D:\Projects\main1\varun\MVC\CI Platform\CI Platform web\
+build_property.ProjectDir = C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform web\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Projects\main1\varun\MVC\CI Platform\CI Platform web
+build_property.MSBuildProjectDirectory = C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform web
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Home/Forgot_Password.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Home/Forgot_Password.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGb3Jnb3RfUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Home/Index.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Home/Privacy.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Home/Registration.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Home/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Home/Reset_Password.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Home/Reset_Password.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXNldF9QYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Mission/LandingPage.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Mission/LandingPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxMYW5kaW5nUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Mission/MissionVolunteering.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Mission/MissionVolunteering.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxNaXNzaW9uVm9sdW50ZWVyaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Mission/_GridListPartial.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Mission/_GridListPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxfR3JpZExpc3RQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Shared/Error.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Shared/_HeaderLayout.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Shared/_HeaderLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Shared/_Login_Layout.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Shared/_Login_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbl9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Shared/_NoMissionFound.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Shared/_NoMissionFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob01pc3Npb25Gb3VuZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Shared/_SearchBarPartial.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Shared/_SearchBarPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZWFyY2hCYXJQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Story/ShareStory.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Story/ShareStory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcU2hhcmVTdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Story/StoriesListing.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Story/StoriesListing.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcU3Rvcmllc0xpc3RpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Story/_StoryPartial.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Story/_StoryPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcX1N0b3J5UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/_ViewImports.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/_ViewStart.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main1/varun/MVC/CI Platform/CI Platform web/Views/Shared/_Layout.cshtml]
+[C:/Users/hepin/OneDrive/Desktop/varun/New folder/MVC/CI Platform/CI Platform web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ajsl1beifh

@@ -27,7 +27,7 @@ namespace CI_Platform.Entities.ViewModels
         public string Story { get; set; }
 
         [ValidateNever]
-        public List<IFormFile> Images { get; set; }
+        public List<IFormFile> images { get; set; }
         [ValidateNever]
         public List<Mission> missionListByUser { get; set; }
     }

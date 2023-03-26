@@ -1,0 +1,78 @@
+[HttpPost]
+public async Task<IActionResult> SaveStory([FromForm] IFormCollection form)
+{
+    // Access form data using the form parameter
+    long missionId = Convert.ToInt64(form["missionId"]);
+    String storyTitle = form["storyTitle"];
+    String story = form["story"];
+    List<IFormFile> images = form.Files.GetFiles("images").ToList();
+
+    var UserId = "";
+    if (HttpContext.Session.GetString("UserName") != null)
+    {
+        UserId = HttpContext.Session.GetString("UserId");
+        ViewBag.UserName = HttpContext.Session.GetString("UserName");
+        ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
+        ViewBag.UserId = UserId;
+    }
+    else
+    {
+        ViewBag.UserName = "Login";
+    }
+    ShareStoryModel viewModel = new ShareStoryModel()
+    {
+        missionListByUser = await _story.GetMissionsByUser(Convert.ToInt64(UserId))
+    };
+
+    Story storyDetails = new Story()
+    {
+        UserId = Convert.ToInt64(UserId),
+        MissionId = missionId,
+        Title = storyTitle,
+        Description = story,
+        Status = "DRAFT"
+    };
+
+    // Save the uploaded images in the wwwroot folder
+    if (images != null && images.Count > 0)
+    {
+        // Get the web root path of the application
+        string webRootPath = _webHostEnvironment.WebRootPath;
+
+        // Create a new folder for the uploaded images
+        string imagesFolder = Path.Combine(webRootPath, "images");
+        if (!Directory.Exists(imagesFolder))
+        {
+            Directory.CreateDirectory(imagesFolder);
+        }
+
+        // Save each uploaded image to the images folder
+        foreach (IFormFile image in images)
+        {
+            // Generate a unique file name for the image
+            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+
+            // Save the image to the images folder
+            string filePath = Path.Combine(imagesFolder, fileName);
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await image.CopyToAsync(fileStream);
+            }
+
+            // Add the image details to the StoryMedia table
+            StoryMedia media = new StoryMedia()
+            {
+                StoryId = storyDetails.StoryId,
+                Type = "image",
+                Path = "/images/" + fileName
+            };
+            _storyMedia.Add(media);
+        }
+    }
+
+    // Save the story details to the Story table
+    _story.Add(storyDetails);
+    _story.Save();
+
+    return View("ShareStory", viewModel);
+}

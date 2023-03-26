@@ -6,16 +6,16 @@
 <div class="sharestory">
     <div class="container">
         <h1 class="mt-3 ssheading">Share Your Story</h1>
-        <form method="post" class="StoryForm">
+        <form class="StoryForm">
             <div class="row mt-3">
                 <div class="col-lg-4 col-md-6 mb-1">
 
                     <label asp-for="selectMission" class="form-label">Select Mission</label>
-                    <select asp-for="selectMission" class="form-select" aria-label="mission">
+                    <select asp-for="selectMission" id="select-mission" class="form-select" aria-label="mission">
                         <option value="">select your mission</option>
                         @foreach (var mission in Model.missionListByUser)
                         {
-                            <option value="@mission.MissionId">@mission.Title</option>
+                            <option class="missionId" value="@mission.MissionId">@mission.Title</option>
                         }
                     </select>
                     <span asp-validation-for="selectMission" class="text-danger"></span>
@@ -58,8 +58,8 @@
             <div class="upload pb-3">
                 <p class="mb-0">Upload your photos</p>
                 <div id="dropzone" class="dropzone">
-                    <input type="file" class="d-none" accept=".jpg,.png, .jpeg" multiple id="file-input" @*name="Images" asp-for="Images"*@ />
-                    <input type="file" class="d-none" accept=".jpg,.png, .jpeg" multiple id="actual-file-input" name="Images" asp-for="Images" />
+                    @*<input type="file" class="d-none" accept=".jpg,.png, .jpeg" multiple id="file-input" name="Images" asp-for="Images" />*@
+                    <input type="file" class="d-none" accept=".jpg,.png, .jpeg" multiple id="actual-file-input" name="images" asp-for="images" />
                     <label class="drag-drop mb-4" for="file-input" id="file-button">
                         <img src="~/images/drag-and-drop.png" />
                     </label>
@@ -70,7 +70,7 @@
                 <div class="ssbuttons d-flex align-items-center">
                     <button class="btn btn-outline-secondary">Cancel</button>
                     <div class="d-flex align-items-center">
-                        <button type="submit" @*asp-controller="Story" asp-action="SaveStory"*@ formaction="/Story/SaveStory" class="card-button mt-0">Save</button>
+                        <button @*asp-controller="Story" asp-action="SaveStory"*@ @*formaction="/Story/SaveStory"*@ id="Save-btn" class="card-button mt-0">Save</button>
                         <button type="submit" asp-controller="Story" asp-action="SubmitStory" class="card-button mt-0">Submit</button>
                     </div>
                 </div>
