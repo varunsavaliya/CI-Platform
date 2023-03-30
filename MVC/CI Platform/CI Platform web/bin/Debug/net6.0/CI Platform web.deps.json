@@ -247,7 +247,7 @@
       },
       "Microsoft.Build/17.3.2": {
         "dependencies": {
-          "Microsoft.Build.Framework": "17.3.2",
+          "Microsoft.Build.Framework": "17.5.0",
           "Microsoft.NET.StringTools": "17.3.2",
           "System.Collections.Immutable": "6.0.0",
           "System.Configuration.ConfigurationManager": "6.0.0",
@@ -265,15 +265,10 @@
           }
         }
       },
-      "Microsoft.Build.Framework/17.3.2": {
+      "Microsoft.Build.Framework/17.5.0": {
         "dependencies": {
+          "Microsoft.Win32.Registry": "5.0.0",
           "System.Security.Permissions": "6.0.0"
-        },
-        "runtime": {
-          "lib/net6.0/Microsoft.Build.Framework.dll": {
-            "assemblyVersion": "15.1.0.0",
-            "fileVersion": "17.3.2.46306"
-          }
         }
       },
       "Microsoft.CodeAnalysis.Analyzers/3.3.2": {},
@@ -905,7 +900,7 @@
       },
       "Microsoft.CodeAnalysis.Workspaces.MSBuild/4.0.0": {
         "dependencies": {
-          "Microsoft.Build.Framework": "17.3.2",
+          "Microsoft.Build.Framework": "17.5.0",
           "Microsoft.CodeAnalysis.Common": "4.0.0",
           "Microsoft.CodeAnalysis.Workspaces.Common": "4.0.0",
           "System.Text.Json": "7.0.0"
@@ -2664,6 +2659,7 @@
         "dependencies": {
           "CI Platform.Entities": "1.0.0",
           "Microsoft.AspNetCore.Session": "2.2.0",
+          "Microsoft.Build.Framework": "17.5.0",
           "Microsoft.EntityFrameworkCore": "7.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.3",
           "Microsoft.Extensions.Configuration": "7.0.0"
@@ -2883,12 +2879,12 @@
       "path": "microsoft.build/17.3.2",
       "hashPath": "microsoft.build.17.3.2.nupkg.sha512"
     },
-    "Microsoft.Build.Framework/17.3.2": {
+    "Microsoft.Build.Framework/17.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-iGfJt6rm/vIEowBG6qNX2Udn7UagI6MzalDwwdkDUkSwhvvrGCnDLphyRABAwrrsWHTD/LJlUAJsbW1SkC4CUQ==",
-      "path": "microsoft.build.framework/17.3.2",
-      "hashPath": "microsoft.build.framework.17.3.2.nupkg.sha512"
+      "sha512": "sha512-j1AJfnCY8+dfc8rB3P/9o8P4174kZbEKwhLdkvLObvTGM6kfIZEgWYgd3IN7xJbNdxDfr9rT8Vr7/DaevyWKNg==",
+      "path": "microsoft.build.framework/17.5.0",
+      "hashPath": "microsoft.build.framework.17.5.0.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Analyzers/3.3.2": {
       "type": "package",

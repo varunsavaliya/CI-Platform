@@ -1355,7 +1355,7 @@ footer p a{
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     /* height: 108%; */
-    padding: 68px 4px !important;
+    padding: 200px 4px !important;
 }
     .swiper-button-prev:focus, .swiper-button-next:focus{
         outline:none;
@@ -1780,11 +1780,11 @@ color:#414141;
         align-items: center;
     }
 
-    .ssbuttons > button {
-        height: fit-content;
-        border-radius: 31px;
-        padding: 10px 26px;
-    }
+        .ssbuttons .cancel-btn {
+            height: fit-content;
+            border-radius: 31px;
+            padding: 10px 26px;
+        }
 
     .ssbuttons div {
         gap: 20px;
@@ -1812,3 +1812,98 @@ color:#414141;
         color: white;
         padding: 0px 4px 2px 4px;
     }
+
+
+    /*story details page styling*/
+
+.volunteer-details img {
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+}
+
+.views-detail {
+    border: 1px solid #E8E8E8;
+    border-radius: 20px;
+    padding: 3px 20px;
+}
+
+.volunteer-details span, .views-detail span, .story-description span {
+    color: #414141;
+}
+
+.pause-mission-icon {
+    position: absolute;
+    bottom: 6%;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 7px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.st-mission-heading {
+    font-size: 29px;
+    font-weight: 400;
+}
+
+    .st-mission-heading span {
+        border-bottom: solid 1px #757575;
+        padding-bottom:5px;
+    }
+
+    .st-mission-heading p {
+        margin-bottom: 0px;
+        /* padding-bottom:0px;*/
+    }
+
+.st-mission-description {
+    padding-top: 20px;
+}
+
+
+
+/*User edit profile styling*/
+.user-profile {
+    gap:20px;
+    height: fit-content;
+}
+.user-profile img {
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+}
+    .user-profile .user-name {
+        font-weight:500;
+        font-size:1.5rem;
+    }
+    .user-profile .change-password {
+        color: #757575;
+    }
+.user-image-wrapper{
+    position:relative;
+}
+.edit-icon {
+    display:none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.user-image-wrapper:hover .edit-icon {
+    display: block;
+}
+
+.user-image-wrapper:hover img {
+    filter: brightness(0.5);
+}
+
+.change-password{
+    cursor:pointer;
+}

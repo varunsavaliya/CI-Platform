@@ -4,6 +4,7 @@ using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Data;
 
@@ -13,14 +14,12 @@ namespace CI_Platform_web.Controllers
     {
         private readonly IFilters _filters;
         private readonly IStory _story;
-        private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public StoryController(IFilters filters, IStory story, ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
+        public StoryController(IFilters filters, IStory story, IWebHostEnvironment webHostEnvironment)
         {
             _filters = filters;
             _story = story;
-            _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
         public async Task<IActionResult> StoriesListing()
@@ -81,7 +80,7 @@ namespace CI_Platform_web.Controllers
                 while (reader.Read())
                 {
                     long totalStories = reader.GetInt32("TotalStories");
-                    ViewBag.totalRecords = totalStories;
+                    viewModel.totalrecords = totalStories;
                 }
                 reader.NextResult();
                 while (reader.Read())
@@ -117,47 +116,29 @@ namespace CI_Platform_web.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> SaveStory([FromForm] IFormCollection form)
+        public async Task<IActionResult> GetStory(long missionId)
         {
-            // Access form data using the form parameter
-            long missionId = Convert.ToInt64(form["missionId"]);
-            String storyTitle = form["storyTitle"];
-            String story = form["story"];
-            var images = form["images"];
-            List<IFormFile> imagesList = new List<IFormFile>();
-
-            // pending
-            foreach (var image in images)
+            ViewBag.userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+            long UserId = ViewBag.userId;
+            if (_story.isStoryAvailable(Convert.ToInt64(UserId), missionId))
             {
-                byte[] bytes = Convert.ToString(image.ToString());
-                MemoryStream ms = new MemoryStream(bytes);
-                IFormFile file = new FormFile(ms, 0, ms.Length, null, Path.GetFileName(ms.ToString()));
-                imagesList.Add(file);
+                Story availableStory = await _story.AvailableStory(Convert.ToInt64(UserId), missionId);
+                if (availableStory.Status != "DRAFT")
+                {
+                    // story is already published or pending
+                    return Ok(new { icon = "error", message = "You have already added story for this mission" });
+                }
+                else
+                {
+                    return Json(availableStory);
+                }
             }
+            return Json(null);
+        }
 
-
-            //List<IFormFile> imagesList = form.Files.GetFiles("images").ToList();
-            //List<IFormFile> images = form.Files["images[]"].Select(file => (IFormFile)file).ToList();
-            //List<IFormFile> images = form.Files.GetFiles("images").Select(file => (IFormFile)file).ToList();
-
-            //List<IFormFile> files = new List<IFormFile>();
-            //foreach (byteArray in images)
-            //{
-            //    MemoryStream stream = new MemoryStream(byteArray);
-            //    IFormFile file = new FormFile(stream, 0, stream.Length, "name", "fileName");
-            //    files.Add(file);
-            //}
-            //List<IFormFile> images = form.Files.GetFiles("images").ToList();
-            //var images = form.Files.GetFile("images");
-            //var imageArray = new IFormFile[images.Length];
-
-            //// Copy the images to an array
-            //for (int i = 0; i < images.Length; i++)
-            //{
-            //    imageArray[i] = images[i];
-            //}
-
+        [HttpPost]
+        public async Task<IActionResult> SaveStory(ShareStoryModel model)
+        {
             var UserId = "";
             if (HttpContext.Session.GetString("UserName") != null)
             {
@@ -175,6 +156,10 @@ namespace CI_Platform_web.Controllers
                 missionListByUser = await _story.GetMissionsByUser(Convert.ToInt64(UserId))
             };
 
+            long missionId = model.selectMission;
+            String storyTitle = model.storyTitle;
+            String story = model.Story;
+
             Story storyDetails = new Story()
             {
                 UserId = Convert.ToInt64(UserId),
@@ -184,97 +169,61 @@ namespace CI_Platform_web.Controllers
                 Status = "DRAFT"
             };
 
-            // Save the uploaded images in the wwwroot folder
-            //if (/*images != null && */images.Count > 0)
-            //{
-            //    // Get the web root path of the application
-            //    string webRootPath = _webHostEnvironment.WebRootPath;
+            // model.button checks that which button is clicked, save or submit
+            if (model.button == 1)
+            {
+                if (_story.isStoryAvailable(Convert.ToInt64(UserId), missionId))
+                {
+                    Story availableStory = await _story.AvailableStory(Convert.ToInt64(UserId), missionId);
+                    if (availableStory.Status != "DRAFT")
+                    {
+                        // story is already published or pending
+                        return Ok(new { icon = "success", message = "You have already added story for this mission" });
+                    }
+                    else
+                    {
+                        await _story.UpdateStory(model, availableStory);
+                        return Ok(new { icon = "success", message = "Story details updated successfully" });
+                    }
+                }
+                else
+                {
+                    await _story.AddStoryAsDraft(model, storyDetails);
+                    //return Ok(new { message = "Story saved successfully" });
+                    return Ok(new { icon = "success", message = "Story saved successfully" });
+                }
+            }
+            else
+            {
+                if (_story.isStoryAvailable(Convert.ToInt64(UserId), missionId))
+                {
+                    Story availableStory = await _story.AvailableStory(Convert.ToInt64(UserId), missionId);
+                    if (availableStory.Status == "DRAFT")
+                    {
+                        // story is already published or pending
+                        await _story.AddStoryAsPending(model, availableStory);
+                        //return Ok(new { message = "Story added successfully" });
+                        return Ok(new { icon = "success", message = "Story added successfully" });
 
-            //    // Create a new folder for the uploaded images
-            //    string imagesFolder = Path.Combine(webRootPath, "images");
-            //    if (!Directory.Exists(imagesFolder))
-            //    {
-            //        Directory.CreateDirectory(imagesFolder);
-            //    }
-
-            //    // Save each uploaded image to the images folder
-            //    foreach (var file in images)
-            //    {
-            //        // Generate a unique file name for the image
-            //        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-
-            //        // Save the image to the images folder
-            //        string filePath = Path.Combine(imagesFolder, fileName);
-            //        using (var fileStream = new FileStream(filePath, FileMode.Create))
-            //        {
-            //            await file.CopyToAsync(fileStream);
-            //        }
-
-            //        // Add the image details to the StoryMedia table
-            //        StoryMedium media = new StoryMedium()
-            //        {
-            //            StoryId = storyDetails.StoryId,
-            //            Type = "image",
-            //            Path = "/images/" + fileName
-            //        };
-            //        _context.StoryMedia.Add(media);
-            //    }
-            //}
-
-            //// Save the uploaded images in the wwwroot folder
-            //if (images != null && images.Length > 0)
-            //{
-            //    // Get the web root path of the application
-            //    string webRootPath = _webHostEnvironment.WebRootPath;
-
-            //    // Create a new folder for the uploaded images
-            //    string imagesFolder = Path.Combine(webRootPath, "images");
-            //    if (!Directory.Exists(imagesFolder))
-            //    {
-            //        Directory.CreateDirectory(imagesFolder);
-            //    }
-
-            //    Save each uploaded image to the images folder
-            //    foreach (IFormFile image in images)
-            //    {
-            //        // Generate a unique file name for the image
-            //        string fileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
-
-            //        // Save the image to the images folder
-            //        string filePath = Path.Combine(imagesFolder, fileName);
-            //        using (var fileStream = new FileStream(filePath, FileMode.Create))
-            //        {
-            //            await image.CopyToAsync(fileStream);
-            //        }
-
-            //        // Add the image details to the StoryMedia table
-            //        StoryMedium media = new StoryMedium()
-            //        {
-            //            StoryId = storyDetails.StoryId,
-            //            Type = "image",
-            //            Path = "/images/" + fileName
-            //        };
-            //        _context.StoryMedia.Add(media);
-            //    }
-            //}
-
-            // Add the story to the database and save changes
-            _story.Add(storyDetails);
-             _story.Save();
-
+                    }
+                }
+                else
+                {
+                    return Ok(new { icon = "warning", message = "Story needs to be saved first!!" });
+                }
+            }
             return View("ShareStory", viewModel);
         }
 
-
-        [HttpPost]
-        public async Task<IActionResult> SubmitStory(ShareStoryModel model)
+        [HttpGet]
+        public async Task<IActionResult> StoryDetail(int id)
         {
             var UserId = "";
             if (HttpContext.Session.GetString("UserName") != null)
             {
+                UserId = HttpContext.Session.GetString("UserId");
                 ViewBag.UserName = HttpContext.Session.GetString("UserName");
                 ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
-                UserId = HttpContext.Session.GetString("UserId");
                 ViewBag.UserId = UserId;
             }
             else
@@ -282,7 +231,27 @@ namespace CI_Platform_web.Controllers
                 ViewBag.UserName = "Login";
             }
 
-            return View();
+            StoryDetailModel viewModel = new StoryDetailModel();
+            if (UserId == "")
+            {
+                viewModel.UserList = null;
+            }
+            else
+            {
+                viewModel.UserList = await _story.GetUsers(Convert.ToInt64(UserId));
+            }
+
+            viewModel.StoryDetail = await _story.GetStoryById(id);
+
+            return View(viewModel);
         }
+        [HttpPost]
+        public async Task<IActionResult> StoryInvite(long ToUserId, long Id, long FromUserId, StoryDetailModel viewmodel)
+        {
+            var storyLink = Url.Action("StoryDetail", "Story", new { id = Id }, Request.Scheme);
+            await _story.SendEmailInvite(ToUserId, Id, FromUserId, storyLink, viewmodel);
+            return Json(new { success = true });
+        }
+
     }
 }

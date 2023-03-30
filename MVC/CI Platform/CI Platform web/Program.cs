@@ -13,6 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     )); ;
 builder.Services.AddScoped<IAuthentication, Authentication>();
 builder.Services.AddScoped<IFilters, Filters>();
+builder.Services.AddScoped<IMission, MissionRepository>();
 builder.Services.AddScoped<IStory, StoryRepository>();
 
 // for use of session

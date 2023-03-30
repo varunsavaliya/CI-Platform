@@ -1,0 +1,175 @@
+﻿@model CI_Platform.Entities.ViewModels.StoryDetailModel
+@{
+    ViewData["Title"] = "StoryDetail";
+    Layout = "_HeaderLayout";
+    var IsLoggedIn = ViewBag.IsLoggedIn;
+}
+@if (IsLoggedIn != "True")
+{
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Login here</h4>
+                </div>
+                <div class="modal-body">
+                    <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
+                        Login
+                        <img src="~/images/right-arrow.png" alt="">
+                        <img src="~/images/right-arrow2.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="container mt-3">
+    <div class="row gx-5  mb-5">
+        <!-- slider image gallery(swiper) -->
+        <div class="col-lg-6 col-md-12">
+            <div style="
+              --swiper-navigation-color: #fff;
+              --swiper-pagination-color: #fff;
+            "
+                 class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    @foreach (var img in Model.StoryDetail.StoryMedia)
+                    {
+                        if (img.Type == "image")
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/Upload/@img.Path" />
+                            </div>
+                        }
+                    }
+                    @if (Model.StoryDetail.StoryMedia.Count(img => img.Type == "image") < 4)
+                    {
+                        for (int i = 0; i < (4 - Model.StoryDetail.StoryMedia.Count(img => img.Type == "image")); i++)
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/images/no-image-icon.png" />
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+            <div thumbsSlider="" class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    @foreach (var img in Model.StoryDetail.StoryMedia)
+                    {
+                        if (img.Type == "image")
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/Upload/@img.Path" />
+                            </div>
+                        }
+                    }
+                    @if (Model.StoryDetail.StoryMedia.Count(img => img.Type == "image") < 4)
+                    {
+                        for (int i = 0; i < (4 - Model.StoryDetail.StoryMedia.Count(img => img.Type == "image")); i++)
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/images/no-image-icon.png" />
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <!-- details section -->
+        <div class="col-lg-6 col-md-12 mt-4">
+            <div class="d-flex justify-content-between align-items-end">
+                <div class="d-flex flex-column volunteer-details">
+                    <img class="mb-3" src="~/images/volunteer1.png" />
+                    <span>@Model.StoryDetail.User.FirstName @Model.StoryDetail.User.LastName</span>
+                </div>
+                @if (Model.StoryDetail.Status != "DRAFT")
+                {
+                    <div class="views-detail d-flex align-items-center">
+                        <img class="me-2" src="~/images/eye.png" />
+                        <span>@Model.StoryDetail.Views Views</span>
+                    </div>
+                }
+            </div>
+            <div class="story-description mt-4">
+                <span>@Html.Raw(Model.StoryDetail.Description)</span>
+            </div>
+
+            <div class="sdbtns d-flex my-4 justify-content-center gap-4">
+                 @if (Model.StoryDetail.Status != "DRAFT")
+                {
+                    
+                <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
+
+                    <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#story-invite"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
+                </div>
+                }
+
+                <!-- Invite Volunteer Modal -->
+                <div class="modal fade" id="story-invite" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" id="all-users">
+                                @if (Model.UserList == null)
+                                {
+                                    <!-- Login button -->
+                                    <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
+                                        Login to recommend to co-worker
+                                        <img src="~/images/right-arrow.png" alt="">
+                                        <img src="~/images/right-arrow2.png" alt="">
+                                    </a>
+                                }
+                                else
+                                {
+                                    @foreach (var u in Model.UserList)
+                                    {
+
+                                        <div class="mt-2 d-flex justify-content-between">
+
+                                            <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
+
+
+                                            <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-story-Id="@Model.StoryDetail.StoryId">Invite</button></span>
+
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="mission-btn">
+                    <!-- open mission button -->
+                    <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new{ id=@Model.StoryDetail.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
+                        Open Mission
+                        <img src="~/images/right-arrow.png" alt="">
+                        <img src="~/images/right-arrow2.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- mission details -->
+    <div class="st-mission-heading mt-3 border-bottom pb-3">
+        <span class="pb-3">@Model.StoryDetail.Mission.Title</span>
+    </div>
+    <div class="st-mission-description mb-3">
+        <span>@Model.StoryDetail.Mission.Description</span>
+
+    </div>
+</div>

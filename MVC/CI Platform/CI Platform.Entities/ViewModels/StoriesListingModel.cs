@@ -17,6 +17,7 @@ namespace CI_Platform.Entities.ViewModels
 
         public List<Skill> Skill { get; set; }
 
+        public long totalrecords { get; set; }
         public List<Story> StoriesList { get; set; }
     }
 }

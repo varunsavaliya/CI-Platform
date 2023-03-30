@@ -1,0 +1,102 @@
+﻿@{
+    Layout = "_HeaderLayout";
+}
+
+
+<div class="container mt-5">
+    <form method="post">
+        <div class="row gap-3">
+            <!-- User profile image, name and reset password -->
+            <div class="col-3 p-5 p-md-2 d-flex flex-column justify-content-center align-items-center border user-profile">
+                <div class="user-image-wrapper">
+                    <img src="~/images/volunteer1.png" alt="user-image" class="mb-2 user-image" />
+                    <div class="edit-icon"><i class="fas fa-pencil-alt"></i></div>
+                    <!-- File input element -->
+                    <input type="file" id="profile-image-input" class="d-none" />
+                </div>
+                <span class="user-name mb-1">Evan Donohue</span>
+                <span class="change-password" data-bs-toggle="modal" data-bs-target="#change-password">Change Password</span>
+
+                <div class="modal fade" id="change-password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body px-5">
+                                    @*@if (Model?.PasswordChanged == true)
+                                        {
+                                        <div class="alert alert-success">
+                                        Your password has been changed successfully
+                                        <a href="#" class="close ms-3" data-dismiss="alert" aria-label="close">&times;</a>
+                                        </div>
+                                        <p><a class="login" asp-controller="Home" asp-action="Index">Back to Login</a></p>
+                                        }
+                                        else
+                                        {*@
+
+                                    <form class="formcontent my-0">
+                                        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                                        <div class="mb-3 mt-3">
+                                            <label class="formlabels" for="oldpassword">Old Password</label>
+                                            <input type="password" class="form-control old-password" id="oldPassword" for="oldPassword" placeholder="Enter old password" name="oldpassword">
+                                            @*<span asp-validation-for="password" class="text-danger"></span>*@
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label class="formlabels" for="newpassword">New Password</label>
+                                            <input type="password" class="form-control new-password" id="newPassword" for="newPassword" placeholder="Enter new password" name="newpassword">
+                                            @*<span asp-validation-for="ConfirmPassword" class="text-danger"></span>*@
+                                        </div>
+                                        <button type="button" class="btn mt-3 loginbtn">Change Password</button>
+                                    </form>
+                                    @*}*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-9 row">
+                <div class="col-lg-6 col-md-12 mb-3">
+                    <label for="Name" class="form-label">Name*</label>
+                    <input for="Name" name="Name" type="text" class="form-control" id="name" aria-describedby="Name">
+                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                </div>
+                <div class="col-lg-6 col-md-12 mb-3">
+                    <label for="Surname" class="form-label">Surname*</label>
+                    <input for="Surname" name="Surname" type="text" class="form-control" id="surname" aria-describedby="Surname">
+                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                </div>
+                <div class="col-lg-6 col-md-12 mb-3">
+                    <label for="employeeId" class="form-label">Employee Id</label>
+                    <input for="employeeId" name="employeeId" type="text" class="form-control" id="employeeId" aria-describedby="employeeId">
+                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                </div>
+                <div class="col-lg-6 col-md-12 mb-3">
+                    <label for="Manager" class="form-label">Manager</label>
+                    <input for="Manager" name="Manager" type="text" class="form-control" id="Manager" aria-describedby="Manager">
+                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                </div>
+                <div class="col-lg-6 col-md-12 mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input for="title" name="title" type="text" class="form-control" id="title" aria-describedby="title">
+                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                </div>
+                <div class="col-lg-6 col-md-12 mb-3">
+                    <label for="department" class="form-label">Department</label>
+                    <input for="department" name="department" type="text" class="form-control" id="department" aria-describedby="department">
+                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                </div> 
+                <div class="col-lg-12 col-md-12 mb-3">
+                    <label for="MyProfile" class="form-label">My Profile*</label>
+                    <textarea for="MyProfile" name="MyProfile" class="form-control" id="MyProfile" aria-describedby="MyProfile" rows="3"></textarea>
+                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                </div>
+                <div class="col-lg-12 col-md-12 mb-3">
+                    <label for="whyIVolunteer" class="form-label">Why I Volunteer?</label>
+                    <textarea for="whyIVolunteer" name="whyIVolunteer" class="form-control" id="whyIVolunteer" aria-describedby="whyIVolunteer" rows="3"></textarea>
+                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

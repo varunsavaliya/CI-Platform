@@ -18,11 +18,14 @@ namespace CI_Platform_web.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IFilters _filters;
+        private readonly IMission _mission;
+        private readonly ISendInvite<MissionVolunteeringModel> _sendInvite;
 
-        public MissionController(ApplicationDbContext context, IFilters filters)
+        public MissionController(ApplicationDbContext context, IFilters filters, IMission mission)
         {
             _context = context;
             _filters = filters;
+            _mission = mission;
         }
 
         public async Task<IActionResult> LandingPage()
@@ -162,22 +165,18 @@ namespace CI_Platform_web.Controllers
                 _context.FavoriteMissions.Remove(FavoriteMissionId);
                 _context.SaveChanges();
                 return Ok();
-
-                //return BadRequest("Mission is already in favorites.");
             }
 
             // Add the mission to favorites for the user
             var favoriteMission = new FavoriteMission { MissionId = missionId, UserId = userId };
             _context.FavoriteMissions.Add(favoriteMission);
             _context.SaveChanges();
-
             return Ok();
         }
 
         [HttpPost]
         public IActionResult AddComment(Comment formData)
         {
-            
             _context.Comments.Add(formData);
             _context.SaveChanges();
             return View();
@@ -266,72 +265,34 @@ namespace CI_Platform_web.Controllers
             }
 
             // Create the ViewModel and pass it to the view
-            var users = _context.Users.Where(u => u.UserId != Convert.ToInt64(UserId) || u.MissionApplications.Any(ma => ma.MissionId == id && ma.ApprovalStatus != "PUBLISHED")).ToList();
             var missionVolunteeringModel = new MissionVolunteeringModel
             {
                 mission = missionDetail,
-                RelatedMissions = relatedMissions,
-                UserList = users
+                RelatedMissions = relatedMissions
             };
-
-
-
+            if (UserId == "")
+            {
+                missionVolunteeringModel.UserList = null;
+            }
+            else
+            {
+                missionVolunteeringModel.UserList = _context.Users.Where(u => u.UserId != Convert.ToInt64(UserId) || u.MissionApplications.Any(ma => ma.MissionId == id && ma.ApprovalStatus != "PUBLISHED")).ToList();
+            }
             return View(missionVolunteeringModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> MissionInvite(long ToUserId, long MissionId, long FromUserId, MissionVolunteeringModel viewmodel)
+        public async Task<IActionResult> MissionInvite(long ToUserId, long Id, long FromUserId, MissionVolunteeringModel viewmodel)
         {
-            var missionInvite = new MissionInvite()
-            {
-                FromUserId = FromUserId,
-                ToUserId = ToUserId,
-                MissionId = MissionId,
-            };
-
-            _context.MissionInvites.Add(missionInvite);
-            await _context.SaveChangesAsync();
-
-            var MissionLink = Url.Action("VolunteerMission", "Home", new { id = MissionId }, Request.Scheme);
-            viewmodel.Link = MissionLink;
-
-            //await _volunteerMissionInterface.SendInvitationToCoWorker(ToUserId, FromUserId, viewmodel);
-
-            var Email = await _context.Users.Where(u => u.UserId == ToUserId).FirstOrDefaultAsync();
-
-            var Sender = await _context.Users.Where(su => su.UserId == FromUserId).FirstOrDefaultAsync();
-
-            var fromEmail = new MailAddress("akshayghadiya28@gmail.com");
-            var toEmail = new MailAddress(Email.Email);
-            var fromEmailPassword = "dmsmefwcumhbtthp";
-            string subject = "Mission Invitation";
-            string body = "You Have Recieved Mission Invitation From " + Sender.FirstName + " " + Sender.LastName + " For:\n\n" + viewmodel.Link;
-
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
-            };
-
-            var message = new MailMessage(fromEmail, toEmail);
-            message.Subject = subject;
-            message.Body = body;
-            message.IsBodyHtml = true;
-
-            await smtp.SendMailAsync(message);
-
+            var MissionLink = Url.Action("MissionVolunteering", "Mission", new { id = Id }, Request.Scheme);
+            await _mission.SendEmailInvite(ToUserId, Id, FromUserId, MissionLink, viewmodel);
             return Json(new { success = true });
         }
-
 
         [HttpPost]
         public IActionResult UpdateRating(int missionId, int userId, int rating)
         {
-            MissionRating missionRating = _context.MissionRatings.SingleOrDefault(mr => mr.MissionId == missionId && mr.UserId == userId);
+            MissionRating? missionRating = _context.MissionRatings.SingleOrDefault(mr => mr.MissionId == missionId && mr.UserId == userId);
 
             // if mission rating is not there by this user then add it
             if (missionRating == null)

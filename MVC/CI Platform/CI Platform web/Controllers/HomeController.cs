@@ -2,6 +2,7 @@
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using CI_Platform_web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -32,7 +33,8 @@ namespace CI_Platform_web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(User obj)
+        [AllowAnonymous]
+        public IActionResult Index(User obj, string? returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -50,7 +52,16 @@ namespace CI_Platform_web.Controllers
                         // Retrieve the BigInt value from the session
                         HttpContext.Session.SetString("UserId", (sessionUser.UserId).ToString());
                         HttpContext.Session.SetString("IsLoggedIn", "True");
-                        return RedirectToAction("ShareStory", "Story");
+                        // Redirect the user back to the previous page if returnUrl is present, otherwise to the home page
+                        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("UserProfile", "User");
+                        }
+                        //return RedirectToAction("StoriesListing", "Story");
                     }
                     else
                     {

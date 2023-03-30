@@ -13,9 +13,24 @@
         <partial name="_ValidationScriptsPartial" />
     }
 }
-@if (IsLoggedIn == "True")
-{
-    
+@if(IsLoggedIn != "True"){
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Login</h4>
+            </div>
+            <div class="modal-body">
+                <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
+                    Login
+                    <img src="~/images/right-arrow.png" alt="">
+                    <img src="~/images/right-arrow2.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+}
 
 <div class="container mt-3">
     <div class="row">
@@ -165,37 +180,45 @@
                         }
                         @if (flag == 1)
                         {
-                            <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.MissionId"><i class="bi bi-heart favorite-button empty-heart text-light me-2" data-mission-id="@Model.mission.MissionId"></i><span>Add to Favourite</span></a>
-                        }
+                                <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.MissionId"><i class="bi bi-heart favorite-button empty-heart text-light me-2" data-mission-id="@Model.mission.MissionId"></i><span>Add to Favourite</span></a>
+                            }
 
 
-                        @*<a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2"><img class="me-3" src="~/images/heart1.png" /><img class="me-3" src="~/images/heart.png" /><span>Add to Favourite</span></a>*@
-                    </div>
-                    <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
-                        <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#inviteVolunteer"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
+                            @*<a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2"><img class="me-3" src="~/images/heart1.png" /><img class="me-3" src="~/images/heart.png" /><span>Add to Favourite</span></a>*@
+                        </div>
+                        <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
+                            <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#inviteVolunteer"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
 
 
-                        <!-- Invite Volunteer Modal -->
+                            <!-- Invite Volunteer Modal -->
                         <div class="modal fade" id="inviteVolunteer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body" id="all-users">
-                                        @foreach (var u in Model.UserList)
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" id="all-users">
+                                            @if (Model.UserList == null)
+                                            {
+                                                <!-- Login button -->
+                                                <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
+                                                    Login to recommend to co-worker
+                                                    <img src="~/images/right-arrow.png" alt="">
+                                                    <img src="~/images/right-arrow2.png" alt="">
+                                                </a>
+                                            }
+                                            else
+                                            {
+
+                                                @foreach (var u in Model.UserList)
                                                 {
-
                                                     <div class="mt-2 d-flex justify-content-between">
-                                                        
                                                         <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
-
-                                                        
-                                                         <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.MissionId">Invite</button></span>
-                                                       
-                                                </div>
+                                                        <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.MissionId">Invite</button></span>
+                                                    </div>
                                                 }
+                                            }
 
                                     </div>
                                 </div>
@@ -508,7 +531,6 @@
                 int totalVolunteers = Model.mission.MissionApplications.Count(ma => ma.ApprovalStatus == "PUBLISHED");
                 int totalSlides = (int)Math.Ceiling((decimal)totalVolunteers / 9);
             }
-            @totalSlides
             <div class="border p-2 mt-4 pb-0">
                 <div class="info-heading">
                     <h2>Recent Volunteers</h2>
@@ -875,8 +897,3 @@
     </div>
 </div>
 </div>
-
-
-
-
-}
