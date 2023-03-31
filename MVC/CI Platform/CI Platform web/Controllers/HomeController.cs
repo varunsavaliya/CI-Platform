@@ -61,7 +61,6 @@ namespace CI_Platform_web.Controllers
                         {
                             return RedirectToAction("UserProfile", "User");
                         }
-                        //return RedirectToAction("StoriesListing", "Story");
                     }
                     else
                     {
@@ -71,7 +70,6 @@ namespace CI_Platform_web.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Email is incorrect");
-
                 }
             }
             return View();

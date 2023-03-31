@@ -26,6 +26,7 @@ namespace Ci_Platform.Repositories.Repositories
             List<Story> stories = new List<Story>();
             stories = await _context.Stories.Where(s => storyIds.Contains(s.StoryId))
                 .Include(s => s.User)
+                .Include(s => s.StoryMedia)
                 .Include(s => s.Mission).ThenInclude(m => m.Theme)
                 .ToListAsync();
 
@@ -177,7 +178,7 @@ namespace Ci_Platform.Repositories.Repositories
                     await _context.SaveChangesAsync();
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        file.CopyTo(stream);
+                       await file.CopyToAsync(stream);
                     }
                 }
             }

@@ -638,8 +638,6 @@ $(document).ready(function () {
                     closeIcon.on('click', function () {
                         item.remove();
                         allfiles.splice(allfiles.indexOf(file), 1);
-                        console.log(file);
-                        console.log(allfiles);
                     });
                 };
             })(file);
@@ -720,8 +718,7 @@ $(document).ready(function () {
             url: '/Story/GetStory',
             type: 'GET',
             data: { missionId: missionId },
-            success: function (result) {
-                console.log(result)
+            success: async function (result) {
                 imageList.empty();
                 $('#storyTitle').val("");
                 $('.note-editable').empty();
@@ -747,7 +744,7 @@ $(document).ready(function () {
                 if (result != null) {
                     $('#storyTitle').val(result.title);
                     $('.note-editable').html(result.description);
-                    
+
                     storyTitle = $('#storyTitle').val();
                     story = $('.note-editable').html();
                     // adding all urls in url box
@@ -760,11 +757,12 @@ $(document).ready(function () {
                             }
                             else {
                                 // Create a new File object from the image path
-                                var blob = new Blob([obj.path], { type: 'image/png' });
-                                var file = new File([blob], obj.path, { type: 'image/png' });
-
+                                const response = await fetch('/Upload/' + obj.path);
+                                const blob = await response.blob();
+                                const file = new File([blob], obj.path, { type: blob.type });
                                 // Add the new file to the allfiles array
                                 allfiles.push(file);
+
                                 var image = $('<img>').attr('src', '../Upload/' + obj.path);
                                 var closeIcon = $('<span>').addClass('close-icon').text('x');
 
@@ -773,12 +771,11 @@ $(document).ready(function () {
                                 imageList.append(item);
 
                                 // Handle close icon click event
-                                closeIcon.on('click', function () {
+                                item.on('click', '.close-icon', function (event) {
+                                    let index = $(this).parent().index();
                                     $(this).parent().remove();
-                                    allfiles.splice(allfiles.indexOf(file), 1);
-                                    console.log(allfiles);
+                                    allfiles.splice(index, 1);
                                 });
-
                             }
                         }
                     }
@@ -792,9 +789,9 @@ $(document).ready(function () {
         });
 
     });
-    
 
-    function validateForm(){
+
+    function validateForm() {
         if (missionId === '' || missionId === undefined) {
             $('#selectMissionValidation').text('Select the mission to write a story')
             return false;
@@ -815,10 +812,13 @@ $(document).ready(function () {
         var urlsArray = youtubeUrls.split('\n');
         // Check each URL for validity
         var youtubeRegex = /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/i;
-        for (var i = 0; i < urlsArray.length; i++) {
-            if (!youtubeRegex.test(urlsArray[i])) {
-                $('#urlValidation').text('Invalid YouTube URL: ' + urlsArray[i]);
-                return false;
+        if (youtubeUrls !== '') {
+
+            for (var i = 0; i < urlsArray.length; i++) {
+                if (!youtubeRegex.test(urlsArray[i])) {
+                    $('#urlValidation').text('Invalid YouTube URL: ' + urlsArray[i]);
+                    return false;
+                }
             }
         }
         if (urlsArray.length > 20) {
@@ -829,8 +829,8 @@ $(document).ready(function () {
     }
 
     $('.ssbuttons div').on('click', 'button', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
+        e.preventDefault();
+        e.stopPropagation();
         if (validateForm()) {
             formDetails.append("selectMission", missionId);
 
@@ -843,7 +843,6 @@ $(document).ready(function () {
             for (var i = 0; i < allfiles.length; i++) {
                 formDetails.append('images', allfiles[i]);
             }
-            console.log(formDetails)
             // append all urls in formDetail
             var urls = null;
             var u = $('#url').val();
@@ -894,7 +893,7 @@ $(document).ready(function () {
             $.ajax({
                 url: '/Story/StoryDetail',
                 type: 'GET',
-                data: {id : id},
+                data: { id: id },
                 success: function (result) {
                     var url = '/Story/StoryDetail?id=' + id;
                     window.location.href = url;
@@ -935,5 +934,14 @@ $(document).ready(function () {
         //        // ...
         //    }
         //});
+    });
+
+    $('.form-check-label').click(function () {
+        var checkbox = $(this).prev();
+        if (!checkbox.prop('checked')) {
+            $(this).addClass('bg-success text-white');
+        } else {
+            $(this).removeClass('bg-success text-white');
+        }
     });
 })
