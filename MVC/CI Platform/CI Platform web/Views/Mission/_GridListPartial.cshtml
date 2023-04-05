@@ -3,8 +3,7 @@
 @model CI_Platform.Entities.ViewModels.LandingPageModel;
 @{
     //var UserId = 12;
-    var UserId = ViewBag.UserId;
-    UserId = long.Parse(UserId);
+    var UserId = Convert.ToInt64(ViewBag.UserId);
     long totalCards = ViewBag.totalRecords;
 }
 

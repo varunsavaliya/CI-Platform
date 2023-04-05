@@ -32,13 +32,9 @@ namespace CI_Platform_web.Controllers
         {
             if (HttpContext.Session.GetString("UserName") != null)
             {
-                ViewBag.UserName = HttpContext.Session.GetString("UserName");
-                ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
+                //ViewBag.UserName = HttpContext.Session.GetString("UserName");
+                //ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
                 ViewBag.UserId = HttpContext.Session.GetString("UserId");
-            }
-            else
-            {
-                ViewBag.UserName = "Login";
             }
 
             var LandingView = new LandingPageModel();
@@ -56,14 +52,10 @@ namespace CI_Platform_web.Controllers
             var UserId = "";
             if (HttpContext.Session.GetString("UserName") != null)
             {
-                ViewBag.UserName = HttpContext.Session.GetString("UserName");
-                ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
+                //ViewBag.UserName = HttpContext.Session.GetString("UserName");
+                //ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
                 UserId = HttpContext.Session.GetString("UserId");
                 ViewBag.UserId = UserId;
-            }
-            else
-            {
-                ViewBag.UserName = "Login";
             }
             List<Mission> missions = new List<Mission>();
             var vm = new LandingPageModel();

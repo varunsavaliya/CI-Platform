@@ -43,15 +43,18 @@ namespace CI_Platform_web.Controllers
 
                     if (_Authentication.ComparePassword(obj))
                     {
+                        var user = _context.Users.Where(u => u.Email == obj.Email).FirstOrDefault();
                         // creating username for session to show on profile field
+                        //var session = HttpContext.Session;
                         var sessionUser = _context.Users.Where(a => a.Email == obj.Email).FirstOrDefault();
                         HttpContext.Session.SetString("UserName", sessionUser.FirstName + " " + sessionUser.LastName);
                         var userId = sessionUser.UserId;
-                        var session = HttpContext.Session;
 
                         // Retrieve the BigInt value from the session
                         HttpContext.Session.SetString("UserId", (sessionUser.UserId).ToString());
                         HttpContext.Session.SetString("IsLoggedIn", "True");
+                        HttpContext.Session.SetString("profileImage", user.Avatar == null ? "" : user.Avatar);
+                        HttpContext.Session.SetString("userEmail", obj.Email);
                         // Redirect the user back to the previous page if returnUrl is present, otherwise to the home page
                         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         {
@@ -59,7 +62,7 @@ namespace CI_Platform_web.Controllers
                         }
                         else
                         {
-                            return RedirectToAction("UserProfile", "User");
+                            return RedirectToAction("LandingPage", "Mission");
                         }
                     }
                     else
@@ -186,9 +189,23 @@ namespace CI_Platform_web.Controllers
             HttpContext.Session.Remove("IsLoggedIn");
             return RedirectToAction("Index", "Home");
         }
+        [HttpPost]
+        public IActionResult ChangePassword(String oldPass, String newPass)
+        {
+            
+             long   UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+           
+
+            if(_Authentication.comparePass(UserId, oldPass))
+            {
+                _Authentication.ResetPassword(Convert.ToInt64(UserId), newPass);
+            return Ok(new { icon = "success", message = "Password Changed Successfully!!" });
+            }
+            return Ok(new { icon = "error", message = "Old password is incorrect" });
+        }
 
 
-        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -1,0 +1,33 @@
+﻿@model CI_Platform.Entities.ViewModels.UserHeaderViewModel
+<div class="dropdown">
+                    <div role="button" data-bs-toggle="dropdown">
+                        <div class="right d-flex justify-space-between align-items-center">
+                            <div class="profile">
+                                @if(@Model.profileImage != "")
+                {
+                    
+                    <img src="~/ProfileImages/@Model.profileImage" alt="">
+                }
+                else
+                {
+                    <img src="~/images/default user avatar.jpg" alt="">
+                    
+                }
+            </div>
+                            <p class="profile-text m-0">@Model.UserName</p>
+                            <img src="~/images/drop-down.png" alt="">
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu">
+                        @if (@Model.isLoggedIn == "True")
+                        {
+                            <li><a class="dropdown-item" asp-controller="User" asp-action="UserProfile">My Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Volunteering Timesheett</a></li>
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="dropdown-item" asp-controller="Home" asp-action="Index">Login</a></li>
+                        }
+                    </ul>
+                </div>

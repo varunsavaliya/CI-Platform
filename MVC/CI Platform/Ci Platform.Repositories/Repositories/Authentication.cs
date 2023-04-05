@@ -94,5 +94,16 @@ namespace Ci_Platform.Repositories.Repositories
             _context.SaveChanges();
 
         }
+
+        public bool comparePass(long UserId, string pass)
+        {
+            return _context.Users.Any(u => u.UserId == UserId && u.Password == pass);
+        }
+        public void ResetPassword(long UserId, string pass)
+        {
+            var user = _context.Users.Where(u => u.UserId == UserId).FirstOrDefault();
+            user.Password = pass;
+            _context.SaveChanges();
+        }
     }
 }

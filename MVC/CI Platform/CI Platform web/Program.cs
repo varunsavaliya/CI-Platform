@@ -15,10 +15,12 @@ builder.Services.AddScoped<IAuthentication, Authentication>();
 builder.Services.AddScoped<IFilters, Filters>();
 builder.Services.AddScoped<IMission, MissionRepository>();
 builder.Services.AddScoped<IStory, StoryRepository>();
+builder.Services.AddScoped<IUserProfile, UserProfile>();
 
 // for use of session
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

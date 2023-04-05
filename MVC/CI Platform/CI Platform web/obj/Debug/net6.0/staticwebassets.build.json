@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/WxQs08KllKTg5H71WCZrNJDfPVUsYeOb0PDKt3DEP0=",
+  "Hash": "zpx6lpV3bFg40m8UeWOjAjaxnO5SJDbOjT977G/+6Hs=",
   "Source": "CI Platform web",
   "BasePath": "_content/CI Platform web",
   "Mode": "Default",
@@ -491,6 +491,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\deadline.png"
+    },
+    {
+      "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\default user avatar.jpg",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "images/default user avatar.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\default user avatar.jpg"
     },
     {
       "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\doc.png",
@@ -1921,23 +1938,6 @@
       "OriginalItemSpec": "wwwroot\\images\\xlsx.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\ShareStoryTextarea.js",
-      "SourceId": "CI Platform web",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
-      "BasePath": "_content/CI Platform web",
-      "RelativePath": "js/ShareStoryTextarea.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\ShareStoryTextarea.js"
-    },
-    {
       "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\site.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
@@ -2924,6 +2924,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
+      "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\12_ProfileImage.png",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "ProfileImages/12_ProfileImage.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProfileImages\\12_ProfileImage.png"
+    },
+    {
       "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
@@ -3007,6 +3024,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Upload\\Grow-Trees-On-the-path-to-environment-sustainability-3_3e334b79-1853-448b-93a8-0aea579853f3.png"
+    },
+    {
+      "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer6_a5ccaed0-47ad-4a38-9ea0-3a09e7e7d22d_8efc63a6-d2d7-4f46-8298-6bc4536869c2_84aaf4fe-5689-4445-9082-13f8ccbda7a9.png",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "Upload/volunteer6_a5ccaed0-47ad-4a38-9ea0-3a09e7e7d22d_8efc63a6-d2d7-4f46-8298-6bc4536869c2_84aaf4fe-5689-4445-9082-13f8ccbda7a9.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\volunteer6_a5ccaed0-47ad-4a38-9ea0-3a09e7e7d22d_8efc63a6-d2d7-4f46-8298-6bc4536869c2_84aaf4fe-5689-4445-9082-13f8ccbda7a9.png"
+    },
+    {
+      "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer7_797e5e5f-b394-43b3-b27d-946a39c7aaef_5a74ea97-48ab-4b26-a38f-007d8159a07d_461d4d70-07df-4ffc-b92a-ca91f0f5357b.png",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "Upload/volunteer7_797e5e5f-b394-43b3-b27d-946a39c7aaef_5a74ea97-48ab-4b26-a38f-007d8159a07d_461d4d70-07df-4ffc-b92a-ca91f0f5357b.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\volunteer7_797e5e5f-b394-43b3-b27d-946a39c7aaef_5a74ea97-48ab-4b26-a38f-007d8159a07d_461d4d70-07df-4ffc-b92a-ca91f0f5357b.png"
+    },
+    {
+      "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer9_dcf20388-88cb-4a64-9f3d-6a6e5411050c_87773a97-778b-41f8-91a4-de0e8399b984.png",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "Upload/volunteer9_dcf20388-88cb-4a64-9f3d-6a6e5411050c_87773a97-778b-41f8-91a4-de0e8399b984.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Upload\\volunteer9_dcf20388-88cb-4a64-9f3d-6a6e5411050c_87773a97-778b-41f8-91a4-de0e8399b984.png"
     }
   ]
 }

@@ -1,45 +1,60 @@
 ﻿@{
     Layout = "_HeaderLayout";
 }
-
+@model CI_Platform.Entities.ViewModels.UserProfileModel
 
 <div class="container mt-lg-5 mt-md-2 mt-2">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="row gap-3">
             <!-- User profile image, name and reset password -->
-            <div class="col-lg-3 col-md-12 p-5 p-md-2 d-flex flex-column justify-content-center align-items-center border user-profile">
+            <div class="col-lg-3 col-md-12 p-lg-5 p-md-2 d-flex flex-column justify-content-center align-items-center border user-profile">
                 <div class="user-image-wrapper">
-                    <img src="~/images/volunteer1.png" alt="user-image" class="mb-2 user-image" />
+                    @if (Model.userDetails.Avatar == "null")
+                    {
+                        <img src="~/images/default user avatar.jpg" alt="user-image" class="mb-2 user-image" />
+                    }
+                    else
+                    {
+                        <img src="~/ProfileImages/@Model.ProfileImageName" alt="user-image" class="mb-2 user-image" />
+                    }
                     <div class="edit-icon"><i class="fas fa-pencil-alt"></i></div>
                     <!-- File input element -->
-                    <input type="file" id="profile-image-input" class="d-none" />
+                    <input asp-for="ProfileImage" type="file" id="profile-image-input" class="d-none" />
                 </div>
-                <span class="user-name mb-1">Evan Donohue</span>
+                <span class="user-name mb-1">@Model.Name @Model.Surname</span>
                 <span class="change-password" data-bs-toggle="modal" data-bs-target="#change-password">Change Password</span>
 
                 <div class="modal fade" id="change-password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body px-5">
+                                <div class="skill-heading d-flex justify-content-between">
+                                    <h3 class="d-inline mb-0">Change Password</h3>
+                                    <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
                                 <form class="formcontent my-0">
                                     @*<div asp-validation-summary="All" class="text-danger"></div>*@
-                                    <div class="mb-3 mt-3">
-                                        <label class="formlabels" for="oldpassword">Old Password</label>
+                                    <div class="my-4">
                                         <input type="password" class="form-control old-password" id="oldPassword" for="oldPassword" placeholder="Enter old password" name="oldpassword">
-                                        @*<span asp-validation-for="password" class="text-danger"></span>*@
+                                        <span id="oldPasswordValidation" class="text-danger"></span>
                                     </div>
-                                    <div class="mb-3 mt-3">
-                                        <label class="formlabels" for="newpassword">New Password</label>
+                                    <div class="my-4">
                                         <input type="password" class="form-control new-password" id="newPassword" for="newPassword" placeholder="Enter new password" name="newpassword">
-                                        @*<span asp-validation-for="ConfirmPassword" class="text-danger"></span>*@
+                                        <span id="newPasswordValidation" class="text-danger"></span>
                                     </div>
-                                    <button type="button" class="btn mt-3 loginbtn">Change Password</button>
+                                    <div class="my-4">
+                                        <input type="password" class="form-control new-password" id="confirmPassword" for="confirmPassword" placeholder="Enter confirm password" name="confirmPassword">
+                                        <span id="confirmPasswordValidation" class="text-danger"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" id="change-password-btn" class="btn mt-0 card-button ms-2 me-0">Change Password</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-
 
             </div>
             <div class="col-lg-9 col-md-12 row form-container">
@@ -49,44 +64,41 @@
                     </span>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="Name" class="form-label">Name*</label>
-                    <input for="Name" name="Name" type="text" class="form-control" id="name" aria-describedby="Name" placeholder="Enter your name">
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="Name" class="form-label">Name*</label>
+                    <input asp-for="Name" name="Name" type="text" class="form-control" id="name" aria-describedby="Name" placeholder="Enter your name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="Surname" class="form-label">Surname*</label>
-                    <input for="Surname" name="Surname" type="text" class="form-control" id="surname" aria-describedby="Surname" placeholder="Enter your surname">
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="Surname" class="form-label">Surname*</label>
+                    <input asp-for="Surname" name="Surname" type="text" class="form-control" id="surname" aria-describedby="Surname" placeholder="Enter your surname">
+                    <span asp-validation-for="Surname" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="employeeId" class="form-label">Employee Id</label>
-                    <input for="employeeId" name="employeeId" type="text" class="form-control" id="employeeId" aria-describedby="employeeId" placeholder="Enter your employee id">
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="employeeId" class="form-label">Employee Id</label>
+                    <input asp-for="employeeId" name="employeeId" type="text" class="form-control" id="employeeId" aria-describedby="employeeId" placeholder="Enter your employee id">
+                    <span asp-validation-for="employeeId" class="text-danger"></span>
+
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="Manager" class="form-label">Manager</label>
-                    <input for="Manager" name="Manager" type="text" class="form-control" id="Manager" aria-describedby="Manager" placeholder="Enter your manager details">
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="Manager" class="form-label">Manager</label>
+                    <input asp-for="Manager" name="Manager" type="text" class="form-control" id="Manager" aria-describedby="Manager" placeholder="Enter your manager details">
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input for="title" name="title" type="text" class="form-control" id="title" aria-describedby="title" placeholder="Enter title">
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="title" class="form-label">Title</label>
+                    <input asp-for="title" name="title" type="text" class="form-control" id="title" aria-describedby="title" placeholder="Enter title" >
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="department" class="form-label">Department</label>
-                    <input for="department" name="department" type="text" class="form-control" id="department" aria-describedby="department" placeholder="Enter department name">
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="department" class="form-label">Department</label>
+                    <input asp-for="department" name="department" type="text" class="form-control" id="department" aria-describedby="department" placeholder="Enter department name">
                 </div>
                 <div class="col-12 mb-3">
-                    <label for="MyProfile" class="form-label">My Profile*</label>
-                    <textarea for="MyProfile" name="MyProfile" class="form-control" id="MyProfile" aria-describedby="MyProfile" rows="3" placeholder="Enter your comments..."></textarea>
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="MyProfile" class="form-label">My Profile*</label>
+                    <textarea asp-for="MyProfile" name="MyProfile" class="form-control" id="MyProfile" aria-describedby="MyProfile" rows="3" placeholder="Enter your comments..." ></textarea>
+                    <span asp-validation-for="MyProfile" class="text-danger"></span>
                 </div>
                 <div class="col-12 mb-3">
-                    <label for="whyIVolunteer" class="form-label">Why I Volunteer?</label>
-                    <textarea for="whyIVolunteer" name="whyIVolunteer" class="form-control" id="whyIVolunteer" aria-describedby="whyIVolunteer" rows="3" placeholder="Enter your comments..."></textarea>
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="whyIVolunteer" class="form-label">Why I Volunteer?</label>
+                    <textarea asp-for="whyIVolunteer" name="whyIVolunteer" class="form-control" id="whyIVolunteer" aria-describedby="whyIVolunteer" rows="3" placeholder="Enter your comments..." value=""></textarea>
                 </div>
 
 
@@ -96,19 +108,28 @@
                     </span>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="City" class="form-label">City</label>
-                    <input for="City" name="City" type="text" class="form-control" id="City" aria-describedby="City" placeholder="Enter your city">
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="Country" class="form-label">Country*</label>
+                    <select asp-for="Country" class="form-select user-country" aria-label="Country">
+                        <option value="">Select your country</option>
+                        @foreach (var country in Model.countryList)
+                        {
+                            @if (country.CountryId == Model.Country)
+                            {
+                                <option value="@country.CountryId" selected>@country.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@country.CountryId">@country.Name</option>
+                            }
+                        }
+                    </select>
+                    <span asp-validation-for="Country" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="Country" class="form-label">Country*</label>
-                    <select class="form-select" aria-label="Country">
-                        <option selected>Select your country</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <label asp-for="City" class="form-label">City</label>
+                    <select asp-for="City" class="form-select user-city" aria-label="Country">
+                        <option value="">Select your city</option>
                     </select>
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
                 </div>
 
 
@@ -119,19 +140,17 @@
                     </span>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="Availablity" class="form-label">Availablity</label>
-                    <select class="form-select" aria-label="Availablity">
-                        <option selected>Select your availablity</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <label asp-for="Availablity" class="form-label">Availablity</label>
+                    <select asp-for="Availablity" class="form-select" aria-label="Availablity">
+                        <option value="0" selected>Select your availablity</option>
+                        <option value="1">Daily</option>
+                        <option value="2">Weekly</option>
+                        <option value="3">Weekend</option>
                     </select>
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label for="LinkedIn" class="form-label">LinkedIn</label>
-                    <input for="LinkedIn" name="LinkedIn" type="text" class="form-control" id="LinkedIn" aria-describedby="LinkedIn" placeholder="Enter linkedIn URL">
-                    @*<span id="storyTitleValidation" class="text-danger"></span>*@
+                    <label asp-for="LinkedIn" class="form-label">LinkedIn</label>
+                    <input asp-for="LinkedIn" name="LinkedIn" type="text" class="form-control" id="LinkedIn" aria-describedby="LinkedIn" placeholder="Enter linkedIn URL" value="@Model.userDetails.LinkedInUrl">
                 </div>
 
 
@@ -142,32 +161,60 @@
                     </span>
                 </div>
                 <div class="col-12 mb-3">
+                    <div class="skill-display border mb-3 p-3">
+                        @foreach (var skill in Model.userSkills)
+                        {
+                            <span class="mb-2" id="@skill.SkillId">@skill.Skill.SkillName</span>
+                            <br>
+                        }
+                    </div>
                     <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-toggle="modal" data-bs-target="#add-skill">Add Skills</button>
 
 
 
                     <div class="modal fade" id="add-skill" tabindex="-1" aria-labelledby="add-skill" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-body px-5">
                                     <div class="skill-heading d-flex justify-content-between">
                                         <h3 class="d-inline">Add your Skills</h3>
                                         <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="skill-options">
-                                        <div class="form-check">
-                                            <input class="form-check-input d-none" type="checkbox" id="check1" value="option1">
-                                            <label class="form-check-label" for="check1">Option 1</label>
+                                    <div class="row">
+                                        <div class="col-5 border px-0 py-3">
+                                            <input asp-for="selectedSkills" type="hidden" id="selected-skills" name="selectedSkills" />
+
+                                            <div class="all-skill-options">
+                                                @foreach (var skill in Model.skillList)
+                                                {
+                                                    <div class="form-check ps-0 mb-2">
+                                                        <input class="form-check-input d-none" type="checkbox" id="@skill.SkillId" value="@skill.SkillId" @if(Model.userSkills.Select(us=>us.SkillId).Contains(skill.SkillId)) {<text>checked</text>} />
+                                                        <label class="form-check-label ps-3 @if(Model.userSkills.Select(us=>us.SkillId).Contains(skill.SkillId)) {<text>skill-bg</text>}" for="@skill.SkillId">@skill.SkillName</label>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-2 d-flex flex-column justify-content-center align-items-center arrows">
+                                            <img src="~/images/arrow.png" class="my-1 add-arrow" />
+                                            <img src="~/images/left.png" class="my-1 remove-arrow" />
                                         </div>
 
-                                        <div class="form-check">
-                                            <input class="form-check-input d-none" type="checkbox" id="check2" value="option2">
-                                            <label class="form-check-label" for="check2">Option 2</label>
+                                        <div class="col-5 border px-0 py-3">
+                                            <div class="user-skill-options">
+                                                @foreach (var userSkill in Model.userSkills)
+                                                {
+                                                    <div class="form-check ps-0 mb-2">
+                                                        <input class="form-check-input d-none" type="checkbox" id="user_@userSkill.SkillId" value="@userSkill.SkillId">
+                                                        <label class="form-check-label ps-3" for="user_@userSkill.SkillId">@userSkill.Skill.SkillName</label>
+                                                    </div>
+
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="d-block">
-                                        <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="card-button">Save</button>
+                                        <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="card-button" id="save-skill-btn" data-bs-dismiss="modal">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +222,7 @@
                     </div>
                 </div>
                 <div class="col-12 mb-3 text-end">
-                    <button id="Save-btn" class="card-button mt-0">Save</button>
+                    <button type="submit" id="profile-save-btn" class="card-button mt-0">Save</button>
                 </div>
 
             </div>
@@ -183,3 +230,10 @@
         </div>
     </form>
 </div>
+
+
+@section scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

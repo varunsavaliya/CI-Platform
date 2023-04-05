@@ -982,7 +982,11 @@ input:focus-visible {
     .card-image img {
         width: 100%;
         border-radius: 0;
+    }
+
+    .card-image>img {
         height: 13rem;
+        object-fit: cover;
     }
 
     .card-image .card-items img {
@@ -1264,8 +1268,8 @@ footer {
     width: 100%;
 }
 
-    footer container p {
-        /*margin*/
+    footer div p {
+        cursor:pointer;
     }
 
     footer p a {
@@ -1276,6 +1280,21 @@ footer {
 
         footer p a:hover {
             color: #757575;
+        }
+
+        /*contact us design*/
+#contact-us form label {
+    color: #414141;
+    font-weight: 400;
+}
+#contact-us form #Email, #contact-us form #Name {
+    color: #757575;
+}
+#Email:disabled, #Name:disabled {
+    background: #EBE7E7;
+}
+        #message{
+            resize:none;
         }
 
 /*viewport 991px grid and list view*/
@@ -2002,14 +2021,28 @@ footer {
 }
 
 .skill-btn{
-    padding: 8px 26px;
+    padding: 10px 26px;
     border-radius:23px;
     width:max-content;
     display:inline;
 }
 
-.skill-options div label{
+.all-skill-options div label, .user-skill-options div label {
+    cursor: pointer;
+    display:block;
+}
+
+.arrows img{
+    width:max-content;
     cursor:pointer;
+}
+
+.skill-bg {
+    background: #e8e8e8 !important;
+}
+
+.skill-display{
+    min-height: 5vh;
 }
 
 

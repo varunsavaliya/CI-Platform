@@ -26,22 +26,32 @@ $(document).ready(function () {
             url: "/Mission/GetCitiesByCountry",
             data: { countryId: countryId },
             success: function (data) {
+                if (currentUrl.includes("LandingPage")) {
+                    var dropdown = $("#cityDropdown");
+                    dropdown.empty();
+                    var items = "";
+                    $(data).each(function (i, item) {
+                        items += `<li class="form-check ps-4"><input type="checkbox" class="form-check-input me-2" name="cityCheckboxes" id=` + item.cityId + ` value=` + item.cityId + ` multiple><label class="form-check-label" for=` + item.cityId + `>` + item.name + `</label></li>`
+                    })
+                    dropdown.html(items);
 
-                var dropdown = $("#cityDropdown");
-                dropdown.empty();
-                var items = "";
-                $(data).each(function (i, item) {
-                    items += `<li class="form-check ps-4"><input type="checkbox" class="form-check-input me-2" name="cityCheckboxes" id=` + item.cityId + ` value=` + item.cityId + ` multiple><label class="form-check-label" for=` + item.cityId + `>` + item.name + `</label></li>`
-                })
-                dropdown.html(items);
-
-                var dropdown = $("#cityDropdownOffCanvas");
-                dropdown.empty();
-                var items = "";
-                $(data).each(function (i, item) {
-                    items += `<li class="form-check ps-4"><input type="checkbox" class="form-check-input me-2" name="cityCheckboxes" id=` + item.cityId + ` value=` + item.cityId + ` multiple><label class="form-check-label" for=` + item.cityId + `>` + item.name + `</label></li>`
-                })
-                dropdown.html(items);
+                    var dropdown = $("#cityDropdownOffCanvas");
+                    dropdown.empty();
+                    var items = "";
+                    $(data).each(function (i, item) {
+                        items += `<li class="form-check ps-4"><input type="checkbox" class="form-check-input me-2" name="cityCheckboxes" id=` + item.cityId + ` value=` + item.cityId + ` multiple><label class="form-check-label" for=` + item.cityId + `>` + item.name + `</label></li>`
+                    })
+                    dropdown.html(items);
+                }
+                else if (currentUrl.includes("UserProfile")) {
+                    var select = $('.user-city');
+                    select.empty();
+                    var items = `<option value="0">Select your city</option>`;
+                    $(data).each(function (i, item) {
+                        items += `<option value=` + item.cityId + `>` + item.name + `</option>`
+                    })
+                    select.append(items)
+                }
             }
         });
     }
@@ -838,7 +848,7 @@ $(document).ready(function () {
             formDetails.append("story", story);
             formDetails.append("Date", $('date').val());
             formDetails.append("button", $(this).val());
-
+            console.log($(this).val())
             // Loop through all the files in the allfiles array and add them to the DataTransfer object
             for (var i = 0; i < allfiles.length; i++) {
                 formDetails.append('images', allfiles[i]);
@@ -861,7 +871,6 @@ $(document).ready(function () {
                 data: formDetails,
                 processData: false,
                 contentType: false,
-
                 success: function (result) {
                     swal.fire({
                         position: 'center',
@@ -919,29 +928,130 @@ $(document).ready(function () {
             $('.user-image').attr('src', e.target.result);
         }
         reader.readAsDataURL(this.files[0]);
-
-        // Send new profile image to server
-        //var formData = new FormData();
-        //formData.append('profile_image', this.files[0]);
-        //$.ajax({
-        //    url: '/update_profile_image',
-        //    type: 'POST',
-        //    data: formData,
-        //    processData: false,
-        //    contentType: false,
-        //    success: function (data) {
-        //        // Update user's profile with new image
-        //        // ...
-        //    }
-        //});
     });
 
-    $('.form-check-label').click(function () {
+    $(document).on('click', '.form-check-label', function () {
         var checkbox = $(this).prev();
         if (!checkbox.prop('checked')) {
-            $(this).addClass('bg-success text-white');
+            $(this).addClass('skill-bg');
         } else {
-            $(this).removeClass('bg-success text-white');
+            $(this).removeClass('skill-bg');
         }
     });
+
+    var uniqueId = 0;
+    // Add arrow button event listener
+    $('.add-arrow').on('click', function () {
+        $('.user-skill-options').empty();
+        // Get checked checkboxes from all-skill-options
+        var checkedOptions = $('.all-skill-options input[type="checkbox"]:checked');
+
+        // Add checked options to user-skill-options
+        checkedOptions.each(function () {
+            uniqueId++;
+            var option = $(this).closest('.form-check').clone();
+            $(option).find('label').removeClass('skill-bg').attr('for', 'input-' + uniqueId);
+            $(option).find('input[type="checkbox"]').prop('checked', false).attr('id', 'input-' + uniqueId);
+            $('.user-skill-options').append(option);
+        });
+    });
+
+    // Remove arrow button event listener
+    $('.remove-arrow').on('click', function () {
+        // Get checked checkboxes from user-skill-options
+        var checkedOptions = $('.user-skill-options input[type="checkbox"]:checked');
+
+        // Remove checked options from user-skill-options and uncheck them in all-skill-options
+        checkedOptions.each(function () {
+            var option = $(this).closest('.form-check');
+            var optionValue = $(option).find('label').text();
+            var checkbox = $('.all-skill-options').find('input[type="checkbox"]');
+            checkbox.each(function () {
+                if ($(this).next('label').text() == optionValue) {
+                    $(this).prop('checked', false);
+                    $(this).next('label').removeClass('skill-bg');
+                    option.remove();
+                }
+            })
+        });
+    });
+
+    var selectedUserSkills = [];
+    $('#save-skill-btn').click(function () {
+        let skills = $('.user-skill-options').find('label');
+        let skillContainer = $('.skill-display');
+        skillContainer.empty();
+        skills.each(function () {
+            let skill = `<span class="mb-2">` + $(this).text() + `</span><br>`;
+            skillContainer.append(skill)
+        })
+
+        $('.all-skill-options').find('.form-check-input:checked').each(function () {
+            selectedUserSkills.push($(this).val());
+        });
+
+        $('#selected-skills').val(selectedUserSkills.join(','));
+        console.log(selectedUserSkills)
+        console.log($('#selected-skills').val())
+    })
+
+    $('.user-country').on('click', function () {
+        let countryId = $(this).val();
+        getCitiesByCountry(countryId);
+    })
+
+    // change password form in user edit profile
+    function validateChangePassForm() {
+        if ($('#oldPassword').val() == '') {
+            $('#oldPasswordValidation').text('Enter your old password');
+            return false;
+        }
+        if ($('#newPassword').val() == '') {
+            $('#newPasswordValidation').text('Enter your new password');
+            return false;
+        }
+        if ($('#confirmPassword').val() == '' || $('#newPassword').val() != $('#confirmPassword').val()) {
+            $('#confirmPasswordValidation').text('Password does not match!!');
+            return false;
+        }
+        return true;
+    }
+    $('#confirmPassword').keyup(function () {
+        $('#confirmPasswordValidation').text('');
+        validateChangePassForm();
+    })
+    $('#oldPassword').keyup(function () {
+        $('#oldPasswordValidation').text('');
+    })
+    $('#newPassword').keyup(function () {
+        $('#newPasswordValidation').text('');
+    })
+
+
+    $('#change-password-btn').click(function () {
+        if (validateChangePassForm()) {
+            console.log($('#oldPassword').val())
+
+            let oldPass = $('#oldPassword').val();
+            console.log(oldPass)
+            let newPass = $('#newPassword').val();
+            $.ajax({
+                url: '/Home/ChangePassword',
+                type: 'POST',
+                data: { oldPass: oldPass, newPass: newPass },
+                success: function (result) {
+                    swal.fire({
+                        position: 'center',
+                        icon: result.icon,
+                        title: result.message,
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                },
+                error: function (error) {
+
+                }
+            });
+        }
+    })
 })

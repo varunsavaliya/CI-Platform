@@ -14,5 +14,8 @@ namespace Ci_Platform.Repositories.Interfaces
         public string GenerateToken();
         public void SendMail(string token, string PasswordResetLink, ForgotPasswordModel model);
         public void ResetPass(PasswordResetModel model);
+        public void ResetPassword(long UserId, string pass);
+
+        public bool comparePass(long UserId, String pass);
     }
 }
