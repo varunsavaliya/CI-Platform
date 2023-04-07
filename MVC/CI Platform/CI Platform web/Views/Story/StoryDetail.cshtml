@@ -4,6 +4,13 @@
     Layout = "_HeaderLayout";
     var IsLoggedIn = ViewBag.IsLoggedIn;
 }
+@functions {
+    public string GetEmbedUrl(string url)
+    {
+        var videoId = url.Split("v=")[1];
+        return $"https://www.youtube.com/embed/{videoId}";
+    }
+                    }
 @if (IsLoggedIn != "True")
 {
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -35,18 +42,25 @@
             "
                  class="swiper mySwiper2">
                 <div class="swiper-wrapper">
-                    @foreach (var img in Model.StoryDetail.StoryMedia)
+                    @foreach (var media in Model.StoryDetail.StoryMedia)
                     {
-                        if (img.Type == "image")
+                        if (media.Type == "image")
                         {
                             <div class="swiper-slide">
-                                <img src="~/Upload/@img.Path" />
+                                <img src="~/Upload/@media.Path" />
                             </div>
+                        }else{
+                            @if (!string.IsNullOrEmpty(media.Path))
+                            {
+                                <div class="swiper-slide">
+                                    <iframe src="@GetEmbedUrl(@media.Path)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                            }
                         }
                     }
-                    @if (Model.StoryDetail.StoryMedia.Count(img => img.Type == "image") < 4)
+                    @if (Model.StoryDetail.StoryMedia.Count(img => img.Type == "image" || img.Type == "VIDEO") < 4)
                     {
-                        for (int i = 0; i < (4 - Model.StoryDetail.StoryMedia.Count(img => img.Type == "image")); i++)
+                        for (int i = 0; i < (4 - Model.StoryDetail.StoryMedia.Count(img => img.Type == "image" || img.Type == "VIDEO") ); i++)
                         {
                             <div class="swiper-slide">
                                 <img src="~/images/no-image-icon.png" />
@@ -57,18 +71,26 @@
             </div>
             <div thumbsSlider="" class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    @foreach (var img in Model.StoryDetail.StoryMedia)
+                    @foreach (var media in Model.StoryDetail.StoryMedia)
                     {
-                        if (img.Type == "image")
+                        if (media.Type == "image")
                         {
                             <div class="swiper-slide">
-                                <img src="~/Upload/@img.Path" />
+                                <img src="~/Upload/@media.Path" />
                             </div>
                         }
+                        else{
+                            @if (!string.IsNullOrEmpty(media.Path))
+                            {
+                                <div class="swiper-slide">
+                                    <iframe src="@GetEmbedUrl(@media.Path)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                                }
+                        }
                     }
-                    @if (Model.StoryDetail.StoryMedia.Count(img => img.Type == "image") < 4)
+                    @if (Model.StoryDetail.StoryMedia.Count(img => img.Type == "image" || img.Type == "VIDEO") < 4)
                     {
-                        for (int i = 0; i < (4 - Model.StoryDetail.StoryMedia.Count(img => img.Type == "image")); i++)
+                        for (int i = 0; i < (4 - Model.StoryDetail.StoryMedia.Count(img => img.Type == "image" || img.Type == "VIDEO")); i++)
                         {
                             <div class="swiper-slide">
                                 <img src="~/images/no-image-icon.png" />
@@ -166,7 +188,7 @@
     </div>
     <!-- mission details -->
     <div class="st-mission-heading mt-3 border-bottom pb-3">
-        <span class="pb-3">@Model.StoryDetail.Mission.Title</span>
+        @*<span class="pb-3">@Model.StoryDetail.Mission.Title</span>*@
     </div>
     <div class="st-mission-description mb-3">
         <span>@Model.StoryDetail.Mission.Description</span>

@@ -10,26 +10,27 @@
 </script>
 @section scripts{
     @{
-        <partial name="_ValidationScriptsPartial" />
+    <partial name="_ValidationScriptsPartial" />
     }
 }
-@if(IsLoggedIn != "True"){
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Login</h4>
-            </div>
-            <div class="modal-body">
-                <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
-                    Login
-                    <img src="~/images/right-arrow.png" alt="">
-                    <img src="~/images/right-arrow2.png" alt="">
-                </a>
+@if (IsLoggedIn != "True")
+{
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
+                        Login
+                        <img src="~/images/right-arrow.png" alt="">
+                        <img src="~/images/right-arrow2.png" alt="">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 }
 
 <div class="container mt-3">
@@ -180,45 +181,45 @@
                         }
                         @if (flag == 1)
                         {
-                                <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.MissionId"><i class="bi bi-heart favorite-button empty-heart text-light me-2" data-mission-id="@Model.mission.MissionId"></i><span>Add to Favourite</span></a>
-                            }
+                            <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.MissionId"><i class="bi bi-heart favorite-button empty-heart text-light me-2" data-mission-id="@Model.mission.MissionId"></i><span>Add to Favourite</span></a>
+                        }
 
 
-                            @*<a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2"><img class="me-3" src="~/images/heart1.png" /><img class="me-3" src="~/images/heart.png" /><span>Add to Favourite</span></a>*@
-                        </div>
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
-                            <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#inviteVolunteer"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
+                        @*<a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2"><img class="me-3" src="~/images/heart1.png" /><img class="me-3" src="~/images/heart.png" /><span>Add to Favourite</span></a>*@
+                    </div>
+                    <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
+                        <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#inviteVolunteer"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
 
 
-                            <!-- Invite Volunteer Modal -->
+                        <!-- Invite Volunteer Modal -->
                         <div class="modal fade" id="inviteVolunteer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body" id="all-users">
-                                            @if (Model.UserList == null)
-                                            {
-                                                <!-- Login button -->
-                                                <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
-                                                    Login to recommend to co-worker
-                                                    <img src="~/images/right-arrow.png" alt="">
-                                                    <img src="~/images/right-arrow2.png" alt="">
-                                                </a>
-                                            }
-                                            else
-                                            {
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" id="all-users">
+                                        @if (Model.UserList == null)
+                                        {
+                                            <!-- Login button -->
+                                            <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
+                                                Login to recommend to co-worker
+                                                <img src="~/images/right-arrow.png" alt="">
+                                                <img src="~/images/right-arrow2.png" alt="">
+                                            </a>
+                                        }
+                                        else
+                                        {
 
-                                                @foreach (var u in Model.UserList)
-                                                {
-                                                    <div class="mt-2 d-flex justify-content-between">
-                                                        <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
-                                                        <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.MissionId">Invite</button></span>
-                                                    </div>
-                                                }
+                                            @foreach (var u in Model.UserList)
+                                            {
+                                                <div class="mt-2 d-flex justify-content-between">
+                                                    <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
+                                                    <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.MissionId">Invite</button></span>
+                                                </div>
                                             }
+                                        }
 
                                     </div>
                                 </div>
@@ -414,9 +415,9 @@
                 <div class="tab-pane fade comments-tab mb-md-3" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <form method="post" class="mt-4" id="comment-form" data-mission-id="@Model.mission.MissionId">
                         <div class="mb-3">
-                    <label asp-for="comment1" class="form-label">Comment</label>
+                            <label asp-for="comment1" class="form-label">Comment</label>
                             <textarea asp-for="comment1" class="form-control " rows="3" placeholder="Enter Your Comments..." name="Comment1"></textarea>
-                        <span asp-validation-for="comment1" class="text-danger"></span>
+                            <span asp-validation-for="comment1" class="text-danger"></span>
 
                         </div>
                         <input type="hidden" name="UserId" value="@UserId" />
@@ -526,138 +527,40 @@
                 </div>
             </div>
 
-            @*recent volunteers*@
-            @{
-                int totalVolunteers = Model.mission.MissionApplications.Count(ma => ma.ApprovalStatus == "PUBLISHED");
-                int totalSlides = (int)Math.Ceiling((decimal)totalVolunteers / 9);
-            }
+            <!-- recent volunteers -->
             <div class="border p-2 mt-4 pb-0">
                 <div class="info-heading">
                     <h2>Recent Volunteers</h2>
                 </div>
                 <div class="container-fluid border-bottom"></div>
+                <div id="recentVolunteersSlider" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <input type="text" class="d-none" value="@Model.totalVolunteers" id="totalVolunteers" />
+                            <div class="row recent-volunteers">
+                                <!-- appending recenvolunteers from ajax call -->
 
-                @if (totalVolunteers == 0)
-                {
-                    <div class="my-2">There is no recent volunteers in this mission</div>
-                }
-                else
-                {
-                    <div id="recentVolunteersSlider" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-
-                            @for (int i = 0; i < totalSlides; i++)
-                            {
-                                <div class="carousel-item active">
-                                    <div class="row recent-volunteers">
-                                        <!-- pending -->
-                                        @*@{
-                                            int startIndex = i + 1;
-                                            int endIndex = 
-                                        }*@
-                                        @foreach (var volunteer in Model.mission.MissionApplications)
-                                        {
-                                                if(volunteer.ApprovalStatus == "PUBLISHED")
-                                                {
-                                                    
-                                                <div class="col-4 mt-3">
-                                                <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>@volunteer.User.FirstName @volunteer.User.LastName</p></div>
-                                            </div>
-                                                }
-                                        }
-                                    </div>
-                                </div>
-                            }
-                            @*<div class="carousel-item active">
-                                <div class="row recent-volunteers">
-                                    <div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row recent-volunteers">
-                                    <div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row recent-volunteers">
-                                    <div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div><div class="col-4 mt-3">
-                                        <div class="d-flex flex-column align-items-center"><img src="~/images/volunteer1.png" /><p>Andrew Johnson</p></div>
-                                    </div>
-                                </div>
-                            </div>*@
-                        </div>
-                    </div>
-                    <div class="border-top">
-                        <div class="row">
-                            <div class="col-2 d-flex align-items-center justify-content-center border-end">
-                                <a class="carousel-control-prev" data-bs-target="#recentVolunteersSlider" role="button" data-bs-slide="prev">
-                                    <img src="~/images/left.png" />
-                                </a>
-                            </div>
-                            <div class="col-8 d-flex align-items-center justify-content-center">
-                                <p class="mb-0">1-@(totalVolunteers<=9 ? totalVolunteers : 9) of @totalVolunteers Recent Volunteers</p>
-                            </div>
-                            <div class="col-2 d-flex align-items-center justify-content-center border-start">
-                                <a class="carousel-control-next" type="button" data-bs-target="#recentVolunteersSlider" role="button" data-bs-slide="next">
-                                    <img src="~/images/right-arrow1.png" />
-                                </a>
                             </div>
                         </div>
                     </div>
-                }
-
+                </div>
+                <div class="border-top">
+                    <div class="row recent-volunteers-btns">
+                        <div class="col-2 d-flex align-items-center justify-content-center border-end">
+                            <a class="carousel-control-prev" data-bs-target="#recentVolunteersSlider" role="button" data-bs-slide="prev">
+                                <img src="~/images/left.png" />
+                            </a>
+                        </div>
+                        <div class="col-8 d-flex align-items-center justify-content-center">
+                            <p class="mb-0" id="volunteer-pagination"><!-- pending --></p>
+                        </div>
+                        <div class="col-2 d-flex align-items-center justify-content-center border-start">
+                            <a class="carousel-control-next" data-bs-target="#recentVolunteersSlider" role="button" data-bs-slide="next">
+                                <img src="~/images/right-arrow1.png" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -704,12 +607,12 @@
                                     <div class="fav">
 
                                         @{
-                                            
+
                                             var flag1 = 1;
                                         }
                                         @foreach (var fm in card.FavoriteMissions)
                                         {
-                                            @if (fm.UserId==UserId)
+                                            @if (fm.UserId == UserId)
                                             {
                                                 <i class="bi bi-heart-fill favorite-button filled-heart text-danger" data-mission-id="@card.MissionId"></i>
                                                 flag1 = 0;
@@ -894,6 +797,6 @@
                     </div>
                 }
             }
+        </div>
     </div>
-</div>
 </div>

@@ -1,14 +1,9 @@
 ﻿using Ci_Platform.Repositories.Interfaces;
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
-using CI_Platform_web.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using System.Net;
-using System.Net.Mail;
-using System.Numerics;
+using System.Text;
 
 namespace CI_Platform_web.Controllers
 {
@@ -16,12 +11,10 @@ namespace CI_Platform_web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IAuthentication _Authentication;
-        private readonly ApplicationDbContext _context;
 
 
-        public HomeController(ApplicationDbContext context, ILogger<HomeController> logger, IAuthentication authentication)
+        public HomeController(ILogger<HomeController> logger, IAuthentication authentication, IConfiguration config)
         {
-            _context = context;
             _logger = logger;
             _Authentication = authentication;
         }
@@ -34,27 +27,16 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public IActionResult Index(User obj, string? returnUrl)
+        public async Task<IActionResult> Index(User obj, string? returnUrl)
         {
             if (ModelState.IsValid)
             {
                 if (_Authentication.IsRegistered(obj))
                 {
-
                     if (_Authentication.ComparePassword(obj))
                     {
-                        var user = _context.Users.Where(u => u.Email == obj.Email).FirstOrDefault();
-                        // creating username for session to show on profile field
-                        //var session = HttpContext.Session;
-                        var sessionUser = _context.Users.Where(a => a.Email == obj.Email).FirstOrDefault();
-                        HttpContext.Session.SetString("UserName", sessionUser.FirstName + " " + sessionUser.LastName);
-                        var userId = sessionUser.UserId;
-
-                        // Retrieve the BigInt value from the session
-                        HttpContext.Session.SetString("UserId", (sessionUser.UserId).ToString());
-                        HttpContext.Session.SetString("IsLoggedIn", "True");
-                        HttpContext.Session.SetString("profileImage", user.Avatar == null ? "" : user.Avatar);
-                        HttpContext.Session.SetString("userEmail", obj.Email);
+                        _Authentication.SetSession(obj.Email);
+                        
                         // Redirect the user back to the previous page if returnUrl is present, otherwise to the home page
                         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         {
@@ -78,7 +60,6 @@ namespace CI_Platform_web.Controllers
             return View();
         }
 
-
         public IActionResult Privacy()
         {
             return View();
@@ -89,33 +70,28 @@ namespace CI_Platform_web.Controllers
             return View();
         }
 
-
-
         [HttpPost]
         public IActionResult Forgot_password(ForgotPasswordModel model)
         {
-
-
+            PasswordReset passwordReset = new PasswordReset()
+            {
+                Email = model.email,
+                Token = model.token,
+            };
             if (ModelState.IsValid)
             {
-                var data = _Authentication.BindData(model);
-
-                if (_Authentication.IsRegistered(data))
+                if (_Authentication.IsRegistered(passwordReset))
                 {
-
                     var token = _Authentication.GenerateToken();
                     var PasswordResetLink = Url.Action("Reset_Password", "Home", new { Email = model.email, Token = token }, Request.Scheme);
 
                     _Authentication.SendMail(token, PasswordResetLink, model);
-
                     ModelState.Clear();
                     model.emailSent = true;
-
                 }
                 else
                 {
                     ModelState.AddModelError("Email", "Email is not Registered");
-
                 }
             }
             else
@@ -126,30 +102,21 @@ namespace CI_Platform_web.Controllers
         }
         public IActionResult Reset_Password(String email, String token)
         {
-
             PasswordResetModel validation = new PasswordResetModel()
             {
                 Email = email,
                 Token = token
             };
-
-
             return View(validation);
-
         }
 
         [HttpPost]
-        public IActionResult Reset_Password(PasswordResetModel model)
+        public async Task<IActionResult> Reset_Password(PasswordResetModel model)
         {
-
-            var ResetPasswordData = _context.PasswordResets.Any(e => e.Email == model.Email && e.Token == model.Token);
-
-
-            if (ResetPasswordData)
+            if (await _Authentication.IsPasswordResetDataExist(model))
             {
                 _Authentication.ResetPass(model);
                 model.PasswordChanged = true;
-                //return RedirectToAction("Index");
             }
             else
             {
@@ -185,31 +152,40 @@ namespace CI_Platform_web.Controllers
 
         public IActionResult Logout()
         {
-            HttpContext.Session.Remove("UserName");
-            HttpContext.Session.Remove("IsLoggedIn");
+            _Authentication.DestroySession();
             return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public IActionResult ChangePassword(String oldPass, String newPass)
         {
-            
-             long   UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
-           
-
-            if(_Authentication.comparePass(UserId, oldPass))
+            long UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+            if (_Authentication.comparePass(UserId, oldPass))
             {
                 _Authentication.ResetPassword(Convert.ToInt64(UserId), newPass);
-            return Ok(new { icon = "success", message = "Password Changed Successfully!!" });
+                return Ok(new { icon = "success", message = "Password Changed Successfully!!" });
             }
             return Ok(new { icon = "error", message = "Old password is incorrect" });
         }
 
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPost]
+        public async Task<IActionResult> ContactUs(UserHeaderViewModel formData)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            try
+            {
+                await _Authentication.AddToContactUs(formData);
+                return Ok(new { icon = "success", message = "Thank  you for contacting us!!" });
+            }
+            catch (Exception ex)
+            {
+                // Log the error and return a response indicating an error occurred
+                _logger.LogError(ex, "An error occurred while adding contact form data");
+                return StatusCode(500, new { icon = "error", message = "An error occurred while submitting the form. Please try again later." });
+            }
+        }
+
+        public IActionResult PrivacyPolicy()
+        {
+            return View();
         }
     }
 }

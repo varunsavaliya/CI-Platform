@@ -3,11 +3,6 @@ using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ci_Platform.Repositories.Repositories
 {
@@ -21,7 +16,6 @@ namespace Ci_Platform.Repositories.Repositories
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
-
         }
 
         public async Task<UserProfileModel> GetUser(long id)

@@ -25,6 +25,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Comment> Comments { get; set; }
 
+    public virtual DbSet<ContactU> ContactUs { get; set; }
+
     public virtual DbSet<Country> Countries { get; set; }
 
     public virtual DbSet<FavoriteMission> FavoriteMissions { get; set; }
@@ -233,6 +235,24 @@ public partial class ApplicationDbContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__comment__user_id__57DD0BE4");
+        });
+
+        modelBuilder.Entity<ContactU>(entity =>
+        {
+            entity.HasKey(e => e.ContactUsId).HasName("PK_dbo.contact_us");
+
+            entity.ToTable("contact_us");
+
+            entity.HasIndex(e => e.ContactUsId, "IX_dbo.contact_us");
+
+            entity.Property(e => e.ContactUsId).HasColumnName("contact_us_id");
+            entity.Property(e => e.Message)
+                .HasColumnType("text")
+                .HasColumnName("message");
+            entity.Property(e => e.Subject)
+                .HasColumnType("text")
+                .HasColumnName("subject");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
         });
 
         modelBuilder.Entity<Country>(entity =>
@@ -724,12 +744,12 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.Mission).WithMany(p => p.Stories)
                 .HasForeignKey(d => d.MissionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__story__mission_i__395884C4");
+                .HasConstraintName("FK_story_mission_id");
 
             entity.HasOne(d => d.User).WithMany(p => p.Stories)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__story__user_id__2A164134");
+                .HasConstraintName("FK_story_user_id");
         });
 
         modelBuilder.Entity<StoryInvite>(entity =>
@@ -752,6 +772,11 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
+
+            entity.HasOne(d => d.Story).WithMany(p => p.StoryInvites)
+                .HasForeignKey(d => d.StoryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_story_invite_story_id");
         });
 
         modelBuilder.Entity<StoryMedium>(entity =>

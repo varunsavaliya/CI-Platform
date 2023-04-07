@@ -23,8 +23,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Home/PrivacyPolicy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5UG9saWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Home/Registration.cshtml]
@@ -45,6 +45,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Mission/_GridListPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxfR3JpZExpc3RQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Mission/_RecentVolunteers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxfUmVjZW50Vm9sdW50ZWVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Shared/Components/UserHeader/Contact_Us.cshtml]

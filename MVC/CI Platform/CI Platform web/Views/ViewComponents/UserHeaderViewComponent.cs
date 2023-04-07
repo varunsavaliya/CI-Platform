@@ -32,7 +32,7 @@ namespace CI_Platform_web.Views.ViewComponents
             }
 
             // Create a new UserHeaderViewModel with the user's name and profile image
-            UserHeaderViewModel viewModel = new UserHeaderViewModel
+            UserHeaderViewModel viewModel = new()
             {
                 UserName = UserName,
                 isLoggedIn = IsLoggedIn,

@@ -1,0 +1,17 @@
+﻿@model CI_Platform.Entities.ViewModels.MissionVolunteeringModel
+@foreach (var volunteer in Model.recentVolunteers)
+{
+    <div class="col-4 mt-3">
+        <div class="d-flex flex-column align-items-center">
+            @if (volunteer.User.Avatar == "null")
+            {
+                <img src="~/images/default user avatar.jpg" />
+            }
+            else
+            {
+                <img src="~/ProfileImages/@volunteer.User.Avatar" />
+            }
+            <p>@volunteer.User.FirstName @volunteer.User.LastName</p>
+        </div>
+    </div>
+}

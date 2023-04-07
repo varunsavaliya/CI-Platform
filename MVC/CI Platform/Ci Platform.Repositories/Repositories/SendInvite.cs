@@ -1,16 +1,9 @@
-﻿using Azure.Core;
-using Ci_Platform.Repositories.Interfaces;
+﻿using Ci_Platform.Repositories.Interfaces;
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ci_Platform.Repositories.Repositories
 {
@@ -24,12 +17,11 @@ namespace Ci_Platform.Repositories.Repositories
         }
         public async Task SendEmailInvite(long ToUserId, long Id, long FromUserId, String link, T viewmodel)
         {
-            var Email = await _context.Users.Where(u => u.UserId == ToUserId).FirstOrDefaultAsync();
-
+            var receiver = await _context.Users.Where(u => u.UserId == ToUserId).FirstOrDefaultAsync();
             var Sender = await _context.Users.Where(su => su.UserId == FromUserId).FirstOrDefaultAsync();
 
             var fromEmail = new MailAddress("akshayghadiya28@gmail.com");
-            var toEmail = new MailAddress(Email.Email);
+            var toEmail = new MailAddress(receiver.Email);
             var fromEmailPassword = "dmsmefwcumhbtthp";
             string subject = "";
             string body = "";

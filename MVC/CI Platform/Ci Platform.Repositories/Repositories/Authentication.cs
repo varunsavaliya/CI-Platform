@@ -1,29 +1,21 @@
 ﻿using Ci_Platform.Repositories.Interfaces;
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.AspNetCore.Http;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ci_Platform.Repositories.Repositories
 {
     public class Authentication : Repository<User>, IAuthentication
     {
-        public ApplicationDbContext _context;
-        public Authentication(ApplicationDbContext context) : base(context)
+        public readonly ApplicationDbContext _context;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public Authentication(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor) : base(context)
         {
             _context = context;
-        }
-        public PasswordReset BindData(ForgotPasswordModel model)
-        {
-            PasswordReset passwordReset = new PasswordReset();
-            passwordReset.Email = model.email;
-            passwordReset.Token = model.token;
-            return passwordReset;
+            _httpContextAccessor = httpContextAccessor;
         }
         public string GenerateToken()
         {
@@ -85,15 +77,16 @@ namespace Ci_Platform.Repositories.Repositories
         public void ResetPass(PasswordResetModel model)
         {
             var x = _context.Users.FirstOrDefault(e => e.Email == model.Email);
-
-
             x.Password = model.password;
-
-
             _context.Users.Update(x);
             _context.SaveChanges();
-
         }
+
+        public async Task<bool> IsPasswordResetDataExist(PasswordResetModel model)
+        {
+            return _context.PasswordResets.Any(e => e.Email == model.Email && e.Token == model.Token);
+        }
+
 
         public bool comparePass(long UserId, string pass)
         {
@@ -105,5 +98,41 @@ namespace Ci_Platform.Repositories.Repositories
             user.Password = pass;
             _context.SaveChanges();
         }
+        public  void SetSession(string email)
+        {
+            var user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
+            var session = _httpContextAccessor.HttpContext.Session;
+            session.SetString("UserName", user.FirstName + " " + user.LastName);
+            var userId = user.UserId;
+            session.SetString("UserId", (user.UserId).ToString());
+            session.SetString("IsLoggedIn", "True");
+            session.SetString("profileImage", user.Avatar == null ? "" : user.Avatar);
+            session.SetString("userEmail", user.Email);
+        }
+        public void DestroySession()
+        {
+            var session = _httpContextAccessor.HttpContext.Session;
+            session.Remove("UserName");
+            session.Remove("UserId");
+            session.Remove("IsLoggedIn");
+            session.Remove("profileImage");
+            session.Remove("userEmail");
+        }
+
+
+        public async Task AddToContactUs(UserHeaderViewModel contactUs)
+        {
+            var user = _context.Users.Where(u => u.Email == contactUs.userEmail).FirstOrDefault();
+            ContactU data = new ContactU()
+            {
+                UserId = user.UserId,
+                Subject = contactUs.Subject,
+                Message = contactUs.Message,
+            };
+
+            await _context.ContactUs.AddAsync(data);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

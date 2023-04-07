@@ -52,8 +52,6 @@ namespace CI_Platform_web.Controllers
             var UserId = "";
             if (HttpContext.Session.GetString("UserName") != null)
             {
-                //ViewBag.UserName = HttpContext.Session.GetString("UserName");
-                //ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
                 UserId = HttpContext.Session.GetString("UserId");
                 ViewBag.UserId = UserId;
             }
@@ -121,7 +119,7 @@ namespace CI_Platform_web.Controllers
 
                 foreach (long missionId in missionIds)
                 {
-                    Mission mission = _context.Missions.Include(m => m.City).Include(m => m.Country).Include(m => m.Theme).Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill).Include(m => m.GoalMissions).Include(m => m.FavoriteMissions).Include(m => m.MissionRatings).FirstOrDefault(m => m.MissionId == missionId);
+                    Mission mission = _context.Missions.Where(m => m.MissionId == missionId).Include(m => m.City).Include(m => m.Country).Include(m => m.Theme).Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill).Include(m => m.GoalMissions).Include(m => m.FavoriteMissions).Include(m => m.MissionRatings).FirstOrDefault();
 
                     if (mission != null)
                     {
@@ -260,7 +258,8 @@ namespace CI_Platform_web.Controllers
             var missionVolunteeringModel = new MissionVolunteeringModel
             {
                 mission = missionDetail,
-                RelatedMissions = relatedMissions
+                RelatedMissions = relatedMissions,
+                totalVolunteers = _context.MissionApplications.Where(ma => ma.MissionId == id).Count(),
             };
             if (UserId == "")
             {
@@ -272,6 +271,23 @@ namespace CI_Platform_web.Controllers
             }
             return View(missionVolunteeringModel);
         }
+
+        [HttpGet]
+        public IActionResult GetRecentVolunteers(long missionId, int pageNo, int pageSize)
+        {
+            MissionVolunteeringModel model = new()
+            {
+                recentVolunteers = _context.MissionApplications
+                .Where(ma => ma.MissionId == missionId && ma.ApprovalStatus == "PUBLISHED")
+                .Include(ma => ma.User)
+                .OrderByDescending(ma => ma.CreatedAt)
+                .Skip((pageNo - 1) * pageSize)
+                .Take(pageSize)
+                .ToList(),
+            };
+            return PartialView("_RecentVolunteers", model);
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> MissionInvite(long ToUserId, long Id, long FromUserId, MissionVolunteeringModel viewmodel)
@@ -306,7 +322,7 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public IActionResult Apply(long missionId, long userId)
         {
-            MissionApplication application = new MissionApplication();
+            MissionApplication application = new();
             application.MissionId = missionId;
             application.UserId = userId;
             _context.MissionApplications.Add(application);

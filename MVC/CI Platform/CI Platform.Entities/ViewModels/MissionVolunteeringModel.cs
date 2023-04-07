@@ -17,5 +17,7 @@ namespace CI_Platform.Entities.ViewModels
 
         [Required(ErrorMessage ="Enter comment")]
         public string comment1 { get; set; }
+        public List<MissionApplication> recentVolunteers { get; set; }
+        public int totalVolunteers { get; set; }
     }
 }

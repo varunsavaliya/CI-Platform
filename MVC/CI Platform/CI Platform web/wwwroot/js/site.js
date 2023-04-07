@@ -1,6 +1,4 @@
-﻿////const { type } = require("jquery");
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
     $('#loginModal').modal('show');
     // declared globally because we have to use it in another function
     var currentUrl = window.location.href;
@@ -611,6 +609,63 @@ $(document).ready(function () {
         })
     })
 
+    let pageSize = 3;
+    let recentVolunteerPageNo = 1;
+    let totalRecentVolunteers = $('#totalVolunteers').val();
+    const getVolunteers = (pageNo, button) => {
+        let missionId = $('.favorite-button').data('mission-id');
+        $.ajax({
+            type: "GET",
+            url: "/Mission/GetRecentVolunteers",
+            data: { missionId: missionId, pageNo: pageNo, pageSize: pageSize },
+            success: function (data) {
+                let volunteersContainer = $('.recent-volunteers');
+                if (totalRecentVolunteers == 0) {
+                    volunteersContainer.text('No recent volunteers for this mission').addClass('px-3');
+                    $('#volunteer-pagination').parent().parent().hide()
+                } else {
+
+                    volunteersContainer.empty();
+                    volunteersContainer.append(data);
+                    if (button == 1) {
+                        volunteersContainer.addClass('slide-from-left');
+                        volunteersContainer.removeClass('slide-from-right');
+                    }
+                    else if (button == 2) {
+                        volunteersContainer.addClass('slide-from-right');
+                        volunteersContainer.removeClass('slide-from-left');
+                    }
+                    let start = (pageNo - 1) * pageSize + 1;
+                    let end = Math.min(start + pageSize - 1, totalRecentVolunteers);
+                        $('#volunteer-pagination').text((end != totalRecentVolunteers ? start + '-' : '' )+ end + ' of ' + totalRecentVolunteers + ' Recent Volunteers');
+                }
+            }
+        });
+    }
+
+
+    $('.recent-volunteers-btns div a').click(function () {
+        console.log($(this))
+        let totalPages = Math.ceil(totalRecentVolunteers / pageSize);
+        let volunteersContainer = $('.recent-volunteers');
+        if ($(this).data('bs-slide') == "prev") {
+            if (recentVolunteerPageNo > 1) {
+                recentVolunteerPageNo--;
+                getVolunteers(recentVolunteerPageNo, 1);
+                volunteersContainer.removeClass('slide-from-left');
+            }
+        } else {
+            if (recentVolunteerPageNo < totalPages) {
+                recentVolunteerPageNo++;
+                getVolunteers(recentVolunteerPageNo, 2);
+                volunteersContainer.removeClass('slide-from-right');
+            }
+        }
+    })
+    if (currentUrl.includes('MissionVolunteering')) {
+        getVolunteers(recentVolunteerPageNo, 2);
+    }
+
     $(document).on('keyup', '.note-editable', function () {
         var form = $('.StoryForm');
         var actualTextBox = form.find('#actual_text');
@@ -810,9 +865,9 @@ $(document).ready(function () {
             $('#storyTitleValidation').text('Title is required')
             return false;
         }
-        if (story === '' || story === undefined || story.split(' ').length < 100) {
+        if (story === '' || story === undefined) {
             $('.note-editor').addClass('mb-1');
-            $('#storyValidation').text('Minimum 100 words are required')
+            $('#storyValidation').text('Write story for mission')
             return false;
         }
 
@@ -866,7 +921,7 @@ $(document).ready(function () {
                 formDetails.append("url", null);
             }
             $.ajax({
-                url: '/Story/SaveStory',
+                url: '/Story/ShareStory',
                 type: 'POST',
                 data: formDetails,
                 processData: false,
@@ -1053,5 +1108,61 @@ $(document).ready(function () {
                 }
             });
         }
+    })
+
+    // contact us
+    $('#contact-us-text').click(() => {
+        // for resetting form every time its open
+        let form = $('#contact-us-form')[0];
+        form.reset();
+        $('#SubjectValidation').text('');
+        $('#MessageValidation').text('');
+
+    })
+    const validateContactUs = () => {
+        if ($('#Subject').val() == '') {
+            $('#SubjectValidation').text('Subject is required');
+            return false;
+        }
+        if ($('#Message').val() == '') {
+            $('#MessageValidation').text('Enter your message first');
+            return false;
+        }
+        return true;
+    }
+
+    $('#Message, #Subject').keyup(function () {
+        $(this).next('span').text('');
+    })
+
+
+    $('#contact-us-form').submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        var formData = form.serialize();
+        if (validateContactUs()) {
+            $.ajax({
+                url: '/Home/ContactUs',
+                type: 'POST',
+                data: formData,
+                success: function (result) {
+                    swal.fire({
+                        position: 'center',
+                        icon: result.icon,
+                        title: result.message,
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                },
+                error: function (error) {
+
+                }
+            });
+        }
+    })
+
+    $('.policyNavigation').find('div a').click(function () {
+        $('.policyNavigation').find('div span').removeClass('Pactive');
+        $(this).siblings('span').addClass('Pactive');
     })
 })
