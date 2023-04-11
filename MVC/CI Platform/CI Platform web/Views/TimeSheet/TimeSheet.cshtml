@@ -1,0 +1,248 @@
+﻿@{
+    Layout = "_HeaderLayout";
+    ViewData["Title"] = "TimeSheet";
+}
+@model CI_Platform.Entities.ViewModels.VolunteeringTimesheetModel
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap5.min.css">
+@if (TempData["Message"] != null && TempData["Icon"] != null)
+{
+    <script>
+         window.onload = function () {
+        Swal.fire({
+            icon: '@TempData["Icon"]',
+            title: '@TempData["Message"]',
+            showConfirmButton: false,
+            timer: 4000
+        });
+         };
+    </script>
+}
+<div class="container my-5">
+    <h1 class="timesheet-heading mb-4">Volunteering Timesheet</h1>
+    <div class="row timesheet-container pb-2">
+        <div class="col border vol-hours-container">
+            <div class="vol-hours-header d-flex justify-content-between align-items-center mt-4 mb-3 ps-2">
+                <h2 class="vol-hours-heading m-0">Volunteering Hours</h2>
+                <button class="card-button m-0 px-4 py-1 add-timesheet-btn"  data-bs-toggle="modal" data-bs-target="#add-vol-hours">Add +</button>
+
+                <div class="modal fade" id="add-vol-hours" tabindex="-1" aria-labelledby="add-vol-hours-modal" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body px-5">
+                                <div class="vol-time-modal-heading d-flex justify-content-between align-items-center my-3">
+                                    <h3 class="d-inline mb-0">Please input below Volunteering Hours</h3>
+                                    <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form class="my-0 row" id="time-form" method="post">
+                                    <input value="" asp-for="TimeBasedTimesheet.TimesheetId" class="d-none" type="text" />
+
+                                    <div class="col-12 my-1">
+
+                                        <label asp-for="TimeBasedTimesheet.timeMission" class="form-label">Mission</label>
+                                        <select asp-for="TimeBasedTimesheet.timeMission" id="time-mission" class="form-select" aria-label="mission">
+                                            <option value="">select your mission</option>
+                                            @foreach (var mission in Model.missions.Where(mission => mission.MissionType == "Time"))
+                                            {
+                                                <option class="missionId" value="@mission.MissionId">@mission.Title</option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="TimeBasedTimesheet.timeMission" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 my-1">
+                                        <label asp-for="TimeBasedTimesheet.timeDate" class="form-label">Date Volunteered</label>
+                                        <input asp-for="TimeBasedTimesheet.timeDate" class="form-control" id="time-date" type="text" value="@DateTime.Today.ToShortDateString()" aria-describedby="date">
+                                        <span asp-validation-for="TimeBasedTimesheet.timeDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 col-12 my-1">
+                                        <label class="form-label" asp-for="TimeBasedTimesheet.Hours">Hours</label>
+                                        <input type="number" class="form-control" id="Hours" asp-for="TimeBasedTimesheet.Hours" placeholder="Enter Spent Hours">
+                                        <span asp-validation-for="TimeBasedTimesheet.Hours" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6 col-12 my-1">
+                                        <label class="form-label" asp-for="TimeBasedTimesheet.Minutes">Minutes</label>
+                                        <input type="number" class="form-control" id="Minutes" asp-for="TimeBasedTimesheet.Minutes" placeholder="Enter Spent Minutes">
+                                        <span asp-validation-for="TimeBasedTimesheet.Minutes" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 my-1">
+                                        <label class="form-label" asp-for="TimeBasedTimesheet.timeMessage">Message</label>
+                                        <textarea class="form-control" id="time-message" asp-for="TimeBasedTimesheet.timeMessage" placeholder="Enter your Message" rows="3"></textarea>
+                                        <span asp-validation-for="TimeBasedTimesheet.timeMessage" class="text-danger"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" id="submit-time-btn" class="btn mt-0 card-button ms-2 me-0">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-borderless pe-2" id="timeTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mission</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Hours</th>
+                            <th scope="col">Minutes</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var timesheet in Model.timesheets.Where(timesheet => timesheet.Mission.MissionType == "Time"))
+                        {
+                            string time = timesheet.Time.ToString();
+                            int hours = int.Parse(time.Substring(0, 2));
+                            int minutes = int.Parse(time.Substring(3, 2));
+
+                            <tr>
+                                <td scope="row">@timesheet.Mission.Title</td>
+                                <td>@timesheet.DateVolunteered.Value.ToShortDateString()</td>
+                                <td>@string.Format("{0}h", hours)</td>
+                                <td>@string.Format("{0}min", minutes)</td>
+                                <td class="d-flex align-content-center justify-content-end">
+                                    <input value="@timesheet.TimesheetId" class="d-none" type="text" />
+                                    <img class="vol-edit-icon me-2" src="~/images/editing.png" data-bs-toggle="modal" data-bs-target="#add-vol-hours" />
+                                    <img class="vol-delete-icon" src="~/images/delete.png" />
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+                @if (Model.timesheets.Where(timesheet => timesheet.Mission.MissionType == "Time").Count() == 0)
+                {
+                    <h5 class="no-timesheet-title">No Timesheets found!!</h5>
+                }
+            </div>
+        </div>
+        <div class="col border vol-goals-container">
+            <div class="vol-goals-header d-flex justify-content-between align-items-center mt-4 mb-3 ps-2">
+                <h2 class="vol-goals-heading m-0">Volunteering Goals</h2>
+                <button class="card-button m-0 px-4 py-1 add-timesheet-btn"  data-bs-toggle="modal" data-bs-target="#add-vol-goal">Add +</button>
+
+                <div class="modal fade" id="add-vol-goal" tabindex="-1" aria-labelledby="add-vol-hours-modal" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body px-5">
+                                <div class="vol-time-modal-heading d-flex justify-content-between align-items-center my-3">
+                                    <h3 class="d-inline mb-0">Please input below Volunteering Goal</h3>
+                                    <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form class="my-0 row" id="goal-form" method="post">
+                                    <input value="" asp-for="GoalBasedTimesheet.TimesheetId" class="d-none" type="text" />
+
+                                    <div class="col-12 my-1">
+
+                                        <label asp-for="GoalBasedTimesheet.goalMission" class="form-label">Mission</label>
+                                        <select asp-for="GoalBasedTimesheet.goalMission" id="goal-mission" class="form-select" aria-label="mission">
+                                            <option value="">select your mission</option>
+                                            @foreach (var mission in Model.missions.Where(mission => mission.MissionType == "Goal"))
+                                            {
+                                                <option class="missionId" value="@mission.MissionId">@mission.Title</option>
+                                            }
+                                        </select>
+                                        <span asp-validation-for="GoalBasedTimesheet.goalMission" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 my-1">
+                                        <label class="form-label" asp-for="GoalBasedTimesheet.Actions">Actions</label>
+                                        <input type="number" class="form-control" id="Actions" asp-for="GoalBasedTimesheet.Actions" placeholder="Enter Actions">
+                                        <span asp-validation-for="GoalBasedTimesheet.Actions" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 my-1">
+                                        <label asp-for="GoalBasedTimesheet.goalDate" class="form-label">Date Volunteered</label>
+                                        <input asp-for="GoalBasedTimesheet.goalDate" class="form-control" id="goal-date" type="text" value="@DateTime.Today.ToShortDateString()" aria-describedby="date">
+                                        <span asp-validation-for="GoalBasedTimesheet.goalDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-12 my-1">
+                                        <label class="form-label" asp-for="GoalBasedTimesheet.goalMessage">Message</label>
+                                        <textarea class="form-control" id="goal-message" asp-for="GoalBasedTimesheet.goalMessage" placeholder="Enter your Message" rows="3"></textarea>
+                                        <span asp-validation-for="GoalBasedTimesheet.goalMessage" class="text-danger"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-3">
+                                        <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" id="sobmit-goal-btn" class="btn mt-0 card-button ms-2 me-0">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-borderless pe-2" id="goalTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mission</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Action</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var timesheet in Model.timesheets.Where(timesheet => timesheet.Mission.MissionType == "Goal"))
+                        {
+
+                            <tr>
+                                <td scope="row">@timesheet.Mission.Title</td>
+                                <td>@timesheet.DateVolunteered.Value.ToShortDateString()</td>
+                                <td>@timesheet.Action</td>
+                                <td class="d-flex align-content-center justify-content-end">
+                                    <input value="@timesheet.TimesheetId" class="d-none" type="text" />
+                                    <img class="vol-edit-icon me-2" src="~/images/editing.png" data-bs-toggle="modal" data-bs-target="#add-vol-goal" />
+                                    <img class="vol-delete-icon" src="~/images/delete.png" />
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+                @if (Model.timesheets.Where(timesheet => timesheet.Mission.MissionType == "Goal").Count() == 0)
+                {
+                    <h5 class="no-timesheet-title">No Timesheets found!!</h5>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+<partial name="_ValidationScriptsPartial" />
+}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap5.min.js"></script>
+<script>
+    $('#timeTable').DataTable({
+        lengthChange: false,
+        paging: false,
+        searching: false,
+        columnDefs: [
+            { "orderable": false, "targets": 0 },
+            { "orderData": [1] },
+            { "orderData": [2] },
+            { "orderable": false, "targets": 3 },
+            { "orderable": false, "targets": 4 }
+        ],
+        order: [[1, "asc"], [2, "asc"]] // sort by date (column 1) ascending, then by hours (column 2) ascending
+    });
+
+    $('#goalTable').DataTable({
+        lengthChange: false,
+        paging: false,
+        searching: false,
+        columnDefs: [
+            { "orderable": false, "targets": 0 },
+            { "orderData": [1] },
+            { "orderData": [2] },
+            { "orderable": false, "targets": 3 },
+        ],
+        order: [[1, "asc"], [2, "asc"]] // sort by date (column 1) ascending, then by hours (column 2) ascending
+    });
+</script>

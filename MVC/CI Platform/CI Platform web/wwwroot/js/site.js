@@ -637,7 +637,7 @@
                     }
                     let start = (pageNo - 1) * pageSize + 1;
                     let end = Math.min(start + pageSize - 1, totalRecentVolunteers);
-                        $('#volunteer-pagination').text((end != totalRecentVolunteers ? start + '-' : '' )+ end + ' of ' + totalRecentVolunteers + ' Recent Volunteers');
+                    $('#volunteer-pagination').text((end != totalRecentVolunteers ? start + '-' : '') + end + ' of ' + totalRecentVolunteers + ' Recent Volunteers');
                 }
             }
         });
@@ -1165,4 +1165,160 @@
         $('.policyNavigation').find('div span').removeClass('Pactive');
         $(this).siblings('span').addClass('Pactive');
     })
+
+
+    // volunteering timesheet
+    $('#time-mission, #goal-mission').change(function () {
+        var selectElement = $(this);
+        let missionId = $(this).val();
+        $.ajax({
+            url: '/Timesheet/GetMissionData',
+            type: 'GET',
+            data: { missionId: missionId },
+            success: function (result) {
+                var startDate = new Date(result.StartDate);
+                var currentDate = new Date();
+                // Set the end date to the current date if it's after the current date
+                var endDate = new Date(result.EndDate) > currentDate ? currentDate : new Date(result.EndDate);
+                var defaultDate = getRandomDateInRange(startDate, endDate);
+                if (selectElement.attr('id') == 'time-mission') {
+                    // Destroy the previous instance of Flatpickr
+                    $("#time-date").flatpickr().destroy();
+                    // Initialize the datepicker
+                    var fp = flatpickr("#time-date", {
+                        // Set the default date format
+                        dateFormat: "d-m-Y",
+                        // Disable dates before the start date or after the end date
+                        minDate: startDate,
+                        maxDate: endDate,
+                        defaultDate: defaultDate
+                    });
+                } else if (selectElement.attr('id') == 'goal-mission') {
+                    // Destroy the previous instance of Flatpickr
+                    $("#goal-date").flatpickr().destroy();
+                    // Initialize the datepicker
+                    var fp = flatpickr("#goal-date", {
+                        // Set the default date format
+                        dateFormat: "d-m-Y",
+                        // Disable dates before the start date or after the end date
+                        minDate: startDate,
+                        maxDate: endDate,
+                        defaultDate: defaultDate
+                    });
+                }
+
+            },
+            error: function (error) {
+
+            }
+        });
+    })
+
+    // for default random date
+    function getRandomDateInRange(startDate, endDate) {
+        var startTimestamp = startDate.getTime();
+        var endTimestamp = endDate.getTime();
+        var randomTimestamp = startTimestamp + Math.random() * (endTimestamp - startTimestamp);
+        return new Date(randomTimestamp);
+    }
+
+    $('table').on('click', '.vol-edit-icon', function () {
+        let timesheetId = $(this).parent().find('input').val();
+
+        $.ajax({
+            url: '/Timesheet/GetTimesheetData',
+            type: 'GET',
+            data: { timesheetId: timesheetId },
+            success: function (response) {
+                console.log(response)
+                if (response.Time == null) {
+                    $('#GoalBasedTimesheet_TimesheetId').val(response.TimesheetId)
+
+                    $('#goal-mission option').each(function () {
+                        if ($(this).val() == response.MissionId) {
+                            $(this).prop('selected', true);
+                        }
+                    });
+                    $('#goal-mission').prop(`disabled`, true);
+
+                    var startDate = new Date(response.Mission.StartDate);
+                    var currentDate = new Date();
+                    var endDate = new Date(response.Mission.EndDate) > currentDate ? currentDate : new Date(response.Mission.EndDate);
+                    var defaultDate = new Date(response.DateVolunteered);
+                    $("#goal-date").flatpickr().destroy();
+                    var fp = flatpickr("#goal-date", {
+                        dateFormat: "d-m-Y",
+                        minDate: startDate,
+                        maxDate: endDate,
+                        defaultDate: defaultDate
+                    });
+
+                    $('#Actions').val(response.Action)
+
+                    $('#goal-message').val(response.Notes);
+                } else {
+                    $('#TimeBasedTimesheet_TimesheetId').val(response.TimesheetId)
+
+                    $('#time-mission option').each(function () {
+                        if ($(this).val() == response.MissionId) {
+                            $(this).prop('selected', true);
+                        }
+                    });
+                    $('#time-mission').prop(`disabled`, true);
+
+                    var startDate = new Date(response.Mission.StartDate);
+                    var currentDate = new Date();
+                    var endDate = new Date(response.Mission.EndDate) > currentDate ? currentDate : new Date(response.Mission.EndDate);
+                    var defaultDate = new Date(response.DateVolunteered);
+                    $("#time-date").flatpickr().destroy();
+                    var fp = flatpickr("#time-date", {
+                        dateFormat: "d-m-Y",
+                        minDate: startDate,
+                        maxDate: endDate,
+                        defaultDate: defaultDate
+                    });
+
+                    let time = response.Time;
+                    let parts = time.split(":");
+                    let hours = parseInt(parts[0]);
+                    let minutes = parseInt(parts[1]);
+                    //let hours = time.Substring(0, 2)
+                    //let minutes = time.Substring(3, 2)
+                    $('#Hours').val(hours)
+                    $('#Minutes').val(minutes)
+
+                    $('#time-message').val(response.Notes);
+                }
+            },
+            error: function (error) {
+
+            }
+        });
+    })
+
+    $('table').on('click', '.vol-delete-icon', function () {
+        let deleteButton = $(this)
+        let timesheetId = $(this).parent().find('input').val();
+        $.ajax({
+            url: '/Timesheet/DeleteTimesheet',
+            type: 'GET',
+            data: { timesheetId: timesheetId },
+            success: function (response) {
+                deleteButton.parent().parent().remove();
+            },
+            error: function (error) {
+
+            }
+        });
+    })
+    $('.add-timesheet-btn').on('click', function () {
+        let form1 = $('#goal-form')[0];
+        let form2 = $('#time-form')[0];
+        $('#time-mission').prop(`disabled`, false);
+        $('#goal-mission').prop(`disabled`, false);
+
+        form1.reset();
+        form2.reset();
+    })
+
 })

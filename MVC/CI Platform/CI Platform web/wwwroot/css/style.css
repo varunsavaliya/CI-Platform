@@ -2124,3 +2124,42 @@ iframe {
 .Pcontainer li {
     list-style: disc;
 }
+
+/*volunteering timesheet styling*/
+
+.timesheet-heading{
+    font-weight:300;
+}
+.timesheet-container{
+    padding:inherit;
+    grid-column-gap:25px;
+    grid-row-gap:15px;
+}
+.vol-hours-heading, .vol-goals-heading {
+    font-weight: 300;
+    font-size: 1.3rem !important;
+}
+
+.vol-hours-container td, .vol-goals-container  td{
+    white-space: nowrap;
+}
+
+.table-responsive .no-timesheet-title {
+    padding: 0 0.5rem;
+    font-weight:300;
+    margin-bottom: 0.5rem;
+}
+
+.table-responsive .vol-edit-icon, .table-responsive .vol-delete-icon{
+    cursor:pointer;
+}
+
+#timeTable th::after, #timeTable th:before, #goalTable th::after, #goalTable th:before {
+    content: none !important;
+}
+#timeTable_wrapper .row:last-child, #goalTable_wrapper .row:last-child {
+    display: none;
+}
+#timeTable_wrapper .dataTables_empty, #goalTable_wrapper .dataTables_empty {
+    display: none;
+}

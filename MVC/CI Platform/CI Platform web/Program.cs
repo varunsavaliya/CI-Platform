@@ -16,6 +16,7 @@ builder.Services.AddScoped<IFilters, Filters>();
 builder.Services.AddScoped<IMission, MissionRepository>();
 builder.Services.AddScoped<IStory, StoryRepository>();
 builder.Services.AddScoped<IUserProfile, UserProfile>();
+builder.Services.AddScoped<ITimesheet, TimesheetRepository>();
 
 // for use of session
 builder.Services.AddDistributedMemoryCache();

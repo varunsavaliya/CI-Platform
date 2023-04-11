@@ -27,6 +27,8 @@
     @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">*@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
 
+    <!-- flat date picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
 
     @*font awesome icon cdn*@
@@ -73,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                @await Component.InvokeAsync("UserHeader", "Default")                
+                @await Component.InvokeAsync("UserHeader", "Default")
             </div>
         </nav>
     </div>
@@ -93,7 +95,7 @@
                                 <h3 class="d-inline mb-0">Contact Us</h3>
                                 <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                               @await Component.InvokeAsync("UserHeader", "Contact_Us")                            
+                            @await Component.InvokeAsync("UserHeader", "Contact_Us")
                         </div>
                     </div>
                 </div>
@@ -120,9 +122,11 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="~/js/site.js"></script>
 
+    <!-- flat date picker -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <!-- for validations -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
-    

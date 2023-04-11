@@ -20,7 +20,7 @@
         @if (@Model.isLoggedIn == "True")
         {
             <li><a class="dropdown-item" asp-controller="User" asp-action="UserProfile">My Profile</a></li>
-            <li><a class="dropdown-item" href="#">Volunteering Timesheett</a></li>
+            <li><a class="dropdown-item" asp-controller="TimeSheet" asp-action="TimeSheet">Volunteering Timesheett</a></li>
             <li><a class="dropdown-item" asp-controller="Home" asp-action="Logout">Logout</a></li>
         }
         else
