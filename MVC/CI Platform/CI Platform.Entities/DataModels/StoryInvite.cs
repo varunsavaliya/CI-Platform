@@ -18,6 +18,4 @@ public partial class StoryInvite
     public DateTime? UpdatedAt { get; set; }
 
     public DateTime? DeletedAt { get; set; }
-
-    public virtual Story Story { get; set; } = null!;
 }

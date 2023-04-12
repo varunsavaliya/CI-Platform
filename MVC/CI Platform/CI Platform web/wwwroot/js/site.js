@@ -1296,15 +1296,30 @@
         });
     })
 
-    $('table').on('click', '.vol-delete-icon', function () {
+    $('#time-form').submit(function () {
+        $('#time-mission').prop(`disabled`, false);
+    })
+    $('#goal-form').submit(function () {
+        $('#goal-mission').prop(`disabled`, false);
+    })
+
+    $('table').on('click', '.delete-timesheet-btn', function () {
         let deleteButton = $(this)
         let timesheetId = $(this).parent().find('input').val();
+        let deleteTr = $('.tr_' + timesheetId);
         $.ajax({
             url: '/Timesheet/DeleteTimesheet',
             type: 'GET',
             data: { timesheetId: timesheetId },
             success: function (response) {
-                deleteButton.parent().parent().remove();
+                deleteTr.remove();
+                swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Item removed successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             },
             error: function (error) {
 

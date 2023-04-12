@@ -7,6 +7,8 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Data;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CI_Platform_web.Controllers
 {
@@ -130,7 +132,11 @@ namespace CI_Platform_web.Controllers
                 }
                 else
                 {
-                    return Json(availableStory);
+                    var options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve
+                    };
+                    return Json(availableStory, options);
                 }
             }
             return Json(null);

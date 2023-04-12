@@ -11,6 +11,8 @@ public partial class User
 
     public string? LastName { get; set; }
 
+    public int? RoleId { get; set; }
+
     public string Email { get; set; } = null!;
 
     public string Password { get; set; } = null!;
@@ -58,6 +60,8 @@ public partial class User
     public virtual ICollection<MissionInvite> MissionInviteToUsers { get; } = new List<MissionInvite>();
 
     public virtual ICollection<MissionRating> MissionRatings { get; } = new List<MissionRating>();
+
+    public virtual Role? Role { get; set; }
 
     public virtual ICollection<Story> Stories { get; } = new List<Story>();
 

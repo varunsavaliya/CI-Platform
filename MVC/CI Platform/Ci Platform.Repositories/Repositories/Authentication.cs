@@ -119,6 +119,12 @@ namespace Ci_Platform.Repositories.Repositories
             session.Remove("userEmail");
         }
 
+        public int? GetUserRole(long userId)
+        {
+            var role = _context.Users.Where(user => user.UserId == userId).Select(user => user.RoleId).FirstOrDefault();
+            return role;
+        }
+
 
         public async Task AddToContactUs(UserHeaderViewModel contactUs)
         {

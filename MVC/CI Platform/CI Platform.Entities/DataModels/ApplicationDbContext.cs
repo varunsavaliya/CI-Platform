@@ -51,6 +51,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<PasswordReset> PasswordResets { get; set; }
 
+    public virtual DbSet<Role> Roles { get; set; }
+
     public virtual DbSet<Skill> Skills { get; set; }
 
     public virtual DbSet<Story> Stories { get; set; }
@@ -677,6 +679,19 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnName("token");
         });
 
+        modelBuilder.Entity<Role>(entity =>
+        {
+            entity.ToTable("role");
+
+            entity.Property(e => e.RoleId)
+                .ValueGeneratedNever()
+                .HasColumnName("role_id");
+            entity.Property(e => e.RoleName)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("role_name");
+        });
+
         modelBuilder.Entity<Skill>(entity =>
         {
             entity.HasKey(e => e.SkillId).HasName("PK__skill__FBBA83799FB13984");
@@ -772,11 +787,6 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
-
-            entity.HasOne(d => d.Story).WithMany(p => p.StoryInvites)
-                .HasForeignKey(d => d.StoryId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_story_invite_story_id");
         });
 
         modelBuilder.Entity<StoryMedium>(entity =>
@@ -910,6 +920,9 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.ProfileText)
                 .HasColumnType("text")
                 .HasColumnName("profile_text");
+            entity.Property(e => e.RoleId)
+                .HasDefaultValueSql("((1))")
+                .HasColumnName("role_id");
             entity.Property(e => e.Status).HasColumnName("status");
             entity.Property(e => e.Title)
                 .HasMaxLength(255)
@@ -930,6 +943,10 @@ public partial class ApplicationDbContext : DbContext
             entity.HasOne(d => d.Country).WithMany(p => p.Users)
                 .HasForeignKey(d => d.CountryId)
                 .HasConstraintName("FK__user__country_id__17036CC0");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.Users)
+                .HasForeignKey(d => d.RoleId)
+                .HasConstraintName("FK_user_role_id");
         });
 
         modelBuilder.Entity<UserSkill>(entity =>

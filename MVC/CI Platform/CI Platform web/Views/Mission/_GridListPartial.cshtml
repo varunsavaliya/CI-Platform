@@ -3,7 +3,7 @@
 @model CI_Platform.Entities.ViewModels.LandingPageModel;
 @{
     //var UserId = 12;
-    var UserId = Convert.ToInt64(ViewBag.UserId);
+    var UserId = ViewBag.UserId;
     long totalCards = ViewBag.totalRecords;
 }
 
@@ -195,9 +195,15 @@ else
                                                         <img src="~/images/achieved.png" alt="">
                                                         <div class="d-flex flex-column">
                                                             <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" style="width: @goal.GoalValue%" aria-valuenow="@goal.GoalValue" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                @{
+                                                                    var goalAchieved = goal.Mission.Timesheets.Sum(g => g.Action); 
+                                                                    float percentAchieved = ((float)goalAchieved / (float)goal.GoalValue) * 100;
+                                                                }
+
+                                                                <div class="progress-bar" role="progressbar" style="width: @percentAchieved%"
+                                             aria-valuenow="@goalAchieved" aria-valuemin="0" aria-valuemax="@goal.GoalValue"></div>
                                                             </div>
-                                                            <p>@goal.GoalValue Achieved</p>
+                                                            <p>@percentAchieved Achieved</p>
                                                         </div>
                                                     </div>
                                                 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace CI_Platform.Entities.DataModels;
 
@@ -19,6 +18,6 @@ public partial class StoryMedium
     public DateTime? UpdatedAt { get; set; }
 
     public DateTime? DeletedAt { get; set; }
-    [JsonIgnore]
+
     public virtual Story Story { get; set; } = null!;
 }

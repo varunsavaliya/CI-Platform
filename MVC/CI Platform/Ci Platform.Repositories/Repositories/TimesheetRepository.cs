@@ -66,8 +66,12 @@ namespace Ci_Platform.Repositories.Repositories
             }
             else
             {
-                Timesheet? timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == model.TimeBasedTimesheet.TimesheetId).FirstOrDefault();
-
+               var timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == model.TimeBasedTimesheet.TimesheetId).FirstOrDefault();
+                var timesheets = _context.Timesheets.Any(timesheet => timesheet.UserId == userId && timesheet.MissionId == model.TimeBasedTimesheet.timeMission && timesheet.DateVolunteered == model.TimeBasedTimesheet.timeDate);
+                if (timesheets)
+                {
+                    return "exists";
+                }
                 timesheet.Time = timeSpent;
                 timesheet.DateVolunteered = model.TimeBasedTimesheet.timeDate;
                 timesheet.Notes = model.TimeBasedTimesheet.timeMessage;
@@ -98,8 +102,12 @@ namespace Ci_Platform.Repositories.Repositories
             }
             else
             {
-                Timesheet? timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == model.GoalBasedTimesheet.TimesheetId).FirstOrDefault();
-
+                var timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == model.GoalBasedTimesheet.TimesheetId).FirstOrDefault();
+                var timesheets = _context.Timesheets.Any(timesheet => timesheet.UserId == userId && timesheet.MissionId == model.GoalBasedTimesheet.goalMission && timesheet.DateVolunteered == model.GoalBasedTimesheet.goalDate);
+                if (timesheets)
+                {
+                    return "exists";
+                }
                 timesheet.Action = model.GoalBasedTimesheet.Actions;
                 timesheet.DateVolunteered = model.GoalBasedTimesheet.goalDate;
                 timesheet.Notes = model.GoalBasedTimesheet.goalMessage;

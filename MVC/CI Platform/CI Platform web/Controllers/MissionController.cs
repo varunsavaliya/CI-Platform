@@ -49,10 +49,10 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public async Task<IActionResult> LandingPage(InputData inputData)
         {
-            var UserId = "";
+            long UserId = 0;
             if (HttpContext.Session.GetString("UserName") != null)
             {
-                UserId = HttpContext.Session.GetString("UserId");
+                UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
                 ViewBag.UserId = UserId;
             }
             List<Mission> missions = new List<Mission>();
@@ -119,7 +119,7 @@ namespace CI_Platform_web.Controllers
 
                 foreach (long missionId in missionIds)
                 {
-                    Mission mission = _context.Missions.Where(m => m.MissionId == missionId).Include(m => m.City).Include(m => m.Country).Include(m => m.Theme).Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill).Include(m => m.GoalMissions).Include(m => m.FavoriteMissions).Include(m => m.MissionRatings).FirstOrDefault();
+                    Mission mission = _context.Missions.Where(m => m.MissionId == missionId).Include(m => m.City).Include(m => m.Country).Include(m => m.Theme).Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill).Include(m => m.GoalMissions).Include(m => m.FavoriteMissions).Include(m => m.MissionRatings).Include(m => m.Timesheets.Where(t => t.Status == "APPROVED")).FirstOrDefault();
 
                     if (mission != null)
                     {

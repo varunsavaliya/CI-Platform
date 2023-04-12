@@ -36,7 +36,8 @@ namespace CI_Platform_web.Controllers
                     if (_Authentication.ComparePassword(obj))
                     {
                         _Authentication.SetSession(obj.Email);
-                        
+
+                        long UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
                         // Redirect the user back to the previous page if returnUrl is present, otherwise to the home page
                         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         {
@@ -44,7 +45,11 @@ namespace CI_Platform_web.Controllers
                         }
                         else
                         {
-                            return RedirectToAction("LandingPage", "Mission");
+                            if (_Authentication.GetUserRole(UserId) == 1)
+                                return RedirectToAction("LandingPage", "Mission");
+                            else if(_Authentication.GetUserRole(UserId) == 2)
+                                return RedirectToAction("User", "Admin");
+
                         }
                     }
                     else
