@@ -197,24 +197,27 @@
     });
 
     // swiper images both arrows
-    var swiper = new Swiper(".mySwiper", {
-        loop: true,
-        spaceBetween: 10,
-        slidesPerView: 4,
-        freeMode: true,
-        watchSlidesProgress: true,
-    });
-    var swiper2 = new Swiper(".mySwiper2", {
-        loop: true,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        thumbs: {
-            swiper: swiper,
-        },
-    });
+    if (currentUrl.includes('MissionVolunteering') || currentUrl.includes('StoryDetail')) {
+
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+        var swiper2 = new Swiper(".mySwiper2", {
+            loop: true,
+            spaceBetween: 10,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            thumbs: {
+                swiper: swiper,
+            },
+        });
+    }
 
     // rating functionality on volunteering mission page
     // Get all star elements
@@ -756,13 +759,16 @@
         handleFiles(e);
     });
 
-    $('#editor').summernote({
-        height: 200, // set the height of the editor
-        toolbar: [
-            // add formatting options to the toolbar
-            ['style', ['bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'underline']]
-        ]
-    });
+    if (currentUrl.includes('ShareStory')) {
+
+        $('#editor').summernote({
+            height: 200, // set the height of the editor
+            toolbar: [
+                // add formatting options to the toolbar
+                ['style', ['bold', 'italic', 'strikethrough', 'subscript', 'superscript', 'underline']]
+            ]
+        });
+    }
     let storyTitle;
     $('#storyTitle').on('keyup', function () {
         $('#storyTitleValidation').text('')
@@ -1335,5 +1341,71 @@
         form1.reset();
         form2.reset();
     })
+
+    console.log('hello')
+    // admin panel
+
+    // user page
+    let dataTable = $('#user-table').DataTable({
+        lengthChange: false,
+        paging: true,
+        searching: true,
+        pageLength: 3,
+        info: false,
+        pagingType: "full_numbers", // include "First" and "Last" buttons
+        language: { // customize text of pagination controls
+            paginate: {
+                first: '<img src="/images/previous.png" />',
+                last: '<img src="/images/next.png" />',
+                next: '<img src="/images/right-arrow1.png" />',
+                previous: '<img src="/images/left.png" />'
+            }
+        },
+        columnDefs: [
+            { "orderable": false, "targets": 0 },
+            { "orderable": false, "targets": 1 },
+            { "orderable": false, "targets": 2 },
+            { "orderable": false, "targets": 3 },
+            { "orderable": false, "targets": 4 },
+            { "orderable": false, "targets": 5 },
+            { "orderable": false, "targets": 6 },
+        ],
+        order: false,
+        drawCallback: function () {
+            $('.paginate_button').removeClass('table-pagination-active');
+            $('.paginate_button.current').addClass('table-pagination-active');
+        }
+    });
+
+    let pageInfo = dataTable.page.info();
+    if (pageInfo.pages < 2) {
+        $('#user-table_paginate').hide();
+    }
+    else {
+        $('#user-table_paginate').show();
+    }
+    // filter data based on custom search input
+    $('#custom-search').on('keyup', function () {
+        dataTable.search($(this).val()).draw();
+        var dataTableEmpty = $('.dataTables_empty');
+        if (dataTableEmpty.length > 0 && dataTableEmpty.is(':visible')) {
+            $('#user-table_paginate').hide();
+        }
+        else {
+            $('#user-table_paginate').show();
+        }       
+    });
+
+    // get total number of records
+
+    // Set active class to first page initially
+    $('.paginate_button.current').addClass('table-pagination-active');
+
+    // Add active class to clicked page
+    $('#user-table_paginate').on('click', '.paginate_button:not(.current, .first, .last, .previous, .next)', function () {
+        $('.paginate_button').removeClass('table-pagination-active');
+        $(this).addClass('table-pagination-active');
+    });
+
 
 })

@@ -17,6 +17,7 @@ builder.Services.AddScoped<IMission, MissionRepository>();
 builder.Services.AddScoped<IStory, StoryRepository>();
 builder.Services.AddScoped<IUserProfile, UserProfile>();
 builder.Services.AddScoped<ITimesheet, TimesheetRepository>();
+builder.Services.AddScoped<IAdmin, AdminRepository>();
 
 // for use of session
 builder.Services.AddDistributedMemoryCache();

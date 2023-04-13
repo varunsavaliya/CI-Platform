@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nSY7IvSXg4CTQ24gLE2Lwt6utw7uEF9jgyw2yhroyQU=",
+  "Hash": "ndPEOk9Q/FWXIMDOTWHbt0c/KpO2fRdoaYtXV3oy7iA=",
   "Source": "CI Platform web",
   "BasePath": "_content/CI Platform web",
   "Mode": "Default",
@@ -1239,6 +1239,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\my-story.png"
+    },
+    {
+      "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\nav-user.png",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "images/nav-user.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\nav-user.png"
     },
     {
       "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\new-message.png",
