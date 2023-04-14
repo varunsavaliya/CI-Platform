@@ -15,8 +15,8 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task<List<Country>> GetCountriesAsync()
         {
-            var country = await _context.Countries.ToListAsync();
-            return country;
+            var countries = await _context.Countries.ToListAsync();
+            return countries ?? new List<Country>();
         }
 
         public async Task<List<MissionTheme>> GetThemesAsync()

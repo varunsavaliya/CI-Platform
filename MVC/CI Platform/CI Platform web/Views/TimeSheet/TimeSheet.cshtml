@@ -24,7 +24,7 @@
         <div class="col border vol-hours-container">
             <div class="vol-hours-header d-flex justify-content-between align-items-center mt-4 mb-3 ps-2">
                 <h2 class="vol-hours-heading m-0">Volunteering Hours</h2>
-                <button class="card-button m-0 px-4 py-1 add-timesheet-btn" data-bs-toggle="modal" data-bs-target="#add-vol-hours">Add +</button>
+                <button class="card-button m-0 px-4 py-1 add-timesheet-btn" data-bs-toggle="modal" data-bs-target="#add-vol-hours">+ Add</button>
 
                 <div class="modal fade" id="add-vol-hours" tabindex="-1" aria-labelledby="add-vol-hours-modal" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -104,8 +104,8 @@
                                 <td>@string.Format("{0}min", minutes)</td>
                                 <td class="d-flex align-content-center justify-content-end">
                                     <input value="@timesheet.TimesheetId" class="d-none" type="text" />
-                                    <img class="vol-edit-icon me-2" src="~/images/editing.png" data-bs-toggle="modal" data-bs-target="#add-vol-hours" />
-                                    <img class="vol-delete-icon" src="~/images/delete.png" data-bs-toggle="modal" data-bs-target="#deleteTimesheet_@timesheet.TimesheetId" />
+                                    <img class="generic-edit-icon me-2" src="~/images/editing.png" data-bs-toggle="modal" data-bs-target="#add-vol-hours" />
+                                    <img class="generic-delete-icon" src="~/images/delete.png" data-bs-toggle="modal" data-bs-target="#deleteTimesheet_@timesheet.TimesheetId" />
 
                                     <!-- delte timesheet modal -->
                                 <div class="modal fade" id="deleteTimesheet_@timesheet.TimesheetId" tabindex="-1" aria-labelledby="add-vol-hours-modal" aria-hidden="true">
@@ -207,8 +207,8 @@
                                 <td>@timesheet.Action</td>
                                 <td class="d-flex align-content-center justify-content-end">
                                     <input value="@timesheet.TimesheetId" class="d-none" type="text" />
-                                    <img class="vol-edit-icon me-2" src="~/images/editing.png" data-bs-toggle="modal" data-bs-target="#add-vol-goal" />
-                                    <img class="vol-delete-icon" src="~/images/delete.png" data-bs-toggle="modal" data-bs-target="#deleteTimesheet_@timesheet.TimesheetId" />
+                                    <img class="generic-edit-icon me-2" src="~/images/editing.png" data-bs-toggle="modal" data-bs-target="#add-vol-goal" />
+                                    <img class="generic-delete-icon" src="~/images/delete.png" data-bs-toggle="modal" data-bs-target="#deleteTimesheet_@timesheet.TimesheetId" />
 
                                     <!-- delte timesheet modal -->
                                 <div class="modal fade" id="deleteTimesheet_@timesheet.TimesheetId" tabindex="-1" aria-labelledby="add-vol-hours-modal" aria-hidden="true">

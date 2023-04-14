@@ -30,11 +30,9 @@ namespace CI_Platform_web.Controllers
 
         public async Task<IActionResult> LandingPage()
         {
-            if (HttpContext.Session.GetString("UserName") != null)
+            if (HttpContext.Session.GetString("UserId") != null)
             {
-                //ViewBag.UserName = HttpContext.Session.GetString("UserName");
-                //ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
-                ViewBag.UserId = HttpContext.Session.GetString("UserId");
+                string userId = HttpContext.Session.GetString("UserId");
             }
 
             var LandingView = new LandingPageModel();

@@ -82,9 +82,9 @@ namespace CI_Platform_web.Controllers
             return RedirectToAction("Timesheet");
         }
 
-        public async Task<ActionResult> DeleteTimesheet(long timesheetId)
+        public async Task<ActionResult> DeleteTimesheet(long id)
         {
-           await _timesheet.DeleteTimesheetById(timesheetId);
+           await _timesheet.DeleteTimesheetById(id);
             return Ok();
         }
 

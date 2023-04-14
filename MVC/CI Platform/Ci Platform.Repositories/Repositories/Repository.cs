@@ -23,16 +23,22 @@ namespace Ci_Platform.Repositories.Repositories
         }
         public bool IsRegistered(User user)
         {
-            return (_context.Users.Any(a => a.Email == user.Email)) != null;
+            bool isRegistered = _context.Users.Any(a => a.Email == user.Email && a.DeletedAt == null);
+            return isRegistered;
         }
         public bool IsRegistered(PasswordReset user)
         {
-            return (_context.Users.Any(a => a.Email == user.Email)) != null;
-
+            bool isRegistered = _context.Users.Any(a => a.Email == user.Email && a.DeletedAt == null);
+            return isRegistered;
         }
         public bool ComparePassword(User user)
         {
-            return (_context.Users.Where(a => (a.Email.Equals(user.Email)) && (a.Password.Equals(user.Password))).FirstOrDefault()) != null;
+            var dbUser = _context.Users.FirstOrDefault(a => a.Email.Equals(user.Email) && a.DeletedAt == null);
+            if (dbUser != null)
+            {
+                return string.Equals(dbUser.Password, user.Password, StringComparison.Ordinal);
+            }
+            return false;
         }
 
     }

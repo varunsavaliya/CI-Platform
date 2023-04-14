@@ -67,7 +67,7 @@ namespace Ci_Platform.Repositories.Repositories
             else
             {
                var timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == model.TimeBasedTimesheet.TimesheetId).FirstOrDefault();
-                var timesheets = _context.Timesheets.Any(timesheet => timesheet.UserId == userId && timesheet.MissionId == model.TimeBasedTimesheet.timeMission && timesheet.DateVolunteered == model.TimeBasedTimesheet.timeDate);
+                var timesheets = _context.Timesheets.Any(timesheet => timesheet.TimesheetId != model.TimeBasedTimesheet.TimesheetId && timesheet.UserId == userId && timesheet.MissionId == model.TimeBasedTimesheet.timeMission && timesheet.DateVolunteered == model.TimeBasedTimesheet.timeDate);
                 if (timesheets)
                 {
                     return "exists";
@@ -103,7 +103,7 @@ namespace Ci_Platform.Repositories.Repositories
             else
             {
                 var timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == model.GoalBasedTimesheet.TimesheetId).FirstOrDefault();
-                var timesheets = _context.Timesheets.Any(timesheet => timesheet.UserId == userId && timesheet.MissionId == model.GoalBasedTimesheet.goalMission && timesheet.DateVolunteered == model.GoalBasedTimesheet.goalDate);
+                var timesheets = _context.Timesheets.Any(timesheet => timesheet.TimesheetId != model.GoalBasedTimesheet.TimesheetId && timesheet.UserId == userId && timesheet.MissionId == model.GoalBasedTimesheet.goalMission && timesheet.DateVolunteered == model.GoalBasedTimesheet.goalDate);
                 if (timesheets)
                 {
                     return "exists";

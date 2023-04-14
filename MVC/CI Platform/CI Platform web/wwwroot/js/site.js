@@ -41,7 +41,7 @@
                     })
                     dropdown.html(items);
                 }
-                else if (currentUrl.includes("UserProfile")) {
+                else if (currentUrl.includes("UserProfile") || currentUrl.includes('Admin/AdminUser')) {
                     var select = $('.user-city');
                     select.empty();
                     var items = `<option value="0">Select your city</option>`;
@@ -1228,78 +1228,86 @@
         return new Date(randomTimestamp);
     }
 
-    $('table').on('click', '.vol-edit-icon', function () {
-        let timesheetId = $(this).parent().find('input').val();
+    $('table').on('click', '.generic-edit-icon', function () {
+        if (currentUrl.includes('AdminUser')) {
+            let userId = $(this).parent().find('input').val();
+            getAdminFormData('GetUserDataById', userId);
+        }
+        else {
 
-        $.ajax({
-            url: '/Timesheet/GetTimesheetData',
-            type: 'GET',
-            data: { timesheetId: timesheetId },
-            success: function (response) {
-                console.log(response)
-                if (response.Time == null) {
-                    $('#GoalBasedTimesheet_TimesheetId').val(response.TimesheetId)
+            let timesheetId = $(this).parent().find('input').val();
 
-                    $('#goal-mission option').each(function () {
-                        if ($(this).val() == response.MissionId) {
-                            $(this).prop('selected', true);
-                        }
-                    });
-                    $('#goal-mission').prop(`disabled`, true);
+            $.ajax({
+                url: '/Timesheet/GetTimesheetData',
+                type: 'GET',
+                data: { timesheetId: timesheetId },
+                success: function (response) {
+                    console.log(response)
+                    if (response.Time == null) {
+                        $('#GoalBasedTimesheet_TimesheetId').val(response.TimesheetId)
 
-                    var startDate = new Date(response.Mission.StartDate);
-                    var currentDate = new Date();
-                    var endDate = new Date(response.Mission.EndDate) > currentDate ? currentDate : new Date(response.Mission.EndDate);
-                    var defaultDate = new Date(response.DateVolunteered);
-                    $("#goal-date").flatpickr().destroy();
-                    var fp = flatpickr("#goal-date", {
-                        dateFormat: "d-m-Y",
-                        minDate: startDate,
-                        maxDate: endDate,
-                        defaultDate: defaultDate
-                    });
+                        $('#goal-mission option').each(function () {
+                            if ($(this).val() == response.MissionId) {
+                                $(this).prop('selected', true);
+                            }
+                        });
+                        $('#goal-mission').prop(`disabled`, true);
 
-                    $('#Actions').val(response.Action)
+                        var startDate = new Date(response.Mission.StartDate);
+                        var currentDate = new Date();
+                        var endDate = new Date(response.Mission.EndDate) > currentDate ? currentDate : new Date(response.Mission.EndDate);
+                        var defaultDate = new Date(response.DateVolunteered);
+                        $("#goal-date").flatpickr().destroy();
+                        var fp = flatpickr("#goal-date", {
+                            dateFormat: "d-m-Y",
+                            minDate: startDate,
+                            maxDate: endDate,
+                            defaultDate: defaultDate
+                        });
 
-                    $('#goal-message').val(response.Notes);
-                } else {
-                    $('#TimeBasedTimesheet_TimesheetId').val(response.TimesheetId)
+                        $('#Actions').val(response.Action)
 
-                    $('#time-mission option').each(function () {
-                        if ($(this).val() == response.MissionId) {
-                            $(this).prop('selected', true);
-                        }
-                    });
-                    $('#time-mission').prop(`disabled`, true);
+                        $('#goal-message').val(response.Notes);
+                    } else {
+                        $('#TimeBasedTimesheet_TimesheetId').val(response.TimesheetId)
 
-                    var startDate = new Date(response.Mission.StartDate);
-                    var currentDate = new Date();
-                    var endDate = new Date(response.Mission.EndDate) > currentDate ? currentDate : new Date(response.Mission.EndDate);
-                    var defaultDate = new Date(response.DateVolunteered);
-                    $("#time-date").flatpickr().destroy();
-                    var fp = flatpickr("#time-date", {
-                        dateFormat: "d-m-Y",
-                        minDate: startDate,
-                        maxDate: endDate,
-                        defaultDate: defaultDate
-                    });
+                        $('#time-mission option').each(function () {
+                            if ($(this).val() == response.MissionId) {
+                                $(this).prop('selected', true);
+                            }
+                        });
+                        $('#time-mission').prop(`disabled`, true);
 
-                    let time = response.Time;
-                    let parts = time.split(":");
-                    let hours = parseInt(parts[0]);
-                    let minutes = parseInt(parts[1]);
-                    //let hours = time.Substring(0, 2)
-                    //let minutes = time.Substring(3, 2)
-                    $('#Hours').val(hours)
-                    $('#Minutes').val(minutes)
+                        var startDate = new Date(response.Mission.StartDate);
+                        var currentDate = new Date();
+                        var endDate = new Date(response.Mission.EndDate) > currentDate ? currentDate : new Date(response.Mission.EndDate);
+                        var defaultDate = new Date(response.DateVolunteered);
+                        $("#time-date").flatpickr().destroy();
+                        var fp = flatpickr("#time-date", {
+                            dateFormat: "d-m-Y",
+                            minDate: startDate,
+                            maxDate: endDate,
+                            defaultDate: defaultDate
+                        });
 
-                    $('#time-message').val(response.Notes);
+                        let time = response.Time;
+                        let parts = time.split(":");
+                        let hours = parseInt(parts[0]);
+                        let minutes = parseInt(parts[1]);
+                        //let hours = time.Substring(0, 2)
+                        //let minutes = time.Substring(3, 2)
+                        $('#Hours').val(hours)
+                        $('#Minutes').val(minutes)
+
+                        $('#time-message').val(response.Notes);
+                    }
+                },
+                error: function (error) {
+
                 }
-            },
-            error: function (error) {
+            });
+        }
 
-            }
-        });
     })
 
     $('#time-form').submit(function () {
@@ -1310,27 +1318,28 @@
     })
 
     $('table').on('click', '.delete-timesheet-btn', function () {
-        let deleteButton = $(this)
         let timesheetId = $(this).parent().find('input').val();
-        let deleteTr = $('.tr_' + timesheetId);
-        $.ajax({
-            url: '/Timesheet/DeleteTimesheet',
-            type: 'GET',
-            data: { timesheetId: timesheetId },
-            success: function (response) {
-                deleteTr.remove();
-                swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Item removed successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            },
-            error: function (error) {
+        deleteTableData('/TimeSheet/DeleteTimesheet', timesheetId);
 
-            }
-        });
+        //let deleteTr = $('.tr_' + timesheetId);
+        //$.ajax({
+        //    url: '/Timesheet/DeleteTimesheet',
+        //    type: 'GET',
+        //    data: { timesheetId: timesheetId },
+        //    success: function (response) {
+        //        deleteTr.remove();
+        //        swal.fire({
+        //            position: 'center',
+        //            icon: 'success',
+        //            title: 'Item removed successfully',
+        //            showConfirmButton: false,
+        //            timer: 1500
+        //        })
+        //    },
+        //    error: function (error) {
+
+        //    }
+        //});
     })
     $('.add-timesheet-btn').on('click', function () {
         let form1 = $('#goal-form')[0];
@@ -1342,70 +1351,145 @@
         form2.reset();
     })
 
-    console.log('hello')
     // admin panel
 
     // user page
-    let dataTable = $('#user-table').DataTable({
-        lengthChange: false,
-        paging: true,
-        searching: true,
-        pageLength: 3,
-        info: false,
-        pagingType: "full_numbers", // include "First" and "Last" buttons
-        language: { // customize text of pagination controls
-            paginate: {
-                first: '<img src="/images/previous.png" />',
-                last: '<img src="/images/next.png" />',
-                next: '<img src="/images/right-arrow1.png" />',
-                previous: '<img src="/images/left.png" />'
+    if (currentUrl.includes('Admin/AdminUser')) {
+        let dataTable = $('#user-table').DataTable({
+            lengthChange: false,
+            paging: true,
+            searching: true,
+            pageLength: 10,
+            info: false,
+            pagingType: "full_numbers", // include "First" and "Last" buttons
+            language: { // customize text of pagination controls
+                paginate: {
+                    first: '<img src="/images/previous.png" />',
+                    last: '<img src="/images/next.png" />',
+                    next: '<img src="/images/right-arrow1.png" />',
+                    previous: '<img src="/images/left.png" />'
+                }
+            },
+            columnDefs: [
+                { "orderable": false, "targets": 0 },
+                { "orderable": false, "targets": 1 },
+                { "orderable": false, "targets": 2 },
+                { "orderable": false, "targets": 3 },
+                { "orderable": false, "targets": 4 },
+                { "orderable": false, "targets": 5 },
+                { "orderable": false, "targets": 6 },
+            ],
+            order: false,
+            drawCallback: function () {
+                $('.paginate_button').removeClass('table-pagination-active');
+                $('.paginate_button.current').addClass('table-pagination-active');
             }
-        },
-        columnDefs: [
-            { "orderable": false, "targets": 0 },
-            { "orderable": false, "targets": 1 },
-            { "orderable": false, "targets": 2 },
-            { "orderable": false, "targets": 3 },
-            { "orderable": false, "targets": 4 },
-            { "orderable": false, "targets": 5 },
-            { "orderable": false, "targets": 6 },
-        ],
-        order: false,
-        drawCallback: function () {
-            $('.paginate_button').removeClass('table-pagination-active');
-            $('.paginate_button.current').addClass('table-pagination-active');
-        }
-    });
+        });
 
-    let pageInfo = dataTable.page.info();
-    if (pageInfo.pages < 2) {
-        $('#user-table_paginate').hide();
-    }
-    else {
-        $('#user-table_paginate').show();
-    }
-    // filter data based on custom search input
-    $('#custom-search').on('keyup', function () {
-        dataTable.search($(this).val()).draw();
-        var dataTableEmpty = $('.dataTables_empty');
-        if (dataTableEmpty.length > 0 && dataTableEmpty.is(':visible')) {
+        let pageInfo = dataTable.page.info();
+        if (pageInfo.pages < 2) {
             $('#user-table_paginate').hide();
         }
         else {
             $('#user-table_paginate').show();
-        }       
-    });
+        }
+        // filter data based on custom search input
+        $('#custom-search').on('keyup', function () {
+            dataTable.search($(this).val()).draw();
+            var dataTableEmpty = $('.dataTables_empty');
+            if (dataTableEmpty.length > 0 && dataTableEmpty.is(':visible')) {
+                $('#user-table_paginate').hide();
+            }
+            else {
+                $('#user-table_paginate').show();
+            }
+        });
+        // Set active class to first page initially
+        $('.paginate_button.current').addClass('table-pagination-active');
 
-    // get total number of records
+        // Add active class to clicked page
+        $('#user-table_paginate').on('click', '.paginate_button:not(.current, .first, .last, .previous, .next)', function () {
+            $('.paginate_button').removeClass('table-pagination-active');
+            $(this).addClass('table-pagination-active');
+        });
 
-    // Set active class to first page initially
-    $('.paginate_button.current').addClass('table-pagination-active');
-
-    // Add active class to clicked page
-    $('#user-table_paginate').on('click', '.paginate_button:not(.current, .first, .last, .previous, .next)', function () {
-        $('.paginate_button').removeClass('table-pagination-active');
-        $(this).addClass('table-pagination-active');
-    });
+        $('table').on('click', '.admin-delete-btn', function () {
+            let userId = $(this).parent().find('input').val();
+            deleteTableData('/Admin/DeleteUser', userId);
+        })
 
 
+    }
+
+    function getAdminFormData(page, id) {
+        $.ajax({
+            url: '/Admin/' + page,
+            type: 'GET',
+            data: { id: id },
+            success: function (response) {
+                if (currentUrl.includes('AdminUser')) {
+                    fillAdminUserData(response);
+                }
+            },
+            error: function (error) {
+            }
+        });
+    }
+
+    const fillAdminUserData = (response) => {
+        $('#UserId').val(response.UserId);
+        $('#Name').val(response.FirstName);
+        $('#Surname').val(response.LastName);
+        $('#Email').val(response.Email);
+        $('#Password').attr('type', 'password').val(response.Password);
+        $('#CountryId').val(response.CountryId == 'null' ? '' : response.CountryId);
+        let city;
+        if (response.CityId == null)
+            city = '<option value="">Select your city</option>'
+        else
+            city = `<option value=` + response.CityId + `>` + response.City.Name + `</option>`;
+        $('#CityId').html(city);
+        $('#employeeId').val(response.EmployeeId == 'null' ? '' : response.EmployeeId);
+        $('#department').val(response.Department == 'null' ? '' : response.Department);
+        $('#status').val(response.Status);
+        $('#MyProfile').val(response.MyProfile == 'null' ? '' : response.MyProfile);
+    }
+
+    let deleteTableData = (actionMethod, id) => {
+        let deleteTr = $('.tr_' + id);
+        $.ajax({
+            url: actionMethod,
+            type: 'GET',
+            data: { id: id },
+            success: function (response) {
+                deleteTr.remove();
+                if (currentUrl.includes('TimeSheet')) {
+                    swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Item removed successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else if (currentUrl.includes('Admin/AdminUser')) {
+                    swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: response,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            },
+            error: function (error) {
+                swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: error,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+        });
+    }
 })

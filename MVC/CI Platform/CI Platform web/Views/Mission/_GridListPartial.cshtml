@@ -54,7 +54,7 @@ else
 
                         bool isAlreadyApplied = card.MissionApplications.Any(ma => ma.UserId.Equals(UserId));
 
-                        <div class="col col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-4">
                             <div class="card grid-card">
 
                                 @if (card.MissionRatings.Any())
@@ -141,7 +141,7 @@ else
                                         <div class="organization">
                                             <p>@card.OrganizationName</p>
                                         </div>
-                                        <div class="rating">
+                                        <div class="rating d-flex flex-nowrap">
                                             @for (int i = 0; i < (int)avgRating; i++)
                                             {
                                                 <span><img src="~/images/selected-star.png" alt=""></span>

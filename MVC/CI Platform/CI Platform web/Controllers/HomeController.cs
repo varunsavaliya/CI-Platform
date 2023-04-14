@@ -36,8 +36,10 @@ namespace CI_Platform_web.Controllers
                     if (_Authentication.ComparePassword(obj))
                     {
                         _Authentication.SetSession(obj.Email);
+                        ViewBag.UserId = HttpContext.Session.GetString("UserId");
 
                         long UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+
                         // Redirect the user back to the previous page if returnUrl is present, otherwise to the home page
                         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         {
@@ -48,18 +50,18 @@ namespace CI_Platform_web.Controllers
                             if (_Authentication.GetUserRole(UserId) == 1)
                                 return RedirectToAction("LandingPage", "Mission");
                             else if(_Authentication.GetUserRole(UserId) == 2)
-                                return RedirectToAction("User", "Admin");
+                                return RedirectToAction("AdminUser", "Admin");
 
                         }
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Password is incorrect");
+                        ModelState.AddModelError("", "Email or Password is incorrect");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Email is incorrect");
+                    ModelState.AddModelError("", "User does not exist");
                 }
             }
             return View();

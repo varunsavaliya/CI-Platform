@@ -26,12 +26,12 @@ namespace Ci_Platform.Repositories.Repositories
         }
         public List<User> GetUsers(long userId)
         {
-            return _context.Users.Where(u => u.UserId != userId).ToList();
+            return _context.Users.Where(u => u.UserId != userId && u.DeletedAt == null).ToList();
         }
         public async Task<List<Story>> GetStories(List<long> storyIds)
         {
             List<Story> stories = new();
-            stories = await _context.Stories.Where(s => storyIds.Contains(s.StoryId))
+            stories = await _context.Stories.Where(s => storyIds.Contains(s.StoryId) && s.User.DeletedAt == null)
                 .Include(s => s.User)
                 .Include(s => s.StoryMedia)
                 .Include(s => s.Mission).ThenInclude(m => m.Theme)

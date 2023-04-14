@@ -63,6 +63,9 @@ body {
         font-size: 1.2rem;
     }
 /* form */
+.validation-summary-errors ul {
+    padding-left: 0 !important;
+}
 
 .login-section {
     display: flex;
@@ -1141,18 +1144,18 @@ input:focus-visible {
     }
 
 .card-button {
-    background-color: #fff;
-    border: 1px solid #F88634;
-    border-radius: 23px;
-    color: #F88634;
+    background-color: #fff !important;
+    border: 1px solid #F88634 !important;
+    border-radius: 23px !important;
+    color: #F88634 !important;
     padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-size: 16px !important;
     margin: 10px auto 0 auto;
-    cursor: pointer;
-    width: max-content;
+    cursor: pointer !important;
+    width: max-content !important;
 }
 
     .card-button img {
@@ -1164,8 +1167,8 @@ input:focus-visible {
         }
 
     .card-button:hover {
-        background-color: #F88634;
-        color: #fff;
+        background-color: #F88634 !important;
+        color: #fff !important;
     }
 
         .card-button:hover img {
@@ -2056,10 +2059,10 @@ iframe {
 }
 
 .skill-btn {
-    padding: 10px 26px;
-    border-radius: 23px;
-    width: max-content;
-    display: inline;
+    padding: 10px 26px !important;
+    border-radius: 23px !important;
+    width: max-content !important;
+    display: inline !important;
 }
 
 .all-skill-options div label, .user-skill-options div label {
@@ -2164,7 +2167,7 @@ iframe {
     margin-bottom: 0.5rem;
 }
 
-.table-responsive .vol-edit-icon, .table-responsive .vol-delete-icon {
+.table-responsive .generic-edit-icon, .table-responsive .generic-delete-icon {
     cursor: pointer;
 }
 
@@ -2217,11 +2220,23 @@ iframe {
     box-shadow: 3px 5px 10px #10446b29
 }
 
-.main-content {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
+.admin-page-header {
+    padding-top: 1rem;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 1.5rem;
 }
+
+    .admin-page-header h2{
+        margin-bottom:0;
+        display:inline-block;
+        border-bottom:1px solid gray;
+    }
+
+    .main-content {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
 
 .admin-header {
     box-shadow: 3px 5px 10px #00000014;
@@ -2240,11 +2255,15 @@ iframe {
         border-radius: 50%;
     }
 
+
     .admin-header p {
         margin-right: 9px !important;
         font-family: 'Noto Sans', sans-serif;
         font-weight: 300;
     }
+.main-table-content {
+    padding: 0 2rem;
+}
 
 .dataTables_paginate a {
     margin: 10px 5px;
@@ -2257,25 +2276,72 @@ iframe {
 }
 
 .table-pagination-active {
-    color: #fff !important; 
+    color: #fff !important;
     background-color: #F88634 !important;
     border-color: #F88634 !important;
 }
 
-.dataTables_paginate{
-    margin-top:2rem !important;
-}
-.dataTables_paginate a:focus {
-    outline:0 !important;
- }
-
-.dataTables_filter{
-    display:none !important;
+.dataTables_paginate {
+    margin-top: 2rem !important;
 }
 
-.admin-tables{
-    min-height:inherit;
+    .dataTables_paginate a:focus {
+        outline: 0 !important;
+    }
+
+.dataTables_filter {
+    display: none !important;
 }
+
+.admin-tables {
+    /*height:90vh;*/
+}
+
+.admin-search-field {
+    position: relative;
+    border: 1px solid #F4F4F4;
+    max-width: max-content;
+    color: #9e9e9e;
+    border-radius: 3px;
+}
+
+    .admin-search-field i {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+    }
+
+    .admin-search-field input {
+        border: none;
+        outline: none;
+    }
+
+.admin-tables table {
+    /*padding:1rem;*/
+}
+
+    .admin-tables table thead {
+        border-collapse: unset !important;
+        background: #F8F9FC;
+        border: 1px solid #E4E4E4 !important;
+    }
+
+        .admin-tables table thead tr th {
+            border: none;
+        }
+
+    .admin-tables table tr th, .admin-tables table tr td {
+        padding: 1rem;
+    }
+
+    .admin-tables table tr .active-class {
+        color: #58d84e;
+    }
+
+    .admin-tables table tr .inactive-class {
+        color: #ff0000;
+    }
 
 @media screen and (max-width:991px) {
     .vertical-nav-admin ul li a {
