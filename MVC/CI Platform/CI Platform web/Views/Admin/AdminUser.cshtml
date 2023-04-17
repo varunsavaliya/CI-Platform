@@ -22,105 +22,20 @@
 <!-- data tables -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.0/css/responsive.bootstrap5.min.css">
-<div class="admin-table-header d-flex justify-content-between mb-3">
-    <div class="admin-search-field input-group">
-        <input type="text" class="form-control ms-5" id="custom-search" placeholder="Search">
-        <i class="fa fa-search"></i>
-    </div>
-    <button class="card-button m-0 px-4 py-1 add-timesheet-btn" data-bs-toggle="modal" data-bs-target="#add-user">+ Add</button>
-
-    <div class="modal fade" id="add-user" tabindex="-1" aria-labelledby="add-vol-hours-modal" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body px-5">
-                    <div class="vol-time-modal-heading d-flex justify-content-between align-items-center my-3">
-                        <h3 class="d-inline mb-0">Please input below Volunteering Goal</h3>
-                        <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form class="my-0 row" id="goal-form" method="post">
-                        <input type="text" class="d-none" asp-for="UserId"/>
-                        <div class="col-12 col-md-6 my-1">
-                            <label class="form-label" asp-for="Profile.Name">Name</label>
-                            <input type="text" class="form-control" id="Name" asp-for="Profile.Name" placeholder="Enter First Name">
-                            <span asp-validation-for="Profile.Name" class="text-danger"></span>
-                        </div>
-
-                        <div class="col-12 col-md-6 my-1">
-                            <label class="form-label" asp-for="Profile.Surname">Surname</label>
-                            <input type="text" class="form-control" id="Surname" asp-for="Profile.Surname" placeholder="Enter Last Name">
-                            <span asp-validation-for="Profile.Surname" class="text-danger"></span>
-                        </div>
-
-                        <div class="col-12 col-md-6 my-1">
-                            <label class="form-label" asp-for="Email">Email</label>
-                            <input type="email" class="form-control" id="Email" asp-for="Email" placeholder="Enter Email">
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-
-                        <div class="col-12 col-md-6 my-1">
-                            <label class="form-label" asp-for="Password">Password</label>
-                            <input type="password" class="form-control" id="Password" asp-for="Password" placeholder="Enter Password">
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>                        
-
-                        <div class="col-md-6 col-sm-12 mb-3">
-                            <label asp-for="CountryId" class="form-label">Country</label>
-                            <select asp-for="CountryId" class="form-select user-country" aria-label="Country">
-                                <option value="">Select your country</option>
-                                @foreach (var country in Model.countryList)
-                                {
-                                    @if (country.CountryId == Model.CountryId)
-                                    {
-                                        <option value="@country.CountryId" selected>@country.Name</option>
-                                    }
-                                    else
-                                    {
-                                        <option value="@country.CountryId">@country.Name</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-                        <div class="col-md-6 col-sm-12 mb-3">
-                            <label asp-for="CityId" class="form-label">City</label>
-                            <select asp-for="CityId" class="form-select user-city" aria-label="Country">
-                                <option value="">Select your city</option>
-                            </select>
-                        </div>
-
-                        <div class="col-md-6 col-sm-12 mb-3">
-                            <label asp-for="Profile.employeeId" class="form-label">Employee Id</label>
-                            <input asp-for="Profile.employeeId" type="text" class="form-control" id="employeeId" aria-describedby="employeeId" placeholder="Enter your employee id">
-                            <span asp-validation-for="Profile.employeeId" class="text-danger"></span>
-                        </div>
-                        <!-- Avatar is pending -->
-                       
-                        <div class="col-md-6 col-sm-12 mb-3">
-                            <label asp-for="Profile.department" class="form-label">Department</label>
-                            <input asp-for="Profile.department" type="text" class="form-control" id="department" aria-describedby="department" placeholder="Enter department name">
-
-                        </div>
-                        <div class="col-md-6 col-sm-12 mb-3">
-                            <label asp-for="Status" class="form-label">Status</label>
-                            <input asp-for="Status" name="Status" type="number" class="form-control" id="status" aria-describedby="status" min="0" max="1" placeholder="Enter Status">
-                        </div>
-                        <div class="col-12 mb-3">
-                            <label asp-for="MyProfile" class="form-label">My Profile</label>
-                            <textarea asp-for="MyProfile" name="MyProfile" class="form-control" id="MyProfile" aria-describedby="MyProfile" rows="3" placeholder="Enter your comments..."></textarea>
-                        </div>
-                                         
-                        <div class="d-flex justify-content-end mt-3">
-                            <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Cancel</button>
-                            <button type="submit" id="sobmit-goal-btn" class="btn mt-0 card-button ms-2 me-0">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<div class="add-form-container">
+    <!-- dynamically -->
 </div>
 
 <div class="table-responsive admin-tables">
+    <div class="admin-table-header d-flex justify-content-between mb-3">
+        <div class="admin-search-field input-group">
+            <input type="text" class="form-control ms-5" id="custom-search" placeholder="Search">
+            <i class="fa fa-search"></i>
+        </div>
+        <button class="card-button m-0 px-4 py-1 add-user-btn">+ Add</button>
+
+
+    </div>
     <table class="table border" id="user-table">
         <thead class="py-3">
             <tr>
@@ -145,7 +60,7 @@
                     <td class="@(user.Status == 1 ? "active-class" : "inactive-class")">@(user.Status == 1 ? "Active" : "Inactive")</td>
                     <td>
                         <input value="@user.UserId" class="d-none" type="text" />
-                        <img class="generic-edit-icon me-2" src="~/images/editing.png" data-bs-toggle="modal" data-bs-target="#add-user" />
+                        <img class="generic-edit-icon me-2" src="~/images/editing.png" />
                         <img class="generic-delete-icon" src="~/images/delete.png" data-bs-toggle="modal" data-bs-target="#deleteUser_@user.UserId" />
 
                         <!-- delete user modal -->

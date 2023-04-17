@@ -20,7 +20,7 @@ namespace Ci_Platform.Repositories.Repositories
         public string GenerateToken()
         {
 
-            Random random = new Random();
+            Random random = new();
 
             int capitalCharCode = random.Next(65, 91);
             char randomCapitalChar = (char)capitalCharCode;
@@ -119,10 +119,15 @@ namespace Ci_Platform.Repositories.Repositories
             session.Remove("userEmail");
         }
 
-        public int? GetUserRole(long userId)
+        public string? GetUserRole(long userId)
         {
-            var role = _context.Users.Where(user => user.UserId == userId).Select(user => user.RoleId).FirstOrDefault();
+            var role = _context.Users.Where(user => user.UserId == userId).Select(user => user.Role).FirstOrDefault();
             return role;
+        }
+
+        public User GetUser(long userId)
+        {
+            return _context.Users.Find(userId);
         }
 
 

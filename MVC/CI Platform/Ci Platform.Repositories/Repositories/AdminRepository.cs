@@ -22,13 +22,31 @@ namespace Ci_Platform.Repositories.Repositories
 
         public List<User> GetUsers()
         {
-            return _context.Users.Where(user => user.RoleId == 1 && user.DeletedAt == null).ToList();
+            return _context.Users.Where(user => user.Role == "User" && user.DeletedAt == null).ToList();
         }
 
-        public User GetUserById(long userId)
+        public AdminUserModel GetUserById(long userId)
         {
             User? user = _context.Users.Include(user => user.City).FirstOrDefault(user => user.UserId == userId);
-            return user;
+            AdminUserModel model = new()
+            {
+                UserId = user.UserId,
+                Name = user.FirstName,
+                Surname = user.LastName,
+                Email = user.Email,
+                Password = user.Password,
+                CountryId = user.CountryId == 0 ? null : user.CountryId,
+                CityId = user.CityId == 0 ? null : user.CityId,
+                employeeId = user.EmployeeId,
+                Status = user.Status,
+                department = user.Department,
+                MyProfile = user.ProfileText
+            };
+            if (user.CountryId != 0 || user.CountryId != null)
+            {
+                model.cityList = _context.Cities.Where(city => city.CountryId == user.CountryId).ToList();
+            }
+            return model;
         }
         public async Task<string> DeleteUserById(long userId)
         {
@@ -43,52 +61,44 @@ namespace Ci_Platform.Repositories.Repositories
         }
         public bool IsUserExists(string email, long userId)
         {
-            return _context.Users.Any(user => user.UserId != userId && user.Email == email);
+            return _context.Users.Any(u => u.UserId != userId && u.Email == email); ;
         }
 
 
         public async Task AddUser(AdminUserModel model)
         {
-            try
-            {
-
             User user = new()
             {
-                FirstName = model.Profile.Name,
-                LastName = model.Profile.Surname,
+                FirstName = model.Name,
+                LastName = model.Surname,
                 Email = model.Email,
                 Password = model.Password,
                 CountryId = model.CountryId == 0 ? null : model.CountryId,
                 CityId = model.CityId == 0 ? null : model.CityId,
-                EmployeeId = model.Profile.employeeId,
+                EmployeeId = model.employeeId,
                 Status = model.Status,
-                Department = model.Profile.department,
-                ProfileText = model.Profile.MyProfile
+                Department = model.department,
+                ProfileText = model.MyProfile
             };
+
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
-            }
+        }
 
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        } 
-        
         public async Task UpdateUser(AdminUserModel model)
         {
             User? user = _context.Users.FirstOrDefault(user => user.UserId == model.UserId);
             if (user != null)
             {
-                user.FirstName = model.Profile.Name;
-                user.LastName = model.Profile.Surname;
+                user.FirstName = model.Name;
+                user.LastName = model.Surname;
                 user.Email = model.Email;
                 user.Password = model.Password;
-                user.CountryId = model.CountryId;
-                user.CityId = model.CityId;
-                user.EmployeeId = model.Profile.employeeId;
+                user.CountryId = model.CountryId == 0 || model.CountryId == null ? null : model.CountryId;
+                user.CityId = model.CityId == 0 || model.CityId == null ? null : model.CityId;
+                user.EmployeeId = model.employeeId;
                 user.Status = model.Status;
-                user.Department = model.Profile.department;
+                user.Department = model.department;
                 user.ProfileText = model.MyProfile;
                 user.UpdatedAt = DateTime.Now;
             };

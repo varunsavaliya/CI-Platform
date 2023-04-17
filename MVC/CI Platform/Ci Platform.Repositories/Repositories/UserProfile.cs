@@ -20,7 +20,7 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task<UserProfileModel> GetUser(long id)
         {
-            User user = _context.Users.Include(u => u.City).Include(u => u.Country).Where(u => u.UserId == id).FirstOrDefault();
+            User? user = _context.Users.Include(u => u.City).Include(u => u.Country).FirstOrDefault(u => u.UserId == id);
             var vm = new UserProfileModel()
             {
                 Name = user.FirstName,

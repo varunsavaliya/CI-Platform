@@ -12,7 +12,7 @@ namespace Ci_Platform.Repositories.Interfaces
     {
 
         public List<User> GetUsers();
-        public User GetUserById(long userId);
+        public AdminUserModel GetUserById(long userId);
         public Task<string> DeleteUserById(long userId);
         public Task AddUser(AdminUserModel model);
         public bool IsUserExists(string email);

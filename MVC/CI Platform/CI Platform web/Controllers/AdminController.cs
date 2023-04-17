@@ -2,9 +2,11 @@
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using CI_Platform_web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Security.Claims;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -21,18 +23,18 @@ namespace CI_Platform_web.Controllers
             _filters = filters;
         }
 
-        public IAdmin Admin { get; }
-
+        [Authorize(Roles = "Admin")]
+        //[Route("Admin/employee-list-json", Name = "EmployeeListJson")]
         public async Task<IActionResult> AdminUser()
         {
             AdminUserModel vm = new();
 
-            vm.users = _admin.GetUsers(); // can throw specific exception like DbException
-            List<Country> countryList = await _filters.GetCountriesAsync();
-            vm.countryList = countryList;
 
+            vm.users = _admin.GetUsers();
             return View(vm);
+
         }
+
 
         [HttpPost]
         public async Task<IActionResult> AdminUser(AdminUserModel model)
@@ -42,7 +44,7 @@ namespace CI_Platform_web.Controllers
                 if (_admin.IsUserExists(model.Email))
                 {
                     TempData["Message"] = "User " + Constants.existsMessage;
-                    TempData["Icon"] = "error";
+                    TempData["Icon"] = "warning";
                 }
                 else
                 {
@@ -56,7 +58,7 @@ namespace CI_Platform_web.Controllers
                 if (_admin.IsUserExists(model.Email, model.UserId))
                 {
                     TempData["Message"] = "User " + Constants.existsMessage;
-                    TempData["Icon"] = "error";
+                    TempData["Icon"] = "warning";
                 }
                 else
                 {
@@ -68,15 +70,17 @@ namespace CI_Platform_web.Controllers
             return RedirectToAction("AdminUser");
         }
 
-        public IActionResult GetUserDataById(long id)
+        public async Task<IActionResult> AddorEditUser(long id)
         {
-            User user = _admin.GetUserById(id);
-            var options = new JsonSerializerOptions
+            AdminUserModel model = new();
+            if (id != 0)
             {
-                ReferenceHandler = ReferenceHandler.Preserve
-            };
-            return Json(user, options);
-
+                AdminUserModel result = _admin.GetUserById(id);
+                model = result;
+            }
+            List<Country> countryList = await _filters.GetCountriesAsync();
+            model.countryList = countryList;
+            return PartialView("_AddorEditUser", model);
         }
 
         public async Task<IActionResult> DeleteUser(long id)

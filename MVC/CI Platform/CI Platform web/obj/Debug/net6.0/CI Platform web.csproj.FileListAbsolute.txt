@@ -3432,3 +3432,4 @@ D:\Projects\main\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform we
 D:\Projects\main\MVC\CI Platform\CI Platform web\obj\Debug\net6.0\CI Platform web.genruntimeconfig.cache
 D:\Projects\main\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\SendGrid.dll
 D:\Projects\main\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\StarkbankEcdsa.dll
+D:\Projects\main\MVC\CI Platform\CI Platform web\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -23,7 +23,7 @@ namespace CI_Platform.Entities.ViewModels
         [ValidateNever]
         public string? ProfileImageName { get; set; }
         [ValidateNever]
-        public IFormFile ProfileImage { get; set;}
+        public IFormFile ProfileImage { get; set; } = null!;
         public string? selectedSkills { get; set; }
         [Required(ErrorMessage ="Name is required")]
         public string? Name { get; set; }

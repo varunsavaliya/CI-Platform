@@ -1,6 +1,8 @@
 ﻿using Ci_Platform.Repositories.Interfaces;
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
+using CI_Platform_web.Auth;
+using CI_Platform_web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
@@ -11,34 +13,44 @@ namespace CI_Platform_web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IAuthentication _Authentication;
+        private readonly IConfiguration _configuration;
 
 
         public HomeController(ILogger<HomeController> logger, IAuthentication authentication, IConfiguration config)
         {
             _logger = logger;
             _Authentication = authentication;
+            _configuration = config;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public async Task<IActionResult> Index(User obj, string? returnUrl)
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> Index(User user, string? returnUrl)
         {
             if (ModelState.IsValid)
             {
-                if (_Authentication.IsRegistered(obj))
+                if (_Authentication.IsRegistered(user))
                 {
-                    if (_Authentication.ComparePassword(obj))
+                    if (_Authentication.ComparePassword(user))
                     {
-                        _Authentication.SetSession(obj.Email);
+                        _Authentication.SetSession(user.Email);
                         ViewBag.UserId = HttpContext.Session.GetString("UserId");
 
                         long UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+                        User loginUser = _Authentication.GetUser(UserId);
+
+                        var jwtSettings = _configuration.GetSection(nameof(JwtSetting)).Get<JwtSetting>();
+
+                        var token = JwtTokenHelper.GenerateToken(jwtSettings, loginUser);
+
+                        HttpContext.Session.SetString("Token", token);
 
                         // Redirect the user back to the previous page if returnUrl is present, otherwise to the home page
                         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
@@ -47,9 +59,9 @@ namespace CI_Platform_web.Controllers
                         }
                         else
                         {
-                            if (_Authentication.GetUserRole(UserId) == 1)
+                            if (_Authentication.GetUserRole(UserId) == "User")
                                 return RedirectToAction("LandingPage", "Mission");
-                            else if(_Authentication.GetUserRole(UserId) == 2)
+                            else if(_Authentication.GetUserRole(UserId) == "Admin")
                                 return RedirectToAction("AdminUser", "Admin");
 
                         }

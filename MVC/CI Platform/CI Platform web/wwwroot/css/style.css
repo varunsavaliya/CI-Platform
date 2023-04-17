@@ -2342,6 +2342,20 @@ iframe {
     .admin-tables table tr .inactive-class {
         color: #ff0000;
     }
+#user-form .user-image-wrapper{
+    display:block;
+}
+#user-form .user-image-wrapper img {
+    width: 63px;
+}
+
+#user-form .user-image-wrapper .edit-icon {
+    top: 46%;
+    left: 4%;
+    font-size: 14px;
+    padding: 4px 7px;
+}
+
 
 @media screen and (max-width:991px) {
     .vertical-nav-admin ul li a {

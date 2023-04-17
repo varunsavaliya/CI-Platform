@@ -684,7 +684,8 @@ public partial class ApplicationDbContext : DbContext
             entity.ToTable("role");
 
             entity.Property(e => e.RoleId)
-                .ValueGeneratedNever()
+                .HasMaxLength(50)
+                .IsUnicode(false)
                 .HasColumnName("role_id");
             entity.Property(e => e.RoleName)
                 .HasMaxLength(10)
@@ -873,7 +874,6 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Avatar)
                 .HasMaxLength(2048)
                 .IsUnicode(false)
-                .HasDefaultValueSql("('null')")
                 .HasColumnName("avatar");
             entity.Property(e => e.CityId).HasColumnName("city_id");
             entity.Property(e => e.CountryId).HasColumnName("country_id");
@@ -887,7 +887,6 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Department)
                 .HasMaxLength(16)
                 .IsUnicode(false)
-                .HasDefaultValueSql("('null')")
                 .HasColumnName("department");
             entity.Property(e => e.Email)
                 .HasMaxLength(128)
@@ -896,7 +895,6 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.EmployeeId)
                 .HasMaxLength(16)
                 .IsUnicode(false)
-                .HasDefaultValueSql("('null')")
                 .HasColumnName("employee_id");
             entity.Property(e => e.FirstName)
                 .HasMaxLength(16)
@@ -920,10 +918,14 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.ProfileText)
                 .HasColumnType("text")
                 .HasColumnName("profile_text");
-            entity.Property(e => e.RoleId)
+            entity.Property(e => e.Role)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasDefaultValueSql("('User')")
+                .HasColumnName("role");
+            entity.Property(e => e.Status)
                 .HasDefaultValueSql("((1))")
-                .HasColumnName("role_id");
-            entity.Property(e => e.Status).HasColumnName("status");
+                .HasColumnName("status");
             entity.Property(e => e.Title)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -932,21 +934,16 @@ public partial class ApplicationDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
             entity.Property(e => e.WhyIVolunteer)
-                .HasDefaultValueSql("('null')")
                 .HasColumnType("text")
                 .HasColumnName("why_i_volunteer");
 
             entity.HasOne(d => d.City).WithMany(p => p.Users)
                 .HasForeignKey(d => d.CityId)
-                .HasConstraintName("FK__user__city_id__160F4887");
+                .HasConstraintName("FK_user_city_id");
 
             entity.HasOne(d => d.Country).WithMany(p => p.Users)
                 .HasForeignKey(d => d.CountryId)
-                .HasConstraintName("FK__user__country_id__17036CC0");
-
-            entity.HasOne(d => d.Role).WithMany(p => p.Users)
-                .HasForeignKey(d => d.RoleId)
-                .HasConstraintName("FK_user_role_id");
+                .HasConstraintName("FK_user_country_id");
         });
 
         modelBuilder.Entity<UserSkill>(entity =>

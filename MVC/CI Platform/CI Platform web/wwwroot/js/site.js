@@ -989,6 +989,7 @@
             $('.user-image').attr('src', e.target.result);
         }
         reader.readAsDataURL(this.files[0]);
+        console.log($(this).val())
     });
 
     $(document).on('click', '.form-check-label', function () {
@@ -1056,7 +1057,7 @@
         console.log($('#selected-skills').val())
     })
 
-    $('.user-country').on('click', function () {
+    $(document).on('click', '.user-country', function () {
         let countryId = $(this).val();
         getCitiesByCountry(countryId);
     })
@@ -1231,7 +1232,7 @@
     $('table').on('click', '.generic-edit-icon', function () {
         if (currentUrl.includes('AdminUser')) {
             let userId = $(this).parent().find('input').val();
-            getAdminFormData('GetUserDataById', userId);
+            addOrEdit('AddorEditUser', userId);
         }
         else {
 
@@ -1320,27 +1321,8 @@
     $('table').on('click', '.delete-timesheet-btn', function () {
         let timesheetId = $(this).parent().find('input').val();
         deleteTableData('/TimeSheet/DeleteTimesheet', timesheetId);
-
-        //let deleteTr = $('.tr_' + timesheetId);
-        //$.ajax({
-        //    url: '/Timesheet/DeleteTimesheet',
-        //    type: 'GET',
-        //    data: { timesheetId: timesheetId },
-        //    success: function (response) {
-        //        deleteTr.remove();
-        //        swal.fire({
-        //            position: 'center',
-        //            icon: 'success',
-        //            title: 'Item removed successfully',
-        //            showConfirmButton: false,
-        //            timer: 1500
-        //        })
-        //    },
-        //    error: function (error) {
-
-        //    }
-        //});
     })
+
     $('.add-timesheet-btn').on('click', function () {
         let form1 = $('#goal-form')[0];
         let form2 = $('#time-form')[0];
@@ -1352,6 +1334,10 @@
     })
 
     // admin panel
+
+    $('.add-user-btn').click(function () {
+        addOrEdit('AddorEditUser');
+    })
 
     // user page
     if (currentUrl.includes('Admin/AdminUser')) {
@@ -1371,13 +1357,7 @@
                 }
             },
             columnDefs: [
-                { "orderable": false, "targets": 0 },
-                { "orderable": false, "targets": 1 },
-                { "orderable": false, "targets": 2 },
-                { "orderable": false, "targets": 3 },
-                { "orderable": false, "targets": 4 },
-                { "orderable": false, "targets": 5 },
-                { "orderable": false, "targets": 6 },
+                { "orderable": false, "targets": '_all' }
             ],
             order: false,
             drawCallback: function () {
@@ -1421,39 +1401,21 @@
 
     }
 
-    function getAdminFormData(page, id) {
+    function addOrEdit(page, id) {
         $.ajax({
             url: '/Admin/' + page,
             type: 'GET',
-            data: { id: id },
+            data: { id: id == undefined ? 0 : id },
             success: function (response) {
                 if (currentUrl.includes('AdminUser')) {
-                    fillAdminUserData(response);
+                    $('.add-form-container').html(response);
+                    $('.admin-tables').remove();
                 }
             },
             error: function (error) {
             }
         });
-    }
-
-    const fillAdminUserData = (response) => {
-        $('#UserId').val(response.UserId);
-        $('#Name').val(response.FirstName);
-        $('#Surname').val(response.LastName);
-        $('#Email').val(response.Email);
-        $('#Password').attr('type', 'password').val(response.Password);
-        $('#CountryId').val(response.CountryId == 'null' ? '' : response.CountryId);
-        let city;
-        if (response.CityId == null)
-            city = '<option value="">Select your city</option>'
-        else
-            city = `<option value=` + response.CityId + `>` + response.City.Name + `</option>`;
-        $('#CityId').html(city);
-        $('#employeeId').val(response.EmployeeId == 'null' ? '' : response.EmployeeId);
-        $('#department').val(response.Department == 'null' ? '' : response.Department);
-        $('#status').val(response.Status);
-        $('#MyProfile').val(response.MyProfile == 'null' ? '' : response.MyProfile);
-    }
+    }   
 
     let deleteTableData = (actionMethod, id) => {
         let deleteTr = $('.tr_' + id);
@@ -1492,4 +1454,8 @@
             }
         });
     }
+
+    $(document).on('click', '#admin-cancel-btn', function () {
+        location.reload();
+    })
 })
