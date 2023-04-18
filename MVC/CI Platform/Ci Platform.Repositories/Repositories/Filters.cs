@@ -35,5 +35,10 @@ namespace Ci_Platform.Repositories.Repositories
             var cities = await _context.Cities.Where(c => c.CountryId == countryId).ToListAsync();
             return cities;
         }
+
+        public async Task<List<CmsTable>> GetCmsTables()
+        {
+            return await _context.CmsTables.ToListAsync();
+        }
     }
 }

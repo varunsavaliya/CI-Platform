@@ -14,13 +14,15 @@ namespace CI_Platform_web.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IAuthentication _Authentication;
         private readonly IConfiguration _configuration;
+        private readonly IFilters _filters;
 
 
-        public HomeController(ILogger<HomeController> logger, IAuthentication authentication, IConfiguration config)
+        public HomeController(ILogger<HomeController> logger, IAuthentication authentication, IConfiguration config, IFilters filters)
         {
             _logger = logger;
             _Authentication = authentication;
             _configuration = config;
+            _filters = filters;
         }
 
         [AllowAnonymous]
@@ -79,9 +81,13 @@ namespace CI_Platform_web.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> PrivacyPolicy()
         {
-            return View();
+            PrivacyModel model = new()
+            {
+                cmsPages = await _filters.GetCmsTables(),
+            };
+            return View(model);
         }
 
         public IActionResult Forgot_Password()
@@ -200,11 +206,6 @@ namespace CI_Platform_web.Controllers
                 _logger.LogError(ex, "An error occurred while adding contact form data");
                 return StatusCode(500, new { icon = "error", message = "An error occurred while submitting the form. Please try again later." });
             }
-        }
-
-        public IActionResult PrivacyPolicy()
-        {
-            return View();
-        }
+        }   
     }
 }

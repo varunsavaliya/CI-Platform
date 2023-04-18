@@ -1,0 +1,17 @@
+﻿@using CI_Platform.Entities.DataModels
+@model CI_Platform.Entities.ViewModels.UserHeaderViewModel
+
+<a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Policy
+    <img src="~/images/drop-down.png" alt="" />
+</a>
+<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    @foreach (CmsTable page in Model.cmsPages)
+    {
+        <li>
+            <a class="dropdown-item" href="@Url.Action("PrivacyPolicy", "Home")#@(page.Slug)">
+                @(page.Title)
+            </a>
+        </li>
+    }
+</ul>

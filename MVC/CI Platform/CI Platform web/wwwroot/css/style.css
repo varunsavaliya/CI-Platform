@@ -2111,7 +2111,7 @@ iframe {
 
 /*privacy policy page styling*/
 
-.policyNavigation div button {
+/*.policyNavigation div button {
     border: none;
     background: none;
 }
@@ -2135,6 +2135,36 @@ iframe {
 #Pintro, #PUseCookies {
     border-bottom: solid 0.8px #D9D9D9;
 }
+
+.Pcontainer li {
+    list-style: disc;
+}*/
+
+.policyNavigation div button {
+    border: none;
+    background: none;
+}
+
+.policyNavigation a {
+    border-bottom: solid 0.8px #D9D9D9;
+}
+
+.policyNavigation span {
+    font-weight: 300;
+}
+
+.policyNavigation .Pactive {
+    font-weight: 500 !important;
+}
+
+.Ppreferences {
+    border: none !important;
+}
+
+.privacySections div {
+    border-bottom: solid 0.8px #D9D9D9;
+}
+
 
 .Pcontainer li {
     list-style: disc;
@@ -2361,4 +2391,30 @@ iframe {
     .vertical-nav-admin ul li a {
         width: max-content;
     }
+}
+
+/*Admin Cms page styling*/
+
+.editAdminCMS {
+    padding-right: 18px;
+}
+
+.cms-form-heading {
+    background-color: #0000000F;
+}
+
+#cms-form {
+    padding: 0px 22px;
+}
+
+.tox .tox-menubar {
+    display: none !important;
+}
+
+.tox .tox-statusbar {
+    display: none !important;
+}
+
+.tox-toolbar__primary {
+    background: #F8F9FC !important;
 }

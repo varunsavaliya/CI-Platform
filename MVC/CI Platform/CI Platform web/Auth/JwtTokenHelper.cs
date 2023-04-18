@@ -30,7 +30,7 @@ namespace CI_Platform_web.Auth
                 jwtSetting.Issuer,
                 jwtSetting.Audience,
                 claims,
-                expires: DateTime.UtcNow.AddMinutes(5), // Default 5 mins, max 1 day
+                expires: DateTime.UtcNow.AddMinutes(20), // Default 5 mins, max 1 day
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

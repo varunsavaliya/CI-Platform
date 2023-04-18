@@ -9,6 +9,7 @@ namespace Ci_Platform.Repositories.Interfaces
         public Task<List<Skill>> GetSkillsAsyc();
 
         public Task<List<City>> GetCitiesByCountryAsync(int countryId);
+        public Task<List<CmsTable>> GetCmsTables();
 
     }
 }

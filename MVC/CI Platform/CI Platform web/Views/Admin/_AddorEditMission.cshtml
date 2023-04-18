@@ -1,0 +1,116 @@
+﻿@model CI_Platform.Entities.ViewModels.AdminMissionModel
+
+<form method="post" id="mission-form" class="mt-2 row">
+    <input type="hidden" asp-for="MissionId" id="CMSPageId" />
+    <div class="col-6 col-md-12 mb-3">
+        <label class="form-label" asp-for="Title">Title</label>
+        <input type="text" class="form-control" asp-for="Title" placeholder="Enter title">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="col-6 col-md-12 mb-3">
+        <label class="form-label" asp-for="ShortDescription" class="my-0">Short Description</label>
+        <textarea asp-for="ShortDescription" class="form-control" rows="3" placeholder="Enter Short Description"></textarea>
+        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+    </div>
+
+    <div class="col-6 col-md-12 mb-3">
+        <label class="form-label" asp-for="Description" class="my-0">Long Description</label>
+        <textarea asp-for="Description" class="form-control" id="editor" rows="3" placeholder="Enter Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 col-md-6 mb-3">
+        <label class="form-label" asp-for="StartDate" class="my-0">Start Date</label>
+        <input asp-for="StartDate" type="date" id="start-date" class="form-control date-picker" placeholder="Select start date">
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 col-md-6 mb-3">
+        <label class="form-label" asp-for="EndDate" class="my-0">End Date</label>
+        <input asp-for="EndDate" type="date" id="end-date" class="form-control date-picker" placeholder="Select start date">
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 col-md-6 mb-3">
+        <label class="form-label" asp-for="MissionType">Mission Type</label>
+        <select class="form-select" asp-for="MissionType" id="type">
+            <option selected value="">Select Mission Type</option>
+            <option value="Time">Time</option>
+            <option value="Goal">Goal</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 col-md-6 mb-3">
+        <label class="form-label" asp-for="Status">Status</label>
+        <select class="form-select" asp-for="Status" id="status">
+            <option selected value="">Select status</option>
+            <option value="0">Inactive</option>
+            <option value="1">Active</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="col-6 col-md-12 mb-3">
+        <label class="form-label" asp-for="OrganizationName">Organization Name</label>
+        <input type="text" class="form-control" asp-for="OrganizationName" placeholder="Enter Organization Name">
+        <span asp-validation-for="OrganizationName" class="text-danger"></span>
+    </div>
+    <div class="col-6 col-md-12 mb-3">
+        <label class="form-label" asp-for="OrganizationDetail">Organization Detail</label>
+                <textarea asp-for="OrganizationDetail" class="form-control" rows="3" placeholder="Enter Organization Detail"></textarea>
+        <span asp-validation-for="OrganizationDetail" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 col-md-6 mb-3">
+        <label class="form-label" asp-for="Availability">Availability</label>
+        <select class="form-select" asp-for="Availability" id="availability">
+            <option selected value="">Select Availability</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+        </select>
+        <span asp-validation-for="Availability" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 col-md-6 mb-3">
+        <label class="form-label" asp-for="TotalSeats">Total Seats</label>
+        <input type="number" class="form-control" asp-for="TotalSeats" placeholder="Enter Total Seats">
+        <span asp-validation-for="TotalSeats" class="text-danger"></span>
+    </div> 
+    
+    <div class="col-12 mb-3">
+        <p class="mb-0">Upload your photos</p>
+                <div id="dropzone" class="dropzone">
+                    @*<input type="file" class="d-none" accept=".jpg,.png, .jpeg" multiple id="file-input" name="Images" asp-for="Images" />*@
+                    <input type="file" class="d-none" accept=".jpg,.png, .jpeg" multiple id="actual-file-input" name="images" @*asp-for="images"*@ />
+                    <label class="drag-drop mb-4" for="actual-file-input" id="file-button">
+                        <img src="~/images/drag-and-drop.png" />
+                    </label>
+                </div>
+                <div id="image-list" class="d-flex">
+                    <!-- Selected images will be displayed here -->
+                </div>
+    </div> 
+
+    <div class="d-flex justify-content-end align-items-center mb-3">
+        <button type="reset" class="btn btn-outline-secondary skill-btn">Cancel</button>
+        <button type="submit" class="btn mt-0 card-button ms-2 me-0">Save</button>
+    </div>
+
+
+</form>
+
+<!-- for validations -->
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    tinymce.init({
+                   selector: "#editor",
+                   height: 300,
+                   plugins: "lists advlist code emoticons link media",
+                   toolbar:
+                       " bold italic underline strikethrough numlist bullist " +
+                       "subscript superscript undo redo",
+               });
+</script>

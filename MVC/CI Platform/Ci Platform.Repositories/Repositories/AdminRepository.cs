@@ -104,5 +104,71 @@ namespace Ci_Platform.Repositories.Repositories
             };
             await _context.SaveChangesAsync();
         }
+
+        public List<CmsTable> GetCMSList()
+        {
+           return _context.CmsTables.ToList();
+        }
+
+        public  AdminCMSModel GetCMSById(long cmsId)
+        {
+            CmsTable? cmsTable = _context.CmsTables.Find(cmsId);
+            AdminCMSModel model = new()
+            {
+                CmsPageId = cmsTable.CmsPageId,
+                Title = cmsTable.Title,
+                Description = cmsTable.Description,
+                Slug = cmsTable.Slug,
+                Status = cmsTable.Status,
+            };
+            return model;
+        }
+
+        public async Task AddCMS(AdminCMSModel model)
+        {
+            CmsTable cms = new()
+            {
+                Title = model.Title,
+                Description = model.Description,
+                Slug = model.Slug,
+                Status = model.Status,                
+            };
+
+            await _context.CmsTables.AddAsync(cms);
+            await _context.SaveChangesAsync();
+        }
+
+        public bool IsCMSExists(string slug)
+        {
+            return _context.CmsTables.Any(cms => cms.Slug == slug); ;
+        }
+
+        public bool IsCMSExists(string slug, long cmsPageId)
+        {
+            return _context.CmsTables.Any(cms => cms.CmsPageId != cmsPageId && cms.Slug == slug); ;
+        }
+
+
+        public async Task UpdateCMS(AdminCMSModel model)
+        {
+            CmsTable? cms = _context.CmsTables.FirstOrDefault(cms => cms.CmsPageId == model.CmsPageId);
+            if (cms != null)
+            {
+                cms.Title = model.Title;
+                cms.Description = model.Description;
+                cms.Slug = model.Slug;
+                cms.Status = model.Status;
+                cms.UpdatedAt = DateTime.Now;
+            };
+            await _context.SaveChangesAsync();
+        }
+
+
+        public List<Mission> GetMissionList()
+        {
+            List<Mission> missions = _context.Missions.ToList();
+            return missions;
+        }
+
     }
 }

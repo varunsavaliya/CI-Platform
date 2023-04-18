@@ -15,8 +15,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Projects\main\MVC\CI Platform\CI Platform web
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminCMS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5DTVMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminMission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5NaXNzaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5Vc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditCMS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkZG9yRWRpdENNUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditMission.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkZG9yRWRpdE1pc3Npb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditUser.cshtml]
@@ -65,6 +81,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Shared/Components/UserHeader/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlckhlYWRlclxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Shared/Components/UserHeader/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlckhlYWRlclxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/main/MVC/CI Platform/CI Platform web/Views/Shared/Error.cshtml]

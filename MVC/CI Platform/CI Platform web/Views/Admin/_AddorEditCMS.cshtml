@@ -1,0 +1,59 @@
+﻿@model CI_Platform.Entities.ViewModels.AdminCMSModel;
+
+<div class="border mt-4">
+    <div class="container-fluid cms-form-heading border-1 p-2">
+        <h4>Add</h4>
+    </div>
+    <form method="post" id="cms-form" class="mt-2 row">
+        <input type="hidden" asp-for="CmsPageId" id="CMSPageId" />
+        <div class="col-6 col-md-12 mb-3">
+            <label class="form-label" asp-for="Title">Title</label>
+            <input type="text" class="form-control" asp-for="Title" placeholder="Enter title">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="col-6 col-md-12 mb-3">
+            <label class="form-label" asp-for="Description" class="my-0">Description</label>
+            <textarea asp-for="Description" class="form-control" id="editor" rows="3"></textarea>
+            @*<textarea class="form-control" rows="1" asp-for="Description" id="actual_text"></textarea>*@
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="col-6 col-md-12 mb-3">
+            <label class="form-label" asp-for="Slug">Slug</label>
+            <input type="text" class="form-control" asp-for="Slug" placeholder="Enter slug">
+            <span asp-validation-for="Slug" class="text-danger"></span>
+        </div>
+
+
+        <div class="col-6 col-md-12 mb-3">
+            <label class="form-label" asp-for="Status">Status</label>
+            <select class="form-select" asp-for="Status" id="status">
+                <option selected value="">Select status</option>
+                <option value="0">Inactive</option>
+                <option value="1">Active</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+
+        <div class="d-flex justify-content-end align-items-center mb-3">
+            <button type="reset" class="btn btn-outline-secondary skill-btn">Cancel</button>
+            <button type="submit" class="btn mt-0 card-button ms-2 me-0">Save</button>
+        </div>
+    </form>
+</div>
+
+<!-- for validations -->
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    tinymce.init({
+                   selector: "#editor",
+                   height: 300,
+                   plugins: "lists advlist code emoticons link media",
+                   toolbar:
+                       " bold italic underline strikethrough emoticons numlist bullist " +
+                       "subscript superscript link media undo redo",
+               });
+</script>

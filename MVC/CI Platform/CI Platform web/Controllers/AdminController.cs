@@ -4,11 +4,6 @@ using CI_Platform.Entities.ViewModels;
 using CI_Platform_web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Security.Claims;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace CI_Platform_web.Controllers
 {
@@ -24,17 +19,12 @@ namespace CI_Platform_web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        //[Route("Admin/employee-list-json", Name = "EmployeeListJson")]
-        public async Task<IActionResult> AdminUser()
+        public IActionResult AdminUser()
         {
-            AdminUserModel vm = new();
-
-
-            vm.users = _admin.GetUsers();
-            return View(vm);
-
+            AdminUserModel model = new();
+            model.users = _admin.GetUsers();
+            return View(model);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> AdminUser(AdminUserModel model)
@@ -69,7 +59,6 @@ namespace CI_Platform_web.Controllers
             }
             return RedirectToAction("AdminUser");
         }
-
         public async Task<IActionResult> AddorEditUser(long id)
         {
             AdminUserModel model = new();
@@ -78,15 +67,83 @@ namespace CI_Platform_web.Controllers
                 AdminUserModel result = _admin.GetUserById(id);
                 model = result;
             }
-            List<Country> countryList = await _filters.GetCountriesAsync();
-            model.countryList = countryList;
+            model.countryList = await _filters.GetCountriesAsync(); ;
             return PartialView("_AddorEditUser", model);
         }
-
         public async Task<IActionResult> DeleteUser(long id)
         {
             string message = await _admin.DeleteUserById(id);
             return Json(message + Constants.deleteMessage);
+        }
+        [Authorize(Roles = "Admin")]
+        public IActionResult AdminCMS()
+        {
+            AdminCMSModel model = new()
+            {
+                cmsTables = _admin.GetCMSList(),
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AdminCMS(AdminCMSModel model)
+        {
+            if (model.CmsPageId == 0)
+            {
+                if (_admin.IsCMSExists(model.Slug))
+                {
+                    TempData["Message"] = "CMS Page " + Constants.existsMessage;
+                    TempData["Icon"] = "warning";
+                }
+                else
+                {
+                    await _admin.AddCMS(model);
+                    TempData["Message"] = "CMS Page " + Constants.addMessage;
+                    TempData["Icon"] = "success";
+                }
+            }
+            else
+            {
+                if (_admin.IsCMSExists(model.Slug, model.CmsPageId))
+                {
+                    TempData["Message"] = "CMS Page " + Constants.existsMessage;
+                    TempData["Icon"] = "warning";
+                }
+                else
+                {
+                    await _admin.UpdateCMS(model);
+                    TempData["Message"] = "CMS Page " + Constants.updateMessage;
+                    TempData["Icon"] = "success";
+                }
+            }
+            return RedirectToAction("AdminCMS");
+        }
+        public IActionResult AddorEditCMS(long id)
+        {
+            AdminCMSModel model = new();
+            if(id != 0)
+            {
+                model = _admin.GetCMSById(id);
+            }
+            return PartialView("_AddorEditCMS", model);
+        }
+        [Authorize(Roles = "Admin")]
+        public IActionResult AdminMission()
+        {
+            AdminMissionModel model = new()
+            {
+                Missions = _admin.GetMissionList(),
+            };
+            return View(model);
+        }
+
+        public IActionResult AddorEditMission(long id)
+        {
+            AdminMissionModel model = new();
+            if(id != 0)
+            {
+
+            }
+            return PartialView("_AddorEditMission", model);
         }
     }
 }

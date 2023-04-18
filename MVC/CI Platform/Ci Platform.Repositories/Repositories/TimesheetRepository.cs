@@ -26,7 +26,7 @@ namespace Ci_Platform.Repositories.Repositories
 
         public List<Timesheet> GetTimesheetsById(long userId)
         {
-            return _context.Timesheets.Where(timesheet => timesheet.UserId == userId && timesheet.Status == "APPROVED").Include(timesheet => timesheet.Mission).ToList();
+            return _context.Timesheets.Where(timesheet => timesheet.UserId == userId && timesheet.Status == "APPROVED" && timesheet.DeletedAt == null).Include(timesheet => timesheet.Mission).ToList();
         }
         public async Task<Mission> GetMission(long missionId)
         {
@@ -35,7 +35,7 @@ namespace Ci_Platform.Repositories.Repositories
         }
         public Timesheet GetTimesheetDataById(long timesheetId)
         {
-            var timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == timesheetId).Include(timesheet => timesheet.Mission).FirstOrDefault();
+            Timesheet? timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == timesheetId).Include(timesheet => timesheet.Mission).FirstOrDefault();
             return timesheet;
         }
 
@@ -119,8 +119,8 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task DeleteTimesheetById(long timesheetId)
         {
-            var timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == timesheetId).FirstOrDefault();
-            _context.Timesheets.Remove(timesheet);
+            Timesheet? timesheet = _context.Timesheets.Where(timesheet => timesheet.TimesheetId == timesheetId).FirstOrDefault();
+            timesheet.DeletedAt = DateTime.Now;
             await _context.SaveChangesAsync();
         }
 

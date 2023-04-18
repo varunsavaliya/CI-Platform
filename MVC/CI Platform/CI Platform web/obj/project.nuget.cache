@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "h1BIZyeogI4MDZIvVH0w+bgng5DZcaWGUzkuXuPP2taonGsAhqkXNgJZ52iWTdtm3+EmwoDxsHaaGiz6qcCbmQ==",
+  "dgSpecHash": "vv74zXs3lXvFG5IYr3rFUAF4tPvFiJCiWiC64ylhPkW99B3NlSCusCHJ0IKoa+/80YGGPzTE5Dw0QmbUbkidUg==",
   "success": true,
   "projectFilePath": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\CI Platform web.csproj",
   "expectedPackageFiles": [
@@ -104,7 +104,7 @@
     "C:\\Users\\pct35\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\pct35\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\pct35\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\pct35\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\pct35\\.nuget\\packages\\nuget.common\\6.3.1\\nuget.common.6.3.1.nupkg.sha512",
     "C:\\Users\\pct35\\.nuget\\packages\\nuget.configuration\\6.3.1\\nuget.configuration.6.3.1.nupkg.sha512",
     "C:\\Users\\pct35\\.nuget\\packages\\nuget.dependencyresolver.core\\6.3.1\\nuget.dependencyresolver.core.6.3.1.nupkg.sha512",

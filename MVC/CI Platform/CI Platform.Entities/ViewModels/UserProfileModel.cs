@@ -25,7 +25,8 @@ namespace CI_Platform.Entities.ViewModels
         [ValidateNever]
         public IFormFile ProfileImage { get; set; } = null!;
         public string? selectedSkills { get; set; }
-        [Required(ErrorMessage ="Name is required")]
+        [Required(ErrorMessage = "Name is required")]
+        [Range(0, 16, ErrorMessage = "Name should be between 0 and 16")]
         public string? Name { get; set; }
         [Required(ErrorMessage ="Surname is required")]
         public string? Surname { get; set; }

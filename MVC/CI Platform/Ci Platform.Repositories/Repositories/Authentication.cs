@@ -2,6 +2,7 @@
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System.Net;
 using System.Net.Mail;
 
@@ -100,7 +101,8 @@ namespace Ci_Platform.Repositories.Repositories
         }
         public  void SetSession(string email)
         {
-            var user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
+            User? user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
+            List<CmsTable> cmsTables = _context.CmsTables.Where(cms => cms.DeletedAt == null).ToList();
             var session = _httpContextAccessor.HttpContext.Session;
             session.SetString("UserName", user.FirstName + " " + user.LastName);
             var userId = user.UserId;
@@ -108,6 +110,7 @@ namespace Ci_Platform.Repositories.Repositories
             session.SetString("IsLoggedIn", "True");
             session.SetString("profileImage", user.Avatar == null ? "" : user.Avatar);
             session.SetString("userEmail", user.Email);
+            session.SetString("PolicyList", JsonConvert.SerializeObject(cmsTables));
         }
         public void DestroySession()
         {

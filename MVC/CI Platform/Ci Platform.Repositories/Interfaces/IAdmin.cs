@@ -18,6 +18,13 @@ namespace Ci_Platform.Repositories.Interfaces
         public bool IsUserExists(string email);
         public bool IsUserExists(string email, long userId);
         public Task UpdateUser(AdminUserModel model);
+        public List<CmsTable> GetCMSList();
+       public AdminCMSModel GetCMSById(long cmsId);
+        public Task AddCMS(AdminCMSModel model);
+        public bool IsCMSExists(string slug);
+        public bool IsCMSExists(string slug, long cmsPageId);
+        public Task UpdateCMS(AdminCMSModel model);
+        public List<Mission> GetMissionList();
 
     }
 }

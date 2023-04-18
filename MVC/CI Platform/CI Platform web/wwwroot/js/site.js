@@ -1168,10 +1168,23 @@
         }
     })
 
-    $('.policyNavigation').find('div a').click(function () {
-        $('.policyNavigation').find('div span').removeClass('Pactive');
-        $(this).siblings('span').addClass('Pactive');
+    // privacy policy page
+
+    $('.policyNavigation a').click(function () {
+        $('.policyNavigation').find('a').find('span').removeClass('Pactive');
+        $(this).find('span').addClass('Pactive');
     })
+
+    if (currentUrl.includes('PrivacyPolicy')) {
+        let allTitles = $('.policyNavigation a');
+        allTitles.each(function () {
+            if (currentUrl.includes($(this).attr('href'))) {
+                $(this).find('span').addClass('Pactive');
+            } else {
+                $(this).find('span').removeClass('Pactive');
+            }
+        })
+    }
 
 
     // volunteering timesheet
@@ -1233,6 +1246,9 @@
         if (currentUrl.includes('AdminUser')) {
             let userId = $(this).parent().find('input').val();
             addOrEdit('AddorEditUser', userId);
+        }else if (currentUrl.includes('AdminCMS')) {
+            let cmsId = $(this).parent().find('input').val();
+            addOrEdit('AddorEditCMS', cmsId);
         }
         else {
 
@@ -1335,13 +1351,20 @@
 
     // admin panel
 
-    $('.add-user-btn').click(function () {
-        addOrEdit('AddorEditUser');
+    $('.add-record-btn').click(function () {
+        if (currentUrl.includes('AdminUser')) {
+            addOrEdit('AddorEditUser');
+        } else if (currentUrl.includes('AdminCMS')) {
+           
+            addOrEdit('AddorEditCMS');
+        } else if (currentUrl.includes('AdminMission')) {
+            addOrEdit('AddorEditMission');
+        }
     })
 
-    // user page
-    if (currentUrl.includes('Admin/AdminUser')) {
-        let dataTable = $('#user-table').DataTable({
+    let dataTable;
+    function initializeDataTable(id) {
+        dataTable = $(id).DataTable({
             lengthChange: false,
             paging: true,
             searching: true,
@@ -1365,23 +1388,41 @@
                 $('.paginate_button.current').addClass('table-pagination-active');
             }
         });
-
+    }
+    // user page
+    if (currentUrl.includes('AdminUser')) {
+        initializeDataTable('#user-table');
+    } else if (currentUrl.includes('AdminCMS')) {
+        initializeDataTable('#cms-table');
+    } else if (currentUrl.includes('AdminMission')) {        
+        initializeDataTable('#mission-table');
+    }
+    if (currentUrl.includes('Admin')) {
+        let navMenu = $('.vertical-nav-admin a');
+        navMenu.each(function () {
+            if (currentUrl.includes($(this).attr('href'))) {
+                $(this).addClass('admin-nav-active')
+            }
+            else {
+                $(this).removeClass('admin-nav-active')
+            }
+        })
         let pageInfo = dataTable.page.info();
         if (pageInfo.pages < 2) {
-            $('#user-table_paginate').hide();
+            $('.dataTables_paginate').hide();
         }
         else {
-            $('#user-table_paginate').show();
+            $('.dataTables_paginate').show();
         }
         // filter data based on custom search input
         $('#custom-search').on('keyup', function () {
             dataTable.search($(this).val()).draw();
             var dataTableEmpty = $('.dataTables_empty');
             if (dataTableEmpty.length > 0 && dataTableEmpty.is(':visible')) {
-                $('#user-table_paginate').hide();
+                $('.dataTables_paginate').hide();
             }
             else {
-                $('#user-table_paginate').show();
+                $('.dataTables_paginate').show();
             }
         });
         // Set active class to first page initially
@@ -1397,8 +1438,6 @@
             let userId = $(this).parent().find('input').val();
             deleteTableData('/Admin/DeleteUser', userId);
         })
-
-
     }
 
     function addOrEdit(page, id) {
@@ -1406,16 +1445,21 @@
             url: '/Admin/' + page,
             type: 'GET',
             data: { id: id == undefined ? 0 : id },
-            success: function (response) {
-                if (currentUrl.includes('AdminUser')) {
-                    $('.add-form-container').html(response);
-                    $('.admin-tables').remove();
+            success: function (response) {                
+                $('.add-form-container').html(response);
+                $('.admin-tables').remove();
+                // Get today's date
+                var today = new Date().toISOString().split('T')[0];
+                // Set the minimum date of the input element to today's date
+                if ($('#start-date') != undefined) {
+                    $('#start-date').attr('min', today);
                 }
+
             },
             error: function (error) {
             }
         });
-    }   
+    }
 
     let deleteTableData = (actionMethod, id) => {
         let deleteTr = $('.tr_' + id);
@@ -1458,4 +1502,10 @@
     $(document).on('click', '#admin-cancel-btn', function () {
         location.reload();
     })
+
+    $(document).on('change', '#start-date', function () {
+        debugger
+        var startDate = $(this).val();
+        $('#end-date').attr('min', startDate);
+    });
 })
