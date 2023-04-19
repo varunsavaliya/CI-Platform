@@ -1,6 +1,8 @@
 ﻿using CI_Platform.Entities.DataModels;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,5 +41,19 @@ namespace CI_Platform.Entities.ViewModels
         public string? Availability { get; set; }
 
         public int? TotalSeats { get; set; }
+        public string? GoalObjectiveText { get; set; }
+
+        public int GoalValue { get; set; }
+
+        public List<IFormFile> Files { get; set; } = null!;
+        public IFormFile DefaultImage { get; set; } = null!;
+        public List<string> MissionUrls { get; set; } = null!;
+        public List<Country> CountryList { get; set; } = null!;
+        public List<City> CityList { get; set; } = null!;
+        public List<MissionTheme> ThemeList { get; set; } = null!;
+        public List<Skill> SkillList { get; set; } = null!;
+        public List<long> MissionSkills { get; set; } = null!;
+        
+        
     }
 }

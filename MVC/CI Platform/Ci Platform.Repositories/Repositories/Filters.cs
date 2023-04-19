@@ -21,12 +21,12 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task<List<MissionTheme>> GetThemesAsync()
         {
-            var theme = await _context.MissionThemes.ToListAsync();
+            var theme = await _context.MissionThemes.Where(theme => theme.DeletedAt == null).ToListAsync();
             return theme;
         }
         public async Task<List<Skill>> GetSkillsAsyc()
         {
-            var skill = await _context.Skills.ToListAsync();
+            var skill = await _context.Skills.Where(skill => skill.DeletedAt == null).ToListAsync();
             return skill;
         }
 

@@ -127,7 +127,7 @@ namespace CI_Platform_web.Controllers
             return PartialView("_AddorEditCMS", model);
         }
         [Authorize(Roles = "Admin")]
-        public IActionResult AdminMission()
+        public async Task<IActionResult> AdminMission()
         {
             AdminMissionModel model = new()
             {
@@ -135,11 +135,22 @@ namespace CI_Platform_web.Controllers
             };
             return View(model);
         }
-
-        public IActionResult AddorEditMission(long id)
+        [HttpPost]
+        public IActionResult AdminMission(AdminMissionModel model)
         {
-            AdminMissionModel model = new();
-            if(id != 0)
+            
+            return RedirectToAction("AdminMission");
+        }
+
+        public async Task<IActionResult> AddorEditMission(long id)
+        {
+            AdminMissionModel model = new()
+            {
+                CountryList = await _filters.GetCountriesAsync(),
+                ThemeList = await _filters.GetThemesAsync(),
+                SkillList = await _filters.GetSkillsAsyc(),
+            };
+            if (id != 0)
             {
 
             }

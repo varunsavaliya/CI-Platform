@@ -2418,3 +2418,19 @@ iframe {
 .tox-toolbar__primary {
     background: #F8F9FC !important;
 }
+
+/*Admin mission page styling*/
+
+.mission-skills {
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.mission-skills a{
+    color:black;
+}
+
+    .mission-skills ul {
+        max-height: 143px;
+        overflow-y: scroll;
+    }

@@ -41,7 +41,7 @@
                     })
                     dropdown.html(items);
                 }
-                else if (currentUrl.includes("UserProfile") || currentUrl.includes('Admin/AdminUser')) {
+                else if (currentUrl.includes("UserProfile") || currentUrl.includes('Admin')) {
                     var select = $('.user-city');
                     select.empty();
                     var items = `<option value="0">Select your city</option>`;
@@ -678,10 +678,9 @@
 
     // drag and drop images in share your story page
     var allfiles = [];
-    var fileInput = document.getElementById('actual-file-input');
-    var fileList;
-    function handleFiles(e) {
+    var defaultImage = null;
 
+    function handleFiles(e) {
         // Add dropped images or selected images to the list
         var files = e.target.files || e.originalEvent.dataTransfer.files;
 
@@ -689,7 +688,7 @@
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
             var reader = new FileReader();
-            allfiles.push(files[i]);
+            allfiles.push(file);
             //formData.append('file', file);
 
             // Create image preview and close icon
@@ -706,6 +705,18 @@
                     closeIcon.on('click', function () {
                         item.remove();
                         allfiles.splice(allfiles.indexOf(file), 1);
+                        if (file === defaultImage) {
+                            defaultImage = null;
+                        }
+                    });
+
+                    item.on('click', function () {
+                        // Remove 'default' class from any previously selected default image
+                        $('.image-item.default').removeClass('default border border-secondary');
+                        // Add 'default' class to the clicked image item
+                        $(this).addClass('default border border-secondary');
+                        // Set the defaultImage variable to the selected file object
+                        defaultImage = file;
                     });
                 };
             })(file);
@@ -720,11 +731,9 @@
     }
 
     //var allfiles = new DataTransfer().files;
-    var dropzone = $('#dropzone');
-    var imageList = $('#image-list');
-
-    // Handle file drop event
-    dropzone.on('drop', function (e) {
+    let dropzone = $('#dropzone');
+    let imageList = $('#image-list');
+    function handleFileDrop(e) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -733,6 +742,12 @@
         $('.note-dropzone').remove();
         //$('.note-dropzone-message').remove();
         handleFiles(e);
+    }
+
+    // Handle file drop event
+    $(document).on('drop', '#dropzone', function (e) {
+        handleFileDrop(e);
+
     });
 
     // Handle file dragover event
@@ -755,7 +770,7 @@
 
 
     // Handle file input change event
-    $('#actual-file-input').on('change', function (e) {
+    $(document).on('change', '#actual-file-input', function (e) {
         handleFiles(e);
     });
 
@@ -1246,7 +1261,7 @@
         if (currentUrl.includes('AdminUser')) {
             let userId = $(this).parent().find('input').val();
             addOrEdit('AddorEditUser', userId);
-        }else if (currentUrl.includes('AdminCMS')) {
+        } else if (currentUrl.includes('AdminCMS')) {
             let cmsId = $(this).parent().find('input').val();
             addOrEdit('AddorEditCMS', cmsId);
         }
@@ -1355,7 +1370,7 @@
         if (currentUrl.includes('AdminUser')) {
             addOrEdit('AddorEditUser');
         } else if (currentUrl.includes('AdminCMS')) {
-           
+
             addOrEdit('AddorEditCMS');
         } else if (currentUrl.includes('AdminMission')) {
             addOrEdit('AddorEditMission');
@@ -1394,7 +1409,7 @@
         initializeDataTable('#user-table');
     } else if (currentUrl.includes('AdminCMS')) {
         initializeDataTable('#cms-table');
-    } else if (currentUrl.includes('AdminMission')) {        
+    } else if (currentUrl.includes('AdminMission')) {
         initializeDataTable('#mission-table');
     }
     if (currentUrl.includes('Admin')) {
@@ -1445,16 +1460,21 @@
             url: '/Admin/' + page,
             type: 'GET',
             data: { id: id == undefined ? 0 : id },
-            success: function (response) {                
+            success: function (response) {
                 $('.add-form-container').html(response);
                 $('.admin-tables').remove();
                 // Get today's date
                 var today = new Date().toISOString().split('T')[0];
                 // Set the minimum date of the input element to today's date
-                if ($('#start-date') != undefined) {
+                if (id == undefined && $('#start-date') != undefined) {
                     $('#start-date').attr('min', today);
                 }
+                dropzone = $('#dropzone');
+                imageList = $('#image-list');
 
+                $('#GoalValue').parent().hide();
+                $('#GoalObjectiveText').parent().hide();
+                $('#TotalSeats').parent().hide();
             },
             error: function (error) {
             }
@@ -1504,8 +1524,75 @@
     })
 
     $(document).on('change', '#start-date', function () {
-        debugger
         var startDate = $(this).val();
         $('#end-date').attr('min', startDate);
     });
+
+    $('.add-form-container').on('submit', '#mission-form', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if ($(this).valid()) {
+            let formDetails = new FormData($('#mission-form')[0]);
+
+
+            for (var i = 0; i < allfiles.length; i++) {
+                if (defaultImage != allfiles[i])
+                    formDetails.append('Files', allfiles[i]);
+                else
+                    formDetails.append('DefaultImage', allfiles[i]);
+            }
+
+            let selectedSkills = $('input[type="checkbox"][name="skillCheckboxes"]:checked').map(function () {
+                return $(this).val();
+            }).get();
+
+            for (let i = 0; i < selectedSkills.length; i++) {
+                formDetails.append('MissionSkills', selectedSkills[i]);
+            }
+
+            //var urls = null;
+            //var u = $('#url').val();
+            //if (u != null) {
+            //    urls = u.split('\n');
+            //    for (var i = 0; i < urls.length; i++) {
+            //        formDetails.append("MissionUrls", urls[i]);
+            //    }
+            //}
+            //else {
+            //    formDetails.append("MissionUrls", null);
+            //}
+            $.ajax({
+                url: '/Admin/AdminMission',
+                type: 'POST',
+                data: formDetails,
+                processData: false,
+                contentType: false,
+                success: function (result) {
+                    swal.fire({
+                        position: 'center',
+                        icon: result.icon,
+                        title: result.message,
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                },
+                error: function (error) {
+
+                }
+            });
+        }
+
+    })
+
+    $('.add-form-container').on('change', '#type', function () {
+        if ($(this).val() == "Goal") {
+            $('#GoalValue').parent().show();
+            $('#GoalObjectiveText').parent().show();
+            $('#TotalSeats').parent().hide();
+        } else {
+            $('#GoalValue').parent().hide();
+            $('#GoalObjectiveText').parent().hide();
+            $('#TotalSeats').parent().show();
+        }
+    })
 })
