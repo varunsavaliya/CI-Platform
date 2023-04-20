@@ -25,6 +25,7 @@ namespace Ci_Platform.Repositories.Interfaces
         public bool IsCMSExists(string slug, long cmsPageId);
         public Task UpdateCMS(AdminCMSModel model);
         public List<Mission> GetMissionList();
+        public Task<AdminMissionModel> GetMissionById(long missionId);
 
     }
 }

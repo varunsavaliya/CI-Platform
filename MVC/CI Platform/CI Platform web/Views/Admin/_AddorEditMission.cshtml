@@ -137,7 +137,7 @@
                         @foreach (var skill in Model.SkillList)
                         {
                             <li class="ms-2 form-check">
-                                <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="skill_@skill.SkillId" name="skillCheckboxes" multiple>
+                        <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="skill_@skill.SkillId" name="skillCheckboxes" multiple @(Model.MissionSkills != null && Model.MissionSkills.Contains(skill.SkillId) ? "checked" : "")>
                                 <label class="form-check-label" for="skill_@skill.SkillId">@skill.SkillName</label>
                             </li>
                         }
@@ -177,6 +177,18 @@
         </div>
         <div id="image-list" class="d-flex">
             <!-- Selected images will be displayed here -->
+        </div>
+    </div>
+    <div class="col-12 mb-3">
+        <p class="mb-0">Upload mission documents</p>
+        <div id="dropzone-doc" class="dropzone">
+            <input type="file" class="d-none" accept=".pdf" multiple id="document-input" name="documents" asp-for="Files" />
+            <label class="drag-drop mb-4" for="document-input" id="document-button">
+                <span>Drag and drop PDF files or click to select them</span>
+            </label>
+        </div>
+        <div id="docs-list" class="d-flex">
+            <!-- Selected files will be displayed here -->
         </div>
     </div>
 

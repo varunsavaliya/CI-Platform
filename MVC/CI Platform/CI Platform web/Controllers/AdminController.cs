@@ -144,16 +144,14 @@ namespace CI_Platform_web.Controllers
 
         public async Task<IActionResult> AddorEditMission(long id)
         {
-            AdminMissionModel model = new()
-            {
-                CountryList = await _filters.GetCountriesAsync(),
-                ThemeList = await _filters.GetThemesAsync(),
-                SkillList = await _filters.GetSkillsAsyc(),
-            };
+            AdminMissionModel model = new();
             if (id != 0)
             {
-
+                model = await _admin.GetMissionById(id);
             }
+            model.CountryList = await _filters.GetCountriesAsync();
+            model.ThemeList = await _filters.GetThemesAsync();
+            model.SkillList = await _filters.GetSkillsAsyc();
             return PartialView("_AddorEditMission", model);
         }
     }

@@ -745,7 +745,7 @@
     }
 
     // Handle file drop event
-    $(document).on('drop', '#dropzone', function (e) {
+    dropzone.on('drop', '#dropzone', function (e) {
         handleFileDrop(e);
 
     });
@@ -1264,6 +1264,9 @@
         } else if (currentUrl.includes('AdminCMS')) {
             let cmsId = $(this).parent().find('input').val();
             addOrEdit('AddorEditCMS', cmsId);
+        }else if (currentUrl.includes('AdminMission')) {
+            let missionId = $(this).parent().find('input').val();
+            addOrEdit('AddorEditMission', missionId);
         }
         else {
 
@@ -1405,14 +1408,8 @@
         });
     }
     // user page
-    if (currentUrl.includes('AdminUser')) {
-        initializeDataTable('#user-table');
-    } else if (currentUrl.includes('AdminCMS')) {
-        initializeDataTable('#cms-table');
-    } else if (currentUrl.includes('AdminMission')) {
-        initializeDataTable('#mission-table');
-    }
     if (currentUrl.includes('Admin')) {
+        initializeDataTable('#admin-table');
         let navMenu = $('.vertical-nav-admin a');
         navMenu.each(function () {
             if (currentUrl.includes($(this).attr('href'))) {
@@ -1444,7 +1441,7 @@
         $('.paginate_button.current').addClass('table-pagination-active');
 
         // Add active class to clicked page
-        $('#user-table_paginate').on('click', '.paginate_button:not(.current, .first, .last, .previous, .next)', function () {
+        $('.dataTables_paginate').on('click', '.paginate_button:not(.current, .first, .last, .previous, .next)', function () {
             $('.paginate_button').removeClass('table-pagination-active');
             $(this).addClass('table-pagination-active');
         });
@@ -1461,6 +1458,7 @@
             type: 'GET',
             data: { id: id == undefined ? 0 : id },
             success: function (response) {
+                debugger
                 $('.add-form-container').html(response);
                 $('.admin-tables').remove();
                 // Get today's date
@@ -1471,12 +1469,22 @@
                 }
                 dropzone = $('#dropzone');
                 imageList = $('#image-list');
-
                 $('#GoalValue').parent().hide();
                 $('#GoalObjectiveText').parent().hide();
-                $('#TotalSeats').parent().hide();
+                $('#TotalSeats').parent().hide
+
+                    if ($('#type').val() == "Goal") {
+                        $('#GoalValue').parent().show();
+                        $('#GoalObjectiveText').parent().show();
+                        $('#TotalSeats').parent().hide();
+                    } else {
+                        $('#GoalValue').parent().hide();
+                        $('#GoalObjectiveText').parent().hide();
+                        $('#TotalSeats').parent().show();
+                    }
             },
             error: function (error) {
+                console.log(error)
             }
         });
     }
@@ -1550,6 +1558,11 @@
                 formDetails.append('MissionSkills', selectedSkills[i]);
             }
 
+            for (let i = 0; i < missionDocs.length; i++) {
+                formDetails.append('MissionSkills', missionDocs[i]);
+            }
+
+
             //var urls = null;
             //var u = $('#url').val();
             //if (u != null) {
@@ -1595,4 +1608,27 @@
             $('#TotalSeats').parent().show();
         }
     })
+
+    var missionDocs = [];
+
+    $(document).on('change', '#document-input', function () {
+        var document = this;
+        var $list = $(document).closest('.dropzone').siblings('#docs-list');
+        var $existing = $list.children('.selected-file');
+        var $new = $(document).prop('files');
+
+        $.each($new, function (_, file) {
+            if (!missionDocs.some(function (existing) { return existing.name === file.name })) {
+                missionDocs.push(file);
+                var $filename = $('<span class="filename">').text(file.name);
+                var $remove = $('<span class="remove">').text('X').on('click', function () {
+                    missionDocs.splice(missionDocs.indexOf(file), 1);
+                    $(this).closest('.selected-file').remove();
+                });
+                var $selected = $('<div class="selected-file">').append($filename, $remove);
+                $list.append($selected);
+            }
+        });
+
+    });
 })

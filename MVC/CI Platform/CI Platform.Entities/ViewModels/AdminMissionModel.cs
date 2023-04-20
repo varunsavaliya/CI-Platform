@@ -46,14 +46,17 @@ namespace CI_Platform.Entities.ViewModels
         public int GoalValue { get; set; }
 
         public List<IFormFile> Files { get; set; } = null!;
+        public List<string>? FileNames { get; set; } = null!;
         public IFormFile DefaultImage { get; set; } = null!;
+        public string DefaultImageName { get; set; } = null!;
         public List<string> MissionUrls { get; set; } = null!;
         public List<Country> CountryList { get; set; } = null!;
         public List<City> CityList { get; set; } = null!;
         public List<MissionTheme> ThemeList { get; set; } = null!;
         public List<Skill> SkillList { get; set; } = null!;
-        public List<long> MissionSkills { get; set; } = null!;
+        public List<int> MissionSkills { get; set; } = null!;
         
-        
+        public List<IFormFile> MissionDocs { get; set; } = null!;
+        public List<string> MissionDocsNames { get; set; } = null!;
     }
 }

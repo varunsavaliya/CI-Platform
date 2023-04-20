@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj": {}
+    "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
+    "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
         "projectName": "CI Platform.Entities",
-        "projectPath": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
-        "packagesPath": "C:\\Users\\pct35\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\obj\\",
+        "projectPath": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
+        "packagesPath": "C:\\Users\\hepin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\CI Platform.Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\pct35\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\hepin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +73,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -87,26 +83,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Projects\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj": {
+    "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj",
+        "projectUniqueName": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj",
         "projectName": "Ci Platform.Repositories",
-        "projectPath": "D:\\Projects\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj",
-        "packagesPath": "C:\\Users\\pct35\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\obj\\",
+        "projectPath": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\Ci Platform.Repositories.csproj",
+        "packagesPath": "C:\\Users\\hepin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\Ci Platform.Repositories\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\pct35\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\hepin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -120,8 +111,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
-                "projectPath": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj"
+              "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
+                "projectPath": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj"
               }
             }
           }
@@ -173,7 +164,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -182,7 +174,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

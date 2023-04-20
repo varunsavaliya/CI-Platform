@@ -170,5 +170,35 @@ namespace Ci_Platform.Repositories.Repositories
             return missions;
         }
 
+        public async Task<AdminMissionModel> GetMissionById(long missionId)
+        {
+            Mission? mission = await _context.Missions.Where(mission => mission.MissionId == missionId).Include(mission => mission.GoalMissions).FirstOrDefaultAsync();
+            AdminMissionModel model = new()
+            {
+                MissionId = mission.MissionId,
+                ThemeId = mission.ThemeId,
+                CityId = mission.CityId,
+                CountryId = mission.CountryId,
+                Title = mission.Title,
+                Description = mission.Description,
+                ShortDescription = mission.ShortDescription,
+                StartDate = mission.StartDate,
+                EndDate = mission.EndDate,
+                MissionType = mission.MissionType,
+                MissionSkills = await _context.MissionSkills.Where(missionSkill => missionSkill.MissionId == missionId).Select(misssionSkill => misssionSkill.SkillId).ToListAsync(),
+                Status = mission.Status,
+                OrganizationName = mission.OrganizationName,
+                OrganizationDetail = mission.OrganizationDetail,
+                Availability = mission.Availability,
+                TotalSeats = mission.TotalSeats,
+                GoalObjectiveText = await _context.GoalMissions.Where(goalMission => goalMission.MissionId == missionId).Select(goalMission => goalMission.GoalObjectiveText).FirstOrDefaultAsync(),
+                GoalValue = await _context.GoalMissions.Where(goalMission => goalMission.MissionId == missionId).Select(goalMission => goalMission.GoalValue).FirstOrDefaultAsync(),
+                FileNames = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId).Select(missionMedia => missionMedia.MediaPath).ToListAsync(),
+                MissionDocsNames = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId).Select(missionMedia => missionMedia.MediaPath).ToListAsync(),
+                //DefaultImage = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId).Select(missionMedia => missionMedia.DefaultMedia).FirstOrDefaultAsync(),
+            };
+            return model;
+        }
+
     }
 }

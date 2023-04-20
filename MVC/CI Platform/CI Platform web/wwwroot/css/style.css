@@ -2434,3 +2434,20 @@ iframe {
         max-height: 143px;
         overflow-y: scroll;
     }
+.selected-file {
+    border: 1px solid #acacac;
+    color: #5a5a5a;
+    border-radius: 21px;
+    padding: 2px 16px;
+    margin-right: 10px;
+}
+.selected-file .filename{
+   
+   margin-right:10px;
+}
+
+    .selected-file .remove {
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+    }
