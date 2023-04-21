@@ -107,10 +107,10 @@ namespace Ci_Platform.Repositories.Repositories
 
         public List<CmsTable> GetCMSList()
         {
-           return _context.CmsTables.ToList();
+            return _context.CmsTables.ToList();
         }
 
-        public  AdminCMSModel GetCMSById(long cmsId)
+        public AdminCMSModel GetCMSById(long cmsId)
         {
             CmsTable? cmsTable = _context.CmsTables.Find(cmsId);
             AdminCMSModel model = new()
@@ -131,7 +131,7 @@ namespace Ci_Platform.Repositories.Repositories
                 Title = model.Title,
                 Description = model.Description,
                 Slug = model.Slug,
-                Status = model.Status,                
+                Status = model.Status,
             };
 
             await _context.CmsTables.AddAsync(cms);
@@ -178,6 +178,7 @@ namespace Ci_Platform.Repositories.Repositories
                 MissionId = mission.MissionId,
                 ThemeId = mission.ThemeId,
                 CityId = mission.CityId,
+                CityList = await _context.Cities.Where(city => city.CountryId == mission.CountryId).ToListAsync(),
                 CountryId = mission.CountryId,
                 Title = mission.Title,
                 Description = mission.Description,
@@ -193,12 +194,251 @@ namespace Ci_Platform.Repositories.Repositories
                 TotalSeats = mission.TotalSeats,
                 GoalObjectiveText = await _context.GoalMissions.Where(goalMission => goalMission.MissionId == missionId).Select(goalMission => goalMission.GoalObjectiveText).FirstOrDefaultAsync(),
                 GoalValue = await _context.GoalMissions.Where(goalMission => goalMission.MissionId == missionId).Select(goalMission => goalMission.GoalValue).FirstOrDefaultAsync(),
-                FileNames = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId).Select(missionMedia => missionMedia.MediaPath).ToListAsync(),
-                MissionDocsNames = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId).Select(missionMedia => missionMedia.MediaPath).ToListAsync(),
-                //DefaultImage = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId).Select(missionMedia => missionMedia.DefaultMedia).FirstOrDefaultAsync(),
+                FileNames = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.DefaultMedia == 0).Select(missionMedia => missionMedia.MediaPath).ToListAsync(),
+                MissionDocsNames = await _context.MissionDocuments.Where(missiondocs => missiondocs.MissionId == missionId).Select(missiondocs => missiondocs.DocumentPath).ToListAsync(),
+                DefaultImageName = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.DefaultMedia == 1).Select(missionMedia => missionMedia.MediaPath).FirstOrDefaultAsync(),
             };
             return model;
         }
 
+        public async Task DeleteImages(long missionId)
+        {
+            var existingMedia = _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.MediaType == "image");
+            List<string> oldMediaPaths = new();
+            var oldMedia = _context.MissionMedia.Where(missionMedia => existingMedia.Select(media => media.MissionId).Contains(missionMedia.MissionId) && missionMedia.MediaType == "image").ToList();
+            if (oldMedia.Count > 0)
+            {
+                foreach (var media in oldMedia)
+                {
+                    string oldMediaPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "MissionImages", media.MediaPath);
+
+                    oldMediaPaths.Add(oldMediaPath);
+                }
+            }
+            // delete the previous images from the server's directory
+            foreach (var file in Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "MissionImages")))
+            {
+                if (oldMediaPaths.Contains(file))
+                {
+                    System.IO.File.Delete(file);
+                }
+            }
+            _context.RemoveRange(existingMedia);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddImages(List<IFormFile> model, IFormFile defaultImage, long missionId)
+        {
+            var mediaCount = 1;
+            foreach (var file in model)
+            {
+                try
+                {
+
+                    var fileExtension = Path.GetExtension(file.FileName);
+                    var fileName = "mission_" + missionId + "_image_" + mediaCount + fileExtension;
+                    mediaCount++;
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "MissionImages", fileName);
+                    MissionMedium image = new()
+                    {
+                        MissionId = missionId,
+                        MediaName = fileName,
+                        MediaType = "image",
+                        MediaPath = fileName,
+                        DefaultMedia = 0,
+                    };
+                    await _context.MissionMedia.AddAsync(image);
+                    await _context.SaveChangesAsync();
+                    using var stream = new FileStream(filePath, FileMode.Create);
+                    await file.CopyToAsync(stream);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            if (defaultImage != null)
+            {
+                var fileExtension = Path.GetExtension(defaultImage.FileName);
+                var fileName = "mission_" + missionId + "_defaultImage_" + fileExtension;
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "MissionImages", fileName);
+                MissionMedium defImage = new()
+                {
+                    MissionId = missionId,
+                    MediaName = fileName,
+                    MediaType = "image",
+                    MediaPath = fileName,
+                    DefaultMedia = 1,
+                };
+                await _context.MissionMedia.AddAsync(defImage);
+                await _context.SaveChangesAsync();
+                using var stream = new FileStream(filePath, FileMode.Create);
+                await defaultImage.CopyToAsync(stream);
+            }
+        }
+
+        public async Task DeleteMissionDocs(long missionId)
+        {
+            var existingDocs = _context.MissionDocuments.Where(missionDocs => missionDocs.MissionId == missionId);
+            List<string> oldDocsPaths = new();
+            var oldDocs = _context.MissionDocuments.Where(missionDocs => existingDocs.Select(media => media.MissionId).Contains(missionDocs.MissionId)).ToList();
+            if (oldDocs.Count > 0)
+            {
+                foreach (var doc in oldDocs)
+                {
+                    string oldDocPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "MissionDocuments", doc.DocumentPath);
+
+                    oldDocsPaths.Add(oldDocPath);
+                }
+            }
+            // delete the previous images from the server's directory
+            foreach (var file in Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "MissionDocuments")))
+            {
+                if (oldDocsPaths.Contains(file))
+                {
+                    System.IO.File.Delete(file);
+                }
+            }
+            _context.RemoveRange(existingDocs);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddMissionDocs(List<IFormFile> model, long missionId)
+        {
+            foreach (var file in model)
+            {
+                var fileExtension = Path.GetExtension(file.FileName);
+                var fileName = file.FileName;
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "MissionDocuments", fileName);
+                MissionDocument missionDocument = new()
+                {
+                    MissionId = missionId,
+                    DocumentName = fileName,
+                    DocumentPath = fileName,
+                };
+                await _context.MissionDocuments.AddAsync(missionDocument);
+                await _context.SaveChangesAsync();
+                using var stream = new FileStream(filePath, FileMode.Create);
+                await file.CopyToAsync(stream);
+            }
+        }
+        public async Task AddMission(AdminMissionModel model)
+        {
+            Mission newMission = new()
+            {
+                Title = model.Title,
+                ShortDescription = model.ShortDescription,
+                Description = model.Description,
+                CityId = model.CityId,
+                CountryId = model.CountryId,
+                StartDate = model.StartDate,
+                EndDate = model.EndDate,
+                MissionType = model.MissionType,
+                OrganizationDetail = model.OrganizationDetail,
+                OrganizationName = model.OrganizationName,
+                Status = model.Status,
+                Availability = model.Availability,
+                TotalSeats = model.TotalSeats,
+                ThemeId = model.ThemeId,
+            };
+            await _context.Missions.AddAsync(newMission);
+            await _context.SaveChangesAsync();
+
+            long missionId = await _context.Missions.Where(mission => mission.Title == model.Title).Select(mission => mission.MissionId).FirstOrDefaultAsync();
+
+            if (model.MissionType == "Goal")
+            {
+                GoalMission goalMission = new()
+                {
+                    MissionId = missionId,
+                    GoalObjectiveText = model.GoalObjectiveText,
+                    GoalValue = model.GoalValue,
+                };
+                await _context.GoalMissions.AddAsync(goalMission);
+                await _context.SaveChangesAsync();
+            }
+
+            if (model.MissionSkills != null)
+            {
+                foreach (var skillId in model.MissionSkills)
+                {
+                    MissionSkill missionSkill = new()
+                    {
+                        MissionId = missionId,
+                        SkillId = skillId,
+                    };
+                    await _context.MissionSkills.AddAsync(missionSkill);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
+            if (model.Files != null || model.DefaultImage != null)
+            {
+                await AddImages(model.Files, model.DefaultImage, missionId);
+            }
+            if (model.MissionDocs != null)
+            {
+                await AddMissionDocs(model.MissionDocs, missionId);
+            }
+
+        }
+
+        public async Task UpdateMission(AdminMissionModel model, long missionId)
+        {
+            Mission? mission = await _context.Missions.FindAsync(missionId);
+            mission.Title = model.Title;
+            mission.ShortDescription = model.ShortDescription;
+            mission.Description = model.Description;
+            mission.CityId = model.CityId;
+            mission.CountryId = model.CountryId;
+            mission.StartDate = model.StartDate;
+            mission.EndDate = model.EndDate;
+            mission.MissionType = model.MissionType;
+            mission.OrganizationDetail = model.OrganizationDetail;
+            mission.OrganizationName = model.OrganizationName;
+            mission.Status = model.Status;
+            mission.Availability = model.Availability;
+            mission.TotalSeats = model.TotalSeats;
+            mission.ThemeId = model.ThemeId;
+            mission.UpdatedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+
+            if (model.MissionType == "Goal")
+            {
+                GoalMission? goalMission = await _context.GoalMissions.FirstOrDefaultAsync(goalMission => goalMission.MissionId == missionId);
+                goalMission.GoalObjectiveText = model.GoalObjectiveText;
+                goalMission.GoalValue = model.GoalValue;
+                await _context.SaveChangesAsync();
+            }
+
+            if (model.MissionSkills != null)
+            {
+                var existingSkills = _context.MissionSkills.Where(missionSkill => missionSkill.MissionId == missionId).ToList();
+                _context.MissionSkills.RemoveRange(existingSkills);
+                await _context.SaveChangesAsync();
+                foreach (var skillId in model.MissionSkills)
+                {
+                    MissionSkill missionSkill = new()
+                    {
+                        MissionId = missionId,
+                        SkillId = skillId,
+                    };
+                    await _context.MissionSkills.AddAsync(missionSkill);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
+            await DeleteImages(missionId);
+            if (model.Files != null || model.DefaultImage != null)
+            {
+                await AddImages(model.Files, model.DefaultImage, missionId);
+            }
+            await DeleteMissionDocs(missionId);
+            if (model.MissionDocs != null)
+            {
+                await AddMissionDocs(model.MissionDocs, missionId);
+            }
+
+        }
     }
 }

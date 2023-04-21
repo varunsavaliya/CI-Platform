@@ -648,7 +648,6 @@
 
 
     $('.recent-volunteers-btns div a').click(function () {
-        console.log($(this))
         let totalPages = Math.ceil(totalRecentVolunteers / pageSize);
         let volunteersContainer = $('.recent-volunteers');
         if ($(this).data('bs-slide') == "prev") {
@@ -711,11 +710,8 @@
                     });
 
                     item.on('click', function () {
-                        // Remove 'default' class from any previously selected default image
                         $('.image-item.default').removeClass('default border border-secondary');
-                        // Add 'default' class to the clicked image item
                         $(this).addClass('default border border-secondary');
-                        // Set the defaultImage variable to the selected file object
                         defaultImage = file;
                     });
                 };
@@ -828,28 +824,28 @@
                 allfiles = [];
                 //$('.note-editable').html(result.description);
                 if (result != null) {
-                    $('#storyTitle').val(result.title);
-                    $('.note-editable').html(result.description);
+                    $('#storyTitle').val(result.Title);
+                    $('.note-editable').html(result.Description);
 
                     storyTitle = $('#storyTitle').val();
                     story = $('.note-editable').html();
                     // adding all urls in url box
                     let url = '';
-                    for (var i in result.storyMedia) {
-                        if (result.storyMedia.hasOwnProperty(i)) {
-                            var obj = result.storyMedia[i];
-                            if (obj.type === "VIDEO") {
+                    for (var i in result.StoryMedia.$values) {
+                        if (result.StoryMedia.$values.hasOwnProperty(i)) {
+                            var obj = result.StoryMedia.$values[i];
+                            if (obj.Type === "VIDEO") {
                                 url += obj.path + `\n`;
                             }
                             else {
                                 // Create a new File object from the image path
-                                const response = await fetch('/Upload/' + obj.path);
+                                const response = await fetch('/Upload/' + obj.Path);
                                 const blob = await response.blob();
-                                const file = new File([blob], obj.path, { type: blob.type });
+                                const file = new File([blob], obj.Path, { type: blob.type });
                                 // Add the new file to the allfiles array
                                 allfiles.push(file);
 
-                                var image = $('<img>').attr('src', '../Upload/' + obj.path);
+                                var image = $('<img>').attr('src', '../Upload/' + obj.Path);
                                 var closeIcon = $('<span>').addClass('close-icon').text('x');
 
                                 // Add image and close icon to the list
@@ -870,7 +866,7 @@
                 }
             },
             error: function (error) {
-
+                
             }
         });
 
@@ -924,7 +920,6 @@
             formDetails.append("story", story);
             formDetails.append("Date", $('date').val());
             formDetails.append("button", $(this).val());
-            console.log($(this).val())
             // Loop through all the files in the allfiles array and add them to the DataTransfer object
             for (var i = 0; i < allfiles.length; i++) {
                 formDetails.append('images', allfiles[i]);
@@ -1004,7 +999,6 @@
             $('.user-image').attr('src', e.target.result);
         }
         reader.readAsDataURL(this.files[0]);
-        console.log($(this).val())
     });
 
     $(document).on('click', '.form-check-label', function () {
@@ -1068,8 +1062,6 @@
         });
 
         $('#selected-skills').val(selectedUserSkills.join(','));
-        console.log(selectedUserSkills)
-        console.log($('#selected-skills').val())
     })
 
     $(document).on('click', '.user-country', function () {
@@ -1107,10 +1099,7 @@
 
     $('#change-password-btn').click(function () {
         if (validateChangePassForm()) {
-            console.log($('#oldPassword').val())
-
             let oldPass = $('#oldPassword').val();
-            console.log(oldPass)
             let newPass = $('#newPassword').val();
             $.ajax({
                 url: '/Home/ChangePassword',
@@ -1264,7 +1253,7 @@
         } else if (currentUrl.includes('AdminCMS')) {
             let cmsId = $(this).parent().find('input').val();
             addOrEdit('AddorEditCMS', cmsId);
-        }else if (currentUrl.includes('AdminMission')) {
+        } else if (currentUrl.includes('AdminMission')) {
             let missionId = $(this).parent().find('input').val();
             addOrEdit('AddorEditMission', missionId);
         }
@@ -1277,7 +1266,6 @@
                 type: 'GET',
                 data: { timesheetId: timesheetId },
                 success: function (response) {
-                    console.log(response)
                     if (response.Time == null) {
                         $('#GoalBasedTimesheet_TimesheetId').val(response.TimesheetId)
 
@@ -1452,13 +1440,38 @@
         })
     }
 
+    var missionDocs = [];
+
+    $(document).on('change', '#document-input', function () {
+        var document = this;
+        var $list = $(document).closest('.dropzone').siblings('#docs-list');
+        var $existing = $list.children('.selected-file');
+        var $new = $(document).prop('files');
+
+        $.each($new, function (_, file) {
+            if (!missionDocs.some(function (existing) { return existing.name === file.name })) {
+                missionDocs.push(file);
+                var $filename = $('<span class="filename">').text(file.name);
+                var $remove = $('<span class="remove">').text('X').on('click', function () {
+                    missionDocs.splice(missionDocs.indexOf(file), 1);
+                    $(this).closest('.selected-file').remove();
+                });
+                var $selected = $('<div class="selected-file">').append($filename, $remove);
+                $list.append($selected);
+            }
+        });
+
+    });
+
+
+    let imageDiv;
+    let docDiv;
     function addOrEdit(page, id) {
         $.ajax({
             url: '/Admin/' + page,
             type: 'GET',
             data: { id: id == undefined ? 0 : id },
-            success: function (response) {
-                debugger
+            success: async function (response) {
                 $('.add-form-container').html(response);
                 $('.admin-tables').remove();
                 // Get today's date
@@ -1473,18 +1486,101 @@
                 $('#GoalObjectiveText').parent().hide();
                 $('#TotalSeats').parent().hide
 
-                    if ($('#type').val() == "Goal") {
-                        $('#GoalValue').parent().show();
-                        $('#GoalObjectiveText').parent().show();
-                        $('#TotalSeats').parent().hide();
-                    } else {
-                        $('#GoalValue').parent().hide();
-                        $('#GoalObjectiveText').parent().hide();
-                        $('#TotalSeats').parent().show();
+                if ($('#type').val() == "Goal") {
+                    $('#GoalValue').parent().show();
+                    $('#GoalObjectiveText').parent().show();
+                    $('#TotalSeats').parent().hide();
+                } else {
+                    $('#GoalValue').parent().hide();
+                    $('#GoalObjectiveText').parent().hide();
+                    $('#TotalSeats').parent().show();
+                }
+
+                imageDiv = $('.image-item')
+                docDiv = $('.selected-file')
+
+                let imagePaths = $('.image-paths');
+                let defaultImagePath = $('.default-image-path');
+                if (defaultImagePath != undefined && defaultImagePath[0].value != '') {
+                    const response = await fetch('/MissionImages/' + defaultImagePath[0].value);
+                    const blob = await response.blob();
+                    const file = new File([blob], defaultImagePath[0].value, { type: blob.type });
+                    // Add the new file to the allfiles array
+                    defaultImage = file;
+                    allfiles.push(file);
+                    var image = $('<img>').attr('src', '../MissionImages/' + defaultImagePath[0].value);
+                    var closeIcon = $('<span>').addClass('close-icon').text('x');
+
+                    // Add image and close icon to the list
+                    var item = $('<div>').addClass('image-item default border border-secondary').append(image).append(closeIcon);
+                    imageList.append(item);
+
+                    closeIcon.on('click', function () {
+                        item.remove();
+                        allfiles.splice(allfiles.indexOf(file), 1);
+                        if (file === defaultImage) {
+                            defaultImage = null;
+                        }
+                    });
+
+                    item.on('click', function () {
+                        $('.image-item.default').removeClass('default border border-secondary');
+                        $(this).addClass('default border border-secondary');
+                        defaultImage = file;
+                    });
+                }
+                if (imagePaths != null && imagePaths != undefined) {
+                    for (let i = 0; i < imagePaths.length; i++) {
+                        const response = await fetch('/MissionImages/' + imagePaths[i].value);
+                        const blob = await response.blob();
+                        const file = new File([blob], imagePaths[i].value, { type: blob.type });
+                        // Add the new file to the allfiles array
+                        allfiles.push(file);
+                        var image = $('<img>').attr('src', '../MissionImages/' + imagePaths[i].value);
+                        var closeIcon = $('<span>').addClass('close-icon').text('x');
+
+                        // Add image and close icon to the list
+                        var item = $('<div>').addClass('image-item').append(image).append(closeIcon);
+                        imageList.append(item);
+
+                        closeIcon.on('click', function () {
+                            item.remove();
+                            allfiles.splice(allfiles.indexOf(file), 1);
+                            if (file === defaultImage) {
+                                defaultImage = null;
+                            }
+                        });
+
+                        item.on('click', function () {
+                            $('.image-item.default').removeClass('default border border-secondary');
+                            $(this).addClass('default border border-secondary');
+                            defaultImage = file;
+                        });
                     }
+                }
+
+                let docPaths = $('.doc-paths');
+                var $list = $('#docs-list');
+                if (docPaths != null && docPaths != undefined) {
+                    for (let i = 0; i < docPaths.length; i++) {
+                        var $filename = $('<span class="filename">').text(docPaths[i].value);
+                        var $remove = $('<span class="remove">').text('X').on('click', function () {
+                            missionDocs.splice(missionDocs.indexOf(file), 1);
+                            $(this).closest('.selected-file').remove();
+
+                        });
+                        var $selected = $('<div class="selected-file">').append($filename, $remove);
+                        $list.append($selected);
+                        const response = await fetch('/MissionDocuments/' + docPaths[i].value);
+                        const blob = await response.blob();
+                        const file = new File([blob], docPaths[i].value, { type: blob.type });
+                        missionDocs.push(file);
+
+                    }
+                }
             },
             error: function (error) {
-                console.log(error)
+
             }
         });
     }
@@ -1536,13 +1632,50 @@
         $('#end-date').attr('min', startDate);
     });
 
+    function missionFormValidation() {
+        var editorDesc = tinymce.get('editor');
+        editorDesc.on('change', function () {
+            var text = editorDesc.getContent().trim();
+            $('#descriptionValidation').text('')
+
+        });
+        var description = editorDesc.getContent().trim();
+        if (description === '') {
+            $('#descriptionValidation').text('Enter description for Mission')
+            return false;
+        }
+
+
+        if ($('#tinymce').html() == '') {
+            $('#descriptionValidation').text('Description is required')
+            return false;
+        }
+        let youtubeUrls = $('#url').val().trim();
+
+        var urlsArray = youtubeUrls.split('\n');
+        var youtubeRegex = /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/i;
+        if (youtubeUrls !== '') {
+
+            for (var i = 0; i < urlsArray.length; i++) {
+                if (!youtubeRegex.test(urlsArray[i])) {
+                    $('#urlValidation').text('Invalid YouTube URL: ' + urlsArray[i]);
+                    return false;
+                }
+            }
+        }
+        if (urlsArray.length > 20) {
+            $('#urlValidation').text('You can not add more than 20 urls');
+            return false;
+        }
+        return true;
+    }
+
     $('.add-form-container').on('submit', '#mission-form', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        if ($(this).valid()) {
+        let isValid = missionFormValidation();
+        if ($(this).valid() && isValid) {
             let formDetails = new FormData($('#mission-form')[0]);
-
-
             for (var i = 0; i < allfiles.length; i++) {
                 if (defaultImage != allfiles[i])
                     formDetails.append('Files', allfiles[i]);
@@ -1559,7 +1692,7 @@
             }
 
             for (let i = 0; i < missionDocs.length; i++) {
-                formDetails.append('MissionSkills', missionDocs[i]);
+                formDetails.append('MissionDocs', missionDocs[i]);
             }
 
 
@@ -1588,6 +1721,9 @@
                         showConfirmButton: false,
                         timer: 3000
                     })
+                    setTimeout(function () {
+                        location.reload();
+                    }, 3000);
                 },
                 error: function (error) {
 
@@ -1609,26 +1745,5 @@
         }
     })
 
-    var missionDocs = [];
 
-    $(document).on('change', '#document-input', function () {
-        var document = this;
-        var $list = $(document).closest('.dropzone').siblings('#docs-list');
-        var $existing = $list.children('.selected-file');
-        var $new = $(document).prop('files');
-
-        $.each($new, function (_, file) {
-            if (!missionDocs.some(function (existing) { return existing.name === file.name })) {
-                missionDocs.push(file);
-                var $filename = $('<span class="filename">').text(file.name);
-                var $remove = $('<span class="remove">').text('X').on('click', function () {
-                    missionDocs.splice(missionDocs.indexOf(file), 1);
-                    $(this).closest('.selected-file').remove();
-                });
-                var $selected = $('<div class="selected-file">').append($filename, $remove);
-                $list.append($selected);
-            }
-        });
-
-    });
 })

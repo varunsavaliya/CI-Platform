@@ -136,10 +136,18 @@ namespace CI_Platform_web.Controllers
             return View(model);
         }
         [HttpPost]
-        public IActionResult AdminMission(AdminMissionModel model)
+        public async Task<IActionResult> AdminMission(AdminMissionModel model)
         {
-            
-            return RedirectToAction("AdminMission");
+            if (model.MissionId != 0)
+            {
+                await _admin.UpdateMission(model, model.MissionId);
+                return Ok(new { icon = "success", message = "Mission "+Constants.updateMessage });
+            }
+            else
+            {
+                await _admin.AddMission(model);
+                return Ok(new { icon = "success", message = "Mission "+ Constants.addMessage });
+            }
         }
 
         public async Task<IActionResult> AddorEditMission(long id)

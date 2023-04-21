@@ -16,7 +16,7 @@
     <div class="col-6 col-md-12 mb-3">
         <label class="form-label" asp-for="Description" class="my-0">Long Description</label>
         <textarea asp-for="Description" class="form-control" id="editor" rows="3" placeholder="Enter Description"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
+        <span id="descriptionValidation" class="text-danger"></span>
     </div>
 
     <div class="col-12 col-md-6 mb-3">
@@ -101,6 +101,20 @@
         <label asp-for="CityId" class="form-label">City</label>
         <select asp-for="CityId" class="form-select user-city" aria-label="Country">
             <option value="">Select your city</option>
+            @if (Model.CityList != null)
+            {
+                @foreach (var city in Model.CityList)
+                {
+                    @if (city.CityId == Model.CityId)
+                    {
+                        <option value="@city.CityId" selected>@city.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@city.CityId">@city.Name</option>
+                    }
+                }
+            }
         </select>
         <span asp-validation-for="CityId" class="text-danger"></span>
 
@@ -128,21 +142,21 @@
 
     <div class="col-md-6 col-sm-12 mb-3">
         <label asp-for="ThemeId" class="form-label">Mission Skills</label>
-       <div class="dropdown border mission-skills">
-                    <a class="text-decoration-none d-flex justify-content-between align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span>Mission skills</span>
-                        <img src="~/images/drop-down.png" alt="">
-                    </a>
-                    <ul class="dropdown-menu" id="skillDropdown">
-                        @foreach (var skill in Model.SkillList)
-                        {
-                            <li class="ms-2 form-check">
+        <div class="dropdown border mission-skills">
+            <a class="text-decoration-none d-flex justify-content-between align-items-center" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span>Mission skills</span>
+                <img src="~/images/drop-down.png" alt="">
+            </a>
+            <ul class="dropdown-menu" id="skillDropdown">
+                @foreach (var skill in Model.SkillList)
+                {
+                    <li class="ms-2 form-check">
                         <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="skill_@skill.SkillId" name="skillCheckboxes" multiple @(Model.MissionSkills != null && Model.MissionSkills.Contains(skill.SkillId) ? "checked" : "")>
-                                <label class="form-check-label" for="skill_@skill.SkillId">@skill.SkillName</label>
-                            </li>
-                        }
-                    </ul>
-                </div>
+                        <label class="form-check-label" for="skill_@skill.SkillId">@skill.SkillName</label>
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
 
 
@@ -162,19 +176,28 @@
     <div class="col-12 mb-3 mt-3">
         <label asp-for="MissionUrls" class="form-label">Enter Video URL</label>
         <a class="info-button" title="Only Youtube url is valid and You can add multiple urls by pressing enter">i</a>
-        <textarea asp-for="MissionUrls" type="url" class="form-control" id="url" aria-describedby="url" rows="1" placeholder="Enter your urls(Youtube Only)"></textarea>
-        <span asp-validation-for="MissionUrls" class="text-danger"></span>
+        <textarea asp-for="MissionUrls" type="text" class="form-control" id="url" aria-describedby="url" rows="1" placeholder="Enter your urls(Youtube Only)"></textarea>
+        <span id="urlValidation" class="text-danger"></span>
 
     </div>
 
     <div class="col-12 mb-3">
         <p class="mb-0">Upload your photos</p>
         <div id="dropzone" class="dropzone">
-            <input type="file" class="d-none" accept=".jpg,.png, .jpeg, .pdf" multiple id="actual-file-input" name="images" asp-for="Files" />
+            <input type="file" class="d-none" accept=".jpg,.png, .jpeg" multiple id="actual-file-input" name="images" asp-for="Files" />
             <label class="drag-drop mb-4" for="actual-file-input" id="file-button">
                 <img src="~/images/drag-and-drop.png" />
             </label>
         </div>
+        @if (Model.FileNames != null)
+        {
+            @foreach (string image in Model.FileNames)
+            {
+                <input type="text" class="d-none image-paths" asp-for="FileNames" value="@image">
+            }
+        }
+            <input type="text" class="d-none default-image-path" asp-for="FileNames" value="@Model.DefaultImageName">
+
         <div id="image-list" class="d-flex">
             <!-- Selected images will be displayed here -->
         </div>
@@ -187,6 +210,13 @@
                 <span>Drag and drop PDF files or click to select them</span>
             </label>
         </div>
+        @if (Model.MissionDocsNames != null)
+        {
+            @foreach (string doc in Model.MissionDocsNames)
+            {
+                <input type="text" class="d-none doc-paths" asp-for="FileNames" value="@doc">
+            }
+        }
         <div id="docs-list" class="d-flex">
             <!-- Selected files will be displayed here -->
         </div>

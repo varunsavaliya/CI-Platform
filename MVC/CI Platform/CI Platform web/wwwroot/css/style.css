@@ -1116,13 +1116,13 @@ input:focus-visible {
         }
 
 .progress {
-    background-color: #E8E8E8;
-    height: 8px;
-    width: 105px;
+    background-color: #E8E8E8 !important;
+    height: 8px !important;
+    width: 105px !important;
 }
 
 .progress-bar {
-    background-color: #F88634;
+    background-color: #F88634 !important;
 }
 
 .mission-date {

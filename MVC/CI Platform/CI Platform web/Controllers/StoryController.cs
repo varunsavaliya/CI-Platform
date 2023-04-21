@@ -132,11 +132,10 @@ namespace CI_Platform_web.Controllers
                 }
                 else
                 {
-                    var options = new JsonSerializerOptions
+                    return Json(availableStory, new JsonSerializerOptions
                     {
                         ReferenceHandler = ReferenceHandler.Preserve
-                    };
-                    return Json(availableStory, options);
+                    });
                 }
             }
             return Json(null);

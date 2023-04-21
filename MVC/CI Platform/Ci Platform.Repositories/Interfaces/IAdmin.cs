@@ -26,6 +26,8 @@ namespace Ci_Platform.Repositories.Interfaces
         public Task UpdateCMS(AdminCMSModel model);
         public List<Mission> GetMissionList();
         public Task<AdminMissionModel> GetMissionById(long missionId);
+        public Task AddMission(AdminMissionModel model);
+        public Task UpdateMission(AdminMissionModel model, long missionId);
 
     }
 }
