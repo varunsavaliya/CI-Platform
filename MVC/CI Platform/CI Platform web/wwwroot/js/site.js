@@ -269,8 +269,9 @@
         let searchText = $(".search-field input").val();
 
         let selectedCities = $('input[type="checkbox"][name="cityCheckboxes"]:checked').map(function () {
-            return $(this).val();
+            return parseInt($(this).val());
         }).get();
+
 
         let selectedThemes = $('input[type="checkbox"][name="themeCheckboxes"]:checked').map(function () {
             return $(this).val();
