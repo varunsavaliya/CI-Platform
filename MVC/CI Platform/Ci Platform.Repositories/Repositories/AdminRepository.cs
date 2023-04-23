@@ -3,11 +3,6 @@ using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ci_Platform.Repositories.Repositories
 {
@@ -54,6 +49,64 @@ namespace Ci_Platform.Repositories.Repositories
             userTobeRemoved.DeletedAt = DateTime.Now;
             await _context.SaveChangesAsync();
             return "User ";
+        }
+        public async Task<string> DeleteCMSById(long cmsPageId)
+        {
+            CmsTable? cmsTobeRemoved = _context.CmsTables.FirstOrDefault(cms => cms.CmsPageId == cmsPageId);
+            cmsTobeRemoved.DeletedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+            return "CMS ";
+        }
+        public async Task<string> DeleteMissionById(long missionId)
+        {
+            Mission? missionTobeRemoved = await _context.Missions.FindAsync(missionId);
+            missionTobeRemoved.DeletedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+            return "Mission ";
+        }
+        public async Task<string> DeleteMissionThemeById(long themeId)
+        {
+            MissionTheme? missionThemeTobeRemoved = await _context.MissionThemes.FindAsync(themeId);
+            missionThemeTobeRemoved.DeletedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+            return "Mission Theme ";
+        }
+        public async Task<string> DeleteMissionSkillById(int skillId)
+        {
+            Skill? missionSKillTobeRemoved = await _context.Skills.FindAsync(skillId);
+            missionSKillTobeRemoved.DeletedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+            return "Skill ";
+        }
+        public async Task<string> DeleteStoryById(long storyId)
+        {
+            Story? storyTobeRemoved = await _context.Stories.FindAsync(storyId);
+            storyTobeRemoved.DeletedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+            return "Story ";
+        }
+        public async Task<string> DeleteBannerById(long bannerId)
+        {
+            Banner? bannerTobeRemoved = await _context.Banners.FindAsync(bannerId);
+            // delete existing image
+
+            string existingMediaName = bannerTobeRemoved.Image;
+            string oldMediaPath = null;
+            if (bannerTobeRemoved != null)
+            {
+                oldMediaPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Banners", existingMediaName);
+            }
+            // delete the previous images from the server's directory
+            foreach (var file in Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Banners")))
+            {
+                if (file.Contains(oldMediaPath))
+                {
+                    System.IO.File.Delete(file);
+                }
+            }
+            _context.Banners.Remove(bannerTobeRemoved);
+            await _context.SaveChangesAsync();
+            return "Banner ";
         }
         public bool IsUserExists(string email)
         {
@@ -107,7 +160,7 @@ namespace Ci_Platform.Repositories.Repositories
 
         public List<CmsTable> GetCMSList()
         {
-            return _context.CmsTables.ToList();
+            return _context.CmsTables.Where(cms => cms.DeletedAt == null).ToList();
         }
 
         public AdminCMSModel GetCMSById(long cmsId)
@@ -166,13 +219,17 @@ namespace Ci_Platform.Repositories.Repositories
 
         public List<Mission> GetMissionList()
         {
-            List<Mission> missions = _context.Missions.ToList();
+            List<Mission> missions = _context.Missions.Where(mission => mission.DeletedAt == null).ToList();
             return missions;
         }
 
         public async Task<AdminMissionModel> GetMissionById(long missionId)
         {
             Mission? mission = await _context.Missions.Where(mission => mission.MissionId == missionId).Include(mission => mission.GoalMissions).FirstOrDefaultAsync();
+            List<string>? allurls = await _context.MissionMedia
+    .Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.MediaType == "video")
+    .Select(missionMedia => missionMedia.MediaPath)
+    .ToListAsync();
             AdminMissionModel model = new()
             {
                 MissionId = mission.MissionId,
@@ -194,9 +251,10 @@ namespace Ci_Platform.Repositories.Repositories
                 TotalSeats = mission.TotalSeats,
                 GoalObjectiveText = await _context.GoalMissions.Where(goalMission => goalMission.MissionId == missionId).Select(goalMission => goalMission.GoalObjectiveText).FirstOrDefaultAsync(),
                 GoalValue = await _context.GoalMissions.Where(goalMission => goalMission.MissionId == missionId).Select(goalMission => goalMission.GoalValue).FirstOrDefaultAsync(),
-                FileNames = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.DefaultMedia == 0).Select(missionMedia => missionMedia.MediaPath).ToListAsync(),
+                FileNames = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.MediaType == "image" && missionMedia.DefaultMedia == 0).Select(missionMedia => missionMedia.MediaPath).ToListAsync(),
                 MissionDocsNames = await _context.MissionDocuments.Where(missiondocs => missiondocs.MissionId == missionId).Select(missiondocs => missiondocs.DocumentPath).ToListAsync(),
-                DefaultImageName = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.DefaultMedia == 1).Select(missionMedia => missionMedia.MediaPath).FirstOrDefaultAsync(),
+                DefaultImageName = await _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.MediaType == "image" && missionMedia.DefaultMedia == 1).Select(missionMedia => missionMedia.MediaPath).FirstOrDefaultAsync(),
+                MissionUrls = string.Join(Environment.NewLine, allurls),
             };
             return model;
         }
@@ -322,6 +380,38 @@ namespace Ci_Platform.Repositories.Repositories
                 await file.CopyToAsync(stream);
             }
         }
+
+        public async Task HandleMissionUrls(String urls, long missionId)
+        {
+            var existingMedia = _context.MissionMedia.Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.MediaType == "video");
+            if (existingMedia != null)
+            {
+                _context.MissionMedia.RemoveRange(existingMedia);
+            }
+
+            var urlsArray = urls.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+
+            foreach (var url in urlsArray)
+            {
+                int count = 1;
+                if (!string.IsNullOrWhiteSpace(url))
+                {
+
+                    var missionMedia = new MissionMedium
+                    {
+                        MissionId = missionId,
+                        MediaType = "video",
+                        MediaName = missionId + "_url_" + count,
+                        MediaPath = url,
+                    };
+                    count++;
+                    await _context.MissionMedia.AddAsync(missionMedia);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
+        }
         public async Task AddMission(AdminMissionModel model)
         {
             Mission newMission = new()
@@ -370,6 +460,11 @@ namespace Ci_Platform.Repositories.Repositories
                     await _context.MissionSkills.AddAsync(missionSkill);
                     await _context.SaveChangesAsync();
                 }
+            }
+
+            if (model.MissionUrls != null)
+            {
+                await HandleMissionUrls(model.MissionUrls, missionId);
             }
 
             if (model.Files != null || model.DefaultImage != null)
@@ -427,6 +522,10 @@ namespace Ci_Platform.Repositories.Repositories
                     await _context.SaveChangesAsync();
                 }
             }
+            if (model.MissionUrls != null)
+            {
+                await HandleMissionUrls(model.MissionUrls, missionId);
+            }
 
             await DeleteImages(missionId);
             if (model.Files != null || model.DefaultImage != null)
@@ -440,5 +539,233 @@ namespace Ci_Platform.Repositories.Repositories
             }
 
         }
+
+        public async Task<List<MissionTheme>> GetMissionThemeList()
+        {
+            List<MissionTheme> missionThemes = await _context.MissionThemes.Where(theme => theme.DeletedAt == null).ToListAsync();
+            return missionThemes;
+        }
+
+        public async Task AddMissionTheme(AdminMissionThemeModel model)
+        {
+            MissionTheme missionTheme = new()
+            {
+                Title = model.Title,
+                Status = model.Status,
+            };
+            await _context.MissionThemes.AddAsync(missionTheme);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> IsThemeExists(string title)
+        {
+            return await _context.MissionThemes.AnyAsync(theme => theme.Title == title);
+        }
+
+        public async Task<bool> IsThemeExists(string title, long themeId)
+        {
+            return await _context.MissionThemes.AnyAsync(theme => theme.Title == title && theme.MissionThemeId == themeId);
+        }
+
+        public async Task UpdateMissionTheme(AdminMissionThemeModel model)
+        {
+            MissionTheme? missionTheme = await _context.MissionThemes.FindAsync(model.MissionThemeId);
+            missionTheme.Title = model.Title;
+            missionTheme.Status = model.Status;
+            missionTheme.UpdatedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<AdminMissionThemeModel> GetMissionThemeById(long themeId)
+        {
+            MissionTheme? missiontheme = await _context.MissionThemes.FindAsync(themeId);
+            AdminMissionThemeModel model = new()
+            {
+                MissionThemeId = missiontheme.MissionThemeId,
+                Status = missiontheme.Status,
+                Title = missiontheme.Title,
+            };
+            return model;
+        }
+
+        public async Task<List<Skill>> GetMissionSkillList()
+        {
+            return await _context.Skills.Where(skill => skill.DeletedAt == null).ToListAsync();
+        }
+
+        public async Task AddMissionSkill(AdminMissionSkillModel model)
+        {
+            Skill? skill = new();
+            skill.SkillName = model.SkillName;
+            skill.Status = model.Status;
+            await _context.Skills.AddAsync(skill);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> IsSkillExists(string skillName)
+        {
+            return await _context.Skills.AnyAsync(skill => skill.SkillName == skillName);
+        }
+
+        public async Task<bool> IsSkillExists(string skillName, int skillId)
+        {
+            return await _context.Skills.AnyAsync(skill => skill.SkillName == skillName && skill.SkillId == skillId);
+        }
+
+        public async Task UpdateMissionSkill(AdminMissionSkillModel model)
+        {
+            Skill? skill = await _context.Skills.FindAsync(model.SkillId);
+            skill.SkillName = model.SkillName;
+            skill.Status = model.Status;
+            skill.UpdatedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<AdminMissionSkillModel> GetMissionSkillById(int skillId)
+        {
+            Skill? missionSkill = await _context.Skills.FindAsync(skillId);
+            AdminMissionSkillModel model = new()
+            {
+                SkillId = missionSkill.SkillId,
+                Status = missionSkill.Status,
+                SkillName = missionSkill.SkillName,
+            };
+            return model;
+        }
+
+        public async Task<List<MissionApplication>> GetMissionApplicationsList()
+        {
+            return await _context.MissionApplications.Where(missionApplication => missionApplication.ApprovalStatus == "PENDING").Include(missionApplication => missionApplication.User).Include(missionApplication => missionApplication.Mission).ToListAsync();
+        }
+
+        public async Task ApproveMissionApplication(long missionApplicationId)
+        {
+            MissionApplication? missionApplication = await _context.MissionApplications.FindAsync(missionApplicationId);
+            missionApplication.ApprovalStatus = "PUBLISHED";
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeclineMissionApplication(long missionApplicationId)
+        {
+            MissionApplication? missionApplication = await _context.MissionApplications.FindAsync(missionApplicationId);
+            missionApplication.ApprovalStatus = "DECLINED";
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Story>> GetStoriesList()
+        {
+            return await _context.Stories.Where(story => story.Status == "PENDING" && story.DeletedAt == null).Include(story => story.User).Include(story => story.Mission).ToListAsync();
+        }
+
+        public async Task ApproveStory(long storyId)
+        {
+            Story? story = await _context.Stories.FindAsync(storyId);
+            story.Status = "PUBLISHED";
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeclineStory(long storyId)
+        {
+            Story? story = await _context.Stories.FindAsync(storyId);
+            story.Status = "DECLINED";
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<BannerModel> GetBannerById(long bannerId)
+        {
+            Banner? banner = await _context.Banners.FindAsync(bannerId);
+            BannerModel model = new()
+            {
+                BannerId = banner.BannerId,
+                Text = banner.Text,
+                //Image = banner.Image,
+                BannerImageName = banner.Image,
+                SortOrder = banner.SortOrder,
+            };
+            return model;
+        }
+
+        public async Task<List<Banner>> GetBannerList()
+        {
+            return await _context.Banners.OrderBy(mission => mission.SortOrder).ToListAsync();
+        }
+
+        public async Task AddBanner(BannerModel model)
+        {
+            List<Banner> bannersTobeAffected = await _context.Banners.Where(banner => banner.SortOrder >= model.SortOrder).ToListAsync();
+            // add image to banner folder
+            var fileExtension = Path.GetExtension(model.Image.FileName);
+            var fileName = "banner_" + model.SortOrder + fileExtension;
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Banners", fileName);
+
+            using var stream = new FileStream(filePath, FileMode.Create);
+            await model.Image.CopyToAsync(stream);
+
+            Banner bannerTobeAdded = new()
+            {
+                Text = model.Text,
+                Image = fileName,
+                SortOrder = model.SortOrder
+            };
+
+            await _context.Banners.AddAsync(bannerTobeAdded);
+
+            foreach (Banner banner in bannersTobeAffected)
+            {
+                banner.SortOrder++;
+                banner.UpdatedAt = DateTime.Now;
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateBanner(BannerModel model, long bannerId)
+        {
+            Banner bannerTobeUpdated = await _context.Banners.FindAsync(bannerId);
+            int? currentSortOrder = bannerTobeUpdated.SortOrder;
+            List<Banner> bannersTobeAffected = await _context.Banners.Where(banner => banner.SortOrder >= model.SortOrder && banner.SortOrder < currentSortOrder).ToListAsync();
+            bannerTobeUpdated.Text = model.Text;
+            bannerTobeUpdated.SortOrder = model.SortOrder;
+            bannerTobeUpdated.UpdatedAt = DateTime.Now;
+            await _context.SaveChangesAsync();
+            if (model.Image != null)
+            {
+                // delete existing image
+
+                var existingMedia = await _context.Banners.FindAsync(bannerId);
+                string existingMediaName = existingMedia.Image;
+                string oldMediaPath = null;
+                if (existingMedia != null)
+                {
+                    oldMediaPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Banners", existingMediaName);
+                }
+                // delete the previous images from the server's directory
+                foreach (var file in Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Banners")))
+                {
+                    if (file.Contains(oldMediaPath))
+                    {
+                        System.IO.File.Delete(file);
+                    }
+                }
+                // add image to banner folder
+                var fileExtension = Path.GetExtension(model.Image.FileName);
+                var fileName = "banner_" + model.SortOrder + fileExtension;
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Banners", fileName);
+
+                using var stream = new FileStream(filePath, FileMode.Create);
+                await model.Image.CopyToAsync(stream);
+                bannerTobeUpdated.Image = fileName;
+                await _context.SaveChangesAsync();
+            }
+
+
+            foreach (Banner banner in bannersTobeAffected)
+            {
+                banner.SortOrder++;
+                banner.UpdatedAt = DateTime.Now;
+            }
+
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

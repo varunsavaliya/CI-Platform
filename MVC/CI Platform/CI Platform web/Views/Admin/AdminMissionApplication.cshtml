@@ -1,0 +1,52 @@
+﻿@using CI_Platform.Entities.DataModels
+
+@{
+    ViewData["Title"] = "AdminMissionApplication";
+    Layout = "_AdminLayout";
+}
+@model CI_Platform.Entities.ViewModels.AdminMissionApplicationModel
+
+<div class="admin-page-header">
+    <h2>Mission Application</h2>
+</div>
+
+<div class="table-responsive admin-tables">
+    <div class="admin-table-header d-flex justify-content-between mb-3">
+        <div class="admin-search-field input-group">
+            <input type="text" class="form-control ms-5" id="custom-search" placeholder="Search">
+            <i class="fa fa-search"></i>
+        </div>
+    </div>
+    <table class="table border mission-application-table" id="admin-table">
+        <thead class="py-3">
+            <tr>
+                <th scope="col">Mission Title</th>
+                <th scope="col">Mission Id</th>
+                <th scope="col">User Id</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Applied Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MissionApplication application in Model.missionApplications)
+            {
+                <tr class="tr_@application.MissionApplicationId">
+                    <td scope="row">@application.Mission.Title</td>
+                    <td>@application.UserId</td>
+                    <td>@application.User.UserId</td>
+                    <td>@application.User.FirstName @application.User.LastName</td>
+                    <td>@application.AppliedAt.ToShortDateString()</td>
+                    <td id="handle-application">
+                        <input value="@application.MissionApplicationId" class="d-none" type="text" />
+                        <i class="fa-regular fa-circle-check me-2 text-success approve-application"></i>
+                        <i class="fa-regular fa-circle-xmark text-danger decline-application"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

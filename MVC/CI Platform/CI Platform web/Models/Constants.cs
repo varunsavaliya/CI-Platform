@@ -6,5 +6,7 @@
         public static string updateMessage = "updated successfully";
         public static string deleteMessage = "deleted successfully";
         public static string existsMessage = "already exists";
+        public static string approveMessage = "approved successfully";
+        public static string declineMessage = "declined";
     }
 }

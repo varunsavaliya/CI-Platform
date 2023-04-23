@@ -17,7 +17,7 @@ namespace Ci_Platform.Repositories.Repositories
         public async Task<Story> GetStoryById(long id)
         {
             Story? story = _context.Stories.Where(s => s.StoryId == id).Include(s => s.Mission).Include(s => s.User).Include(s => s.StoryMedia).FirstOrDefault();
-            if (story.Status != "DRAFT")
+            if (story.Status == "PUBLISHED" )
             {
                 story.Views += 1;
                 await _context.SaveChangesAsync();

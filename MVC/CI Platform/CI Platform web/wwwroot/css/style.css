@@ -37,10 +37,7 @@ body {
     position: absolute;
 }
 
-.carousel-image1,
-.carousel-image2,
-.carousel-image3 {
-    background-image: url(../images/Grow-Trees-On-the-path-to-environment-sustainability-login.png);
+.banner-image {
     background-size: cover;
     height: 100vh;
     background-position: center;
@@ -49,6 +46,7 @@ body {
 .image-caption {
     position: relative;
     right: 14%;
+    box-shadow: rgb(0 0 0 / 20%) 5px 5px 5px 0px;
 }
 
     .image-caption h3 {
@@ -62,6 +60,7 @@ body {
         text-align: left;
         font-size: 1.2rem;
     }
+
 /* form */
 .validation-summary-errors ul {
     padding-left: 0 !important;
@@ -1968,6 +1967,10 @@ iframe {
     padding: 3px 20px;
 }
 
+    .story-detail-btn{
+        border-radius:21px !important;
+    }
+
     .volunteer-details span, .views-detail span, .story-description span {
         color: #414141;
     }
@@ -2372,9 +2375,14 @@ iframe {
     .admin-tables table tr .inactive-class {
         color: #ff0000;
     }
-#user-form .user-image-wrapper{
-    display:block;
-}
+
+    .admin-tables table tbody tr td i{
+        font-size:19px;
+        cursor:pointer;
+    }
+    #user-form .user-image-wrapper {
+        display: block;
+    }
 #user-form .user-image-wrapper img {
     width: 63px;
 }
@@ -2451,3 +2459,34 @@ iframe {
         font-weight: 500;
         cursor: pointer;
     }
+.default::before {
+    content: '\2713';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+}
+
+.story-view-btn {
+    padding: 2px 8px !important;
+    font-size: 12px !important;
+}
+
+.banner-table-images {
+    max-width: 100%;
+    max-height: 75px;
+    object-fit: cover;
+}
+
+#banner-image-preview {
+    display:none;
+    max-width: 100%;
+    max-height: 200px;  
+}
+#banner-image-preview-on-edit {
+    max-width: 100%;
+    max-height: 200px;
+}

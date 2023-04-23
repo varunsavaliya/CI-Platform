@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/CI_Platform_web.styles.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/CI_Platform_web.styles.css" asp-append-version="true" />*@
     <title>@ViewData["Title"]</title>
 </head>
 <body>
     <div class="main-container">
         <div class="login-page">
-            <div class="banner">
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                @await Component.InvokeAsync("Banner")
+                @*<div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -66,8 +66,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>*@
         @RenderBody()
     </div>
             </div>

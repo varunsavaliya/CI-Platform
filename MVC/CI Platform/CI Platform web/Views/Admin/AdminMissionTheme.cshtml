@@ -1,0 +1,89 @@
+﻿@using CI_Platform.Entities.DataModels;
+
+@{
+    ViewData["Title"] = "Admin Mission Theme";
+    Layout = "_AdminLayout";
+}
+
+@model CI_Platform.Entities.ViewModels.AdminMissionThemeModel
+@if (TempData["Message"] != null && TempData["Icon"] != null)
+{
+    <script>
+        window.onload = function () {
+            Swal.fire({
+                icon: '@TempData["Icon"]',
+                title: '@TempData["Message"]',
+                showConfirmButton: false,
+                timer: 4000
+            });
+        };
+    </script>
+}
+
+<div class="admin-page-header">
+    <h2>Mission Theme</h2>
+</div>
+<div class="add-form-container">
+    <!-- dynamically -->
+</div>
+
+<div class="table-responsive admin-tables">
+    <div class="admin-table-header d-flex justify-content-between mb-3">
+        <div class="admin-search-field input-group">
+            <input type="text" class="form-control ms-5" id="custom-search" placeholder="Search">
+            <i class="fa fa-search"></i>
+        </div>
+        <button class="card-button m-0 px-4 py-1 add-record-btn">+ Add</button>
+
+
+    </div>
+    <table class="table border mission-theme-table" id="admin-table">
+        <thead class="py-3">
+            <tr>
+                <th scope="col">Theme Name</th>
+                <th scope="col">Satus</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MissionTheme theme in Model.MissionThemes)
+            {
+                <tr class="tr_@theme.MissionThemeId">
+                    <td scope="row">@theme.Title</td>
+                    <td class="@(theme.Status == 1 ? "active-class" : "inactive-class")">@(theme.Status == 1 ? "Active" : "Inactive")</td>
+                    <td>
+                        <input value="@theme.MissionThemeId" class="d-none" type="text" />
+                        <img class="generic-edit-icon me-2" src="~/images/editing.png" />
+                        <img class="generic-delete-icon" src="~/images/delete.png" data-bs-toggle="modal" data-bs-target="#deletetheme_@theme.MissionThemeId" />
+
+                        <!-- delete mission modal -->
+                        <div class="modal fade" id="deletetheme_@theme.MissionThemeId" tabindex="-1" aria-labelledby="add-vol-hours-modal" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header border-0">
+                                        <h5 class="modal-title">Confrim Delete</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4 class="d-inline mb-0 text-wrap">Are you sure you want to delete this item?</h4>
+                                        <div class="d-flex justify-content-center mt-2">
+                                            <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Cancel</button>
+                                            <input value="@theme.MissionThemeId" class="d-none" type="text" />
+                                            <button type="button" id="" class="admin-delete-btn btn mt-0 card-button ms-2 me-0" data-bs-dismiss="modal">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

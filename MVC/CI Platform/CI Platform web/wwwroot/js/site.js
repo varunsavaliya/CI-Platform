@@ -866,7 +866,7 @@
                 }
             },
             error: function (error) {
-                
+
             }
         });
 
@@ -1253,9 +1253,19 @@
         } else if (currentUrl.includes('AdminCMS')) {
             let cmsId = $(this).parent().find('input').val();
             addOrEdit('AddorEditCMS', cmsId);
-        } else if (currentUrl.includes('AdminMission')) {
+        } else if (currentUrl.includes('AdminMissionPage')) {
             let missionId = $(this).parent().find('input').val();
             addOrEdit('AddorEditMission', missionId);
+        }
+        else if (currentUrl.includes('AdminMissionTheme')) {
+            let themeId = $(this).parent().find('input').val();
+            addOrEdit('AddorEditMissionTheme', themeId);
+        } else if (currentUrl.includes('AdminMissionSkill')) {
+            let themeId = $(this).parent().find('input').val();
+            addOrEdit('AddorEditMissionSkill', themeId);
+        } else if (currentUrl.includes('BannerManagement')) {
+            let bannerId = $(this).parent().find('input').val();
+            addOrEdit('AddorEditBanner', bannerId);
         }
         else {
 
@@ -1363,8 +1373,15 @@
         } else if (currentUrl.includes('AdminCMS')) {
 
             addOrEdit('AddorEditCMS');
-        } else if (currentUrl.includes('AdminMission')) {
+        } else if (currentUrl.includes('AdminMissionPage')) {
             addOrEdit('AddorEditMission');
+        } else if (currentUrl.includes('AdminMissionTheme')) {
+            addOrEdit('AddorEditMissionTheme');
+        } else if (currentUrl.includes('AdminMissionSkill')) {
+            addOrEdit('AddorEditMissionSkill');
+        }
+        else if (currentUrl.includes('BannerManagement')) {
+            addOrEdit('AddorEditBanner');
         }
     })
 
@@ -1435,8 +1452,23 @@
         });
 
         $('table').on('click', '.admin-delete-btn', function () {
-            let userId = $(this).parent().find('input').val();
-            deleteTableData('/Admin/DeleteUser', userId);
+            let Id = $(this).parent().find('input').val();
+            if (currentUrl.includes('/Admin/AdminUser'))
+                deleteTableData('/Admin/DeleteUser', Id);
+            else if (currentUrl.includes('/Admin/AdminCMS'))
+                deleteTableData('/Admin/DeleteCMS', Id);
+            else if (currentUrl.includes('/Admin/AdminMissionPage'))
+                deleteTableData('/Admin/DeleteMission', Id);
+            else if (currentUrl.includes('/Admin/AdminMissionTheme'))
+                deleteTableData('/Admin/DeleteMissionTheme', Id);
+            else if (currentUrl.includes('/Admin/AdminMissionSkill'))
+                deleteTableData('/Admin/DeleteMissionSkill', Id);
+            else if (currentUrl.includes('/Admin/AdminStory'))
+                deleteTableData('/Admin/DeleteStory', Id);
+            else if (currentUrl.includes('/Admin/BannerManagement'))
+                deleteTableData('/Admin/DeleteBanner', Id);
+
+
         })
     }
 
@@ -1501,7 +1533,7 @@
 
                 let imagePaths = $('.image-paths');
                 let defaultImagePath = $('.default-image-path');
-                if (defaultImagePath != undefined && defaultImagePath[0].value != '') {
+                if (defaultImagePath.length != 0) {
                     const response = await fetch('/MissionImages/' + defaultImagePath[0].value);
                     const blob = await response.blob();
                     const file = new File([blob], defaultImagePath[0].value, { type: blob.type });
@@ -1563,11 +1595,14 @@
                 var $list = $('#docs-list');
                 if (docPaths != null && docPaths != undefined) {
                     for (let i = 0; i < docPaths.length; i++) {
-                        var $filename = $('<span class="filename">').text(docPaths[i].value);
+                        var filename = docPaths[i].value;
+                        if (filename.length > 15) {
+                            filename = filename.substring(0, 6) + '...' + filename.substring(filename.length - 5);
+                        }
+                        var $filename = $('<span class="filename">').text(filename);
                         var $remove = $('<span class="remove">').text('X').on('click', function () {
                             missionDocs.splice(missionDocs.indexOf(file), 1);
                             $(this).closest('.selected-file').remove();
-
                         });
                         var $selected = $('<div class="selected-file">').append($filename, $remove);
                         $list.append($selected);
@@ -1575,9 +1610,9 @@
                         const blob = await response.blob();
                         const file = new File([blob], docPaths[i].value, { type: blob.type });
                         missionDocs.push(file);
-
                     }
                 }
+
             },
             error: function (error) {
 
@@ -1593,23 +1628,13 @@
             data: { id: id },
             success: function (response) {
                 deleteTr.remove();
-                if (currentUrl.includes('TimeSheet')) {
-                    swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Item removed successfully',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                } else if (currentUrl.includes('Admin/AdminUser')) {
-                    swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: response,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
+                swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: response,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             },
             error: function (error) {
                 swal.fire({
@@ -1694,21 +1719,8 @@
             for (let i = 0; i < missionDocs.length; i++) {
                 formDetails.append('MissionDocs', missionDocs[i]);
             }
-
-
-            //var urls = null;
-            //var u = $('#url').val();
-            //if (u != null) {
-            //    urls = u.split('\n');
-            //    for (var i = 0; i < urls.length; i++) {
-            //        formDetails.append("MissionUrls", urls[i]);
-            //    }
-            //}
-            //else {
-            //    formDetails.append("MissionUrls", null);
-            //}
             $.ajax({
-                url: '/Admin/AdminMission',
+                url: '/Admin/AdminMissionPage',
                 type: 'POST',
                 data: formDetails,
                 processData: false,
@@ -1745,5 +1757,84 @@
         }
     })
 
+    $('.admin-tables').on('click', '#handle-application i', function () {
+        let applicationId = $(this).parent().find('input').val()
+        let storyId = $(this).parent().find('input').val()
+
+        if ($(this).hasClass('approve-application'))
+            handleApprovals('HandleMissionApplication', 1, applicationId)
+        else if ($(this).hasClass('decline-application'))
+            handleApprovals('HandleMissionApplication', 0, applicationId)
+        else if ($(this).hasClass('approve-story'))
+            handleApprovals('HandleStoryApproval', 1, storyId)
+        else if ($(this).hasClass('decline-story'))
+            handleApprovals('HandleStoryApproval', 0, storyId)
+    })
+
+    $('.sdbtns').on('click', 'button', function () {
+        let storyId = $(this).parent().find('input').val()
+        if ($(this).hasClass('approve-story')) {
+            handleApprovals('HandleStoryApproval', 1, storyId)
+            setTimeout(function () {
+                location.reload();
+                window.location.href = '/Admin/AdminStory';
+            }, 3000);
+        }
+        else if ($(this).hasClass('decline-story')) {
+            handleApprovals('HandleStoryApproval', 0, storyId)
+            setTimeout(function () {
+                location.reload();
+                window.location.href = '/Admin/AdminStory';
+            }, 3000);
+        }
+    })
+
+    $(document).on('click', '.story-delete-btn', function () {
+        let storyId = $(this).parent().find('input').val()
+        debugger
+        deleteTableData('/Admin/DeleteStory', storyId);
+        setTimeout(function () {
+            location.reload();
+            window.location.href = '/Admin/AdminStory';
+        }, 3000);
+    })
+    function handleApprovals(action, button, Id) {
+        let deleteTr = $('.tr_' + Id);
+        $.ajax({
+            url: '/Admin/' + action,
+            type: 'POST',
+            data: { button: button, Id: Id },
+            success: function (result) {
+                deleteTr.remove();
+                swal.fire({
+                    position: 'center',
+                    icon: result.icon,
+                    title: result.message,
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            },
+            error: function (error) {
+
+            }
+        });
+    }
+
+    // Update the image preview when a file is selected
+    $(document).on('change', '#Image', function () {
+        $('#banner-image-preview-on-edit').hide();
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                let preview = $("#banner-image-preview");
+                preview.attr("src", e.target.result);
+                preview.show();
+            };
+            reader.readAsDataURL(file);
+        } else {
+            $("#banner-image-preview").hide();
+        }
+    });
 
 })

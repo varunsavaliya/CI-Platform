@@ -30,6 +30,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\MissionImages\" />
     <Folder Include="wwwroot\MissionDocuments\" />
+    <Folder Include="wwwroot\Banners\" />
     <Folder Include="wwwroot\ProfileImages\" />
     <Folder Include="wwwroot\Upload\" />
   </ItemGroup>

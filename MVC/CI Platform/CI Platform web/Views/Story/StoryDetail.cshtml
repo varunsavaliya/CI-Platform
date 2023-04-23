@@ -111,7 +111,7 @@
                     <img class="mb-3" src="~/images/volunteer1.png" />
                     <span>@Model.StoryDetail.User.FirstName @Model.StoryDetail.User.LastName</span>
                 </div>
-                @if (Model.StoryDetail.Status != "DRAFT")
+                @if (Model.StoryDetail.Status == "PUBLISHED")
                 {
                     <div class="views-detail d-flex align-items-center">
                         <img class="me-2" src="~/images/eye.png" />
@@ -124,13 +124,22 @@
             </div>
 
             <div class="sdbtns d-flex my-4 justify-content-center gap-4">
-                 @if (Model.StoryDetail.Status != "DRAFT")
+                 @if (Model.StoryDetail.Status == "PUBLISHED")
                 {
                     
                 <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
 
                     <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#story-invite"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
                 </div>
+
+                    <div class="mission-btn">
+                        <!-- open mission button -->
+                        <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new{ id=@Model.StoryDetail.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
+                            Open Mission
+                            <img src="~/images/right-arrow.png" alt="">
+                            <img src="~/images/right-arrow2.png" alt="">
+                        </a>
+                    </div>
                 }
 
                 <!-- Invite Volunteer Modal -->
@@ -171,24 +180,53 @@
                         </div>
                     </div>
                 </div>
+                @if(Model.StoryDetail.Status == "PENDING")
+                {
+                    <input value="@Model.StoryDetail.StoryId" class="d-none" type="text" />
+
+                    <button class="btn btn-outline-success d-flex align-items-center justify-content-between story-detail-btn approve-story mt-0 px-3 py-2 ">
+                        <i class="fa-regular fa-circle-check me-2"></i>
+                        <span>Publish</span>
+                    </button>
+                    <button class="btn btn-outline-warning d-flex align-items-center justify-content-between story-detail-btn decline-story mt-0 px-3 py-2 ">
+                        <i class="fa-regular fa-circle-xmark me-2"></i>
+                        <span>Decline</span>
+                    </button>
+                    <button class="btn btn-outline-danger d-flex align-items-center justify-content-between story-detail-btn generic-delete-icon mt-0 px-3 py-2 ">
+                        <i class="fa-regular fa-trash-can me-2" data-bs-toggle="modal" data-bs-target="#deleteUser_@Model.StoryDetail.StoryId"></i>
+                        <span>Delete</span>
+                    </button>
+
+                    <!-- delete story modal -->
+                    <div class="modal fade" id="deleteUser_@Model.StoryDetail.StoryId" tabindex="-1" aria-labelledby="add-vol-hours-modal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header border-0">
+                                    <h5 class="modal-title">Confrim Delete</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h4 class="d-inline mb-0 text-wrap">Are you sure you want to delete this item?</h4>
+                                    <div class="d-flex justify-content-center mt-2">
+                                        <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Cancel</button>
+                                        <input value="@Model.StoryDetail.StoryId" class="d-none" type="text" />
+                                        <button type="button" id="" class="story-delete-btn btn mt-0 card-button ms-2 me-0" data-bs-dismiss="modal">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
 
 
-
-                <div class="mission-btn">
-                    <!-- open mission button -->
-                    <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new{ id=@Model.StoryDetail.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
-                        Open Mission
-                        <img src="~/images/right-arrow.png" alt="">
-                        <img src="~/images/right-arrow2.png" alt="">
-                    </a>
-                </div>
+                
             </div>
         </div>
 
     </div>
     <!-- mission details -->
     <div class="st-mission-heading mt-3 border-bottom pb-3">
-        @*<span class="pb-3">@Model.StoryDetail.Mission.Title</span>*@
+        <span class="pb-3">@Model.StoryDetail.Mission.Title</span>
     </div>
     <div class="st-mission-description mb-3">
         <span>@Model.StoryDetail.Mission.Description</span>
