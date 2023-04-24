@@ -12,25 +12,7 @@
     @{
     <partial name="_ValidationScriptsPartial" />
     }
-}
-@if (IsLoggedIn != "True")
-{
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Login</h4>
-                </div>
-                <div class="modal-body">
-                    <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
-                        Login
-                        <img src="~/images/right-arrow.png" alt="">
-                        <img src="~/images/right-arrow2.png" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+} </div>
 }
 
 <div class="container mt-3">
@@ -150,7 +132,6 @@
                         @if (Model.mission.MissionType == "Time")
                         {
                             <p>From @Model.mission.StartDate.Value.ToString("dd/MM/yyyy") until @Model.mission.EndDate.Value.ToString("dd/MM/yyyy")</p>
-
                         }
                         else
                         {
@@ -183,9 +164,6 @@
                         {
                             <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.MissionId"><i class="bi bi-heart favorite-button empty-heart text-light me-2" data-mission-id="@Model.mission.MissionId"></i><span>Add to Favourite</span></a>
                         }
-
-
-                        @*<a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2"><img class="me-3" src="~/images/heart1.png" /><img class="me-3" src="~/images/heart.png" /><span>Add to Favourite</span></a>*@
                     </div>
                     <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
                         <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#inviteVolunteer"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
@@ -200,25 +178,12 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body" id="all-users">
-                                        @if (Model.UserList == null)
+                                        @foreach (var u in Model.UserList)
                                         {
-                                            <!-- Login button -->
-                                            <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
-                                                Login to recommend to co-worker
-                                                <img src="~/images/right-arrow.png" alt="">
-                                                <img src="~/images/right-arrow2.png" alt="">
-                                            </a>
-                                        }
-                                        else
-                                        {
-
-                                            @foreach (var u in Model.UserList)
-                                            {
-                                                <div class="mt-2 d-flex justify-content-between">
-                                                    <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
-                                                    <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.MissionId">Invite</button></span>
-                                                </div>
-                                            }
+                                            <div class="mt-2 d-flex justify-content-between">
+                                                <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
+                                                <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.MissionId">Invite</button></span>
+                                            </div>
                                         }
 
                                     </div>
@@ -227,14 +192,7 @@
                         </div>
                     </div>
 
-                    @*average rating capsule*@
-                    @*@{
-                        double avgRating = 0;
-                        @if (Model.mission.MissionRatings.Any())
-                        {
-                        avgRating = Model.mission.MissionRatings.Average(r => r.Rating);
-                        }
-                        }*@
+                  
                     <div class="star-capsule">
                         @{
                             // we will check  if user have already rated this mission or not
@@ -390,18 +348,20 @@
                 <div class="tab-pane show active fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="intro">
                         <h2 class="mt-3">Introduction</h2>
-                        <p>@Model.mission.Description</p>
-                    </div>
-                    <div class="challenge">
-                        <h2>Challenge</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>@Html.Raw(Model.mission.Description)</p>
                     </div>
                     <div class="docs">
                         <h2>Documents</h2>
                         <div class="d-flex mt-3">
-                            <div class="d-flex mb-1"><img class="me-2" src="~/images/pdf.png" /><span>lorem-ipsum.pdf</span></div>
-                            <div class="d-flex mb-1"><img class="me-2" src="~/images/doc.png" /><span>at_vero_eos_accusamus.doc</span></div>
-                            <div class="d-flex mb-1"><img class="me-2" src="~/images/xlsx.png" /><span>important_doc.xls</span></div>
+                            @foreach(var doc in Model.MissionDocs)
+                            {
+                            <div class="d-flex mb-1"><a class="text-decoration-none text-secondary" href="@Url.Action("DisplayDoc", "Mission", new{fileName = @doc})" target="_blank"><img class="me-2" src="~/images/pdf.png" /><span>@doc</span></a></div>
+                            }
+                            @if(Model.MissionDocs.Count() == 0)
+                            {
+                            <h4>There is no documnets in this mission</h4>
+
+                            }
                         </div>
                     </div>
                 </div>

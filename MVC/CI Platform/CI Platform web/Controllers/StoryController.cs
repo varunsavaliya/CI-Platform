@@ -49,52 +49,14 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public async Task<IActionResult> StoriesListing(InputData inputData)
         {
-            StoriesListingModel viewModel = new();
-            // Extract the values from the inputData object
-            string selectedCountry = inputData.selectedCountry;
-            string selectedCities = inputData.selectedCities;
-            string selectedThemes = inputData.selectedThemes;
-            string selectedSkills = inputData.selectedSkills;
-            string searchText = inputData.searchText;
-            int pageSize = inputData.pageSize;
-            int pageNo = inputData.pageNo;
-
-            IConfigurationRoot _configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
-
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
-            using (SqlConnection connection = new(connectionString))
+            var (storyList, totalRecords) = _story.GetStoryCards(inputData);
+            StoriesListingModel model = new()
             {
-                connection.Open();
-                // Call the stored procedure
-                SqlCommand command = new("spGetStory", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@countryId", SqlDbType.VarChar).Value = selectedCountry != null ? selectedCountry : null;
-                command.Parameters.Add("@cityId", SqlDbType.VarChar).Value = selectedCities != null ? string.Join(",", selectedCities) : null;
-                command.Parameters.Add("@themeId", SqlDbType.VarChar).Value = selectedThemes != null ? string.Join(",", selectedThemes) : null;
-                command.Parameters.Add("@skillId", SqlDbType.NVarChar).Value = selectedSkills != null ? string.Join(",", selectedSkills) : null;
-                command.Parameters.Add("@searchText", SqlDbType.VarChar).Value = searchText;
-                command.Parameters.Add("@pageSize", SqlDbType.Int).Value = pageSize;
-                command.Parameters.Add("@pageNo", SqlDbType.Int).Value = pageNo;
-                SqlDataReader reader = command.ExecuteReader();
-
-                // Read the results
-                List<long> StoryIds = new();
-                while (reader.Read())
-                {
-                    long totalStories = reader.GetInt32("TotalStories");
-                    viewModel.totalrecords = totalStories;
-                }
-                reader.NextResult();
-                while (reader.Read())
-                {
-                    // read only Story id for comparing with story table
-                    long StoryId = reader.GetInt64("story_id");
-                    StoryIds.Add(StoryId);
-                }
-                viewModel.StoriesList = await _story.GetStories(StoryIds);
-                connection.Close();
-            }
-            return PartialView("_StoryPartial", viewModel);
+                StoriesList = storyList,
+                totalrecords = totalRecords
+            };
+               
+            return PartialView("_StoryPartial", model);
         }
         public async Task<IActionResult> ShareStory()
         {

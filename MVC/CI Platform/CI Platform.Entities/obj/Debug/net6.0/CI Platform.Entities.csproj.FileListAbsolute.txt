@@ -166,3 +166,17 @@ D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Pla
 D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
 D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
 D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache

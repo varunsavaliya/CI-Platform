@@ -923,6 +923,10 @@ input:focus-visible {
     border: 1px solid #e1e1e1;
 }
 
+.sort-box ul li{
+    cursor:pointer;
+}
+
     .sort-box a, .sort-box a:active {
         color: #414141 !important;
     }
@@ -1150,7 +1154,7 @@ input:focus-visible {
     padding: 10px 20px;
     text-align: center !important;
     text-decoration: none !important;
-    display: inline-block !important;
+    display: inline-block;
     font-size: 16px !important;
     margin: 10px auto 0 auto;
     cursor: pointer !important;
@@ -1444,10 +1448,10 @@ footer {
     }
 
 .vmbtn {
-    border: 2px solid #757575;
-    border-radius: 33px;
-    width: -webkit-fill-available;
-    padding: 10px 0;
+    border: 2px solid #757575 !important;
+    border-radius: 33px !important;
+    width: -webkit-fill-available !important;
+    padding: 10px 0 !important;
 }
     /*.vmbtn img+img{
         display:none;
@@ -1536,7 +1540,7 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    width: auto;
+    width: auto !important;
     min-width: max-content;
 }
 

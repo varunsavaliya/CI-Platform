@@ -58,6 +58,41 @@ namespace Ci_Platform.Repositories.Repositories
             return _context.Stories.Any(s => s.MissionId == missionId && s.UserId == userId);
         }
 
+        public (List<StoryCard> storyList, int totalRecords) GetStoryCards(InputData queryParams)
+        {
+            var query = _context.Stories.Where(story => story.Status == "PUBLISHED" && story.DeletedAt == null).AsQueryable();
+
+            if (queryParams.CityIds.Any())
+                query = query.Where(story => queryParams.CityIds.Contains(story.Mission.CityId));
+
+            if (!queryParams.CityIds.Any() && queryParams.CountryId != 0)
+                query = query.Where(story => story.Mission.CountryId == queryParams.CountryId);
+
+            if (queryParams.ThemeIds.Any())
+                query = query.Where(story => queryParams.ThemeIds.Contains(story.Mission.ThemeId));
+
+            if (queryParams.SkillIds.Any())
+                query = query.Where(story => story.Mission.MissionSkills.Any(skill => queryParams.SkillIds.Contains(skill.SkillId)));
+
+            if (!string.IsNullOrWhiteSpace(queryParams.searchText))
+                query = query.Where(story => story.Title.ToLower().Contains(queryParams.searchText.ToLower()));
+
+            var storyCardQuery = query.Select(story => new StoryCard()
+            {
+                StoryData = story,
+                UserName = story.User.FirstName+" " + story.User.LastName,
+                StoryMedia = story.StoryMedia.Where(story => story.Type == "image" && story.DeletedAt == null).Select(story => story.Path).FirstOrDefault(),
+                ThemeName = story.Mission.Theme.Title,
+            }) ;
+
+            var records = storyCardQuery
+                .Skip((queryParams.pageNo - 1) * queryParams.pageSize)
+                .Take(queryParams.pageSize)
+                .ToList();
+
+            return (records, storyCardQuery.Count());
+        }
+
         public async Task DeleteImages(Story story)
         {
             var existingMedia = _context.StoryMedia.Where(m => m.StoryId == story.StoryId && m.Type == "image");

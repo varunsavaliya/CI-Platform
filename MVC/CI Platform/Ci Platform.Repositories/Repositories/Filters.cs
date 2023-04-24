@@ -40,5 +40,10 @@ namespace Ci_Platform.Repositories.Repositories
         {
             return await _context.CmsTables.ToListAsync();
         }
+
+        public async Task<List<User>> GetUsers()
+        {
+            return await _context.Users.Where(user => user.DeletedAt == null).ToListAsync();
+        }
     }
 }

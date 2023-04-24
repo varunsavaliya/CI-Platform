@@ -10,6 +10,6 @@ namespace Ci_Platform.Repositories.Interfaces
 
         public Task<List<City>> GetCitiesByCountryAsync(int countryId);
         public Task<List<CmsTable>> GetCmsTables();
-
+        public Task<List<User>> GetUsers();
     }
 }

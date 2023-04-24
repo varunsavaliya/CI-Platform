@@ -1,16 +1,9 @@
 ﻿using Ci_Platform.Repositories.Interfaces;
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
-using System.Net;
-using System.Net.Mail;
-using System.Reflection;
-using System.Security.Claims;
 
 namespace CI_Platform_web.Controllers
 {
@@ -30,14 +23,13 @@ namespace CI_Platform_web.Controllers
 
         public async Task<IActionResult> LandingPage()
         {
-            if (HttpContext.Session.GetString("UserId") != null)
+            if (HttpContext.Session.GetString("UserId") == null)
             {
-                string userId = HttpContext.Session.GetString("UserId");
+                string returnUrl = Url.Action("LandingPage", "Mission");
+                return RedirectToAction("Index", "Home", new { returnUrl });
             }
 
             var LandingView = new LandingPageModel();
-
-
             LandingView.Country = await _filters.GetCountriesAsync();
             LandingView.Theme = await _filters.GetThemesAsync();
             LandingView.Skill = await _filters.GetSkillsAsyc();
@@ -53,84 +45,16 @@ namespace CI_Platform_web.Controllers
                 UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
                 ViewBag.UserId = UserId;
             }
-            List<Mission> missions = new List<Mission>();
-            var vm = new LandingPageModel();
 
-
-            // Extract the values from the inputData object
-            string selectedCountry = inputData.selectedCountry;
-            string selectedCities = inputData.selectedCities;
-            string selectedThemes = inputData.selectedThemes;
-            string selectedSkills = inputData.selectedSkills;
-            string searchText = inputData.searchText;
-            string selectedSortOption = inputData.selectedSortOption;
-            string userId = inputData.userId;
-            int pageSize = inputData.pageSize;
-            int pageNo = inputData.pageNo;
-
-            // use below code when you expect only one datatable
-
-            //var response = _context.Missions.FromSql($"exec spGetMission @searchText={searchText}, @countryId={selectedCountry}, @cityId={selectedCities}, @themeId={selectedThemes}, @skillId={selectedSkills}, @sortCase = {selectedSortOption}, @userId = {userId}, @pageNo={pageNo}, @TotalRecords=@TotalRecords output", totalRecordsParam);
-
-            //var items = await response.ToListAsync();
-
-            //var MissionIds = items.Select(m => m.MissionId).ToList();
-            var users = _context.Users.Where(u => u.UserId != Convert.ToInt64(UserId)).ToList();
-
-            IConfigurationRoot _configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
-
-            string connectionString = _configuration.GetConnectionString("DefaultConnection");
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            var (missionList, totalRecords) = _mission.GetMissionCards(inputData, UserId);
+            LandingPageModel model = new()
             {
-                connection.Open();
+                MissionList = missionList,
+                Users = await _filters.GetUsers(),
+                totalRecords = totalRecords,
+            };
 
-                // Call the stored procedure
-                SqlCommand command = new SqlCommand("spGetMission", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add("@countryId", SqlDbType.VarChar).Value = selectedCountry != null ? selectedCountry : null;
-                command.Parameters.Add("@cityId", SqlDbType.VarChar).Value = selectedCities != null ? string.Join(",", selectedCities) : null;
-                command.Parameters.Add("@themeId", SqlDbType.VarChar).Value = selectedThemes != null ? string.Join(",", selectedThemes) : null;
-                command.Parameters.Add("@skillId", SqlDbType.NVarChar).Value = selectedSkills != null ? string.Join(",", selectedSkills) : null;
-                command.Parameters.Add("@searchText", SqlDbType.VarChar).Value = searchText;
-                command.Parameters.Add("@sortCase", SqlDbType.VarChar).Value = selectedSortOption;
-                command.Parameters.Add("@userId", SqlDbType.VarChar).Value = userId;
-                command.Parameters.Add("@pageSize", SqlDbType.Int).Value = pageSize;
-                command.Parameters.Add("@pageNo", SqlDbType.Int).Value = pageNo;
-                SqlDataReader reader = command.ExecuteReader();
-
-                // Read the results
-                List<long> missionIds = new List<long>();
-                while (reader.Read())
-                {
-                    long totalRecords = reader.GetInt32("TotalRecords");
-                    ViewBag.totalRecords = totalRecords;
-                }
-                reader.NextResult();
-
-                while (reader.Read())
-                {
-
-                    // read only missionIds for comparing with mission table
-                    long missionId = reader.GetInt64("mission_id");
-                    missionIds.Add(missionId);
-                }
-
-                foreach (long missionId in missionIds)
-                {
-                    Mission mission = _context.Missions.Where(m => m.MissionId == missionId).Include(m => m.City).Include(m => m.Country).Include(m => m.Theme).Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill).Include(m => m.GoalMissions).Include(m => m.FavoriteMissions).Include(m => m.MissionRatings).Include(m => m.Timesheets.Where(t => t.Status == "APPROVED")).FirstOrDefault();
-
-                    if (mission != null)
-                    {
-                        missions.Add(mission);
-                    }
-                }
-                vm.MissionList = missions;
-
-                connection.Close();
-            }
-            vm.MissionList = missions;
-            vm.Users = users;
-            return PartialView("_GridListPartial", vm);
+            return PartialView("_GridListPartial", model);
         }
 
         public async Task<IActionResult> GetCitiesByCountry(int countryId)
@@ -172,17 +96,16 @@ namespace CI_Platform_web.Controllers
 
         public IActionResult MissionVolunteering(int id)
         {
-            var UserId = "";
-            if (HttpContext.Session.GetString("UserName") != null)
+            long UserId = 0;
+            if (HttpContext.Session.GetString("UserId") == null)
             {
-                ViewBag.UserName = HttpContext.Session.GetString("UserName");
-                ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
-                UserId = HttpContext.Session.GetString("UserId");
-                ViewBag.UserId = UserId;
+                string returnUrl = Url.Action("MissionVolunteering", "Mission");
+                return RedirectToAction("Index", "Home", new { returnUrl });
             }
             else
             {
-                ViewBag.UserName = "Login";
+                UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+
             }
 
             // Retrieve the mission detail for the given ID
@@ -257,17 +180,19 @@ namespace CI_Platform_web.Controllers
             {
                 mission = missionDetail,
                 RelatedMissions = relatedMissions,
-                totalVolunteers = _context.MissionApplications.Where(ma => ma.MissionId == id).Count(),
+                totalVolunteers = _context.MissionApplications.Where(ma => ma.MissionId == id && ma.ApprovalStatus == "PUBLISHED").Count(),
+                MissionDocs = _context.MissionDocuments.Where(doc => doc.MissionId == id).Select(doc => doc.DocumentPath).ToList(),
             };
-            if (UserId == "")
-            {
-                missionVolunteeringModel.UserList = null;
-            }
-            else
-            {
-                missionVolunteeringModel.UserList = _context.Users.Where(u => u.UserId != Convert.ToInt64(UserId) || u.MissionApplications.Any(ma => ma.MissionId == id && ma.ApprovalStatus != "PUBLISHED")).ToList();
-            }
+                missionVolunteeringModel.UserList = _context.Users.Where(u => u.UserId != UserId || u.MissionApplications.Any(ma => ma.MissionId == id && ma.ApprovalStatus != "PUBLISHED")).ToList();
             return View(missionVolunteeringModel);
+        }
+
+        public IActionResult DisplayDoc(string fileName)
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/MissionDocuments", fileName);
+            var fileStream = new FileStream(filePath, FileMode.Open);
+            var contentType = "application/pdf";
+            return File(fileStream, contentType);
         }
 
         [HttpGet]
@@ -290,8 +215,14 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public async Task<IActionResult> MissionInvite(long ToUserId, long Id, long FromUserId, MissionVolunteeringModel viewmodel)
         {
+            long UserId = 0;
+            if (HttpContext.Session.GetString("UserName") != null)
+            {
+                UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+                ViewBag.UserId = UserId;
+            }
             var MissionLink = Url.Action("MissionVolunteering", "Mission", new { id = Id }, Request.Scheme);
-            await _mission.SendEmailInvite(ToUserId, Id, FromUserId, MissionLink, viewmodel);
+            await _mission.SendEmailInvite(ToUserId, Id, UserId, MissionLink, viewmodel);
             return Json(new { success = true });
         }
 

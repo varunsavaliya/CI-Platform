@@ -6,6 +6,8 @@ namespace Ci_Platform.Repositories.Interfaces
     public interface IStory : ISendInvite<StoryDetailModel>
     {
         public Task<List<Story>> GetStories(List<long> storyIds);
+        public (List<StoryCard> storyList, int totalRecords) GetStoryCards(InputData queryParams);
+
         public Task<List<Mission>> GetMissionsByUser(long userId);
         public Task AddStoryAsDraft(ShareStoryModel model, Story story);
         public Story AvailableStory(long userId, long missionId);

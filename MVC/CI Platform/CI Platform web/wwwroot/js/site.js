@@ -4,6 +4,7 @@
     var currentUrl = window.location.href;
     let selectedCountry = null;
     let selectedSortOption = null;
+    let sortOrder = null;
     if (currentUrl.includes("LandingPage")) {
         getMission()
     } else if (currentUrl.includes("StoriesListing")) {
@@ -24,7 +25,7 @@
             url: "/Mission/GetCitiesByCountry",
             data: { countryId: countryId },
             success: function (data) {
-                if (currentUrl.includes("LandingPage")) {
+                if (currentUrl.includes("LandingPage") || currentUrl.includes('StoriesListing')) {
                     var dropdown = $("#cityDropdown");
                     dropdown.empty();
                     var items = "";
@@ -99,6 +100,7 @@
                 if (closeAllButton.length === 0) {
                     searchedFilters.append('<div class="pill closeAll">Close All</div>');
                     searchedFilters.children('.closeAll').click(function () {
+                        selectedCountry = null;
                         allDropdowns.find('input[type="checkbox"]').prop('checked', false);
                         searchedFilters.empty();
                         if (currentUrl.includes("LandingPage")) {
@@ -159,6 +161,25 @@
 
     $('#sortByDropdown li').on('click', function () {
         selectedSortOption = $(this).find('a').text();
+        if (selectedSortOption == 'Newest') {
+            selectedSortOption = 'CreatedAt'
+            sortOrder = 'Desc'
+        } else if (selectedSortOption == 'Oldest') {
+            selectedSortOption = 'CreatedAt'
+            sortOrder = 'Asc'
+        } else if (selectedSortOption == 'Lowest available seats') {
+            selectedSortOption = 'SeatsLeft'
+            sortOrder = 'Asc'
+        } else if (selectedSortOption == 'Highest available seats') {
+            selectedSortOption = 'SeatsLeft'
+            sortOrder = 'Desc'
+        } else if (selectedSortOption == 'Registration deadline') {
+            selectedSortOption = 'StartDate'
+            sortOrder = 'Asc'
+        } else if (selectedSortOption == 'My favourites') {
+            selectedSortOption = 'Favorites'
+            sortOrder = 'Asc'
+        }
         if (currentUrl.includes("LandingPage")) {
             getMission()
         } else if (currentUrl.includes("StoriesListing")) {
@@ -274,22 +295,22 @@
 
 
         let selectedThemes = $('input[type="checkbox"][name="themeCheckboxes"]:checked').map(function () {
-            return $(this).val();
+            return parseInt($(this).val());
         }).get();
 
         let selectedSkills = $('input[type="checkbox"][name="skillCheckboxes"]:checked').map(function () {
-            return $(this).val();
+            return parseInt($(this).val());
         }).get();
-        let pageSize = 6;
+        let pageSize = 9;
 
         let inputData = {
-            selectedCountry: selectedCountry !== "" ? selectedCountry : null,
-            selectedCities: selectedCities !== "" ? selectedCities.join() : null,
-            selectedThemes: selectedThemes !== "" ? selectedThemes.join() : null,
-            selectedSkills: selectedSkills !== "" ? selectedSkills.join() : null,
+            CountryId: selectedCountry !== "" ? selectedCountry : null,
+            CityIds: selectedCities.length !== 0 ? selectedCities : null,
+            ThemeIds: selectedThemes.length !== 0 ? selectedThemes : null,
+            SkillIds: selectedSkills.length !== 0 ? selectedSkills : null,
             searchText: searchText !== "" ? searchText : null,
-            selectedSortOption: selectedSortOption !== undefined ? selectedSortOption : null,
-            userId: userId,
+            SortBy: selectedSortOption !== undefined ? selectedSortOption : "Newest",
+            SortOrder: sortOrder,
             pageSize: pageSize,
             pageNo: pageNo !== undefined ? pageNo : 1
         }
@@ -363,6 +384,7 @@
                             $(this).removeClass('active');
                         }
                     })
+                    let tempPage = currentPage;
                     pageNo = currentPage;
                     if ($(this).find('a').hasClass('first-page')) {
                         pageNo = 1;
@@ -412,12 +434,15 @@
                         currentPage = pageNo;
 
                     }
-                    getMission(pageNo)
+                    if (pageNo != tempPage) {
+
+                        getMission(pageNo)
+                    }
                 }));
                 $('.totalMissions').text(totalRecords + ' Missions')
             },
             error: function (error) {
-
+                console.log(error)
             }
         });
     }
@@ -427,23 +452,24 @@
         let searchText = $(".search-field input").val();
 
         let selectedCities = $('input[type="checkbox"][name="cityCheckboxes"]:checked').map(function () {
-            return $(this).val();
+            return parseInt($(this).val());
         }).get();
 
+
         let selectedThemes = $('input[type="checkbox"][name="themeCheckboxes"]:checked').map(function () {
-            return $(this).val();
+            return parseInt($(this).val());
         }).get();
 
         let selectedSkills = $('input[type="checkbox"][name="skillCheckboxes"]:checked').map(function () {
-            return $(this).val();
+            return parseInt($(this).val());
         }).get();
         let pageSize = 3;
 
         let inputData = {
-            selectedCountry: selectedCountry !== "" ? selectedCountry : null,
-            selectedCities: selectedCities !== "" ? selectedCities.join() : null,
-            selectedThemes: selectedThemes !== "" ? selectedThemes.join() : null,
-            selectedSkills: selectedSkills !== "" ? selectedSkills.join() : null,
+            CountryId: selectedCountry !== "" ? selectedCountry : null,
+            CityIds: selectedCities.length !== 0 ? selectedCities : null,
+            ThemeIds: selectedThemes.length !== 0 ? selectedThemes : null,
+            SkillIds: selectedSkills.length !== 0 ? selectedSkills : null,
             searchText: searchText !== "" ? searchText : null,
             pageSize: pageSize,
             pageNo: pageNo !== undefined ? pageNo : 1
@@ -519,6 +545,8 @@
                             $(this).removeClass('active');
                         }
                     })
+                    let tempPage = currentPage;
+
                     pageNo = currentPage;
                     if ($(this).find('a').hasClass('first-page')) {
                         pageNo = 1;
@@ -567,7 +595,8 @@
                         pageNo = $(this).find('a').data('page');
                         currentPage = pageNo;
                     }
-                    getStory(pageNo)
+                    if (pageNo != tempPage)
+                        getStory(pageNo)
                 }));
             }
         })
@@ -625,7 +654,7 @@
             success: function (data) {
                 let volunteersContainer = $('.recent-volunteers');
                 if (totalRecentVolunteers == 0) {
-                    volunteersContainer.text('No recent volunteers for this mission').addClass('px-3');
+                    volunteersContainer.text('No recent volunteers for this mission').addClass('px-3 py-3');
                     $('#volunteer-pagination').parent().parent().hide()
                 } else {
 
@@ -1581,7 +1610,7 @@
                             allfiles.splice(allfiles.indexOf(file), 1);
                             if (file === defaultImage) {
                                 defaultImage = null;
-                            }
+                            } 
                         });
 
                         item.on('click', function () {

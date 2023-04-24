@@ -19,5 +19,6 @@ namespace CI_Platform.Entities.ViewModels
         public string comment1 { get; set; }
         public List<MissionApplication> recentVolunteers { get; set; }
         public int totalVolunteers { get; set; }
+        public List<string> MissionDocs { get; set; } = new List<string>();
     }
 }
