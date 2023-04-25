@@ -21,7 +21,7 @@
                     <!-- File input element -->
                     <input asp-for="ProfileImage" type="file" id="profile-image-input" class="d-none" />
                 </div>
-                <span class="user-name mb-1">@Model.Name @Model.Surname</span>
+                <span class="user-name mb-1 text-center">@Model.Name @Model.Surname</span>
                 <span class="change-password" data-bs-toggle="modal" data-bs-target="#change-password">Change Password</span>
 
                 <div class="modal fade" id="change-password" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,12 +64,12 @@
                     </span>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label asp-for="Name" class="form-label">Name*</label>
+                    <label asp-for="Name" class="form-label">Name<span class="text-danger">*</span></label>
                     <input asp-for="Name" name="Name" type="text" class="form-control" id="name" aria-describedby="Name" placeholder="Enter your name">
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label asp-for="Surname" class="form-label">Surname*</label>
+                    <label asp-for="Surname" class="form-label">Surname<span class="text-danger">*</span></label>
                     <input asp-for="Surname" name="Surname" type="text" class="form-control" id="surname" aria-describedby="Surname" placeholder="Enter your surname">
                     <span asp-validation-for="Surname" class="text-danger"></span>
                 </div>
@@ -85,15 +85,15 @@
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
                     <label asp-for="title" class="form-label">Title</label>
-                    <input asp-for="title" name="title" type="text" class="form-control" id="title" aria-describedby="title" placeholder="Enter title" >
+                    <input asp-for="title" name="title" type="text" class="form-control" id="title" aria-describedby="title" placeholder="Enter title">
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
                     <label asp-for="department" class="form-label">Department</label>
                     <input asp-for="department" name="department" type="text" class="form-control" id="department" aria-describedby="department" placeholder="Enter department name">
                 </div>
                 <div class="col-12 mb-3">
-                    <label asp-for="MyProfile" class="form-label">My Profile*</label>
-                    <textarea asp-for="MyProfile" name="MyProfile" class="form-control" id="MyProfile" aria-describedby="MyProfile" rows="3" placeholder="Enter your comments..." ></textarea>
+                    <label asp-for="MyProfile" class="form-label">My Profile<span class="text-danger">*</span></label>
+                    <textarea asp-for="MyProfile" name="MyProfile" class="form-control" id="MyProfile" aria-describedby="MyProfile" rows="3" placeholder="Enter your comments..."></textarea>
                     <span asp-validation-for="MyProfile" class="text-danger"></span>
                 </div>
                 <div class="col-12 mb-3">
@@ -108,7 +108,7 @@
                     </span>
                 </div>
                 <div class="col-md-6 col-sm-12 mb-3">
-                    <label asp-for="Country" class="form-label">Country*</label>
+                    <label asp-for="Country" class="form-label">Country<span class="text-danger">*</span></label>
                     <select asp-for="Country" class="form-select user-country" aria-label="Country">
                         <option value="">Select your country</option>
                         @foreach (var country in Model.countryList)
@@ -129,6 +129,21 @@
                     <label asp-for="City" class="form-label">City</label>
                     <select asp-for="City" class="form-select user-city" aria-label="Country">
                         <option value="">Select your city</option>
+                        @if (Model.CityList != null)
+                        {
+
+                            @foreach (var city in Model.CityList)
+                            {
+                                @if (city.CityId == Model.City)
+                                {
+                                    <option value="@city.CityId" selected>@city.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@city.CityId">@city.Name</option>
+                                }
+                            }   
+                        }
                     </select>
                 </div>
 
@@ -151,6 +166,7 @@
                 <div class="col-md-6 col-sm-12 mb-3">
                     <label asp-for="LinkedIn" class="form-label">LinkedIn</label>
                     <input asp-for="LinkedIn" name="LinkedIn" type="text" class="form-control" id="LinkedIn" aria-describedby="LinkedIn" placeholder="Enter linkedIn URL" value="@Model.userDetails.LinkedInUrl">
+                    <span asp-validation-for="LinkedIn" class="text-danger"></span>
                 </div>
 
 
@@ -188,8 +204,12 @@
                                                 @foreach (var skill in Model.skillList)
                                                 {
                                                     <div class="form-check ps-0 mb-2">
-                                                        <input class="form-check-input d-none" type="checkbox" id="@skill.SkillId" value="@skill.SkillId" @if(Model.userSkills.Select(us=>us.SkillId).Contains(skill.SkillId)) {<text>checked</text>} />
-                                                        <label class="form-check-label ps-3 @if(Model.userSkills.Select(us=>us.SkillId).Contains(skill.SkillId)) {<text>skill-bg</text>}" for="@skill.SkillId">@skill.SkillName</label>
+                                                        <input class="form-check-input d-none" type="checkbox" id="@skill.SkillId" value="@skill.SkillId" @if(Model.userSkills.Select(us=>us.SkillId).Contains(skill.SkillId)) {
+                                                    <text>checked</text>
+                                                    } />
+                                                        <label class="form-check-label ps-3 @if(Model.userSkills.Select(us=>us.SkillId).Contains(skill.SkillId)) {
+                                                    <text>skill-bg</text>
+}" for="@skill.SkillId">@skill.SkillName</label>
                                                     </div>
                                                 }
                                             </div>

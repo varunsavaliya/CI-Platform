@@ -251,7 +251,7 @@
         $.ajax({
             type: 'POST',
             url: "/Mission/UpdateRating",
-            data: { missionId: missionId, userId: userId, rating: index },
+            data: { missionId: missionId, rating: index },
             success: function (data) {
                 // Remove text-warning class from all stars
                 stars.removeClass('text-warning');
@@ -277,7 +277,14 @@
                 MissionId: missionId, UserId: userId
             },
             success: function (response) {
-                $(".apply-btn").text("Applied").addClass('published-btn').removeClass('card-btn');
+                $(".apply-btn").text("Applied").addClass('published-btn btn btn-success disabled').removeClass('card-btn');
+                swal.fire({
+                    position: 'center',
+                    icon: response.icon,
+                    title: response.message,
+                    showConfirmButton: false,
+                    timer: 3000
+                })
             },
             error: function (error) {
 
@@ -605,18 +612,28 @@
     // add comment in mission volunteering page
     $('#comment-form').submit(function (e) {
         e.preventDefault()
-        var formData = $(this).serialize();
-        $.ajax({
-            url: '/Mission/AddComment',
-            type: 'POST',
-            data: formData,
-            success: function (response) {
-                $('.comment-box').empty()
-            },
-            error: function (error) {
+        if ($(this).valid()) {
 
-            }
-        })
+            var formData = $(this).serialize();
+            $.ajax({
+                url: '/Mission/AddComment',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    $('.comment-box').empty()
+                    swal.fire({
+                        position: 'center',
+                        icon: response.icon,
+                        title: response.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                },
+                error: function (error) {
+
+                }
+            })
+        }
     })
 
     // Invite user for volunteering mission page, Landing page, and story detail page
@@ -856,7 +873,6 @@
                 if (result != null) {
                     $('#storyTitle').val(result.Title);
                     $('.note-editable').html(result.Description);
-
                     storyTitle = $('#storyTitle').val();
                     story = $('.note-editable').html();
                     // adding all urls in url box
@@ -865,7 +881,7 @@
                         if (result.StoryMedia.$values.hasOwnProperty(i)) {
                             var obj = result.StoryMedia.$values[i];
                             if (obj.Type === "VIDEO") {
-                                url += obj.path + `\n`;
+                                url += obj.Path + `\n`;
                             }
                             else {
                                 // Create a new File object from the image path
@@ -892,7 +908,7 @@
                         }
                     }
                     $('#url').val(url);
-                    $('#preview-btn').val(result.storyId)
+                    $('#preview-btn').val(result.StoryId)
                 }
             },
             error: function (error) {
@@ -943,48 +959,50 @@
     $('.ssbuttons div').on('click', 'button', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        if (validateForm()) {
-            formDetails.append("selectMission", missionId);
+        if ($(this).val() == 1 || $(this).val() == 2) {
+            if (validateForm()) {
+                formDetails.append("selectMission", missionId);
 
-            formDetails.append("storyTitle", storyTitle);
-            formDetails.append("story", story);
-            formDetails.append("Date", $('date').val());
-            formDetails.append("button", $(this).val());
-            // Loop through all the files in the allfiles array and add them to the DataTransfer object
-            for (var i = 0; i < allfiles.length; i++) {
-                formDetails.append('images', allfiles[i]);
-            }
-            // append all urls in formDetail
-            var urls = null;
-            var u = $('#url').val();
-            if (u != null) {
-                urls = u.split('\n');
-                for (var i = 0; i < urls.length; i++) {
-                    formDetails.append("url", urls[i]);
+                formDetails.append("storyTitle", storyTitle);
+                formDetails.append("story", story);
+                formDetails.append("Date", $('date').val());
+                formDetails.append("button", $(this).val());
+                // Loop through all the files in the allfiles array and add them to the DataTransfer object
+                for (var i = 0; i < allfiles.length; i++) {
+                    formDetails.append('images', allfiles[i]);
                 }
-            }
-            else {
-                formDetails.append("url", null);
-            }
-            $.ajax({
-                url: '/Story/ShareStory',
-                type: 'POST',
-                data: formDetails,
-                processData: false,
-                contentType: false,
-                success: function (result) {
-                    swal.fire({
-                        position: 'center',
-                        icon: result.icon,
-                        title: result.message,
-                        showConfirmButton: false,
-                        timer: 3000
-                    })
-                },
-                error: function (error) {
+                // append all urls in formDetail
+                var urls = null;
+                var u = $('#url').val();
+                if (u != null) {
+                    urls = u.split('\n');
+                    for (var i = 0; i < urls.length; i++) {
+                        formDetails.append("url", urls[i]);
+                    }
+                }
+                else {
+                    formDetails.append("url", null);
+                }
+                $.ajax({
+                    url: '/Story/ShareStory',
+                    type: 'POST',
+                    data: formDetails,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        swal.fire({
+                            position: 'center',
+                            icon: result.icon,
+                            title: result.message,
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                    },
+                    error: function (error) {
 
-                }
-            });
+                    }
+                });
+            }
         }
     })
 
@@ -1039,6 +1057,32 @@
             $(this).removeClass('skill-bg');
         }
     });
+    $(document).on('keyup', '#employeeId', function () {
+        var employeeId = $(this).val();
+        $.ajax({
+            url: '/User/ValidateEmployeeId',
+            type: 'GET',
+            data: { employeeId: employeeId },
+            success: function (result) {
+                if (result.isValid === true) {
+                    // Employee Id is valid
+                    $('#employeeId').removeClass('is-invalid');
+                    $('span[data-valmsg-for="employeeId"]').empty();
+                    $('#employeeId').attr('aria-invalid', false);
+                } else {
+                    // Employee Id is invalid
+                    $('#employeeId').addClass('is-invalid');
+                    $('#employeeId').attr('aria-invalid', true);
+                    $('span[data-valmsg-for="employeeId"]').text(result.message);
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+
+
 
     var uniqueId = 0;
     // Add arrow button event listener
@@ -1563,7 +1607,7 @@
 
                 let imagePaths = $('.image-paths');
                 let defaultImagePath = $('.default-image-path');
-                if (defaultImagePath.length != 0) {
+                if (defaultImagePath[0].value != '') {
                     const response = await fetch('/MissionImages/' + defaultImagePath[0].value);
                     const blob = await response.blob();
                     const file = new File([blob], defaultImagePath[0].value, { type: blob.type });
@@ -1610,7 +1654,7 @@
                             allfiles.splice(allfiles.indexOf(file), 1);
                             if (file === defaultImage) {
                                 defaultImage = null;
-                            } 
+                            }
                         });
 
                         item.on('click', function () {
@@ -1826,7 +1870,7 @@
         setTimeout(function () {
             location.reload();
             window.location.href = '/Admin/AdminStory';
-        }, 3000);
+        }, 1500);
     })
     function handleApprovals(action, button, Id) {
         let deleteTr = $('.tr_' + Id);

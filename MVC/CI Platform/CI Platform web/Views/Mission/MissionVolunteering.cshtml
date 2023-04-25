@@ -2,7 +2,6 @@
 @{
     Layout = "_HeaderLayout";
     ViewData["Title"] = "Mission Volunteering";
-    var IsLoggedIn = ViewBag.IsLoggedIn;
     var UserId = Convert.ToInt64(ViewBag.UserId);
 }
 <script>
@@ -14,7 +13,13 @@
     }
 } </div>
 }
-
+@functions {
+    public string GetEmbedUrl(string url)
+    {
+        var videoId = url.Split("v=")[1];
+        return $"https://www.youtube.com/embed/{videoId}";
+    }
+                    }
 <div class="container mt-3">
     <div class="row">
         <!-- slider image gallery(swiper) -->
@@ -25,42 +30,68 @@
             "
                  class="swiper mySwiper2">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/images/img1.png" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/images/img11.png" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/images/image1.png" />
-                    </div>
+
+                    @foreach (var media in Model.mission.MissionAllMedia)
+                    {
+                        if (media.MediaType == "image")
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/MissionImages/@media.MediaPath" />
+                            </div>
+                        }
+                        else
+                        {
+                            @if (!string.IsNullOrEmpty(media.MediaPath))
+                            {
+                                <div class="swiper-slide">
+                                    <iframe src="@GetEmbedUrl(@media.MediaPath)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                            }
+                        }
+                    }
+                    @if (Model.mission.MissionAllMedia.Count() < 4)
+                    {
+                        for (int i = 0; i < (4 - Model.mission.MissionAllMedia.Count()); i++)
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/images/no-image-icon.png" />
+                            </div>
+                        }
+                    }
+
                 </div>
                 @*<div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>*@
             </div>
             <div thumbsSlider="" class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/images/img1.png" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/images/img11.png" />
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="~/images/image1.png" />
-                    </div>
+                    @foreach (var media in Model.mission.MissionAllMedia)
+                    {
+                        if (media.MediaType == "image")
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/MissionImages/@media.MediaPath" />
+                            </div>
+                        }
+                        else
+                        {
+                            @if (!string.IsNullOrEmpty(media.MediaPath))
+                            {
+                                <div class="swiper-slide">
+                                    <iframe src="@GetEmbedUrl(@media.MediaPath)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                </div>
+                            }
+                        }
+                    }
+                    @if (Model.mission.MissionAllMedia.Count() < 4)
+                    {
+                        for (int i = 0; i < (4 - Model.mission.MissionAllMedia.Count()); i++)
+                        {
+                            <div class="swiper-slide">
+                                <img src="~/images/no-image-icon.png" />
+                            </div>
+                        }
+                    }
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -70,9 +101,9 @@
         <!-- details section -->
         <div class="col-lg-6 col-md-12 p-4 mt-md-3">
             <div class="d-flex flex-column">
-                <h2 class="vmheading">@Model.mission.Title</h2>
+                <h2 class="vmheading">@Model.mission.Missiondata.Title</h2>
                 <p>
-                    @Model.mission.ShortDescription
+                    @Model.mission.Missiondata.ShortDescription
                 </p>
 
                 <!-- seats and deadline -->
@@ -80,29 +111,16 @@
                     <div class="seats-detail d-flex align-items-center">
                         <img src="~/images/Seats-left.png" alt="" />
                         <div class="d-flex flex-column">
-                            @{
-                                var seatsFilled = 0;
-                                @if (@Model.mission.MissionApplications.Any(sl => sl.ApprovalStatus.Contains("published")))
-                                {
-                                    seatsFilled = Model.mission.MissionApplications.Count(sl => sl.ApprovalStatus.Equals("published"));
-                                }
-                                var seatsLeft = Model.mission.TotalSeats - seatsFilled;
-                            }
-                            <p>@seatsLeft</p>
+                            <p>@Model.mission.seatsleft</p>
                             <p>Seats left</p>
                         </div>
                     </div>
                     @{
                         DateTime? currentDate = @DateTime.Now;
                         TimeSpan ts1 = new TimeSpan(1, 0, 0, 0);
-                        var deadline = Model.mission.StartDate - ts1;
-                        bool isDeadlinePassed = currentDate > deadline;
-                        bool isOngoing = currentDate > Model.mission.StartDate;
-
-
-                        bool isAlreadyApplied = Model.mission.MissionApplications.Any(ma => ma.UserId.Equals(UserId));
+                        var deadline = Model.mission.Missiondata.StartDate - ts1;
                     }
-                    @if (Model.mission.MissionType == "Time")
+                    @if (Model.mission.Missiondata.MissionType == "Time")
                     {
                         <div class="duration-detail d-flex align-items-center">
                             <img src="~/images/deadline.png" alt="">
@@ -114,31 +132,26 @@
                     }
                     else
                     {
-                        @foreach (var goal in Model.mission.GoalMissions)
-                        {
-                            <div class="duration-detail d-flex align-items-center">
-                                <img src="~/images/achieved.png" alt="">
-                                <div class="d-flex flex-column">
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="@goal.GoalValue" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p>@goal.GoalValue Achieved</p>
+                        var percentage = ((double)@Model.mission.AchievedGoal / (double)@Model.mission.Goalvalue) * 100;
+                        <div class="duration-detail d-flex align-items-center">
+                            <img src="~/images/achieved.png" alt="">
+                            <div class="d-flex flex-column">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: @percentage%" aria-valuenow="@Model.mission.AchievedGoal" aria-valuemin="0" aria-valuemax="@Model.mission.Goalvalue"></div>
                                 </div>
+                                <p>@Model.mission.AchievedGoal Achieved</p>
                             </div>
-                        }
+                        </div>
                     }
 
                     <div class="mission-date">
-                        @if (Model.mission.MissionType == "Time")
+                        @if (Model.mission.Missiondata.MissionType == "Time")
                         {
-                            <p>From @Model.mission.StartDate.Value.ToString("dd/MM/yyyy") until @Model.mission.EndDate.Value.ToString("dd/MM/yyyy")</p>
+                            <p>From @Model.mission.Missiondata.StartDate.Value.ToString("dd/MM/yyyy") until @Model.mission.Missiondata.EndDate.Value.ToString("dd/MM/yyyy")</p>
                         }
                         else
                         {
-                            @foreach (var goal in Model.mission.GoalMissions)
-                            {
-                                <p>@goal.GoalObjectiveText</p>
-                            }
+                            <p>@Model.mission.goalObjectiveText</p>
                         }
                     </div>
                 </div>
@@ -146,23 +159,13 @@
                 @*favourite and recommend to a co-worker*@
                 <div class="row border-bottom pb-3 position-relative">
                     <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
-
-
-                        @{
-                            var flag = 1;
-                        }
-                        @foreach (var fm in Model.mission.FavoriteMissions)
+                        @if (Model.mission.IsFavourite)
                         {
-                            @if (fm.UserId.Equals(UserId))
-                            {
-                                <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.MissionId"><i class="bi bi-heart-fill favorite-button filled-heart text-danger me-2" data-mission-id="@Model.mission.MissionId"></i><span>Remove From Favourite</span></a>
-                                flag = 0;
-                            }
-
+                            <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.Missiondata.MissionId"><i class="bi bi-heart-fill favorite-button filled-heart text-danger me-2" data-mission-id="@Model.mission.Missiondata.MissionId"></i><span>Remove From Favourite</span></a>
                         }
-                        @if (flag == 1)
+                        else
                         {
-                            <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.MissionId"><i class="bi bi-heart favorite-button empty-heart text-light me-2" data-mission-id="@Model.mission.MissionId"></i><span>Add to Favourite</span></a>
+                            <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.Missiondata.MissionId"><i class="bi bi-heart favorite-button empty-heart text-light me-2" data-mission-id="@Model.mission.Missiondata.MissionId"></i><span>Add to Favourite</span></a>
                         }
                     </div>
                     <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
@@ -182,7 +185,7 @@
                                         {
                                             <div class="mt-2 d-flex justify-content-between">
                                                 <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
-                                                <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.MissionId">Invite</button></span>
+                                                <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.Missiondata.MissionId">Invite</button></span>
                                             </div>
                                         }
 
@@ -192,43 +195,16 @@
                         </div>
                     </div>
 
-                  
-                    <div class="star-capsule">
-                        @{
-                            // we will check  if user have already rated this mission or not
-                            var userHasRated = false;
-                            var rating = 0;
-                            foreach (var mr in Model.mission.MissionRatings)
-                            {
-                                if (mr.UserId.Equals(UserId))
-                                {
-                                    // if rated then true
-                                    userHasRated = true;
-                                    rating = mr.Rating;
-                                    break;
-                                }
-                            }
-                        }
-                        <!-- if rated then if condition will works and prints the rated star otherwise prints empty stars -->
-                        @if (userHasRated)
-                        {
-                            for (int i = 0; i < rating; i++)
-                            {
-                                <span><i class="bi bi-star-fill text-warning" data-star="@(i + 1)"></i></span>
-                            }
-                            for (int i = rating; i < 5; i++)
-                            {
-                                <span><i class="bi bi-star-fill text-secondary" data-star="@(i + 1)"></i></span>
-                            }
-                        }
-                        else
-                        {
-                            for (int i = 0; i < 5; i++)
-                            {
-                                <span><i class="bi bi-star-fill text-secondary" data-star="@(i + 1)"></i></span>
-                            }
-                        }
 
+                    <div class="star-capsule">
+                        @for (int i = 0; i < Model.UserRatings; i++)
+                        {
+                            <span><i class="bi bi-star-fill text-warning" data-star="@(i + 1)"></i></span>
+                        }
+                        @for (int i = Model.UserRatings; i < 5; i++)
+                        {
+                            <span><i class="bi bi-star-fill text-secondary" data-star="@(i + 1)"></i></span>
+                        }
                     </div>
                 </div>
 
@@ -238,7 +214,7 @@
                         <div class="ps-3 pb-2 rounded border">
                             <img src="~/images/pin1.png" class=" mt-3 mb-4" />
                             <p>City</p>
-                            <p>@Model.mission.City.Name</p>
+                            <p>@Model.mission.CityName</p>
                         </div>
                     </div>
 
@@ -246,7 +222,7 @@
                         <div class="ps-3 pb-2 rounded border">
                             <img src="~/images/web.png" class=" mt-3 mb-4" />
                             <p>Theme</p>
-                            <p>@Model.mission.Theme.Title</p>
+                            <p>@Model.mission.ThemeName</p>
                         </div>
                     </div>
 
@@ -255,13 +231,13 @@
                             <img src="~/images/calender.png" class=" mt-3 mb-4" />
                             <p>Date</p>
 
-                            @if (isOngoing)
+                            @if (Model.mission.IsOngoing)
                             {
                                 <p>Ongoing Opportunity</p>
                             }
                             else
                             {
-                                <p>@Model.mission.StartDate.Value.ToString("dd/MM/yyyy") to @Model.mission.EndDate.Value.ToString("dd/MM/yyyy")</p>
+                                <p>@Model.mission.Missiondata.StartDate.Value.ToString("dd/MM/yyyy") to @Model.mission.Missiondata.EndDate.Value.ToString("dd/MM/yyyy")</p>
                             }
                             @*<p>Ongoing Opportunity</p>*@
                         </div>
@@ -271,14 +247,20 @@
                         <div class="ps-3 pb-2 rounded border">
                             <img src="~/images/organization.png" class=" mt-3 mb-4" />
                             <p>Organization</p>
-                            <p>@Model.mission.OrganizationName</p>
+                            <p>@Model.mission.Missiondata.OrganizationName</p>
                         </div>
                     </div>
                 </div>
-                @if (Model.mission.MissionApplications.Any(m => m.UserId == UserId && m.MissionId == Model.mission.MissionId && (m.ApprovalStatus == "PUBLISHED" || m.ApprovalStatus == "PENDING")))
+                @if (Model.mission.HasApplied)
                 {
-                    <a class="published-btn apply-btn d-flex justify-content-between align-items-center align-self-center" data-toggle="modal" data-target="#confirmationModal" disabled>
+                    <a class="published-btn apply-btn d-flex justify-content-between align-items-center align-self-center btn btn-success disabled">
                         Applied
+                    </a>
+                }
+                else if (Model.mission.IsDeadlinePassed || Model.mission.IsEnddatePassed)
+                {
+                    <a class="published-btn apply-btn d-flex justify-content-between align-items-center align-self-center btn btn-danger disabled">
+                        Closed
                     </a>
                 }
                 else
@@ -289,46 +271,6 @@
                         <img src="~/images/right-arrow2.png" alt="">
                     </a>
                 }
-
-
-
-                @*<!-- apply modal not working -->
-                    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                    <a class="text-dark border-end pe-3" href="mailto:?subject=Check out this mission&amp;body=Here is the link to the mission page: @Url.Action("MissionVolunteering", "Mission", new { id = Model.mission.MissionId })">Share via Email</a>
-
-                    <a class="ps-3 text-dark" href="whatsapp://send?text=Check out this mission: @Url.Action("MissionVolunteering", "Mission", new { id = Model.mission.MissionId })">Share via WhatsApp</a>
-
-                    </div>
-                    </div>
-                    </div>
-                    </div>*@
-
-                <!-- modal for confirmation of application in mission -->
-                @*<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="confirmationModalLabel">Are you sure you want to apply?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                    Your application will be sent to the mission owner for approval.
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="confirmApply">Apply</button>
-                    </div>
-                    </div>
-                    </div>
-                    </div>*@
-
             </div>
         </div>
     </div>
@@ -348,18 +290,18 @@
                 <div class="tab-pane show active fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="intro">
                         <h2 class="mt-3">Introduction</h2>
-                        <p>@Html.Raw(Model.mission.Description)</p>
+                        <p>@Html.Raw(Model.mission.Missiondata.Description)</p>
                     </div>
                     <div class="docs">
                         <h2>Documents</h2>
                         <div class="d-flex mt-3">
-                            @foreach(var doc in Model.MissionDocs)
+                            @foreach (var doc in Model.MissionDocs)
                             {
-                            <div class="d-flex mb-1"><a class="text-decoration-none text-secondary" href="@Url.Action("DisplayDoc", "Mission", new{fileName = @doc})" target="_blank"><img class="me-2" src="~/images/pdf.png" /><span>@doc</span></a></div>
+                                <div class="d-flex mb-1"><a class="text-decoration-none text-secondary" href="@Url.Action("DisplayDoc", "Mission", new{fileName = @doc})" target="_blank"><img class="me-2" src="~/images/pdf.png" /><span>@doc</span></a></div>
                             }
-                            @if(Model.MissionDocs.Count() == 0)
+                            @if (Model.MissionDocs.Count() == 0)
                             {
-                            <h4>There is no documnets in this mission</h4>
+                                <h4>There is no document in this mission</h4>
 
                             }
                         </div>
@@ -368,26 +310,26 @@
 
                 @*organization tab*@
                 <div class="tab-pane fade organization-tab mb-md-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                    <p class="mt-4">@Model.mission.OrganizationDetail</p>
+                    <p class="mt-4">@Model.mission.Missiondata.OrganizationDetail</p>
                 </div>
 
                 @*comments tab*@
                 <div class="tab-pane fade comments-tab mb-md-3" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    <form method="post" class="mt-4" id="comment-form" data-mission-id="@Model.mission.MissionId">
+                    <form method="post" class="mt-4" id="comment-form" data-mission-id="@Model.mission.Missiondata.MissionId">
                         <div class="mb-3">
                             <label asp-for="comment1" class="form-label">Comment</label>
-                            <textarea asp-for="comment1" class="form-control " rows="3" placeholder="Enter Your Comments..." name="Comment1"></textarea>
+                            <textarea asp-for="comment1" class="form-control " rows="3" placeholder="Enter Your Comments..."></textarea>
                             <span asp-validation-for="comment1" class="text-danger"></span>
 
                         </div>
                         <input type="hidden" name="UserId" value="@UserId" />
-                        <input type="hidden" name="MissionId" value="@Model.mission.MissionId" />
+                        <input type="hidden" name="MissionId" value="@Model.mission.Missiondata.MissionId" />
                         <button type="submit" class="card-button d-flex justify-content-between align-items-center align-self-center m-0">
                             Post Comment
                         </button>
                     </form>
                     <div class="show-comments mt-4">
-                        @foreach (var comment in Model.mission.Comments)
+                        @foreach (var comment in Model.mission.MissionComments)
                         {
                             if (@comment.ApprovalStatus == "PUBLISHED")
                             {
@@ -431,11 +373,11 @@
                                 count = count + 1;
                                 @if (count != totalSkills)
                                 {
-                                    <span>@skill.Skill.SkillName,</span>
+                                    <span>@skill,</span>
                                 }
                                 else
                                 {
-                                    <span>@skill.Skill.SkillName</span>
+                                    <span>@skill</span>
 
                                 }
 
@@ -448,40 +390,33 @@
                     <div class="row p-1">
                         <div class="col-3">Days</div>
                         <div class="col-9">
-                            @if (@Model.mission.Availability != "weekend")
+                            @if (@Model.mission.Missiondata.Availability != "weekend")
                             {
-                                <span>@Model.mission.Availability</span>
+                                <span>@Model.mission.Missiondata.Availability</span>
                             }
                             else
                             {
-                                <span>@Model.mission.Availability Only</span>
+                                <span>@Model.mission.Missiondata.Availability Only</span>
                             }
                         </div>
                     </div>
                 </div>
-                @{
-                    double avgRating = 0;
-                    @if (Model.mission.MissionRatings.Any())
-                    {
-                        avgRating = Model.mission.MissionRatings.Average(r => r.Rating);
-                    }
-                }
                 <div class="border-top my-2 mission-rating">
                     <div class="row p-1">
                         <div class="col-3">Rating</div>
                         <div class="col-9">
-                            @for (int i = 0; i < (int)avgRating; i++)
+                            @for (int i = 0; i < (int)Model.mission.rating; i++)
                             {
                                 <span><img src="~/images/selected-star.png" alt=""></span>
                                 @*<i class="bi bi-star-fill text-secondary" data-star="@(i + 1)"></i>*@
                             }
-                            @for (int i = 0; i < 5 - (int)avgRating; i++)
+                            @for (int i = 0; i < 5 - (int)Model.mission.rating; i++)
                             {
                                 <span><img src="~/images/star.png" alt=""></span>
                                 @*<i class="bi bi-star-fill text-warning" data-star="@(i + 1)"></i>*@
                             }
 
-                            <span>(by @Model.mission.MissionRatings.Count() @(Model.mission.MissionRatings.Count() <= 1 ? "Volunteer" : "volunteers"))</span>
+                            <span>(by @Model.mission.TotalUserRated @(Model.mission.rating <= 1 ? "Volunteer" : "volunteers"))</span>
                         </div>
                     </div>
                 </div>
@@ -538,74 +473,62 @@
             {
                 @foreach (var card in Model.RelatedMissions)
                 {
-                    <div class="col col-md-6 col-lg-4">
-                        <div class="card grid-card">
-                            @{
-                                double avgrating = 0;
-                                @if (card.MissionRatings.Any())
-                                {
-                                    avgrating = card.MissionRatings.Average(r => r.Rating);
-                                }
-                            }
-                            @*for comparing skills with selected skills*@
-                            @foreach (var skill in card.MissionSkills)
-                            {
-                                <p class="d-none mission-skills">@skill.Skill.SkillName</p>
-                            }
-                            <p class="created-date d-none">@card.CreatedAt.ToString("dd/MM/yyyy HH:mm:ss")</p>
+                    DateTime? currentDateRelated = @DateTime.Now;
+                    TimeSpan ts1Related = new TimeSpan(1, 0, 0, 0);
+                    var deadlineRelated = @card.Missiondata.StartDate - ts1;
 
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card grid-card">
                             <div class="card-image">
-                                <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability.png" alt="Card Image">
+                                @if (card.MissionMedia != null)
+                                {
+                                    <img src="~/MissionImages/@card.MissionMedia" alt="Card Image">
+                                }
+                                else
+                                {
+                                    <img src="~/images/no-image-icon.png" alt="Card Image">
+                                }
 
                                 <!-- location favourite and pause mission  -->
                         <div class="card-items">
                                     <div class="location">
                                         <img src="~/images/pin.png" alt="">
-                                        <p>@card.City.Name</p>
+                                        <p>@card.CityName</p>
 
                                     </div>
                                     <div class="fav">
 
-                                        @{
-
-                                            var flag1 = 1;
-                                        }
-                                        @foreach (var fm in card.FavoriteMissions)
+                                        @if (card.IsFavourite)
                                         {
-                                            @if (fm.UserId == UserId)
-                                            {
-                                                <i class="bi bi-heart-fill favorite-button filled-heart text-danger" data-mission-id="@card.MissionId"></i>
-                                                flag1 = 0;
-                                            }
-
+                                            <i class="bi bi-heart-fill favorite-button filled-heart text-danger" data-mission-id="@card.Missiondata.MissionId"></i>
                                         }
-                                        @if (flag1 == 1)
+
+                                        else
                                         {
-                                            <i class="bi bi-heart favorite-button empty-heart text-light" data-mission-id="@card.MissionId"></i>
+                                            <i class="bi bi-heart favorite-button empty-heart text-light" data-mission-id="@card.Missiondata.MissionId"></i>
                                         }
-
-
-                                        @*<p>@card.FavoriteMissions.Any(m => m.UserId.Equals(UserId))</p>*@
-                                        @*<img src="~/images/heart.png" alt="" class="favorite-button" data-mission-id="@card.MissionId">*@
                                     </div>
                                     <div class="pause-mission-icon">
-
-
                                         <!-- Button trigger modal -->
-                                <img data-bs-toggle="modal" data-bs-target="#inviteVolunteer" src="~/images/user.png" alt="">
+                                <img data-bs-toggle="modal" data-bs-target="#inviteVolunteer_@card.Missiondata.MissionId" src="~/images/user.png" alt="">
 
                                         <!-- Invite Volunteer Modal -->
-                                <div class="modal fade" id="inviteVolunteer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="inviteVolunteer_@card.Missiondata.MissionId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
-                                                        <a class="text-dark border-end pe-3" href="mailto:?subject=Check out this mission&amp;body=Here is the link to the mission page: @Url.Action("MissionVolunteering", "Mission", new { id = card.MissionId })">Share via Email</a>
-
-                                                        <a class="ps-3 text-dark" href="whatsapp://send?text=Check out this mission: @Url.Action("MissionVolunteering", "Mission", new { id = card.MissionId })">Share via WhatsApp</a>
+                                                    <div class="modal-body" id="all-users">
+                                                        @foreach (var u in Model.UserList)
+                                                        {
+                                                            <div class="mt-2 d-flex justify-content-between">
+                                                                <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
+                                                                <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@card.Missiondata.MissionId">Invite</button></span>
+                                                            </div>
+                                                        }
 
                                                     </div>
                                                 </div>
@@ -616,55 +539,37 @@
 
                                 <!-- mission theme capsule -->
                         <div class="mission-theme">
-                                    @*<h3>Environment</h3>*@
-                                    <h3>@card.Theme.Title</h3>
+                                    <h3>@card.ThemeName</h3>
                                 </div>
                             </div>
 
                             <!-- card content -->
                     <div class="card-content">
-                                <h2 class="card-title">@card.Title</h2>
-                                <p class="card-description">@card.ShortDescription</p>
+                                <h2 class="card-title">@card.Missiondata.Title</h2>
+                                <p class="card-description">@card.Missiondata.ShortDescription</p>
 
                                 <!-- organization and rating -->
                         <div class="organization-rating">
                                     <div class="organization">
-                                        <p>@card.OrganizationName</p>
+                                        <p>@card.Missiondata.OrganizationName</p>
                                     </div>
-                                    <div class="rating">
-                                        @for (int i = 0; i < (int)avgrating; i++)
+                                    <div class="rating d-flex flex-nowrap">
+                                        @for (int i = 0; i < (int)card.rating; i++)
                                         {
                                             <span><img src="~/images/selected-star.png" alt=""></span>
                                         }
-                                        @for (int i = 0; i < 5 - (int)avgrating; i++)
+                                        @for (int i = 0; i < 5 - (int)card.rating; i++)
                                         {
                                             <span><img src="~/images/star.png" alt=""></span>
                                         }
 
                                     </div>
                                 </div>
-                                @{
-                                    DateTime? currentdate = @DateTime.Now;
-                                    TimeSpan ts2 = new TimeSpan(1, 0, 0, 0);
-                                    var deadline1 = @card.StartDate - ts2;
-                                    bool isEnddatePassed = currentdate > card.EndDate;
-                                    bool isongoing = currentdate > card.StartDate;
-                                    bool isdeadlinePassed = currentdate > deadline1;
-
-                                    var seatsfilled = 0;
-                                    if (card.MissionApplications.Any(sl => sl.ApprovalStatus.Contains("published")))
-                                    {
-                                        seatsfilled = card.MissionApplications.Count(sl => sl.ApprovalStatus.Equals("published"));
-                                    }
-                                    var seatsleft = card.TotalSeats - seatsFilled;
-
-                                    bool isalreadyApplied = card.MissionApplications.Any(ma => ma.UserId.Equals(UserId));
-                                }
                                 <!--  if mission deadline is passed, user already applied to mission or all seats are taken then only view details is shown -->
-                                @if (isEnddatePassed)
+                                @if (card.IsEnddatePassed)
                                 {
                                     <div class="border-top">
-                                        <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@card.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center">
+                                        <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@card.Missiondata.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center">
                                             View Details
                                             <img src="~/images/right-arrow.png" alt="">
                                             <img src="~/images/right-arrow2.png" alt="">
@@ -679,12 +584,12 @@
                                         <div class="seats-detail d-flex align-items-center">
                                             <img src="~/images/Seats-left.png" alt="">
                                             <div class="d-flex flex-column">
-                                                <p class="seats-left">@seatsLeft</p>
+                                                <p class="seats-left">@card.seatsleft</p>
                                                 <p>Seats left</p>
                                             </div>
                                         </div>
 
-                                        @if (card.MissionType == "Time")
+                                        @if (card.Missiondata.MissionType == "Time")
                                         {
                                             <div class="duration-detail d-flex align-items-center">
                                                 <img src="~/images/deadline.png" alt="">
@@ -696,47 +601,43 @@
                                         }
                                         else
                                         {
-                                            @foreach (var goal in card.GoalMissions)
-                                            {
-                                                <div class="duration-detail d-flex align-items-center">
-                                                    <img src="~/images/achieved.png" alt="">
-                                                    <div class="d-flex flex-column">
-                                                        <div class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: @goal.GoalValue%" aria-valuenow="@goal.GoalValue" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                        <p>@goal.GoalValue Achieved</p>
+                                            var percentage = ((double)@card.AchievedGoal / (double)@card.Goalvalue) * 100;
+                                            <div class="duration-detail d-flex align-items-center">
+                                                <img src="~/images/achieved.png" alt="">
+                                                <div class="d-flex flex-column">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: @percentage%"
+                                             aria-valuenow="@card.AchievedGoal" aria-valuemin="0" aria-valuemax="@card.Goalvalue"></div>
                                                     </div>
+                                                    <p>@card.AchievedGoal Achieved</p>
                                                 </div>
-                                            }
+                                            </div>
                                         }
 
 
                                         <div class="mission-date">
-                                            @if (card.MissionType == "Time")
+                                            @if (card.Missiondata.MissionType == "Time")
                                             {
-                                                if (isOngoing)
+                                                if (@card.IsOngoing)
                                                 {
                                                     <p>Ongoing Opportunity</p>
                                                 }
                                                 else
                                                 {
-                                                    <p>From @card.StartDate.Value.ToString("dd/MM/yyyy") until @card.EndDate.Value.ToString("dd/MM/yyyy")</p>
+                                                    <p>From @card.Missiondata.StartDate.Value.ToString("dd/MM/yyyy") until @card.Missiondata.EndDate.Value.ToString("dd/MM/yyyy")</p>
                                                 }
                                             }
                                             else
                                             {
-                                                @foreach (var goal in card.GoalMissions)
-                                                {
-                                                    <p>@goal.GoalObjectiveText</p>
-                                                }
+                                                <p>@card.goalObjectiveText</p>
                                             }
                                         </div>
                                     </div>
 
-                                    if (isdeadlinePassed || isalreadyApplied || (seatsleft == 0))
+                                    if (card.IsDeadlinePassed || card.HasApplied || (card.seatsleft == 0))
                                     {
                                         <!-- View details button -->
-                                        <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@card.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center">
+                                        <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@card.Missiondata.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center">
                                             View Details
                                             <img src="~/images/right-arrow.png" alt="">
                                             <img src="~/images/right-arrow2.png" alt="">
@@ -745,7 +646,7 @@
                                     else
                                     {
                                         <!-- apply button -->
-                                        <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new{ id=@card.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center">
+                                        <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new{ id=@card.Missiondata.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center">
                                             Apply
                                             <img src="~/images/right-arrow.png" alt="">
                                             <img src="~/images/right-arrow2.png" alt="">

@@ -14,7 +14,6 @@ namespace Ci_Platform.Repositories.Interfaces
         public Task AddToContactUs(UserHeaderViewModel contactUs);
         public void SetSession(string email);
         public void DestroySession();
-        public string? GetUserRole(long userId);
         public User GetUser(long userId);
 
     }

@@ -102,7 +102,6 @@ namespace Ci_Platform.Repositories.Repositories
         public  void SetSession(string email)
         {
             User? user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
-            List<CmsTable> cmsTables = _context.CmsTables.Where(cms => cms.DeletedAt == null).ToList();
             var session = _httpContextAccessor.HttpContext.Session;
             session.SetString("UserName", user.FirstName + " " + user.LastName);
             var userId = user.UserId;
@@ -110,7 +109,6 @@ namespace Ci_Platform.Repositories.Repositories
             session.SetString("IsLoggedIn", "True");
             session.SetString("profileImage", user.Avatar == null ? "" : user.Avatar);
             session.SetString("userEmail", user.Email);
-            session.SetString("PolicyList", JsonConvert.SerializeObject(cmsTables));
         }
         public void DestroySession()
         {
@@ -120,12 +118,6 @@ namespace Ci_Platform.Repositories.Repositories
             session.Remove("IsLoggedIn");
             session.Remove("profileImage");
             session.Remove("userEmail");
-        }
-
-        public string? GetUserRole(long userId)
-        {
-            var role = _context.Users.Where(user => user.UserId == userId).Select(user => user.Role).FirstOrDefault();
-            return role;
         }
 
         public User GetUser(long userId)

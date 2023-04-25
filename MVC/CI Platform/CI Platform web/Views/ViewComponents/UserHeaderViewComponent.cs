@@ -1,4 +1,5 @@
-﻿using CI_Platform.Entities.DataModels;
+﻿using Ci_Platform.Repositories.Interfaces;
+using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -7,6 +8,13 @@ namespace CI_Platform_web.Views.ViewComponents
 {
     public class UserHeaderViewComponent : ViewComponent
     {
+        private readonly IFilters _filter;
+
+        public UserHeaderViewComponent(IFilters filter)
+        {
+            _filter = filter;
+        }
+
         public async Task<IViewComponentResult> InvokeAsync(string viewName)
         {
             string UserName = "";
@@ -23,7 +31,6 @@ namespace CI_Platform_web.Views.ViewComponents
                 UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
                 profileImage = HttpContext.Session.GetString("profileImage");
                 email = HttpContext.Session.GetString("userEmail");
-                cmsTables = JsonConvert.DeserializeObject<List<CmsTable>>(HttpContext.Session.GetString("PolicyList"));
                 ViewBag.Email = email;
             }
             else
@@ -39,7 +46,7 @@ namespace CI_Platform_web.Views.ViewComponents
                 UserId = UserId,
                 profileImage = profileImage,
                 userEmail = email,
-                cmsPages = cmsTables,
+                cmsPages = await _filter.GetCmsTables(),
             };
             return View(viewName, viewModel);
         }

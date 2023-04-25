@@ -1,12 +1,7 @@
 ﻿using CI_Platform.Entities.DataModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CI_Platform.Entities.ViewModels
 {
@@ -24,15 +19,15 @@ namespace CI_Platform.Entities.ViewModels
 
         //[Required(ErrorMessage = "Please enter your story")]
         //[ValidateNever]
-        public string Story { get; set; }
+        public string? Story { get; set; }
 
-        public String[] url { get; set; }
+        public String[]? url { get; set; } = null;
 
         [ValidateNever]
-        public List<IFormFile> images { get; set; }
+        public List<IFormFile> images { get; set; } = new List<IFormFile>();
 
         public int button { get; set; }
         [ValidateNever]
-        public List<Mission> missionListByUser { get; set; }
+        public List<Mission>? missionListByUser { get; set; } = new List<Mission>();
     }
 }

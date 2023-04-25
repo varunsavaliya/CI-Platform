@@ -660,6 +660,7 @@ namespace Ci_Platform.Repositories.Repositories
         {
             Story? story = await _context.Stories.FindAsync(storyId);
             story.Status = "PUBLISHED";
+            story.Views = 0;
             await _context.SaveChangesAsync();
         }
 
@@ -692,9 +693,10 @@ namespace Ci_Platform.Repositories.Repositories
         public async Task AddBanner(BannerModel model)
         {
             List<Banner> bannersTobeAffected = await _context.Banners.Where(banner => banner.SortOrder >= model.SortOrder).ToListAsync();
+            int totalBanners = await _context.Banners.CountAsync();
             // add image to banner folder
             var fileExtension = Path.GetExtension(model.Image.FileName);
-            var fileName = "banner_" + model.SortOrder + fileExtension;
+            var fileName = "banner_" + (totalBanners + 1) + fileExtension;
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Banners", fileName);
 
             using var stream = new FileStream(filePath, FileMode.Create);
@@ -766,6 +768,8 @@ namespace Ci_Platform.Repositories.Repositories
 
             await _context.SaveChangesAsync();
         }
+
+       
 
     }
 }

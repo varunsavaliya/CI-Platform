@@ -38,7 +38,7 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task<List<CmsTable>> GetCmsTables()
         {
-            return await _context.CmsTables.ToListAsync();
+            return await _context.CmsTables.Where(cms => cms.Status == 1 && cms.DeletedAt == null).ToListAsync();
         }
 
         public async Task<List<User>> GetUsers()

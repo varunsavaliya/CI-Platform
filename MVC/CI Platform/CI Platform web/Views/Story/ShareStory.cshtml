@@ -18,12 +18,12 @@
                             <option class="missionId" value="@mission.MissionId">@mission.Title</option>
                         }
                     </select>
-                    <span id="selectMissionValidation" class="text-danger"></span>
+                    <span asp-validation-for="selectMission" class="text-danger"></span>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-1">
                     <label asp-for="storyTitle" class="form-label">My Story Title</label>
                     <input asp-for="storyTitle" name="storyTitle" type="text" class="form-control" id="storyTitle" aria-describedby="storyTitle">
-                    <span id="storyTitleValidation" class="text-danger"></span>
+                    <span asp-validation-for="storyTitle" class="text-danger"></span>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-1">
                     <label asp-for="Date" class="form-label">Date</label>

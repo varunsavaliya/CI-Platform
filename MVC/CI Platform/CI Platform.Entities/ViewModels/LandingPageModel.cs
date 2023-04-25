@@ -54,7 +54,10 @@ namespace CI_Platform.Entities.ViewModels
         public string? DefaultMedia { get; set; }
 
         public string? goalObjectiveText { get; set; }
-
+        public int TotalUserRated { get; set; }
+        public List<Comment> MissionComments { get; set; } = new List<Comment>();
+        public List<string> MissionSkills { get; set;} = new List<string>();
+        public List<MissionMedium> MissionAllMedia { get; set; } = new List<MissionMedium>();
     }
 }
 

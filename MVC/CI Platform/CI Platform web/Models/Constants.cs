@@ -8,5 +8,6 @@
         public static string existsMessage = "already exists";
         public static string approveMessage = "approved successfully";
         public static string declineMessage = "declined";
+        public static string applyMessage = "applied successfully";
     }
 }

@@ -18,14 +18,15 @@ namespace CI_Platform_web.Controllers
 
         public IActionResult TimeSheet()
         {
-            VolunteeringTimesheetModel model = new();
-            long UserId = 0;
-            if (HttpContext.Session.GetString("UserId") != null)
+            if (HttpContext.Session.GetString("UserId") == null)
             {
-                UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+                string returnUrl = Url.Action("TimeSheet", "Timesheet");
+                return RedirectToAction("Index", "Home", new { returnUrl });
             }
-            model.missions = _timesheet.GetMissionsById(UserId);
-            model.timesheets = _timesheet.GetTimesheetsById(UserId);
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+            VolunteeringTimesheetModel model = new();
+            model.missions = _timesheet.GetMissionsById(userId);
+            model.timesheets = _timesheet.GetTimesheetsById(userId);
             return View(model);
         }
 

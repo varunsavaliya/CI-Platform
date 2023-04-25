@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "StoryDetail";
     Layout = "_HeaderLayout";
-    var IsLoggedIn = ViewBag.IsLoggedIn;
 }
 @functions {
     public string GetEmbedUrl(string url)
@@ -11,25 +10,7 @@
         return $"https://www.youtube.com/embed/{videoId}";
     }
                     }
-@if (IsLoggedIn != "True")
-{
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Login here</h4>
-                </div>
-                <div class="modal-body">
-                    <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
-                        Login
-                        <img src="~/images/right-arrow.png" alt="">
-                        <img src="~/images/right-arrow2.png" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-}
+
 
 
 <div class="container mt-3">
@@ -49,7 +30,9 @@
                             <div class="swiper-slide">
                                 <img src="~/Upload/@media.Path" />
                             </div>
-                        }else{
+                        }
+                        else
+                        {
                             @if (!string.IsNullOrEmpty(media.Path))
                             {
                                 <div class="swiper-slide">
@@ -60,7 +43,7 @@
                     }
                     @if (Model.StoryDetail.StoryMedia.Count(img => img.Type == "image" || img.Type == "VIDEO") < 4)
                     {
-                        for (int i = 0; i < (4 - Model.StoryDetail.StoryMedia.Count(img => img.Type == "image" || img.Type == "VIDEO") ); i++)
+                        for (int i = 0; i < (4 - Model.StoryDetail.StoryMedia.Count(img => img.Type == "image" || img.Type == "VIDEO")); i++)
                         {
                             <div class="swiper-slide">
                                 <img src="~/images/no-image-icon.png" />
@@ -79,13 +62,14 @@
                                 <img src="~/Upload/@media.Path" />
                             </div>
                         }
-                        else{
+                        else
+                        {
                             @if (!string.IsNullOrEmpty(media.Path))
                             {
                                 <div class="swiper-slide">
                                     <iframe src="@GetEmbedUrl(@media.Path)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                            </div>
-                                }
+                                </div>
+                            }
                         }
                     }
                     @if (Model.StoryDetail.StoryMedia.Count(img => img.Type == "image" || img.Type == "VIDEO") < 4)
@@ -124,17 +108,17 @@
             </div>
 
             <div class="sdbtns d-flex my-4 justify-content-center gap-4">
-                 @if (Model.StoryDetail.Status == "PUBLISHED")
+                @if (Model.StoryDetail.Status == "PUBLISHED")
                 {
-                    
-                <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
 
-                    <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#story-invite"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
-                </div>
+                    <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
+
+                        <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#story-invite"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
+                    </div>
 
                     <div class="mission-btn">
                         <!-- open mission button -->
-                        <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new{ id=@Model.StoryDetail.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
+                    <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new{ id=@Model.StoryDetail.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
                             Open Mission
                             <img src="~/images/right-arrow.png" alt="">
                             <img src="~/images/right-arrow2.png" alt="">
@@ -151,17 +135,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body" id="all-users">
-                                @if (Model.UserList == null)
-                                {
-                                    <!-- Login button -->
-                                    <a type="button" href="@Url.Action("Index", "Home", new { returnUrl = @Context.Request.Path })" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
-                                        Login to recommend to co-worker
-                                        <img src="~/images/right-arrow.png" alt="">
-                                        <img src="~/images/right-arrow2.png" alt="">
-                                    </a>
-                                }
-                                else
-                                {
+                              
                                     @foreach (var u in Model.UserList)
                                     {
 
@@ -174,13 +148,11 @@
 
                                         </div>
                                     }
-                                }
-
                             </div>
                         </div>
                     </div>
                 </div>
-                @if(Model.StoryDetail.Status == "PENDING")
+                @if (Model.StoryDetail.Status == "PENDING")
                 {
                     <input value="@Model.StoryDetail.StoryId" class="d-none" type="text" />
 
@@ -219,7 +191,7 @@
                 }
 
 
-                
+
             </div>
         </div>
 

@@ -43,7 +43,7 @@ namespace CI_Platform_web.Controllers
                     if (_Authentication.ComparePassword(user))
                     {
                         _Authentication.SetSession(user.Email);
-                        ViewBag.UserId = HttpContext.Session.GetString("UserId");
+                        //ViewBag.UserId = HttpContext.Session.GetString("UserId");
 
                         long UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
                         User loginUser = _Authentication.GetUser(UserId);
@@ -61,11 +61,10 @@ namespace CI_Platform_web.Controllers
                         }
                         else
                         {
-                            if (_Authentication.GetUserRole(UserId) == "User")
+                            if (loginUser.Role == "User")
                                 return RedirectToAction("LandingPage", "Mission");
-                            else if(_Authentication.GetUserRole(UserId) == "Admin")
+                            else if(loginUser.Role == "Admin")
                                 return RedirectToAction("AdminUser", "Admin");
-
                         }
                     }
                     else

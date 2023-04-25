@@ -26,16 +26,12 @@ namespace CI_Platform_web.Controllers
         }
         public async Task<IActionResult> StoriesListing()
         {
-            if (HttpContext.Session.GetString("UserName") != null)
+            if (HttpContext.Session.GetString("UserId") == null)
             {
-                ViewBag.UserName = HttpContext.Session.GetString("UserName");
-                ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
-                ViewBag.UserId = HttpContext.Session.GetString("UserId");
+                string returnUrl = Url.Action("StoriesListing", "Story");
+                return RedirectToAction("Index", "Home", new { returnUrl });
             }
-            else
-            {
-                ViewBag.UserName = "Login";
-            }
+
             StoriesListingModel viewModel = new()
             {
                 Country = await _filters.GetCountriesAsync(),
@@ -55,38 +51,32 @@ namespace CI_Platform_web.Controllers
                 StoriesList = storyList,
                 totalrecords = totalRecords
             };
-               
+
             return PartialView("_StoryPartial", model);
         }
         public async Task<IActionResult> ShareStory()
         {
-            var UserId = "";
-            if (HttpContext.Session.GetString("UserName") != null)
+            if (HttpContext.Session.GetString("UserId") == null)
             {
-                ViewBag.UserName = HttpContext.Session.GetString("UserName");
-                ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
-                UserId = HttpContext.Session.GetString("UserId");
-                ViewBag.UserId = UserId;
+                string returnUrl = Url.Action("ShareStory", "Story");
+                return RedirectToAction("Index", "Home", new { returnUrl });
             }
-            else
-            {
-                ViewBag.UserName = "Login";
-            }
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+
 
             ShareStoryModel viewModel = new()
             {
-                missionListByUser = await _story.GetMissionsByUser(Convert.ToInt64(UserId))
+                missionListByUser = await _story.GetMissionsByUser(userId)
             };
             return View(viewModel);
         }
 
         public IActionResult GetStory(long missionId)
         {
-            ViewBag.userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
-            long UserId = ViewBag.userId;
-            if (_story.isStoryAvailable(Convert.ToInt64(UserId), missionId))
+            long UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+            if (_story.isStoryAvailable(UserId, missionId))
             {
-                Story availableStory = _story.AvailableStory(Convert.ToInt64(UserId), missionId);
+                Story availableStory = _story.AvailableStory(UserId, missionId);
                 if (availableStory.Status != "DRAFT")
                 {
                     // story is already published or pending
@@ -106,15 +96,14 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public async Task<IActionResult> ShareStory(ShareStoryModel model)
         {
-            var UserId = "";
+            long UserId = 0;
             if (HttpContext.Session.GetString("UserName") != null)
             {
-                UserId = HttpContext.Session.GetString("UserId");
-                ViewBag.UserId = UserId;
+                UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
             }
             ShareStoryModel viewModel = new()
             {
-                missionListByUser = await _story.GetMissionsByUser(Convert.ToInt64(UserId))
+                missionListByUser = await _story.GetMissionsByUser(UserId)
             };
 
             long missionId = model.selectMission;
@@ -123,7 +112,7 @@ namespace CI_Platform_web.Controllers
 
             Story storyDetails = new()
             {
-                UserId = Convert.ToInt64(UserId),
+                UserId = UserId,
                 MissionId = missionId,
                 Title = storyTitle,
                 Description = story,
@@ -133,9 +122,9 @@ namespace CI_Platform_web.Controllers
             // model.button checks that which button is clicked, save or submit
             if (model.button == 1)
             {
-                if (_story.isStoryAvailable(Convert.ToInt64(UserId), missionId))
+                if (_story.isStoryAvailable(UserId, missionId))
                 {
-                    Story availableStory = _story.AvailableStory(Convert.ToInt64(UserId), missionId);
+                    Story availableStory = _story.AvailableStory(UserId, missionId);
                     if (availableStory.Status != "DRAFT")
                     {
                         // story is already published or pending
@@ -153,16 +142,16 @@ namespace CI_Platform_web.Controllers
                     return Ok(new { icon = "success", message = "Story saved successfully" });
                 }
             }
-            else if(model.button == 2)
+            else if (model.button == 2)
             {
-                if (_story.isStoryAvailable(Convert.ToInt64(UserId), missionId))
+                if (_story.isStoryAvailable(UserId, missionId))
                 {
-                    Story availableStory = _story.AvailableStory(Convert.ToInt64(UserId), missionId);
+                    Story availableStory = _story.AvailableStory(UserId, missionId);
                     if (availableStory.Status == "DRAFT")
                     {
                         // story is already published or pending
                         await _story.AddStoryAsPending(model, availableStory);
-                        return Ok(new { icon = "success", message = "Story added successfully" });  
+                        return Ok(new { icon = "success", message = "Story added successfully" });
                     }
                 }
                 else
@@ -176,28 +165,15 @@ namespace CI_Platform_web.Controllers
         [HttpGet]
         public async Task<IActionResult> StoryDetail(int id)
         {
-            var UserId = "";
-            if (HttpContext.Session.GetString("UserName") != null)
+            if (HttpContext.Session.GetString("UserId") == null)
             {
-                UserId = HttpContext.Session.GetString("UserId");
-                ViewBag.UserName = HttpContext.Session.GetString("UserName");
-                ViewBag.IsLoggedIn = HttpContext.Session.GetString("IsLoggedIn");
-                ViewBag.UserId = UserId;
+                string returnUrl = Url.Action("StoryDetail", "Story");
+                return RedirectToAction("Index", "Home", new { returnUrl });
             }
-            else
-            {
-                ViewBag.UserName = "Login";
-            }
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
 
             StoryDetailModel viewModel = new();
-            if (UserId == "")
-            {
-                viewModel.UserList = null;
-            }
-            else
-            {
-                viewModel.UserList = _story.GetUsers(Convert.ToInt64(UserId));
-            }
+            viewModel.UserList = _story.GetUsers(userId);
             viewModel.StoryDetail = await _story.GetStoryById(id);
             return View(viewModel);
         }
@@ -205,8 +181,10 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public async Task<IActionResult> StoryInvite(long ToUserId, long Id, long FromUserId, StoryDetailModel viewmodel)
         {
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+
             var storyLink = Url.Action("StoryDetail", "Story", new { id = Id }, Request.Scheme);
-            await _story.SendEmailInvite(ToUserId, Id, FromUserId, storyLink, viewmodel);
+            await _story.SendEmailInvite(ToUserId, Id, userId, storyLink, viewmodel);
             return Json(new { success = true });
         }
     }

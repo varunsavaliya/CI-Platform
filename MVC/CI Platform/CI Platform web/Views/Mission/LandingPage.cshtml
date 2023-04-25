@@ -64,15 +64,21 @@
 </div>
 
 <script>
-function show_grid() {
-document.getElementById("GridView").style.display = "block";
-document.getElementById("ListView").style.display = "none";
-localStorage.setItem('view', 0);
-}
+    window.onload = function() {
+  // your code here
+   setTimeout(function() {
+  show_grid()
+}, 200);
+};
+    function show_grid() {
+    document.getElementById("GridView").style.display = "block";
+    document.getElementById("ListView").style.display = "none";
+    localStorage.setItem('view', 0);
+    }
 
-function show_list() {
-document.getElementById("ListView").style.display = "block";
-document.getElementById("GridView").style.display = "none";
-localStorage.setItem('view', 1);
-}
+    function show_list() {
+    document.getElementById("ListView").style.display = "block";
+    document.getElementById("GridView").style.display = "none";
+    localStorage.setItem('view', 1);
+    }
 </script>

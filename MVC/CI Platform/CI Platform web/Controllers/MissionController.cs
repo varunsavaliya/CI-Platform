@@ -1,26 +1,24 @@
 ﻿using Ci_Platform.Repositories.Interfaces;
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
+using CI_Platform_web.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace CI_Platform_web.Controllers
 {
     public class MissionController : Controller
     {
-        private readonly ApplicationDbContext _context;
         private readonly IFilters _filters;
         private readonly IMission _mission;
         private readonly ISendInvite<MissionVolunteeringModel> _sendInvite;
 
         public MissionController(ApplicationDbContext context, IFilters filters, IMission mission)
         {
-            _context = context;
             _filters = filters;
             _mission = mission;
         }
-
+        [HttpGet]
         public async Task<IActionResult> LandingPage()
         {
             if (HttpContext.Session.GetString("UserId") == null)
@@ -64,149 +62,57 @@ namespace CI_Platform_web.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddToFavorites(int missionId)
+        public async Task<IActionResult> AddToFavorites(long missionId)
         {
-            string Id = HttpContext.Session.GetString("UserId");
-            long userId = long.Parse(Id);
-
-            // Check if the mission is already in favorites for the user
-            if (_context.FavoriteMissions.Any(fm => fm.MissionId == missionId && fm.UserId == userId))
-            {
-                // Mission is already in favorites, return an error message or redirect back to the mission page
-                var FavoriteMissionId = _context.FavoriteMissions.Where(fm => fm.MissionId == missionId && fm.UserId == userId).FirstOrDefault();
-                _context.FavoriteMissions.Remove(FavoriteMissionId);
-                _context.SaveChanges();
-                return Ok();
-            }
-
-            // Add the mission to favorites for the user
-            var favoriteMission = new FavoriteMission { MissionId = missionId, UserId = userId };
-            _context.FavoriteMissions.Add(favoriteMission);
-            _context.SaveChanges();
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+            await _mission.HandleFav(missionId, userId);
             return Ok();
         }
 
         [HttpPost]
-        public IActionResult AddComment(Comment formData)
+        public async Task<IActionResult> AddComment(Comment formData)
         {
-            _context.Comments.Add(formData);
-            _context.SaveChanges();
-            return View();
-        }
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
 
-        public IActionResult MissionVolunteering(int id)
+            await _mission.HandleComment(formData, userId);
+            return Ok(new { icon = "success", message = "Comment " + Constants.addMessage });
+        }
+        [HttpGet]
+        public async Task<IActionResult> MissionVolunteering(int id)
         {
-            long UserId = 0;
             if (HttpContext.Session.GetString("UserId") == null)
             {
                 string returnUrl = Url.Action("MissionVolunteering", "Mission");
                 return RedirectToAction("Index", "Home", new { returnUrl });
             }
-            else
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+
+            MissionVolunteeringModel model = new()
             {
-                UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
-
-            }
-
-            // Retrieve the mission detail for the given ID
-            Mission missionDetail = _context.Missions.Include(m => m.MissionApplications)
-                                                     .ThenInclude(ma => ma.User)
-                                                     .Include(m => m.MissionRatings)
-                                                     .Include(m => m.City)
-                                                     .Include(m => m.Theme)
-                                                     .Include(m => m.FavoriteMissions)
-                                                     .Include(m => m.GoalMissions)
-                                                     .Include(m => m.Comments).ThenInclude(c => c.User)
-                                                     .Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill)
-                                                     .FirstOrDefault(m => m.MissionId == id);
-
-            if (missionDetail == null)
-            {
-                return NotFound();
-            }
-
-            // Retrieve the related missions
-            var relatedMissions = _context.Missions.Include(m => m.City)
-                                                    .Include(m => m.Theme)
-                                                    .Include(m => m.Country)
-                                                    .Include(m => m.MissionApplications)
-                                                    .Include(m => m.MissionRatings)
-                                                     .Include(m => m.FavoriteMissions)
-                                                     .Include(m => m.GoalMissions)
-                                                     .Include(m => m.Comments).ThenInclude(c => c.User)
-                                                     .Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill)
-                                                    .Where(m => m.MissionId != id && m.CityId == missionDetail.CityId)
-                                                    .Take(3)
-                                                    .ToList();
-
-            // If there are not enough related missions based on city, retrieve based on theme
-            if (relatedMissions.Count() < 3)
-            {
-                var additionalMissions = _context.Missions.Include(m => m.City)
-                                                          .Include(m => m.Theme)
-                                                          .Where(m => m.MissionId != id && m.ThemeId == missionDetail.ThemeId && !relatedMissions.Contains(m))
-                                                          .Include(m => m.Country)
-                                                    .Include(m => m.MissionApplications)
-                                                    .Include(m => m.MissionRatings)
-                                                     .Include(m => m.FavoriteMissions)
-                                                     .Include(m => m.GoalMissions)
-                                                     .Include(m => m.Comments).ThenInclude(c => c.User)
-                                                     .Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill)
-                                                          .Take(3 - relatedMissions.Count())
-                                                          .ToList();
-                relatedMissions.AddRange(additionalMissions);
-            }
-
-            // If there are still not enough related missions, retrieve based on country
-            if (relatedMissions.Count() < 3)
-            {
-                var additionalMissions = _context.Missions.Include(m => m.City)
-                                                          .Include(m => m.Theme)
-                                                          .Where(m => m.MissionId != id && m.CountryId == missionDetail.CountryId && !relatedMissions.Contains(m))
-                                                          .Include(m => m.Country)
-                                                    .Include(m => m.MissionApplications)
-                                                    .Include(m => m.MissionRatings)
-                                                     .Include(m => m.FavoriteMissions)
-                                                     .Include(m => m.GoalMissions)
-                                                     .Include(m => m.Comments).ThenInclude(c => c.User)
-                                                     .Include(m => m.MissionSkills).ThenInclude(ms => ms.Skill)
-                                                          .Take(3 - relatedMissions.Count())
-                                                          .ToList();
-                relatedMissions.AddRange(additionalMissions);
-            }
-
-            // Create the ViewModel and pass it to the view
-            var missionVolunteeringModel = new MissionVolunteeringModel
-            {
-                mission = missionDetail,
-                RelatedMissions = relatedMissions,
-                totalVolunteers = _context.MissionApplications.Where(ma => ma.MissionId == id && ma.ApprovalStatus == "PUBLISHED").Count(),
-                MissionDocs = _context.MissionDocuments.Where(doc => doc.MissionId == id).Select(doc => doc.DocumentPath).ToList(),
+                mission = _mission.GetMissionVolunteeringData(id, userId),
+                RelatedMissions = _mission.GetRelatedMission(id, userId),
+                totalVolunteers = await _mission.GetTotalVolunteers(id),
+                MissionDocs = await _mission.GetMissionDocs(id),
+                UserRatings = await _mission.GetUserMissionRating(id, userId),
+                UserList = await _mission.GetUsersList(userId),
             };
-                missionVolunteeringModel.UserList = _context.Users.Where(u => u.UserId != UserId || u.MissionApplications.Any(ma => ma.MissionId == id && ma.ApprovalStatus != "PUBLISHED")).ToList();
-            return View(missionVolunteeringModel);
+            return View(model);
         }
 
         public IActionResult DisplayDoc(string fileName)
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/MissionDocuments", fileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/MissionDocuments", fileName);
             var fileStream = new FileStream(filePath, FileMode.Open);
             var contentType = "application/pdf";
             return File(fileStream, contentType);
         }
 
         [HttpGet]
-        public IActionResult GetRecentVolunteers(long missionId, int pageNo, int pageSize)
+        public async Task<IActionResult> GetRecentVolunteers(long missionId, int pageNo, int pageSize)
         {
             MissionVolunteeringModel model = new()
             {
-                recentVolunteers = _context.MissionApplications
-                .Where(ma => ma.MissionId == missionId && ma.ApprovalStatus == "PUBLISHED")
-                .Include(ma => ma.User)
-                .OrderByDescending(ma => ma.CreatedAt)
-                .Skip((pageNo - 1) * pageSize)
-                .Take(pageSize)
-                .ToList(),
+                recentVolunteers = await _mission.GetRecentVolByPage(missionId, pageNo, pageSize),
             };
             return PartialView("_RecentVolunteers", model);
         }
@@ -227,40 +133,19 @@ namespace CI_Platform_web.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateRating(int missionId, int userId, int rating)
+        public async Task<IActionResult> UpdateRating(long missionId, int rating)
         {
-            MissionRating? missionRating = _context.MissionRatings.SingleOrDefault(mr => mr.MissionId == missionId && mr.UserId == userId);
-
-            // if mission rating is not there by this user then add it
-            if (missionRating == null)
-            {
-                missionRating = new MissionRating
-                {
-                    MissionId = missionId,
-                    UserId = userId
-                };
-                _context.Add(missionRating);
-            }
-
-            // Update the rating in the database if rating is already there
-            missionRating.Rating = rating;
-            _context.SaveChanges();
-            return Ok(); // Return a success status code
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+            await _mission.HandleRatings(missionId, userId, rating);
+            return Ok();
         }
 
         [HttpPost]
-        public IActionResult Apply(long missionId, long userId)
+        public IActionResult Apply(long missionId)
         {
-            MissionApplication application = new();
-            application.MissionId = missionId;
-            application.UserId = userId;
-            _context.MissionApplications.Add(application);
-            _context.SaveChanges();
-            return Ok();
-        }
-        public IActionResult StoriesListing()
-        {
-            return View();
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+            _mission.HandleMissionApply(missionId, userId);
+            return Ok(new { icon = "success", message = "You have " + Constants.applyMessage + " in this mission"});
         }
     }
 }

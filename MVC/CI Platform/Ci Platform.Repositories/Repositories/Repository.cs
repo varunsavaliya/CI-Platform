@@ -23,7 +23,7 @@ namespace Ci_Platform.Repositories.Repositories
         }
         public bool IsRegistered(User user)
         {
-            bool isRegistered = _context.Users.Any(a => a.Email == user.Email && a.DeletedAt == null);
+            bool isRegistered = _context.Users.Any(a => a.Email == user.Email && a.DeletedAt == null && a.Status == 1);
             return isRegistered;
         }
         public bool IsRegistered(PasswordReset user)

@@ -25,17 +25,31 @@ namespace Ci_Platform.Repositories.Repositories
             {
                 Name = user.FirstName,
                 Surname = user.LastName,
-                employeeId = user.EmployeeId == "null" ? "" : user.EmployeeId,
-                title = user.Title == "null" ? "" : user.Title,
-                department = user.Department == "null" ? "" : user.Department,
-                MyProfile = user.ProfileText == "null" ? "" : user.ProfileText,
-                whyIVolunteer = user.WhyIVolunteer == "null" ? "" : user.WhyIVolunteer,
-                Country = (long)user.CountryId,
-                City = user.CityId,
+                employeeId = user.EmployeeId == null ? "" : user.EmployeeId,
+                title = user.Title == null ? "" : user.Title,
+                department = user.Department == null ? "" : user.Department,
+                MyProfile = user.ProfileText == null ? "" : user.ProfileText,
+                whyIVolunteer = user.WhyIVolunteer == null ? "" : user.WhyIVolunteer,
                 LinkedIn = user.LinkedInUrl,
                 ProfileImageName = user.Avatar,
+                CityList = user.CountryId != null ? await _context.Cities.Where(city => city.CountryId == user.CountryId).ToListAsync() : null,
             };
+
+            if(user.CountryId != null)
+            {
+                vm.Country = (long)user.CountryId;
+            }
+            if(user.CityId != null)
+            {
+                vm.City = user.CityId;
+            }
+
             return vm;
+        }
+
+        public async Task<bool> ValidateEmpId(string empId)
+        {
+            return await _context.Users.AnyAsync(user => user.EmployeeId == empId);
         }
 
         public async Task<List<UserSkill>> GetUserSkills(long id)
