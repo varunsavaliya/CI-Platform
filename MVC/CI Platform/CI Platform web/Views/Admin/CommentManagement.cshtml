@@ -1,0 +1,48 @@
+﻿@using CI_Platform.Entities.DataModels
+
+@{
+    ViewData["Title"] = "Comments";
+    Layout = "_AdminLayout";
+}
+@model CI_Platform.Entities.ViewModels.AdminCommentsModel
+
+<div class="admin-page-header">
+    <h2>Comments</h2>
+</div>
+
+<div class="table-responsive admin-tables">
+    <div class="admin-table-header d-flex justify-content-between mb-3">
+        <div class="admin-search-field input-group">
+            <input type="text" class="form-control ms-5" id="custom-search" placeholder="Search">
+            <i class="fa fa-search"></i>
+        </div>
+    </div>
+    <table class="table border comments-table" id="admin-table">
+        <thead class="py-3">
+            <tr>
+                <th scope="col">Mission Title</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Comment comment in Model.Comments)
+            {
+                <tr class="tr_@comment.CommentId">
+                    <td scope="row">@comment.Mission.Title</td>
+                    <td>@comment.User.FirstName @comment.User.LastName</td>
+                    <td>@comment.Comment1</td>
+                    <td id="handle-application">
+                        <input value="@comment.CommentId" class="d-none" type="text" />
+                        <i class="fa-regular fa-circle-check me-2 text-success approve-comment"></i>
+                        <i class="fa-regular fa-circle-xmark text-danger decline-comment"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

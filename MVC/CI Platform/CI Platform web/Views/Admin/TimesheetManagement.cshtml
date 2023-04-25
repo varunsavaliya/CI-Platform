@@ -1,0 +1,54 @@
+﻿@using CI_Platform.Entities.DataModels
+
+@{
+    ViewData["Title"] = "Timesheets";
+    Layout = "_AdminLayout";
+}
+@model CI_Platform.Entities.ViewModels.AdminTimesheetModel
+
+<div class="admin-page-header">
+    <h2>Timesheets</h2>
+</div>
+
+<div class="table-responsive admin-tables">
+    <div class="admin-table-header d-flex justify-content-between mb-3">
+        <div class="admin-search-field input-group">
+            <input type="text" class="form-control ms-5" id="custom-search" placeholder="Search">
+            <i class="fa fa-search"></i>
+        </div>
+    </div>
+    <table class="table border comments-table" id="admin-table">
+        <thead class="py-3">
+            <tr>
+                <th scope="col">Mission Title</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Time</th>
+                <th scope="col">Goal Action</th>
+                <th scope="col">Date Volunteered</th>
+                <th scope="col">Notes</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Timesheet timesheet in Model.timesheets)
+            {
+                <tr class="tr_@timesheet.TimesheetId">
+                    <td scope="row">@timesheet.Mission.Title</td>
+                    <td>@timesheet.User.FirstName @timesheet.User.LastName</td>
+                    <td>@timesheet.Time</td>
+                    <td>@timesheet.Action</td>
+                    <td>@timesheet.DateVolunteered.Value.ToShortDateString()</td>
+                    <td>@timesheet.Notes</td>
+                    <td id="handle-application">
+                        <input value="@timesheet.TimesheetId" class="d-none" type="text" />
+                        <i class="fa-regular fa-circle-check me-2 text-success approve-timesheet"></i>
+                        <i class="fa-regular fa-circle-xmark text-danger decline-timesheet"></i>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

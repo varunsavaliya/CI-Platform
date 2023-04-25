@@ -1843,6 +1843,14 @@
             handleApprovals('HandleStoryApproval', 1, storyId)
         else if ($(this).hasClass('decline-story'))
             handleApprovals('HandleStoryApproval', 0, storyId)
+        else if ($(this).hasClass('approve-comment'))
+            handleApprovals('HandleCommentApproval', 1, storyId)
+        else if ($(this).hasClass('decline-comment'))
+            handleApprovals('HandleCommentApproval', 0, storyId)
+        else if ($(this).hasClass('approve-timesheet'))
+            handleApprovals('HandleTimesheetApproval', 1, storyId)
+        else if ($(this).hasClass('decline-timesheet'))
+            handleApprovals('HandleTimesheetApproval', 0, storyId)
     })
 
     $('.sdbtns').on('click', 'button', function () {

@@ -769,7 +769,41 @@ namespace Ci_Platform.Repositories.Repositories
             await _context.SaveChangesAsync();
         }
 
-       
+        public async Task<List<Comment>> GetCommentsList()
+        {
+            return await _context.Comments.Where(comment => comment.DeletedAt == null && comment.ApprovalStatus == "PENDING").Include(comment => comment.Mission).Include(comment => comment.User).ToListAsync();
+        }
 
+        public async Task<List<Timesheet>> GetTimesheetList()
+        {
+            return await _context.Timesheets.Where(timesheet => timesheet.DeletedAt == null && timesheet.Status == "PENDING").Include(comment => comment.Mission).Include(comment => comment
+            .User).ToListAsync();
+        }
+
+        public async Task ApproveComment(long commentId)
+        {
+            Comment? commentToBeApprove = await _context.Comments.FindAsync(commentId);
+            commentToBeApprove.ApprovalStatus = "PUBLISHED";
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeclineComment(long commentId)
+        {
+            Comment? commentToBeDecline = await _context.Comments.FindAsync(commentId);
+            commentToBeDecline.ApprovalStatus = "DECLINED";
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task ApproveTimesheet(long timesheetId)
+        {
+            Timesheet timesheetToBeApprove = await _context.Timesheets.FindAsync(timesheetId);
+            timesheetToBeApprove.Status = "APPROVED";
+            await _context.SaveChangesAsync();
+        } 
+        public async Task DeclineTimesheet(long timesheetId)
+        {
+            Timesheet timesheetToBeDecline = await _context.Timesheets.FindAsync(timesheetId);
+            timesheetToBeDecline.Status = "DECLINED";
+            await _context.SaveChangesAsync();
+        }
     }
 }

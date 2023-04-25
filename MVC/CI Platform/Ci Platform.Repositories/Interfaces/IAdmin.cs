@@ -1,5 +1,6 @@
 ﻿using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +58,11 @@ namespace Ci_Platform.Repositories.Interfaces
         public Task<List<Banner>> GetBannerList();
         public Task UpdateBanner(BannerModel model, long bannerId);
         public Task AddBanner(BannerModel model);
-
-
+        public Task<List<Comment>> GetCommentsList();
+        public Task<List<Timesheet>> GetTimesheetList();
+        public Task ApproveComment(long commentId);
+        public Task DeclineComment(long commentId); 
+        public Task ApproveTimesheet(long timesheetId);
+        public Task DeclineTimesheet(long timesheetId);
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LoScKoP6C+4S4SqPc8WSy72zwe8RCS+6SKixxVKw6xE=",
+  "Hash": "tKhZkY1ZZJJNe2gWG+iSP4H0IsWOxrc13KFAps/VMRM=",
   "Source": "CI Platform web",
   "BasePath": "_content/CI Platform web",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "CI Platform web\\wwwroot",
       "Source": "CI Platform web",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CI Platform web.styles.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CI Platform web.styles.css",
       "SourceId": "CI Platform web",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "CI Platform web.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CI Platform web.styles.css"
+      "OriginalItemSpec": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CI Platform web.styles.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CI Platform web.bundle.scp.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CI Platform web.bundle.scp.css",
       "SourceId": "CI Platform web",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "CI Platform web.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CI Platform web.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CI Platform web.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_1.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_1.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Banners/banner_1.jpg",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\Banners\\banner_1.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_10.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_10.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Banners/banner_10.jpg",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\Banners\\banner_10.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_4.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_4.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Banners/banner_4.jpg",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\Banners\\banner_4.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_5.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_5.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Banners/banner_5.jpg",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\Banners\\banner_5.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_5.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_5.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Banners/banner_5.png",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\Banners\\banner_5.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\css\\style.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\css\\style.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\favicon.ico",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\404-Page-image.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\404-Page-image.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/404-Page-image.png",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\images\\404-Page-image.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\achieved.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\achieved.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/achieved.png",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\images\\achieved.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\add.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\add.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/add.png",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\images\\add.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\add1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\add1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/add1.png",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\images\\add1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Already-volunteered.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Already-volunteered.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Already-volunteered.png",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Already-volunteered.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Animal-welfare-&-save-birds-campaign.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Animal-welfare-&-save-birds-campaign.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Animal-welfare-&-save-birds-campaign.png",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Animal-welfare-&-save-birds-campaign.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Animal-welfare-&-save-birds-campaign-1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Animal-welfare-&-save-birds-campaign-1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Animal-welfare-&-save-birds-campaign-1.png",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Animal-welfare-&-save-birds-campaign-1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\arrow.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\arrow.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/arrow.png",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\images\\arrow.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\bell.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\bell.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/bell.png",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bell.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\bell-big.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\bell-big.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/bell-big.png",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bell-big.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\bin.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\bin.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/bin.png",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bin.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\calender.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\calender.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/calender.png",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\images\\calender.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\cancel.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\cancel.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/cancel.png",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cancel.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\cancel1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\cancel1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/cancel1.png",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cancel1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\checked.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\checked.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/checked.png",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\images\\checked.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\cross.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\cross.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/cross.png",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cross.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\deadline.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\deadline.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/deadline.png",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\images\\deadline.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\default user avatar.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\default user avatar.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/default user avatar.jpg",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\images\\default user avatar.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\delete.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\delete.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/delete.png",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\images\\delete.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\doc.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\doc.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/doc.png",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\images\\doc.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\down.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\down.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/down.png",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\images\\down.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\drag-and-drop.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\drag-and-drop.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/drag-and-drop.png",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\images\\drag-and-drop.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\drop-down.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\drop-down.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/drop-down.png",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\images\\drop-down.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\editing.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\editing.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/editing.png",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\images\\editing.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\eye.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\eye.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/eye.png",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\images\\eye.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\facebook.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\facebook.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/facebook.png",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\images\\facebook.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\filter.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\filter.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/filter.png",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\images\\filter.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\gift.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\gift.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/gift.png",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\images\\gift.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\graph.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\graph.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/graph.png",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\images\\graph.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\grid.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\grid.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/grid.png",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\images\\grid.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability.png",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-1.png",
       "AssetKind": "All",
@@ -884,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-2.png",
       "AssetKind": "All",
@@ -901,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-3.png",
       "AssetKind": "All",
@@ -918,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-4.png",
       "AssetKind": "All",
@@ -935,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-5.png",
       "AssetKind": "All",
@@ -952,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-login.png",
       "AssetKind": "All",
@@ -969,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\heart.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\heart.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/heart.png",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\images\\heart.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\heart1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\heart1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/heart1.png",
       "AssetKind": "All",
@@ -1003,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\images\\heart1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\hours.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\hours.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/hours.png",
       "AssetKind": "All",
@@ -1020,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\images\\hours.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\image.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\image.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/image.png",
       "AssetKind": "All",
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\images\\image.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\image1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\image1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/image1.png",
       "AssetKind": "All",
@@ -1054,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\images\\image1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\image2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\image2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/image2.png",
       "AssetKind": "All",
@@ -1071,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\images\\image2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/img.png",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/img1.png",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img11.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img11.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/img11.png",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img11.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/img2.png",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img22.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img22.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/img22.png",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img22.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img3.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img3.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/img3.png",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img3.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img33.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\img33.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/img33.png",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img33.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\info.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\info.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/info.png",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\images\\info.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\left.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\left.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/left.png",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\images\\left.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\left1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\left1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/left1.png",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\images\\left1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\linkedin.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\linkedin.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/linkedin.png",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\images\\linkedin.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\list.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\list.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/list.png",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\images\\list.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\logo.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\logo.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/logo.png",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\mission.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\mission.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/mission.png",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\images\\mission.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\my-story.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\my-story.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/my-story.png",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\images\\my-story.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\nav-user.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\nav-user.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/nav-user.png",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\images\\nav-user.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\new-message.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\new-message.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/new-message.png",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\images\\new-message.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\next.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\next.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/next.png",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\images\\next.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\no-image-icon.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\no-image-icon.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/no-image-icon.png",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\images\\no-image-icon.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Nourish-the-Children-in--African-country.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Nourish-the-Children-in--African-country.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Nourish-the-Children-in--African-country.png",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Nourish-the-Children-in--African-country.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Nourish-the-Children-in--African-country-1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Nourish-the-Children-in--African-country-1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Nourish-the-Children-in--African-country-1.png",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Nourish-the-Children-in--African-country-1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Open-Volunteering-Requests.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Open-Volunteering-Requests.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Open-Volunteering-Requests.png",
       "AssetKind": "All",
@@ -1445,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Open-Volunteering-Requests.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\organization.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\organization.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/organization.png",
       "AssetKind": "All",
@@ -1462,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\images\\organization.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\pdf.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\pdf.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/pdf.png",
       "AssetKind": "All",
@@ -1479,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pdf.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\pin.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\pin.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/pin.png",
       "AssetKind": "All",
@@ -1496,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pin.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\pin1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\pin1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/pin1.png",
       "AssetKind": "All",
@@ -1513,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pin1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Plantation-and-Afforestation-programme.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Plantation-and-Afforestation-programme.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Plantation-and-Afforestation-programme.png",
       "AssetKind": "All",
@@ -1530,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Plantation-and-Afforestation-programme.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Plantation-and-Afforestation-programme-1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Plantation-and-Afforestation-programme-1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Plantation-and-Afforestation-programme-1.png",
       "AssetKind": "All",
@@ -1547,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Plantation-and-Afforestation-programme-1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\previous.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\previous.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/previous.png",
       "AssetKind": "All",
@@ -1564,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\images\\previous.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/right.png",
       "AssetKind": "All",
@@ -1581,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right-arrow.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right-arrow.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/right-arrow.png",
       "AssetKind": "All",
@@ -1598,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-arrow.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right-arrow1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right-arrow1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/right-arrow1.png",
       "AssetKind": "All",
@@ -1615,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-arrow1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right-arrow2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right-arrow2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/right-arrow2.png",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-arrow2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right-white.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\right-white.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/right-white.png",
       "AssetKind": "All",
@@ -1649,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-white.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\search.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\search.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/search.png",
       "AssetKind": "All",
@@ -1666,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\images\\search.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Seats-left.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Seats-left.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Seats-left.png",
       "AssetKind": "All",
@@ -1683,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Seats-left.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\selected-star.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\selected-star.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/selected-star.png",
       "AssetKind": "All",
@@ -1700,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\images\\selected-star.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\settings.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\settings.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/settings.png",
       "AssetKind": "All",
@@ -1717,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\images\\settings.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\star.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\star.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/star.png",
       "AssetKind": "All",
@@ -1734,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\images\\star.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\star-empty.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\star-empty.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/star-empty.png",
       "AssetKind": "All",
@@ -1751,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\images\\star-empty.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\twitter.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\twitter.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/twitter.png",
       "AssetKind": "All",
@@ -1768,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\images\\twitter.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\up.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\up.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/up.png",
       "AssetKind": "All",
@@ -1785,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\images\\up.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\user.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\user.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/user.png",
       "AssetKind": "All",
@@ -1802,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\user1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\user1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/user1.png",
       "AssetKind": "All",
@@ -1819,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\user-img.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\user-img.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/user-img.png",
       "AssetKind": "All",
@@ -1836,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user-img.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\user-img-large.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\user-img-large.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/user-img-large.png",
       "AssetKind": "All",
@@ -1853,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user-img-large.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/volunteer1.png",
       "AssetKind": "All",
@@ -1870,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/volunteer2.png",
       "AssetKind": "All",
@@ -1887,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer3.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer3.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/volunteer3.png",
       "AssetKind": "All",
@@ -1904,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer3.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer4.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer4.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/volunteer4.png",
       "AssetKind": "All",
@@ -1921,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer4.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer5.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer5.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/volunteer5.png",
       "AssetKind": "All",
@@ -1938,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer5.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer6.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer6.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/volunteer6.png",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer6.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer7.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer7.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/volunteer7.png",
       "AssetKind": "All",
@@ -1972,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer7.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer8.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer8.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/volunteer8.png",
       "AssetKind": "All",
@@ -1989,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer8.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer9.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\volunteer9.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/volunteer9.png",
       "AssetKind": "All",
@@ -2006,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer9.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Volunteering-Rank.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Volunteering-Rank.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Volunteering-Rank.png",
       "AssetKind": "All",
@@ -2023,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Volunteering-Rank.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Voted-Missions.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\Voted-Missions.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/Voted-Missions.png",
       "AssetKind": "All",
@@ -2040,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Voted-Missions.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\web.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\web.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/web.png",
       "AssetKind": "All",
@@ -2057,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\images\\web.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\xlsx.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\images\\xlsx.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "images/xlsx.png",
       "AssetKind": "All",
@@ -2074,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\images\\xlsx.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\site.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\js\\site.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -2091,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -2108,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -2125,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -2142,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -2159,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -2176,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -2193,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -2210,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -2227,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -2244,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -2261,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -2295,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -2312,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -2329,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -2346,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -2363,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2380,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2397,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2414,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2431,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2448,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2465,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2482,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2499,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2516,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2533,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2550,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2567,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2584,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2618,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2635,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2652,10 +2652,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2669,10 +2669,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2686,10 +2686,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2703,10 +2703,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2720,10 +2720,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2737,10 +2737,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2754,10 +2754,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2771,10 +2771,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2788,10 +2788,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2805,10 +2805,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2822,10 +2822,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2839,10 +2839,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2856,10 +2856,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2873,10 +2873,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2890,10 +2890,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2907,10 +2907,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -2924,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -2941,10 +2941,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -2958,10 +2958,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -2975,10 +2975,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -2992,10 +2992,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -3009,10 +3009,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -3026,10 +3026,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -3043,10 +3043,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -3060,10 +3060,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionDocuments\\8IT-GTU-1.pdf",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionDocuments\\8IT-GTU-1.pdf",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionDocuments/8IT-GTU-1.pdf",
       "AssetKind": "All",
@@ -3077,10 +3077,10 @@
       "OriginalItemSpec": "wwwroot\\MissionDocuments\\8IT-GTU-1.pdf"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionDocuments\\Building_Your_Own_Home_For_Dummies.pdf",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionDocuments\\Building_Your_Own_Home_For_Dummies.pdf",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionDocuments/Building_Your_Own_Home_For_Dummies.pdf",
       "AssetKind": "All",
@@ -3094,10 +3094,10 @@
       "OriginalItemSpec": "wwwroot\\MissionDocuments\\Building_Your_Own_Home_For_Dummies.pdf"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionDocuments\\ocean_and_waters_implementation_plan_for_publication.pdf",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionDocuments\\ocean_and_waters_implementation_plan_for_publication.pdf",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionDocuments/ocean_and_waters_implementation_plan_for_publication.pdf",
       "AssetKind": "All",
@@ -3111,10 +3111,10 @@
       "OriginalItemSpec": "wwwroot\\MissionDocuments\\ocean_and_waters_implementation_plan_for_publication.pdf"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionDocuments\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionDocuments\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionDocuments/Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
       "AssetKind": "All",
@@ -3128,10 +3128,10 @@
       "OriginalItemSpec": "wwwroot\\MissionDocuments\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_1_defaultImage_.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_1_defaultImage_.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_1_defaultImage_.jpg",
       "AssetKind": "All",
@@ -3145,10 +3145,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_1_defaultImage_.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_1_image_1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_1_image_1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_1_image_1.png",
       "AssetKind": "All",
@@ -3162,10 +3162,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_1_image_1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_12_defaultImage_.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_12_defaultImage_.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_12_defaultImage_.jpg",
       "AssetKind": "All",
@@ -3179,10 +3179,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_12_defaultImage_.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_12_image_1.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_12_image_1.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_12_image_1.jpg",
       "AssetKind": "All",
@@ -3196,10 +3196,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_12_image_1.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_26_defaultImage_.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_26_defaultImage_.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_26_defaultImage_.jpg",
       "AssetKind": "All",
@@ -3213,10 +3213,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_26_defaultImage_.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_26_image_1.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_26_image_1.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_26_image_1.jpg",
       "AssetKind": "All",
@@ -3230,10 +3230,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_26_image_1.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_26_image_2.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_26_image_2.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_26_image_2.jpg",
       "AssetKind": "All",
@@ -3247,10 +3247,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_26_image_2.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_27_defaultImage_.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_27_defaultImage_.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_27_defaultImage_.png",
       "AssetKind": "All",
@@ -3264,10 +3264,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_27_defaultImage_.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_27_image_1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_27_image_1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_27_image_1.png",
       "AssetKind": "All",
@@ -3281,10 +3281,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_27_image_1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_27_image_2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_27_image_2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_27_image_2.png",
       "AssetKind": "All",
@@ -3298,10 +3298,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_27_image_2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_30_defaultImage_.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_30_defaultImage_.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_30_defaultImage_.png",
       "AssetKind": "All",
@@ -3315,10 +3315,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_30_defaultImage_.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_30_image_1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_30_image_1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_30_image_1.png",
       "AssetKind": "All",
@@ -3332,10 +3332,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_30_image_1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_30_image_2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionImages\\mission_30_image_2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "MissionImages/mission_30_image_2.png",
       "AssetKind": "All",
@@ -3349,10 +3349,10 @@
       "OriginalItemSpec": "wwwroot\\MissionImages\\mission_30_image_2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\12_ProfileImage.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\12_ProfileImage.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "ProfileImages/12_ProfileImage.png",
       "AssetKind": "All",
@@ -3366,10 +3366,10 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\12_ProfileImage.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png",
       "AssetKind": "All",
@@ -3383,10 +3383,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\Animal-welfare-&-save-birds-campaign-1_535e761c-7898-47ce-b7ec-9c6d01d18c50.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\Animal-welfare-&-save-birds-campaign-1_535e761c-7898-47ce-b7ec-9c6d01d18c50.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/Animal-welfare-&-save-birds-campaign-1_535e761c-7898-47ce-b7ec-9c6d01d18c50.png",
       "AssetKind": "All",
@@ -3400,10 +3400,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\Animal-welfare-&-save-birds-campaign-1_535e761c-7898-47ce-b7ec-9c6d01d18c50.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1_729491c5-8a9b-45fc-bfc3-a7edbedc7890.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1_729491c5-8a9b-45fc-bfc3-a7edbedc7890.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1_729491c5-8a9b-45fc-bfc3-a7edbedc7890.png",
       "AssetKind": "All",
@@ -3417,10 +3417,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1_729491c5-8a9b-45fc-bfc3-a7edbedc7890.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1_27d7ed82-a208-485c-86f1-90e92fcef916.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1_27d7ed82-a208-485c-86f1-90e92fcef916.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1_27d7ed82-a208-485c-86f1-90e92fcef916.png",
       "AssetKind": "All",
@@ -3434,10 +3434,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1_27d7ed82-a208-485c-86f1-90e92fcef916.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\Grow-Trees-On-the-path-to-environment-sustainability-3_3e334b79-1853-448b-93a8-0aea579853f3.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\Grow-Trees-On-the-path-to-environment-sustainability-3_3e334b79-1853-448b-93a8-0aea579853f3.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/Grow-Trees-On-the-path-to-environment-sustainability-3_3e334b79-1853-448b-93a8-0aea579853f3.png",
       "AssetKind": "All",
@@ -3451,10 +3451,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\Grow-Trees-On-the-path-to-environment-sustainability-3_3e334b79-1853-448b-93a8-0aea579853f3.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10044_image_1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10044_image_1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10044_image_1.png",
       "AssetKind": "All",
@@ -3468,10 +3468,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10044_image_1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10044_image_2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10044_image_2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10044_image_2.png",
       "AssetKind": "All",
@@ -3485,10 +3485,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10044_image_2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10044_image_3.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10044_image_3.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10044_image_3.png",
       "AssetKind": "All",
@@ -3502,10 +3502,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10044_image_3.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10044_image_4.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10044_image_4.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10044_image_4.png",
       "AssetKind": "All",
@@ -3519,10 +3519,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10044_image_4.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_1.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_1.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10045_image_1.jpg",
       "AssetKind": "All",
@@ -3536,10 +3536,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10045_image_1.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_1.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_1.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10045_image_1.png",
       "AssetKind": "All",
@@ -3553,10 +3553,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10045_image_1.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_2.jpeg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_2.jpeg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10045_image_2.jpeg",
       "AssetKind": "All",
@@ -3570,10 +3570,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10045_image_2.jpeg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_2.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_2.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10045_image_2.png",
       "AssetKind": "All",
@@ -3587,10 +3587,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10045_image_2.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_3.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10045_image_3.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10045_image_3.png",
       "AssetKind": "All",
@@ -3604,10 +3604,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10045_image_3.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10046_image_1.jpg",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10046_image_1.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/story_10046_image_1.jpg",
       "AssetKind": "All",
@@ -3621,10 +3621,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\story_10046_image_1.jpg"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer6_a5ccaed0-47ad-4a38-9ea0-3a09e7e7d22d_8efc63a6-d2d7-4f46-8298-6bc4536869c2_84aaf4fe-5689-4445-9082-13f8ccbda7a9.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer6_a5ccaed0-47ad-4a38-9ea0-3a09e7e7d22d_8efc63a6-d2d7-4f46-8298-6bc4536869c2_84aaf4fe-5689-4445-9082-13f8ccbda7a9.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/volunteer6_a5ccaed0-47ad-4a38-9ea0-3a09e7e7d22d_8efc63a6-d2d7-4f46-8298-6bc4536869c2_84aaf4fe-5689-4445-9082-13f8ccbda7a9.png",
       "AssetKind": "All",
@@ -3638,10 +3638,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\volunteer6_a5ccaed0-47ad-4a38-9ea0-3a09e7e7d22d_8efc63a6-d2d7-4f46-8298-6bc4536869c2_84aaf4fe-5689-4445-9082-13f8ccbda7a9.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer7_797e5e5f-b394-43b3-b27d-946a39c7aaef_5a74ea97-48ab-4b26-a38f-007d8159a07d_461d4d70-07df-4ffc-b92a-ca91f0f5357b.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer7_797e5e5f-b394-43b3-b27d-946a39c7aaef_5a74ea97-48ab-4b26-a38f-007d8159a07d_461d4d70-07df-4ffc-b92a-ca91f0f5357b.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/volunteer7_797e5e5f-b394-43b3-b27d-946a39c7aaef_5a74ea97-48ab-4b26-a38f-007d8159a07d_461d4d70-07df-4ffc-b92a-ca91f0f5357b.png",
       "AssetKind": "All",
@@ -3655,10 +3655,10 @@
       "OriginalItemSpec": "wwwroot\\Upload\\volunteer7_797e5e5f-b394-43b3-b27d-946a39c7aaef_5a74ea97-48ab-4b26-a38f-007d8159a07d_461d4d70-07df-4ffc-b92a-ca91f0f5357b.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer9_dcf20388-88cb-4a64-9f3d-6a6e5411050c_87773a97-778b-41f8-91a4-de0e8399b984.png",
+      "Identity": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer9_dcf20388-88cb-4a64-9f3d-6a6e5411050c_87773a97-778b-41f8-91a4-de0e8399b984.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\main\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
       "RelativePath": "Upload/volunteer9_dcf20388-88cb-4a64-9f3d-6a6e5411050c_87773a97-778b-41f8-91a4-de0e8399b984.png",
       "AssetKind": "All",

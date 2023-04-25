@@ -5,184 +5,193 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CI_Platform_web
 build_property.RootNamespace = CI_Platform_web
-build_property.ProjectDir = D:\Projects\main\main\MVC\CI Platform\CI Platform web\
+build_property.ProjectDir = C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform web\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Projects\main\main\MVC\CI Platform\CI Platform web
+build_property.MSBuildProjectDirectory = C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform web
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminCMS.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/AdminCMS.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5DTVMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminMissionApplication.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/AdminMissionApplication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5NaXNzaW9uQXBwbGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminMissionPage.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/AdminMissionPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5NaXNzaW9uUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminMissionSkill.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/AdminMissionSkill.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5NaXNzaW9uU2tpbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminMissionTheme.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/AdminMissionTheme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5NaXNzaW9uVGhlbWUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminStory.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/AdminStory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5TdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/AdminUser.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/AdminUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5Vc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/BannerManagement.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/BannerManagement.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQmFubmVyTWFuYWdlbWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditBanner.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/CommentManagement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29tbWVudE1hbmFnZW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/TimesheetManagement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGltZXNoZWV0TWFuYWdlbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditBanner.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkZG9yRWRpdEJhbm5lci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditCMS.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditCMS.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkZG9yRWRpdENNUy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditMission.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditMission.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkZG9yRWRpdE1pc3Npb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditMissionSkill.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditMissionSkill.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkZG9yRWRpdE1pc3Npb25Ta2lsbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditMissionTheme.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditMissionTheme.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkZG9yRWRpdE1pc3Npb25UaGVtZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditUser.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Admin/_AddorEditUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cX0FkZG9yRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Home/Forgot_Password.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Home/Forgot_Password.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGb3Jnb3RfUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Home/Index.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Home/PrivacyPolicy.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Home/PrivacyPolicy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5UG9saWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Home/Registration.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Home/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RyYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Home/Reset_Password.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Home/Reset_Password.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXNldF9QYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Mission/LandingPage.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Mission/LandingPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxMYW5kaW5nUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Mission/MissionVolunteering.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Mission/MissionVolunteering.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxNaXNzaW9uVm9sdW50ZWVyaW5nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Mission/_GridListPartial.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Mission/_GridListPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxfR3JpZExpc3RQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Mission/_RecentVolunteers.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Mission/_RecentVolunteers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxfUmVjZW50Vm9sdW50ZWVycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/Components/Banner/Default.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/Components/Banner/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQmFubmVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/Components/UserHeader/Contact_Us.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/Components/UserHeader/Contact_Us.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlckhlYWRlclxDb250YWN0X1VzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/Components/UserHeader/Default.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/Components/UserHeader/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlckhlYWRlclxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/Components/UserHeader/Privacy.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/Components/UserHeader/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlckhlYWRlclxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/Error.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/_AdminLayout.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/_HeaderLayout.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/_HeaderLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9IZWFkZXJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/_Login_Layout.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/_Login_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbl9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/_NoMissionFound.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/_NoMissionFound.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob01pc3Npb25Gb3VuZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/_SearchBarPartial.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/_SearchBarPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TZWFyY2hCYXJQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Story/ShareStory.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Story/ShareStory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcU2hhcmVTdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Story/StoriesListing.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Story/StoriesListing.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcU3Rvcmllc0xpc3RpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Story/StoryDetail.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Story/StoryDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcU3RvcnlEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Story/_StoryPartial.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Story/_StoryPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RvcnlcX1N0b3J5UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/TimeSheet/TimeSheet.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/TimeSheet/TimeSheet.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZVNoZWV0XFRpbWVTaGVldC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/User/UserProfile.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/User/UserProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/_ViewImports.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/_ViewStart.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/main/main/MVC/CI Platform/CI Platform web/Views/Shared/_Layout.cshtml]
+[C:/Users/dhana/Desktop/varun/MVC/CI Platform/CI Platform web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ajsl1beifh

@@ -386,5 +386,53 @@ namespace CI_Platform_web.Controllers
             }
             return PartialView("_AddorEditBanner", model);
         }
+
+        public async Task<IActionResult> CommentManagement()
+        {
+            AdminCommentsModel model = new()
+            {
+                Comments = await _admin.GetCommentsList(),
+            };
+            return View(model);
+        }
+
+        public async Task<IActionResult> HandleCommentApproval(int button, long Id)
+        {
+            if (button == 1)
+            {
+                await _admin.ApproveComment(Id);
+                return Ok(new { icon = "success", message = "Comment " + Constants.approveMessage });
+            }
+            else if (button == 0)
+            {
+                await _admin.DeclineComment(Id);
+                return Ok(new { icon = "warning", message = "Comment " + Constants.declineMessage });
+            }
+            return RedirectToAction("CommentManagement");
+        }
+
+        public async Task<IActionResult> TimesheetManagement()
+        {
+            AdminTimesheetModel model = new()
+            {
+                timesheets = await _admin.GetTimesheetList(),
+            };
+            return View(model);
+        }
+
+        public async Task<IActionResult> HandleTimesheetApproval(int button, long Id)
+        {
+            if (button == 1)
+            {
+                await _admin.ApproveTimesheet(Id);
+                return Ok(new { icon = "success", message = "Timesheet " + Constants.approveMessage });
+            }
+            else if (button == 0)
+            {
+                await _admin.DeclineTimesheet(Id);
+                return Ok(new { icon = "warning", message = "Timesheet " + Constants.declineMessage });
+            }
+            return RedirectToAction("CommentManagement");
+        }
     }
 }
