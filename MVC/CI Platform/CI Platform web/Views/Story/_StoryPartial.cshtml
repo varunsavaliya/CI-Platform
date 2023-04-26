@@ -1,24 +1,29 @@
-﻿@model CI_Platform.Entities.ViewModels.StoriesListingModel
+﻿@using System.Text.RegularExpressions
+@model CI_Platform.Entities.ViewModels.StoriesListingModel
 <p id="total-stories" class="d-none">@Model.totalrecords</p>
 @foreach (var story in Model.StoriesList)
 {
-    string description = story.StoryData.Description;
-    if (description.Length > 100)
-    {
-        description = description.Substring(0, 100) + "...";
-    }
+        var descLength = 200;
+    var title = story.StoryData.Title;
+    string pattern = @"<[^>]*>";
+        string text = Regex.Replace(story.StoryData.Description, pattern, string.Empty);
+        string description = text.Length > descLength
+        ? text.Substring(0, descLength) + "..." : text;
+    var titleLength = 50;
+    title = title.Length > titleLength
+   ? text.Substring(0, titleLength) + "..." : title;
 
     <div class="col-12 col-md-6 col-lg-4">
         <div class="card story-card">
             <div class="card-image">
-                        @if(story.StoryMedia != null)
-                        {
-                            <img src="~/Upload/@story.StoryMedia" alt="Card Image">
-                        }
-                        else
-                        {
-                            <img src="~/images/no-image-icon.png" alt="Card Image">
-                        }
+                @if (story.StoryMedia != null)
+                {
+                    <img src="~/Upload/@story.StoryMedia" alt="Card Image">
+                }
+                else
+                {
+                    <img src="~/images/no-image-icon.png" alt="Card Image">
+                }
                 <a href="@Url.Action("StoryDetail", "Story" , new { id=@story.StoryData.StoryId})" type="button" class="btn sl-card-btn btn-outline-light rounded-pill hero-btn px-4 py-2">View Details &nbsp;<i class="bi bi-arrow-right"></i></a>
                 <!-- story capsule -->
             <div class="mission-theme">
@@ -28,11 +33,18 @@
 
             <!-- card content -->
         <div class="card-content">
-                <h2 class="card-title">@story.StoryData.Title</h2>
+                <h2 class="card-title">@title</h2>
                 <p class="card-description">@Html.Raw(description)</p>
                 @*image and name*@
                 <div class="d-flex story-creator justify-content-start align-items-center">
-                    <img src="~/images/volunteer1.png" class="me-3" />
+                    @if (story.UserProfile != null)
+                    {
+                        <img src="~/ProfileImages/@story.UserProfile" class="me-3" />
+                    }
+                    else
+                    {
+                        <img src="~/images/default user avatar.jpg" class="me-3" />
+                    }
                     <span>@story.UserName</span>
                 </div>
             </div>

@@ -15,7 +15,7 @@
             {
                 var banner = Model.Banners[i];
                 <div class="item @((i == 0) ? "active" : "")">
-                    <div class="banner-image" style=" background-image: url(../Banners/@banner.Image);"></div>
+                    <div class="banner-image" style=" background-image: -webkit-linear-gradient( bottom, #000 0%, rgba(255, 255, 255, 0) 50% ), url(../Banners/@banner.Image);"></div>
                     <div class="carousel-caption">
                         <div class="image-caption">
                             <p>@banner.Text</p>

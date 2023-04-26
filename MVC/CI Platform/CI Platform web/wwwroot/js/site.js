@@ -273,11 +273,10 @@
         $.ajax({
             url: '/Mission/Apply',
             type: 'POST',
-            data: {
-                MissionId: missionId, UserId: userId
-            },
+            data: { MissionId: missionId},
             success: function (response) {
-                $(".apply-btn").text("Applied").addClass('published-btn btn btn-success disabled').removeClass('card-btn');
+                $('.apply-btn').text('Applied').addClass('published-btn btn btn-success disabled');
+                $('.apply-btn').removeClass('card-button');
                 swal.fire({
                     position: 'center',
                     icon: response.icon,
@@ -470,7 +469,7 @@
         let selectedSkills = $('input[type="checkbox"][name="skillCheckboxes"]:checked').map(function () {
             return parseInt($(this).val());
         }).get();
-        let pageSize = 3;
+        let pageSize = 6;
 
         let inputData = {
             CountryId: selectedCountry !== "" ? selectedCountry : null,
@@ -727,45 +726,50 @@
     var defaultImage = null;
 
     function handleFiles(e) {
+        $('.image-validation-error').text('');
         // Add dropped images or selected images to the list
         var files = e.target.files || e.originalEvent.dataTransfer.files;
 
         // Add selected images to the list
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
-            var reader = new FileReader();
-            allfiles.push(file);
-            //formData.append('file', file);
+            if (file.size >= 4 * 1024 * 1024) {
+                $('.image-validation-error').text('File size exceeds 4 MB: ' + file.name)
+                continue;
+            }
+                var reader = new FileReader();
+                allfiles.push(file);
+                //formData.append('file', file);
 
-            // Create image preview and close icon
-            reader.onload = (function (file) {
-                return function (e) {
-                    var image = $('<img>').attr('src', e.target.result);
-                    var closeIcon = $('<span>').addClass('close-icon').text('x');
+                // Create image preview and close icon
+                reader.onload = (function (file) {
+                    return function (e) {
+                        var image = $('<img>').attr('src', e.target.result);
+                        var closeIcon = $('<span>').addClass('close-icon').text('x');
 
-                    // Add image and close icon to the list
-                    var item = $('<div>').addClass('image-item').append(image).append(closeIcon);
-                    imageList.append(item);
+                        // Add image and close icon to the list
+                        var item = $('<div>').addClass('image-item').append(image).append(closeIcon);
+                        imageList.append(item);
 
-                    // Handle close icon click event
-                    closeIcon.on('click', function () {
-                        item.remove();
-                        allfiles.splice(allfiles.indexOf(file), 1);
-                        if (file === defaultImage) {
-                            defaultImage = null;
-                        }
-                    });
+                        // Handle close icon click event
+                        closeIcon.on('click', function () {
+                            item.remove();
+                            allfiles.splice(allfiles.indexOf(file), 1);
+                            if (file === defaultImage) {
+                                defaultImage = null;
+                            }
+                        });
 
-                    item.on('click', function () {
-                        $('.image-item.default').removeClass('default border border-secondary');
-                        $(this).addClass('default border border-secondary');
-                        defaultImage = file;
-                    });
-                };
-            })(file);
+                        item.on('click', function () {
+                            $('.image-item.default').removeClass('default border border-secondary');
+                            $(this).addClass('default border border-secondary');
+                            defaultImage = file;
+                        });
+                    };
+                })(file);
 
-            // Read image file as data URL
-            reader.readAsDataURL(file);
+                // Read image file as data URL
+                reader.readAsDataURL(file);
         }
         // Create a new DataTransfer object
         var dataTransfer = new DataTransfer();
@@ -1824,9 +1828,12 @@
             $('#GoalValue').parent().show();
             $('#GoalObjectiveText').parent().show();
             $('#TotalSeats').parent().hide();
+            $('#TotalSeats').val('');
         } else {
             $('#GoalValue').parent().hide();
+            $('#GoalValue').val('');
             $('#GoalObjectiveText').parent().hide();
+            $('#GoalObjectiveText').val('');
             $('#TotalSeats').parent().show();
         }
     })

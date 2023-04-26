@@ -21,9 +21,9 @@ namespace Ci_Platform.Repositories.Repositories
         {
             _context.SaveChanges();
         }
-        public bool IsRegistered(User user)
+        public bool IsRegistered(string email)
         {
-            bool isRegistered = _context.Users.Any(a => a.Email == user.Email && a.DeletedAt == null && a.Status == 1);
+            bool isRegistered = _context.Users.Any(a => a.Email == email && a.DeletedAt == null && a.Status == 1);
             return isRegistered;
         }
         public bool IsRegistered(PasswordReset user)

@@ -83,7 +83,8 @@ namespace Ci_Platform.Repositories.Repositories
                 UserName = story.User.FirstName+" " + story.User.LastName,
                 StoryMedia = story.StoryMedia.Where(story => story.Type == "image" && story.DeletedAt == null).Select(story => story.Path).FirstOrDefault(),
                 ThemeName = story.Mission.Theme.Title,
-            }) ;
+                UserProfile = story.User.Avatar,
+            });
 
             var records = storyCardQuery
                 .Skip((queryParams.pageNo - 1) * queryParams.pageSize)

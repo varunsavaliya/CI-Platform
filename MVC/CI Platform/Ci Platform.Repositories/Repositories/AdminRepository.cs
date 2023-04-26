@@ -501,6 +501,12 @@ namespace Ci_Platform.Repositories.Repositories
             if (model.MissionType == "Goal")
             {
                 GoalMission? goalMission = await _context.GoalMissions.FirstOrDefaultAsync(goalMission => goalMission.MissionId == missionId);
+                if(goalMission == null)
+                {
+                    goalMission = new GoalMission();
+                    goalMission.MissionId = missionId;
+                    await _context.GoalMissions.AddAsync(goalMission);
+                }
                 goalMission.GoalObjectiveText = model.GoalObjectiveText;
                 goalMission.GoalValue = model.GoalValue;
                 await _context.SaveChangesAsync();

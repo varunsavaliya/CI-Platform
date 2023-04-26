@@ -16,7 +16,7 @@ namespace Ci_Platform.Repositories.Repositories
 
         public (List<MissionCard> missionList, int totalRecords) GetMissionCards(InputData queryParams, long userId)
         {
-            var query = _context.Missions.Where(mission => mission.DeletedAt == null).AsQueryable();
+            var query = _context.Missions.Where(mission => mission.DeletedAt == null && mission.Status == 1).AsQueryable();
 
             if (queryParams.CityIds.Any())
                 query = query.Where(mission => queryParams.CityIds.Contains(mission.CityId));
@@ -39,7 +39,6 @@ namespace Ci_Platform.Repositories.Repositories
                 Missiondata = mission,
                 HasApplied = mission.MissionApplications.Any(missionApplication => missionApplication.UserId == userId && missionApplication.DeletedAt == null),
                 IsFavourite = mission.FavoriteMissions.Any(fav => fav.UserId == userId && fav.DeletedAt == null),
-                //DefaultMedia = mission.MissionMedia.Where(missionMedia => missionMedia.DeletedAt == null && missionMedia.DefaultMedia == 1).Select(missionMedia => missionMedia.MediaPath).FirstOrDefault(),
                 MissionMedia = mission.MissionMedia.Where(missionMedia => missionMedia.DeletedAt == null).OrderByDescending(missionMedia => missionMedia.DefaultMedia).Select(missionMedia => missionMedia.MediaPath).FirstOrDefault(),
                 rating = (float?)mission.MissionRatings.Average(rating => rating.Rating) == null ? 0 : (float?)mission.MissionRatings.Average(rating => rating.Rating),
                 seatsleft = mission.TotalSeats - mission.MissionApplications.Count(missionApplication => missionApplication.ApprovalStatus == "PUBLISHED" && missionApplication.DeletedAt == null),
@@ -48,7 +47,7 @@ namespace Ci_Platform.Repositories.Repositories
                 IsEnddatePassed = mission.EndDate < DateTime.Now,
                 IsOngoing = (mission.StartDate < DateTime.Now) && (mission.EndDate > DateTime.Now),
                 goalObjectiveText = mission.GoalMissions.Select(goalMission => goalMission.GoalObjectiveText).FirstOrDefault(),
-                AchievedGoal = mission.Timesheets.Sum(achievedGoal => achievedGoal.Action),
+                AchievedGoal = mission.Timesheets.Where(achievedGoal => achievedGoal.Status == "APPROVED").Sum(achievedGoal => achievedGoal.Action),
                 Goalvalue = mission.GoalMissions.Select(goalMission => goalMission.GoalValue).FirstOrDefault(),
             });
 
@@ -94,9 +93,9 @@ namespace Ci_Platform.Repositories.Repositories
                 _context.SaveChanges();
             }
         }
-        public  MissionCard GetMissionVolunteeringData(long missionId, long userId)
+        public MissionCard GetMissionVolunteeringData(long missionId, long userId)
         {
-            var query =  _context.Missions.Where(mission => mission.MissionId == missionId).AsQueryable();
+            var query = _context.Missions.Where(mission => mission.MissionId == missionId).AsQueryable();
             var missionDetailsQuery = query.Select(mission => new MissionCard()
             {
                 Missiondata = mission,
@@ -109,11 +108,11 @@ namespace Ci_Platform.Repositories.Repositories
                 IsOngoing = (mission.StartDate < DateTime.Now) && (mission.EndDate > DateTime.Now),
                 goalObjectiveText = mission.GoalMissions.Select(goalMission => goalMission.GoalObjectiveText).FirstOrDefault(),
                 seatsleft = mission.TotalSeats - mission.MissionApplications.Count(missionApplication => missionApplication.ApprovalStatus == "PUBLISHED" && missionApplication.DeletedAt == null),
-                AchievedGoal = mission.Timesheets.Sum(achievedGoal => achievedGoal.Action),
+                AchievedGoal = mission.Timesheets.Where(achievedGoal => achievedGoal.Status == "APPROVED").Sum(achievedGoal => achievedGoal.Action),
                 Goalvalue = mission.GoalMissions.Select(goalMission => goalMission.GoalValue).FirstOrDefault(),
                 MissionComments = mission.Comments.Where(comment => comment.ApprovalStatus == "PUBLISHED").ToList(),
                 MissionSkills = mission.MissionSkills.Select(skill => skill.Skill.SkillName).ToList(),
-                rating =  mission.MissionRatings.Average(rating => rating.Rating) == null ? 0 : mission.MissionRatings.Average(rating => rating.Rating),
+                rating = mission.MissionRatings.Average(rating => rating.Rating) == null ? 0 : mission.MissionRatings.Average(rating => rating.Rating),
                 MissionAllMedia = mission.MissionMedia.Where(missionMedia => missionMedia.DeletedAt == null).OrderByDescending(missionMedia => missionMedia.DefaultMedia).ToList(),
                 TotalUserRated = mission.MissionRatings.Count(),
             });
@@ -123,14 +122,13 @@ namespace Ci_Platform.Repositories.Repositories
         public List<MissionCard> GetRelatedMission(long missionId, long userId)
         {
             Mission? currentMission = _context.Missions.Find(missionId);
-            // Retrieve the related missions
             var query = _context.Missions.Where(mission => mission.MissionId != missionId).AsQueryable();
 
-            var reletedMissionQuery = query.Where(mission=> mission.CityId == currentMission.CityId);
+            var reletedMissionQuery = query.Where(mission => mission.CityId == currentMission.CityId);
 
             if (reletedMissionQuery.Count() < 3)
                 reletedMissionQuery = query.Where(mission => mission.MissionId != missionId && (mission.CityId == currentMission.CityId || mission.ThemeId == currentMission.ThemeId));
-            
+
             if (reletedMissionQuery.Count() < 3)
                 reletedMissionQuery = query.Where(mission => mission.MissionId != missionId && (mission.CityId == currentMission.CityId || mission.ThemeId == currentMission.ThemeId || mission.CountryId == currentMission.CountryId));
 
@@ -140,7 +138,6 @@ namespace Ci_Platform.Repositories.Repositories
                 Missiondata = mission,
                 HasApplied = mission.MissionApplications.Any(missionApplication => missionApplication.UserId == userId && missionApplication.DeletedAt == null),
                 IsFavourite = mission.FavoriteMissions.Any(fav => fav.UserId == userId && fav.DeletedAt == null),
-                //DefaultMedia = mission.MissionMedia.Where(missionMedia => missionMedia.DeletedAt == null && missionMedia.DefaultMedia == 1).Select(missionMedia => missionMedia.MediaPath).FirstOrDefault(),
                 MissionMedia = mission.MissionMedia.Where(missionMedia => missionMedia.DeletedAt == null).OrderByDescending(missionMedia => missionMedia.DefaultMedia).Select(missionMedia => missionMedia.MediaPath).FirstOrDefault(),
                 rating = (float?)mission.MissionRatings.Average(rating => rating.Rating) == null ? 0 : (float?)mission.MissionRatings.Average(rating => rating.Rating),
                 seatsleft = mission.TotalSeats - mission.MissionApplications.Count(missionApplication => missionApplication.ApprovalStatus == "PUBLISHED" && missionApplication.DeletedAt == null),
@@ -149,7 +146,7 @@ namespace Ci_Platform.Repositories.Repositories
                 IsEnddatePassed = mission.EndDate < DateTime.Now,
                 IsOngoing = (mission.StartDate < DateTime.Now) && (mission.EndDate > DateTime.Now),
                 goalObjectiveText = mission.GoalMissions.Select(goalMission => goalMission.GoalObjectiveText).FirstOrDefault(),
-                AchievedGoal = mission.Timesheets.Sum(achievedGoal => achievedGoal.Action),
+                AchievedGoal = mission.Timesheets.Where(achievedGoal => achievedGoal.Status == "APPROVED").Sum(achievedGoal => achievedGoal.Action),
                 Goalvalue = mission.GoalMissions.Select(goalMission => goalMission.GoalValue).FirstOrDefault(),
             });
 
@@ -164,7 +161,7 @@ namespace Ci_Platform.Repositories.Repositories
         public async Task<List<string>> GetMissionDocs(long missionId)
         {
             return await _context.MissionDocuments.Where(doc => doc.MissionId == missionId).Select(doc => doc.DocumentPath).ToListAsync();
-        } 
+        }
         public async Task<int> GetUserMissionRating(long missionId, long userId)
         {
             return await _context.MissionRatings.Where(missionRating => missionRating.UserId == userId && missionRating.MissionId == missionId).Select(missionRating => missionRating.Rating).FirstOrDefaultAsync() == null ? 0 : await _context.MissionRatings.Where(missionRating => missionRating.UserId == userId && missionRating.MissionId == missionId).Select(missionRating => missionRating.Rating).FirstOrDefaultAsync();
@@ -210,8 +207,8 @@ namespace Ci_Platform.Repositories.Repositories
             MissionApplication application = new();
             application.MissionId = missionId;
             application.UserId = userId;
-            _context.MissionApplications.Add(application);
-            _context.SaveChanges();
+            await _context.MissionApplications.AddAsync(application);
+            await _context.SaveChangesAsync();
         }
         public async Task HandleComment(Comment comment, long userId)
         {

@@ -41,9 +41,12 @@ namespace CI_Platform.Entities.ViewModels
         public string? OrganizationDetail { get; set; }
         [Required(ErrorMessage = "select availibility")]
         public string? Availability { get; set; }
-
+        [Required(ErrorMessage = "select availibility")]
         public int? TotalSeats { get; set; }
+        [Required(ErrorMessage = "select availibility")]
+
         public string? GoalObjectiveText { get; set; }
+        [Required(ErrorMessage = "select availibility")]
 
         public int GoalValue { get; set; }
 

@@ -1,9 +1,4 @@
 ﻿using CI_Platform.Entities.DataModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CI_Platform.Entities.ViewModels
 {
@@ -18,9 +13,8 @@ namespace CI_Platform.Entities.ViewModels
         public List<Skill> Skill { get; set; } = new List<Skill>();
         public List<MissionSkill> MissionSkills { get; set; } = new List<MissionSkill>();
 
-        //public List<Mission> MissionList { get; set; } = new List<Mission>();
         public List<MissionCard> MissionList { get; set; } = new List<MissionCard>();
-        public int totalRecords { get; set; }
+        public int totalRecords { get; set; } = 0;
         public List<User> Users { get; set; } = new List<User>();
     }
 
@@ -40,7 +34,7 @@ namespace CI_Platform.Entities.ViewModels
 
         public string? ThemeName { get; set; }
 
-        public double? rating { get; set; } = 0;
+        public double? rating { get; set; } = null!;
 
         public bool IsDeadlinePassed { get; set; }
 
@@ -49,10 +43,7 @@ namespace CI_Platform.Entities.ViewModels
         public int? Goalvalue { get; set; }
 
         public int? AchievedGoal { get; set; }
-
         public string? MissionMedia { get; set; }
-        public string? DefaultMedia { get; set; }
-
         public string? goalObjectiveText { get; set; }
         public int TotalUserRated { get; set; }
         public List<Comment> MissionComments { get; set; } = new List<Comment>();

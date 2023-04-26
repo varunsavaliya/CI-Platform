@@ -27,5 +27,6 @@ namespace CI_Platform.Entities.ViewModels
         public string? UserName { get; set; } = null!;
         public string? StoryMedia { get; set; } = null!;
         public string? ThemeName { get; set; } = null!;
+        public string? UserProfile { get; set; } = null!;
     }
 }

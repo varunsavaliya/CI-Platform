@@ -28,6 +28,7 @@ namespace CI_Platform_web.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
+            _Authentication.DestroySession();
             return View();
         }
 
@@ -38,7 +39,7 @@ namespace CI_Platform_web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_Authentication.IsRegistered(user))
+                if (_Authentication.IsRegistered(user.Email))
                 {
                     if (_Authentication.ComparePassword(user))
                     {
@@ -160,7 +161,7 @@ namespace CI_Platform_web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_Authentication.IsRegistered(obj))
+                if (!_Authentication.IsRegistered(model.Email))
                 {
                     _Authentication.Add(obj);
                     _Authentication.Save();
@@ -177,6 +178,11 @@ namespace CI_Platform_web.Controllers
         public IActionResult Logout()
         {
             _Authentication.DestroySession();
+            // Expire all cookies
+            foreach (var cookieKey in Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookieKey);
+            }
             return RedirectToAction("Index", "Home");
         }
         [HttpPost]

@@ -46,7 +46,6 @@ body {
 .image-caption {
     position: relative;
     right: 14%;
-    box-shadow: rgb(0 0 0 / 20%) 5px 5px 5px 0px;
 }
 
     .image-caption h3 {
@@ -58,7 +57,7 @@ body {
     .image-caption p {
         font-family: 'Noto Sans', sans-serif;
         text-align: left;
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
 
 /* form */
@@ -158,7 +157,7 @@ body {
     }
 
     .image-caption p {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 
     .formcontent {
@@ -242,10 +241,6 @@ body {
         font-size: 2.1rem;
     }
 
-    .image-caption p {
-        font-size: 1rem;
-    }
-
     .formcontent {
         width: 316px;
     }
@@ -269,19 +264,12 @@ body {
 }
 
 @media screen and (max-width: 700px) {
-    .carousel-image1,
-    .carousel-image2,
-    .carousel-image3 {
+    .banner-image {
         height: 50vh;
     }
 
     .image-caption h3 {
         font-size: 1.8rem;
-    }
-
-    .image-caption p {
-        font-size: 0.9rem;
-        margin: 0 !important;
     }
 
     .formlabels {
@@ -321,10 +309,6 @@ body {
     }
 
         .image-caption h3 {
-            text-align: center;
-        }
-
-        .image-caption p {
             text-align: center;
         }
 }
@@ -1450,8 +1434,7 @@ footer {
 .vmbtn {
     border: 2px solid #757575 !important;
     border-radius: 33px !important;
-    width: -webkit-fill-available !important;
-    padding: 10px 0 !important;
+    padding: 10px 17px !important;
 }
     /*.vmbtn img+img{
         display:none;
@@ -1530,7 +1513,7 @@ footer {
 
 @media screen and (max-width:1387px) {
     .recommend-text:after {
-        content: "Recommend Mission";
+        content: "Recommend";
     }
 }
 

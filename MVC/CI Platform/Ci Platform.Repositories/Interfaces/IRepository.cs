@@ -6,7 +6,7 @@ namespace Ci_Platform.Repositories.Interfaces
     {
         public void Add(T model);
         public void Save();
-        public bool IsRegistered(User user);
+        public bool IsRegistered(string email);
         public bool IsRegistered(PasswordReset user);
         public bool ComparePassword(User user);
     }

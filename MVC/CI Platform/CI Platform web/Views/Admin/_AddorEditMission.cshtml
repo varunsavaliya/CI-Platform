@@ -185,8 +185,9 @@
         <p class="mb-0">Upload your photos</p>
         <div id="dropzone" class="dropzone">
             <input type="file" class="d-none" accept=".jpg,.png, .jpeg" multiple id="actual-file-input" name="images" asp-for="Files" />
-            <label class="drag-drop mb-4" for="actual-file-input" id="file-button">
-                <img src="~/images/drag-and-drop.png" />
+            <label class="drag-drop mb-4 d-flex flex-column" for="actual-file-input" id="file-button">
+                <i class="fa-solid fa-circle-plus mb-3 fs-2"></i>
+                <span>Add Images (Less than 4 MB)</span>
             </label>
         </div>
         @if (Model.FileNames != null)
@@ -196,8 +197,8 @@
                 <input type="text" class="d-none image-paths" asp-for="FileNames" value="@image">
             }
         }
-            <input type="text" class="d-none default-image-path" asp-for="FileNames" value="@Model.DefaultImageName">
-
+        <input type="text" class="d-none default-image-path" asp-for="FileNames" value="@Model.DefaultImageName">
+        <div class="image-validation-error text-danger"></div>
         <div id="image-list" class="d-flex">
             <!-- Selected images will be displayed here -->
         </div>

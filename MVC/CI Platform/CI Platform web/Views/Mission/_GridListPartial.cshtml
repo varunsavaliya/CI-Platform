@@ -1,14 +1,7 @@
 ﻿@using CI_Platform.Entities.DataModels;
-@*@model CI_Platform.Entities.ViewModels.GetMissions;*@
 @model CI_Platform.Entities.ViewModels.LandingPageModel;
-@{
-    //var UserId = 12;
-    var UserId = ViewBag.UserId;
-    //long totalCards = ViewBag.totalRecords;
-}
 
 <script>
-
     if (localStorage.getItem('view') == 0) {
     $('#GridView').show();
     $('#ListView').hide();
@@ -86,11 +79,11 @@ else
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body" id="all-users">
-                                                            @foreach (var u in Model.Users)
+                                                            @foreach (var user in Model.Users)
                                                             {
                                                                 <div class="mt-2 d-flex justify-content-between">
-                                                                    <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
-                                                                    <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@card.Missiondata.MissionId">Invite</button></span>
+                                                                    <span class="me-4 " id="user-name" data-userID="@user.UserId">@user.FirstName @user.LastName</span>
+                                                                    <span class="invited-@user.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@card.Missiondata.MissionId">Invite</button></span>
                                                                 </div>
                                                             }
 

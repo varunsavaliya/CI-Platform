@@ -2,17 +2,16 @@
 @{
     Layout = "_HeaderLayout";
     ViewData["Title"] = "Mission Volunteering";
-    var UserId = Convert.ToInt64(ViewBag.UserId);
 }
-<script>
+@*<script>
     var userId = @Html.Raw(Json.Serialize(UserId));
-</script>
+</script>*@
 @section scripts{
     @{
     <partial name="_ValidationScriptsPartial" />
     }
-} </div>
 }
+
 @functions {
     public string GetEmbedUrl(string url)
     {
@@ -58,10 +57,7 @@
                             </div>
                         }
                     }
-
                 </div>
-                @*<div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>*@
             </div>
             <div thumbsSlider="" class="swiper mySwiper">
                 <div class="swiper-wrapper">
@@ -171,7 +167,6 @@
                     <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
                         <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#inviteVolunteer"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
 
-
                         <!-- Invite Volunteer Modal -->
                         <div class="modal fade" id="inviteVolunteer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -181,11 +176,11 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body" id="all-users">
-                                        @foreach (var u in Model.UserList)
+                                        @foreach (var user in Model.UserList)
                                         {
                                             <div class="mt-2 d-flex justify-content-between">
-                                                <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
-                                                <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.Missiondata.MissionId">Invite</button></span>
+                                                <span class="me-4 " id="user-name" data-userID="@user.UserId">@user.FirstName @user.LastName</span>
+                                                <span class="invited-@user.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.Missiondata.MissionId">Invite</button></span>
                                             </div>
                                         }
 
@@ -194,7 +189,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <div class="star-capsule">
                         @for (int i = 0; i < Model.UserRatings; i++)
@@ -322,7 +316,6 @@
                             <span asp-validation-for="comment1" class="text-danger"></span>
 
                         </div>
-                        <input type="hidden" name="UserId" value="@UserId" />
                         <input type="hidden" name="MissionId" value="@Model.mission.Missiondata.MissionId" />
                         <button type="submit" class="card-button d-flex justify-content-between align-items-center align-self-center m-0">
                             Post Comment

@@ -23,7 +23,7 @@ namespace CI_Platform_web.Controllers
         {
             if (HttpContext.Session.GetString("UserId") == null)
             {
-                string returnUrl = Url.Action("LandingPage", "Mission");
+                string? returnUrl = Url.Action("LandingPage", "Mission");
                 return RedirectToAction("Index", "Home", new { returnUrl });
             }
 
@@ -37,12 +37,7 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public async Task<IActionResult> LandingPage(InputData inputData)
         {
-            long UserId = 0;
-            if (HttpContext.Session.GetString("UserName") != null)
-            {
-                UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
-                ViewBag.UserId = UserId;
-            }
+            long UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
 
             var (missionList, totalRecords) = _mission.GetMissionCards(inputData, UserId);
             LandingPageModel model = new()
@@ -82,7 +77,7 @@ namespace CI_Platform_web.Controllers
         {
             if (HttpContext.Session.GetString("UserId") == null)
             {
-                string returnUrl = Url.Action("MissionVolunteering", "Mission");
+                string? returnUrl = Url.Action("MissionVolunteering", "Mission");
                 return RedirectToAction("Index", "Home", new { returnUrl });
             }
             long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));

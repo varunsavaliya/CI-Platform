@@ -99,7 +99,7 @@ namespace Ci_Platform.Repositories.Repositories
             user.Password = pass;
             _context.SaveChanges();
         }
-        public  void SetSession(string email)
+        public void SetSession(string email)
         {
             User? user = _context.Users.Where(u => u.Email == email).FirstOrDefault();
             var session = _httpContextAccessor.HttpContext.Session;

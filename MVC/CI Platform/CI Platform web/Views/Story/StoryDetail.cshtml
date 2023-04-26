@@ -92,7 +92,14 @@
         <div class="col-lg-6 col-md-12 mt-4">
             <div class="d-flex justify-content-between align-items-end">
                 <div class="d-flex flex-column volunteer-details">
-                    <img class="mb-3" src="~/images/volunteer1.png" />
+                    @if(Model.StoryDetail.User.Avatar != null)
+                    {
+                        <img class="mb-3" src="~/ProfileImages/@Model.StoryDetail.User.Avatar" />
+                    }
+                    else
+                    {
+                        <img class="mb-3" src="~/images/default user avatar.jpg" />
+                    }
                     <span>@Model.StoryDetail.User.FirstName @Model.StoryDetail.User.LastName</span>
                 </div>
                 @if (Model.StoryDetail.Status == "PUBLISHED")
@@ -107,16 +114,16 @@
                 <span>@Html.Raw(Model.StoryDetail.Description)</span>
             </div>
 
-            <div class="sdbtns d-flex my-4 justify-content-center gap-4">
+            <div class="sdbtns row my-4 justify-content-center mb-md-3">
                 @if (Model.StoryDetail.Status == "PUBLISHED")
                 {
 
-                    <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
+                    <div class="col-12 text-center col-md-6">
 
                         <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#story-invite"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
                     </div>
 
-                    <div class="mission-btn">
+                    <div class="mission-btn col-12 col-md-6">
                         <!-- open mission button -->
                     <a type="button" href="@Url.Action("MissionVolunteering", "Mission" , new{ id=@Model.StoryDetail.MissionId})" class="card-button d-flex justify-content-between align-items-center align-self-center mt-0">
                             Open Mission
@@ -201,7 +208,7 @@
         <span class="pb-3">@Model.StoryDetail.Mission.Title</span>
     </div>
     <div class="st-mission-description mb-3">
-        <span>@Model.StoryDetail.Mission.Description</span>
+        <span>@Model.StoryDetail.Mission.ShortDescription</span>
 
     </div>
 </div>

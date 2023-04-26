@@ -8,10 +8,10 @@ namespace CI_Platform.Entities.ViewModels
         public MissionCard mission { get; set; } = new MissionCard();
         public List<MissionCard> RelatedMissions { get; set; } = new List<MissionCard>();
         public List<User> UserList { get; set; } = new List<User>();
-        public string Link { get; set; }
+        public string Link { get; set; } = null!;
         public int UserRatings { get; set; } = 0;
-        [Required(ErrorMessage ="Enter your comment")]
-        public string comment1 { get; set; }
+        [Required(ErrorMessage = "Enter your comment")]
+        public string comment1 { get; set; } = null!;
         public List<MissionApplication> recentVolunteers { get; set; } = new List<MissionApplication>();
         public int totalVolunteers { get; set; }
         public List<string> MissionDocs { get; set; } = new List<string>();

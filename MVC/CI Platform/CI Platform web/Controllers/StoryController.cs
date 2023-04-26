@@ -28,7 +28,7 @@ namespace CI_Platform_web.Controllers
         {
             if (HttpContext.Session.GetString("UserId") == null)
             {
-                string returnUrl = Url.Action("StoriesListing", "Story");
+                string? returnUrl = Url.Action("StoriesListing", "Story");
                 return RedirectToAction("Index", "Home", new { returnUrl });
             }
 
@@ -58,11 +58,10 @@ namespace CI_Platform_web.Controllers
         {
             if (HttpContext.Session.GetString("UserId") == null)
             {
-                string returnUrl = Url.Action("ShareStory", "Story");
+                string? returnUrl = Url.Action("ShareStory", "Story");
                 return RedirectToAction("Index", "Home", new { returnUrl });
             }
             long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
-
 
             ShareStoryModel viewModel = new()
             {

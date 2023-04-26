@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CI_Platform_web.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly IAdmin _admin;
@@ -18,7 +19,6 @@ namespace CI_Platform_web.Controllers
             _filters = filters;
         }
 
-        [Authorize(Roles = "Admin")]
         public IActionResult AdminUser()
         {
             AdminUserModel model = new();
@@ -100,13 +100,12 @@ namespace CI_Platform_web.Controllers
         {
             string message = await _admin.DeleteStoryById(id);
             return Json(message + Constants.deleteMessage);
-        } 
+        }
         public async Task<IActionResult> DeleteBanner(long id)
         {
             string message = await _admin.DeleteBannerById(id);
             return Json(message + Constants.deleteMessage);
         }
-        [Authorize(Roles = "Admin")]
         public IActionResult AdminCMS()
         {
             AdminCMSModel model = new()
@@ -157,7 +156,6 @@ namespace CI_Platform_web.Controllers
             }
             return PartialView("_AddorEditCMS", model);
         }
-        [Authorize(Roles = "Admin")]
         public IActionResult AdminMissionPage()
         {
             AdminMissionModel model = new()
@@ -194,7 +192,6 @@ namespace CI_Platform_web.Controllers
             return PartialView("_AddorEditMission", model);
         }
 
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminMissionTheme()
         {
             AdminMissionThemeModel model = new()
@@ -246,7 +243,6 @@ namespace CI_Platform_web.Controllers
             return PartialView("_AddorEditMissionTheme", model);
         }
 
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminMissionSkill()
         {
             AdminMissionSkillModel model = new()
@@ -300,7 +296,6 @@ namespace CI_Platform_web.Controllers
             return PartialView("_AddorEditMissionSkill", model);
         }
 
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminMissionApplication()
         {
             AdminMissionApplicationModel model = new()
@@ -325,7 +320,6 @@ namespace CI_Platform_web.Controllers
             return RedirectToAction("AdminMissionApplication");
         }
 
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AdminStory()
         {
             AdminStoryModel model = new()
@@ -349,19 +343,18 @@ namespace CI_Platform_web.Controllers
             }
             return RedirectToAction("AdminStory");
         }
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> BannerManagement()
         {
             BannerModel model = new()
             {
-               Banners  = await _admin.GetBannerList(),
+                Banners = await _admin.GetBannerList(),
             };
             return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> BannerManagement(BannerModel model)
         {
-            if(model.BannerId == 0)
+            if (model.BannerId == 0)
             {
                 await _admin.AddBanner(model);
                 TempData["Message"] = "Banner " + Constants.addMessage;
@@ -373,7 +366,7 @@ namespace CI_Platform_web.Controllers
                 TempData["Message"] = "Banner " + Constants.updateMessage;
                 TempData["Icon"] = "success";
             }
-           
+
             return RedirectToAction("BannerManagement");
         }
 
