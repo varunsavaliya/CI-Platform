@@ -19,7 +19,6 @@
 }
 else
 {
-
     <div id="GridView" class="tab-pane active">
         <div class="container">
 
@@ -141,7 +140,7 @@ else
                                             <div class="seats-detail d-flex align-items-center">
                                                 <img src="~/images/Seats-left.png" alt="">
                                                 <div class="d-flex flex-column">
-                                                    <p class="seats-left">@card.seatsleft</p>
+                                                    <p class="seats-left">@(card.seatsleft == null ? 0 : card.seatsleft)</p>
                                                     <p>Seats left</p>
                                                 </div>
                                             </div>
@@ -329,7 +328,7 @@ else
                                                 <div class="seats-detail d-flex align-items-center">
                                                     <img src="~/images/Seats-left.png" alt="">
                                                     <div class="d-flex flex-column">
-                                                        <p class="seats-left">@card.seatsleft</p>
+                                                        <p class="seats-left">@(card.seatsleft == null ? 0 : card.seatsleft)</p>
                                                         <p>Seats left</p>
                                                     </div>
                                                 </div>

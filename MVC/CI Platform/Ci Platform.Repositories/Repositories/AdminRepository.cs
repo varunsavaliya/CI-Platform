@@ -227,9 +227,9 @@ namespace Ci_Platform.Repositories.Repositories
         {
             Mission? mission = await _context.Missions.Where(mission => mission.MissionId == missionId).Include(mission => mission.GoalMissions).FirstOrDefaultAsync();
             List<string>? allurls = await _context.MissionMedia
-    .Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.MediaType == "video")
-    .Select(missionMedia => missionMedia.MediaPath)
-    .ToListAsync();
+                .Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.MediaType == "video")
+                .Select(missionMedia => missionMedia.MediaPath)
+                .ToListAsync();
             AdminMissionModel model = new()
             {
                 MissionId = mission.MissionId,
@@ -290,9 +290,6 @@ namespace Ci_Platform.Repositories.Repositories
             var mediaCount = 1;
             foreach (var file in model)
             {
-                try
-                {
-
                     var fileExtension = Path.GetExtension(file.FileName);
                     var fileName = "mission_" + missionId + "_image_" + mediaCount + fileExtension;
                     mediaCount++;
@@ -309,11 +306,6 @@ namespace Ci_Platform.Repositories.Repositories
                     await _context.SaveChangesAsync();
                     using var stream = new FileStream(filePath, FileMode.Create);
                     await file.CopyToAsync(stream);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
             }
             if (defaultImage != null)
             {
@@ -501,7 +493,7 @@ namespace Ci_Platform.Repositories.Repositories
             if (model.MissionType == "Goal")
             {
                 GoalMission? goalMission = await _context.GoalMissions.FirstOrDefaultAsync(goalMission => goalMission.MissionId == missionId);
-                if(goalMission == null)
+                if (goalMission == null)
                 {
                     goalMission = new GoalMission();
                     goalMission.MissionId = missionId;
@@ -804,7 +796,7 @@ namespace Ci_Platform.Repositories.Repositories
             Timesheet timesheetToBeApprove = await _context.Timesheets.FindAsync(timesheetId);
             timesheetToBeApprove.Status = "APPROVED";
             await _context.SaveChangesAsync();
-        } 
+        }
         public async Task DeclineTimesheet(long timesheetId)
         {
             Timesheet timesheetToBeDecline = await _context.Timesheets.FindAsync(timesheetId);

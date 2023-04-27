@@ -54,7 +54,7 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task<List<UserSkill>> GetUserSkills(long id)
         {
-            List<UserSkill> userSkills = _context.UserSkills.Include(u => u.Skill).Where(us => us.UserId == id).ToList();
+            List<UserSkill> userSkills = await _context.UserSkills.Include(u => u.Skill).Where(us => us.UserId == id).ToListAsync();
             return userSkills;
         }
         public async Task UpdateUserDetails(long id, UserProfileModel model)

@@ -20,10 +20,8 @@
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    @*swiper css file*@
 
-    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">*@
-    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">*@
+    @*swiper css file*@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
 
     <!-- flat date picker -->
@@ -46,7 +44,7 @@
                         <button class="navbar-toggler ps-0" type="button" data-bs-toggle="offcanvas" aria-controls="offcanvasExample" href="#topmenu">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <img src="~/images/logo.png" alt="">
+                        @*<img src="~/images/logo.png" alt="">*@
                     </div>
 
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="topmenu" aria-labelledby="topmenulabel">
@@ -58,11 +56,23 @@
                             <div class="middle">
                                 <div class="" id="navbarSupportedContent">
                                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 header-menu">
+                                        <li class="nav-item" hidden>
+                                            <a class="nav-link text-dark" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Explore
+                                                <img src="~/images/drop-down.png" alt="" />
+                                            </a>
+                                            <ul class="dropdown-menu" id="exploreDropdown" aria-labelledby="exploreDropdown">
+                                                    <li class="border-bottom top-themes"><a class="dropdown-item">Top Themes</a></li>
+                                                    <li class="border-bottom most-ranked"><a class="dropdown-item">Most Ranked</a></li>
+                                                    <li class="border-bottom top-favourite"><a class="dropdown-item">Top Favourite</a></li>
+                                                    <li class="border-bottom random"><a class="dropdown-item">Random</a></li>
+                                            </ul>
+                                        </li>
                                         <li class="nav-item">
-                                            <a class="nav-link active" aria-current="page" asp-controller="Story" asp-action="StoriesListing">Stories</a>
+                                            <a class="nav-link text-dark" aria-current="page" asp-controller="Story" asp-action="StoriesListing">Stories</a>
                                         </li>
                                         <li class="nav-item dropdown">
-                                           @await Component.InvokeAsync("UserHeader", "Privacy")
+                                            @await Component.InvokeAsync("UserHeader", "Privacy")
                                         </li>
                                     </ul>
                                 </div>
@@ -78,27 +88,27 @@
 
             @RenderBody()
         </div>
-    <footer>
-        <div class="container d-flex">
-            <p class="form-text"><a asp-controller="Home" asp-action="PrivacyPolicy">Privacy Policy</a></p>
-            <p class="form-text" data-bs-toggle="modal" data-bs-target="#contact-us" id="contact-us-text"><a>Contact Us</a></p>
+        <footer>
+            <div class="container d-flex">
+                <p class="form-text"><a asp-controller="Home" asp-action="PrivacyPolicy">Privacy Policy</a></p>
+                <p class="form-text" data-bs-toggle="modal" data-bs-target="#contact-us" id="contact-us-text"><a>Contact Us</a></p>
 
 
-            <div class="modal fade" id="contact-us" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body px-5">
-                            <div class="skill-heading d-flex justify-content-between">
-                                <h3 class="d-inline mb-0">Contact Us</h3>
-                                <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal fade" id="contact-us" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body px-5">
+                                <div class="skill-heading d-flex justify-content-between">
+                                    <h3 class="d-inline mb-0">Contact Us</h3>
+                                    <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                @await Component.InvokeAsync("UserHeader", "Contact_Us")
                             </div>
-                            @await Component.InvokeAsync("UserHeader", "Contact_Us")
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -126,5 +136,4 @@
     <!-- for validations -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
 </html>

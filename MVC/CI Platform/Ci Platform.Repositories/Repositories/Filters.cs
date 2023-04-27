@@ -21,12 +21,12 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task<List<MissionTheme>> GetThemesAsync()
         {
-            var theme = await _context.MissionThemes.Where(theme => theme.DeletedAt == null).ToListAsync();
+            var theme = await _context.MissionThemes.Where(theme => theme.DeletedAt == null && theme.Status == 1).ToListAsync();
             return theme;
         }
         public async Task<List<Skill>> GetSkillsAsyc()
         {
-            var skill = await _context.Skills.Where(skill => skill.DeletedAt == null).ToListAsync();
+            var skill = await _context.Skills.Where(skill => skill.DeletedAt == null && skill.Status == 1).ToListAsync();
             return skill;
         }
 
@@ -43,7 +43,7 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task<List<User>> GetUsers()
         {
-            return await _context.Users.Where(user => user.DeletedAt == null).ToListAsync();
+            return await _context.Users.Where(user => user.DeletedAt == null && user.Status == 1).ToListAsync();
         }
     }
 }

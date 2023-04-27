@@ -5,18 +5,28 @@
     let selectedCountry = null;
     let selectedSortOption = null;
     let sortOrder = null;
+    let explore = null;
     if (currentUrl.includes("LandingPage")) {
         getMission()
+        $('#exploreDropdown').parent().prop('hidden', false);
     } else if (currentUrl.includes("StoriesListing")) {
         getStory()
     }
     $(".search-field input").keyup(function () {
         if (currentUrl.includes("LandingPage")) {
+            explore = null;
             getMission()
         } else if (currentUrl.includes("StoriesListing")) {
             getStory()
         }
     });
+    $(document).on('click', '#exploreDropdown li', function () {
+        sortOrder = null;
+        selectedSortOption = null;
+        explore = $(this).find('a').text();
+        getMission();
+    })
+
 
     // cities according to country
     function getCitiesByCountry(countryId) {
@@ -90,6 +100,7 @@
                         searchedFilters.children('.closeAll').remove();
                     }
                     if (currentUrl.includes("LandingPage")) {
+                        explore = null;
                         getMission()
                     } else if (currentUrl.includes("StoriesListing")) {
                         getStory()
@@ -104,6 +115,7 @@
                         allDropdowns.find('input[type="checkbox"]').prop('checked', false);
                         searchedFilters.empty();
                         if (currentUrl.includes("LandingPage")) {
+                            explore = null;
                             getMission()
                         } else if (currentUrl.includes("StoriesListing")) {
                             getStory()
@@ -141,6 +153,7 @@
 
         selectedCountry = $(this).val();
         if (currentUrl.includes("LandingPage")) {
+            explore = null;
             getMission()
         } else if (currentUrl.includes("StoriesListing")) {
             getStory()
@@ -152,6 +165,7 @@
     allDropdowns.each(function () {
         $(this).on('change', 'input[type="checkbox"]', function (e) {
             if (currentUrl.includes("LandingPage")) {
+                explore = null;
                 getMission()
             } else if (currentUrl.includes("StoriesListing")) {
                 getStory()
@@ -181,6 +195,7 @@
             sortOrder = 'Asc'
         }
         if (currentUrl.includes("LandingPage")) {
+            explore = null;
             getMission()
         } else if (currentUrl.includes("StoriesListing")) {
             getStory()
@@ -316,6 +331,7 @@
             SkillIds: selectedSkills.length !== 0 ? selectedSkills : null,
             searchText: searchText !== "" ? searchText : null,
             SortBy: selectedSortOption !== undefined ? selectedSortOption : "Newest",
+            Explore: explore,
             SortOrder: sortOrder,
             pageSize: pageSize,
             pageNo: pageNo !== undefined ? pageNo : 1

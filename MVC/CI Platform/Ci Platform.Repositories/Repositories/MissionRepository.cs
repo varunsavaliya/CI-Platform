@@ -16,7 +16,9 @@ namespace Ci_Platform.Repositories.Repositories
 
         public (List<MissionCard> missionList, int totalRecords) GetMissionCards(InputData queryParams, long userId)
         {
-            var query = _context.Missions.Where(mission => mission.DeletedAt == null && mission.Status == 1).AsQueryable();
+            var query = _context.Missions.Where(mission => mission.DeletedAt == null && mission.Status == 1 && mission.Theme.Status == 1 && mission.Theme.DeletedAt == null).AsQueryable();
+
+            //query = query.Where(mission => mission.MissionSkills.Where(skill => skill.Skill.Status == 1));
 
             if (queryParams.CityIds.Any())
                 query = query.Where(mission => queryParams.CityIds.Contains(mission.CityId));
@@ -51,6 +53,7 @@ namespace Ci_Platform.Repositories.Repositories
                 Goalvalue = mission.GoalMissions.Select(goalMission => goalMission.GoalValue).FirstOrDefault(),
             });
 
+
             switch (queryParams.SortBy)
             {
                 case "SeatsLeft":
@@ -62,8 +65,33 @@ namespace Ci_Platform.Repositories.Repositories
                 case "Favorites":
                     missionCardQuery = missionCardQuery.Where(mission => mission.IsFavourite);
                     break;
-                default:
+                case "CreatedAt":
                     missionCardQuery = queryParams.SortOrder == "Desc" ? missionCardQuery.OrderByDescending(query => query.Missiondata.CreatedAt) : missionCardQuery.OrderBy(query => query.Missiondata.CreatedAt);
+                    break;
+            }
+
+            switch (queryParams.Explore)
+            {
+                case "Top Favourite":
+                    missionCardQuery = missionCardQuery.OrderByDescending(fav => fav.Missiondata.FavoriteMissions.Count()).Take(6);
+                    break;
+                case "Most Ranked":
+                    missionCardQuery = missionCardQuery.OrderByDescending(ranked => ranked.rating).Take(6);
+                    break;
+                case "Random":
+                    missionCardQuery = missionCardQuery.Take(6);
+                    break;
+                case "Top Themes":
+                    var topThemes = _context.Missions
+                        .Where(mission => mission.DeletedAt == null && mission.Status == 1 && mission.Theme.Status == 1 && mission.Theme.DeletedAt == null)
+                        .GroupBy(mission => mission.ThemeId)
+                        .Select(group => new { ThemeId = group.Key, Count = group.Count() })
+                        .OrderByDescending(themeCount => themeCount.Count)
+                        .Take(3)
+                        .Select(themeCount => themeCount.ThemeId);
+
+                    missionCardQuery = missionCardQuery
+                    .Where(mission => topThemes.Contains(mission.Missiondata.ThemeId));
                     break;
             }
 

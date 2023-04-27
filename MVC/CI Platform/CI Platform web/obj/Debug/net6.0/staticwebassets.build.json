@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EWvK9LQDJQJiVIJ2K6KgG02VWsYQgEtOsQlDtgacyI4=",
+  "Hash": "nvxAWJJj/9Xf2a44LSLePP+Nl5IDhe1Df59Wylg5M3E=",
   "Source": "CI Platform web",
   "BasePath": "_content/CI Platform web",
   "Mode": "Default",
@@ -3332,12 +3332,12 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\12_ProfileImage.png"
     },
     {
-      "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\14_ProfileImage.jpeg",
+      "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\14_ProfileImage.png",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
-      "RelativePath": "ProfileImages/14_ProfileImage.jpeg",
+      "RelativePath": "ProfileImages/14_ProfileImage.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3346,7 +3346,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\ProfileImages\\14_ProfileImage.jpeg"
+      "OriginalItemSpec": "wwwroot\\ProfileImages\\14_ProfileImage.png"
     },
     {
       "Identity": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png",

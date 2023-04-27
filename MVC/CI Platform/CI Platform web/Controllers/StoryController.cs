@@ -166,7 +166,7 @@ namespace CI_Platform_web.Controllers
         {
             if (HttpContext.Session.GetString("UserId") == null)
             {
-                string returnUrl = Url.Action("StoryDetail", "Story");
+                string? returnUrl = Url.Action("StoryDetail", "Story");
                 return RedirectToAction("Index", "Home", new { returnUrl });
             }
             long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
