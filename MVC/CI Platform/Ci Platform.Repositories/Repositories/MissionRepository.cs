@@ -7,7 +7,7 @@ namespace Ci_Platform.Repositories.Repositories
 {
     public class MissionRepository : SendInvite<MissionVolunteeringModel>, IMission
     {
-        private readonly ApplicationDbContext _context;
+        private new readonly ApplicationDbContext _context;
 
         public MissionRepository(ApplicationDbContext context) : base(context)
         {
@@ -109,9 +109,9 @@ namespace Ci_Platform.Repositories.Repositories
             if (_context.FavoriteMissions.Any(fm => fm.MissionId == missionId && fm.UserId == userId))
             {
                 // Mission is already in favorites, return an error message or redirect back to the mission page
-                var FavoriteMissionId = _context.FavoriteMissions.Where(fm => fm.MissionId == missionId && fm.UserId == userId).FirstOrDefault();
+                var FavoriteMissionId = await _context.FavoriteMissions.Where(fm => fm.MissionId == missionId && fm.UserId == userId).FirstOrDefaultAsync();
                 _context.FavoriteMissions.Remove(FavoriteMissionId);
-                _context.SaveChanges();
+               await _context.SaveChangesAsync();
             }
             else
             {

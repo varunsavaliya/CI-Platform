@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CI_Platform.Entities.ViewModels
 {
-    internal class NotificationModel
+    public class NotificationModel
     {
+
     }
 }

@@ -9,6 +9,6 @@ namespace CI_Platform.Entities.ViewModels
 {
     public class AdminTimesheetModel
     {
-        public List<Timesheet> timesheets = new List<Timesheet>();
+        public List<Timesheet> timesheets = new();
     }
 }

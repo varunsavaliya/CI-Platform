@@ -10,7 +10,7 @@ namespace Ci_Platform.Repositories.Repositories
 {
     public class Authentication : Repository<User>, IAuthentication
     {
-        public readonly ApplicationDbContext _context;
+        public new readonly ApplicationDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public Authentication(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor) : base(context)
@@ -68,7 +68,7 @@ namespace Ci_Platform.Repositories.Repositories
                 Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
             };
 
-            MailMessage message = new MailMessage(fromEmail, toEmail);
+            MailMessage message = new(fromEmail, toEmail);
             message.Subject = subject;
             message.Body = body;
             message.IsBodyHtml = true;
@@ -113,6 +113,7 @@ namespace Ci_Platform.Repositories.Repositories
         public void DestroySession()
         {
             var session = _httpContextAccessor.HttpContext.Session;
+            session.Remove("Token");
             session.Remove("UserName");
             session.Remove("UserId");
             session.Remove("IsLoggedIn");
@@ -129,7 +130,7 @@ namespace Ci_Platform.Repositories.Repositories
         public async Task AddToContactUs(UserHeaderViewModel contactUs)
         {
             var user = _context.Users.Where(u => u.Email == contactUs.userEmail).FirstOrDefault();
-            ContactU data = new ContactU()
+            ContactU data = new()
             {
                 UserId = user.UserId,
                 Subject = contactUs.Subject,

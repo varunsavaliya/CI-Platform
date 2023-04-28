@@ -98,7 +98,7 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public IActionResult Forgot_password(ForgotPasswordModel model)
         {
-            PasswordReset passwordReset = new PasswordReset()
+            PasswordReset passwordReset = new()
             {
                 Email = model.email,
                 Token = model.token,
@@ -127,7 +127,7 @@ namespace CI_Platform_web.Controllers
         }
         public IActionResult Reset_Password(String email, String token)
         {
-            PasswordResetModel validation = new PasswordResetModel()
+            PasswordResetModel validation = new()
             {
                 Email = email,
                 Token = token

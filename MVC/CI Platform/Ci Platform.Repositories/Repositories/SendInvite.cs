@@ -59,7 +59,7 @@ namespace Ci_Platform.Repositories.Repositories
                  body = "You Have Recieved Story Invitation From " + Sender.FirstName + " " + Sender.LastName + " For:\n\n" + link;
             }
 
-            var smtp = new SmtpClient
+            SmtpClient smtp = new()
             {
                 Host = "smtp.gmail.com",
                 Port = 587,
@@ -69,10 +69,12 @@ namespace Ci_Platform.Repositories.Repositories
                 Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
             };
 
-            var message = new MailMessage(fromEmail, toEmail);
-            message.Subject = subject;
-            message.Body = body;
-            message.IsBodyHtml = true;
+            MailMessage message = new(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            };
 
             await smtp.SendMailAsync(message);
         }
