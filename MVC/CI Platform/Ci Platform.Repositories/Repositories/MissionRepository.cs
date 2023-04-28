@@ -249,5 +249,18 @@ namespace Ci_Platform.Repositories.Repositories
             await _context.Comments.AddAsync(commentToBeAdded);
             await _context.SaveChangesAsync();
         }
+
+        public async Task SaveInviteData(long toUserId, long missionId, long fromUserId)
+        {
+            Notification notification = new()
+            {
+                ToUserId = toUserId,
+                FromUserId = fromUserId,
+                MissionId = missionId,
+                Status = true,
+            };
+            await _context.Notifications.AddAsync(notification);
+            await _context.SaveChangesAsync();
+        }
     }
 }

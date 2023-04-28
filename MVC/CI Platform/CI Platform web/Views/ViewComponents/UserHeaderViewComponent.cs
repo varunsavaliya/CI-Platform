@@ -2,7 +2,6 @@
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace CI_Platform_web.Views.ViewComponents
 {

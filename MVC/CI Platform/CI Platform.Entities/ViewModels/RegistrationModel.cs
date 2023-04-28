@@ -11,7 +11,6 @@ namespace CI_Platform.Entities.ViewModels
         public string LastName { get; set; } = string.Empty ;
 
         [Required(ErrorMessage = "You must provide a phone number")]
-        //[DisplayName("Home Phone")]
         [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Phone number must be 10 digits long")]
         public string PhoneNumber { get; set; } = string.Empty;
 

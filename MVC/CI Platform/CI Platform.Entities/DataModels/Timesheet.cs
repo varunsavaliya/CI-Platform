@@ -29,5 +29,7 @@ public partial class Timesheet
 
     public virtual Mission? Mission { get; set; }
 
+    public virtual ICollection<Notification> Notifications { get; } = new List<Notification>();
+
     public virtual User? User { get; set; }
 }

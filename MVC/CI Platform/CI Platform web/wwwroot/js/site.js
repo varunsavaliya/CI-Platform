@@ -64,6 +64,16 @@
             }
         });
     }
+    $(document).on('click', '.dropdown', function (e) {
+        e.stopPropagation();
+    })
+    $(document).on('click', '.notification-settings-icon', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $('.notifications-section').hide();
+        $('.notification-settings-section').show();
+
+    })
 
     // functionality : when user check any filter then it will add as pill after search bar
     let cityDropdown = $("#cityDropdown");

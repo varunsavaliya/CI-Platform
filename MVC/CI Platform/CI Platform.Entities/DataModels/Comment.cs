@@ -23,5 +23,7 @@ public partial class Comment
 
     public virtual Mission Mission { get; set; } = null!;
 
+    public virtual ICollection<Notification> Notifications { get; } = new List<Notification>();
+
     public virtual User User { get; set; } = null!;
 }

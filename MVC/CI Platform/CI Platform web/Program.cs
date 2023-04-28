@@ -22,6 +22,7 @@ builder.Services.AddScoped<IStory, StoryRepository>();
 builder.Services.AddScoped<IUserProfile, UserProfile>();
 builder.Services.AddScoped<ITimesheet, TimesheetRepository>();
 builder.Services.AddScoped<IAdmin, AdminRepository>();
+builder.Services.AddScoped<INotification, NotificationRepository>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

@@ -79,6 +79,7 @@
                             </div>
                         </div>
                     </div>
+                    @await Component.InvokeAsync("Notification")
                     @await Component.InvokeAsync("UserHeader", "Default")
                 </div>
             </nav>

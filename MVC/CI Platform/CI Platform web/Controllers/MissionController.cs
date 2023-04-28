@@ -123,7 +123,8 @@ namespace CI_Platform_web.Controllers
                 ViewBag.UserId = UserId;
             }
             var MissionLink = Url.Action("MissionVolunteering", "Mission", new { id = Id }, Request.Scheme);
-            await _mission.SendEmailInvite(ToUserId, Id, UserId, MissionLink, viewmodel);
+            //await _mission.SendEmailInvite(ToUserId, Id, UserId, MissionLink, viewmodel);
+            await _mission.SaveInviteData(ToUserId, Id, UserId);
             return Json(new { success = true });
         }
 

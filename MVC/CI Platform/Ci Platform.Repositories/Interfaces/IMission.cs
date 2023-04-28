@@ -18,6 +18,7 @@ namespace Ci_Platform.Repositories.Interfaces
         public Task HandleRatings(long missionId, long userId, int rating);
         public Task HandleMissionApply(long missionId, long userId);
         public Task HandleComment(Comment comment, long userId);
+        public Task SaveInviteData(long toUserId,long missionId,long fromUserId);
 
     }
 }
