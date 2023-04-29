@@ -164,18 +164,18 @@ body {
     font-size: 12px;
 }
 
-.notification-settings-icon{
-    cursor:pointer;
+.notification-settings-icon {
+    cursor: pointer;
 }
 
-.notification-settings-section{
-    /*display:none;*/
+.notification-settings-section {
+    display:none;
 }
 
 #notification-dropdown {
-    top: 149%;
+    top: 100%;
     right: 0;
-    transform: translate(-91%, 3%);
+    transform: translate(0%, 3%);
     width: 340px;
 }
 
@@ -189,13 +189,14 @@ body {
     background-color: #f88634;
     border-color: #f88634;
 }
-.notification-avatar{
-    width:30px;
-    height:30px;
+
+.notification-avatar {
+    width: 30px;
+    height: 30px;
 }
-.notification-blob{
-    font-size:10px;
-    
+
+.notification-blob {
+    font-size: 10px;
 }
 
 @media screen and (max-width:1280px) {
@@ -2110,7 +2111,7 @@ iframe {
 }
 
 .skill-btn {
-    padding: 10px 26px !important;
+    padding: 10px 26px;
     border-radius: 23px !important;
     width: max-content !important;
     display: inline !important;

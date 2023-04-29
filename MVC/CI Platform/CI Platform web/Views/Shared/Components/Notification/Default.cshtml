@@ -2,26 +2,25 @@
 @using CI_Platform.Entities.DataModels
 @model CI_Platform.Entities.ViewModels.NotificationModel
 
-<div class="dropdown" data-bs-auto-close="false">
-    <form>
-    <div role="button" class="notification-icon-container" data-bs-toggle="dropdown">
+<div class="dropdown">
+    <div role="button" class="notification-icon-container" data-toggle="dropdown">
         <i class="fa-sharp fa-regular fa-bell text-secondary me-3 notification-icon"></i>
 
         <!-- notification count -->
         <span class="notification-count">@Model.NotificationCount</span>
     </div>
-    <div class="dropdown-menu pt-0" id="notification-dropdown" aria-labelledby="dropdownMenuButton">
-        <div class="d-flex justify-content-around align-items-center border-bottom py-2 mb-3">
+    <div class="dropdown-menu pt-0" id="notification-dropdown" aria-labelledby="dropdownMenuButton" data-boundary="window">
+        <div class="d-flex justify-content-around align-items-center py-2 mb-1">
             <i class="fa-solid fa-gear notification-settings-icon"></i>
-            <span>Notifications</span>
-            <span class="">Clear All</span>
+            <span class="notification-heading">Notifications</span>
+            <span class="clear-all-notification">Clear All</span>
         </div>
         <div class="notifications-section">
             @foreach (UserNotification notification in Model.Notifications)
             {
                 if (notification.Notification.NotificationSettingsId == 1)
                 {
-                    <a class="text-decoration-none text-secondary" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@notification.Notification.MissionId})">
+                    <a class="text-decoration-none text-secondary border-top" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@notification.Notification.MissionId})">
                         <div class="d-flex align-items-center">
                             <div class="ms-2">
                                 <img src="~/ProfileImages/@notification.FromUserAvatar" class="me-2 rounded-circle notification-avatar col-2" />
@@ -44,17 +43,21 @@
             }
         </div>
         <div class="notification-settings-section">
+            <span class="bg-light text-secondary border-bottom border-top ps-3 mb-2 d-block">Get a notification for</span>
             @foreach (NotificationSetting setting in Model.NotificationSettings)
             {
-                <div class="form-check px-2 d-flex justify-content-between">
+                <div class="form-check px-3 d-flex justify-content-between">
                     <span>
                         @setting.SettingName
                     </span>
                     <input class="form-check-input" type="checkbox" value="" id="@setting.NotificationSettingsId">
                 </div>
             }
+            <div class="notification-settings-btns d-flex justify-content-around border-top pt-2 mt-2">
+                <button class="btn save-notification-settings card-button m-0 py-1 px-3">Save</button>
+                <button class="btn btn-outline-secondary skill-btn m-0 py-1 px-3" id="notification-settings-cancel-btn">Cancel</button>
+            </div>
         </div>
 
     </div>
-    </form>
 </div>

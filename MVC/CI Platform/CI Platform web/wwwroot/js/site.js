@@ -70,10 +70,24 @@
     $(document).on('click', '.notification-settings-icon', function (e) {
         e.preventDefault();
         e.stopPropagation();
+        $(this).hide();
+        $('.notification-heading').text('Notification Settings');
+        $('.clear-all-notification').hide();
         $('.notifications-section').hide();
         $('.notification-settings-section').show();
 
     })
+    $(document).on('click', '#notification-settings-cancel-btn', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $('.notification-settings-icon').show();
+        $('.notification-heading').text('Notifications');
+        $('.clear-all-notification').show();
+        $('.notifications-section').show();
+        $('.notification-settings-section').hide();
+
+    })
+
 
     // functionality : when user check any filter then it will add as pill after search bar
     let cityDropdown = $("#cityDropdown");

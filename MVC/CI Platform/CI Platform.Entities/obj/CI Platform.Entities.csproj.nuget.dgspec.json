@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {}
+    "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
+    "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
         "projectName": "CI Platform.Entities",
-        "projectPath": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
-        "packagesPath": "C:\\Users\\pct35\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\main\\MVC\\CI Platform\\CI Platform.Entities\\obj\\",
+        "projectPath": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform.Entities\\CI Platform.Entities.csproj",
+        "packagesPath": "C:\\Users\\dhana\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\pct35\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dhana\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -78,7 +78,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -87,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

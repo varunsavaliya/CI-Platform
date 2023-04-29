@@ -9,20 +9,12 @@
       "PackagePath": "staticwebassets\\Banners\\banner_1.jpg"
     },
     {
-      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_10.jpg",
-      "PackagePath": "staticwebassets\\Banners\\banner_10.jpg"
+      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_2.jpg",
+      "PackagePath": "staticwebassets\\Banners\\banner_2.jpg"
     },
     {
-      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_4.jpg",
-      "PackagePath": "staticwebassets\\Banners\\banner_4.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_5.jpg",
-      "PackagePath": "staticwebassets\\Banners\\banner_5.jpg"
-    },
-    {
-      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_5.png",
-      "PackagePath": "staticwebassets\\Banners\\banner_5.png"
+      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Banners\\banner_3.jpg",
+      "PackagePath": "staticwebassets\\Banners\\banner_3.jpg"
     },
     {
       "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\MissionDocuments\\8IT-GTU-1.pdf",
@@ -97,6 +89,10 @@
       "PackagePath": "staticwebassets\\ProfileImages\\12_ProfileImage.png"
     },
     {
+      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\14_ProfileImage.png",
+      "PackagePath": "staticwebassets\\ProfileImages\\14_ProfileImage.png"
+    },
+    {
       "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png",
       "PackagePath": "staticwebassets\\Upload\\404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png"
     },
@@ -155,6 +151,18 @@
     {
       "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10046_image_1.jpg",
       "PackagePath": "staticwebassets\\Upload\\story_10046_image_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10046_image_2.jpg",
+      "PackagePath": "staticwebassets\\Upload\\story_10046_image_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10047_image_1.jpg",
+      "PackagePath": "staticwebassets\\Upload\\story_10047_image_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\story_10047_image_2.jpg",
+      "PackagePath": "staticwebassets\\Upload\\story_10047_image_2.jpg"
     },
     {
       "Id": "C:\\Users\\dhana\\Desktop\\varun\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\volunteer6_a5ccaed0-47ad-4a38-9ea0-3a09e7e7d22d_8efc63a6-d2d7-4f46-8298-6bc4536869c2_84aaf4fe-5689-4445-9082-13f8ccbda7a9.png",
