@@ -170,9 +170,10 @@ body {
     display:none;
 }
 
-.notifications-section{
-    height:300px;
-    overflow-y:scroll;
+.notifications-section {
+    height: fit-content;
+    max-height: 300px;
+    overflow-y: scroll;
 }
 
 .notification-settings-icon {

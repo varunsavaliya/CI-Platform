@@ -69,7 +69,7 @@ namespace Ci_Platform.Repositories.Repositories
                 {
                     UserId = notificaitonData.UserId,
                     NotificationSettingsId = notificaitonData.NotificationSettingsId,
-                    FromUserId = notificaitonData.UserId,
+                    FromUserId = notificaitonData.FromUserId,
                     ToUserId = notificaitonData.ToUserId,
                     MissionId = notificaitonData.MissionId,
                     StoryId = notificaitonData.StoryId,

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "J0GlQM1PevfC/gtLaKyRqEKmhlsMgbam5UgoFnTKdJw=",
+  "Hash": "bk3FYNBr0oiArIrerw/z9AKNdFDqzSwx+yAZAa+DIdg=",
   "Source": "CI Platform web",
   "BasePath": "_content/CI Platform web",
   "Mode": "Default",
@@ -3332,12 +3332,12 @@
       "OriginalItemSpec": "wwwroot\\ProfileImages\\12_ProfileImage.png"
     },
     {
-      "Identity": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\14_ProfileImage.png",
+      "Identity": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\14_ProfileImage.jpg",
       "SourceId": "CI Platform web",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
       "BasePath": "_content/CI Platform web",
-      "RelativePath": "ProfileImages/14_ProfileImage.png",
+      "RelativePath": "ProfileImages/14_ProfileImage.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3346,7 +3346,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\ProfileImages\\14_ProfileImage.png"
+      "OriginalItemSpec": "wwwroot\\ProfileImages\\14_ProfileImage.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\36_ProfileImage.png",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "ProfileImages/36_ProfileImage.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProfileImages\\36_ProfileImage.png"
+    },
+    {
+      "Identity": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\default user avatar.jpg",
+      "SourceId": "CI Platform web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\",
+      "BasePath": "_content/CI Platform web",
+      "RelativePath": "ProfileImages/default user avatar.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ProfileImages\\default user avatar.jpg"
     },
     {
       "Identity": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png",

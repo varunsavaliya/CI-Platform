@@ -67,11 +67,19 @@
 
     // notification functionalities
     let notificationCount = $('.notification-count').text();
+    let allNotifications = $('.notifications-section div').length;
+    console.log($('.notifications-section div').length)
     if (notificationCount > 0 && currentUrl.includes('LandingPage'))
     {
         $('.notification-icon-container').click();
     }
     if (notificationCount < 1) {
+        $('.notification-container').each(function () {
+            $(this).find('i.fa-solid.fa-circle').removeClass('fa-solid fa-circle text-warning').addClass('fa-solid fa-circle-check text-secondary');
+            $(this).removeClass('unread');
+        });
+    }
+    if (allNotifications < 1) {
         $('.no-notification-section').show();
     }
 
@@ -129,20 +137,6 @@
         
 
     })
-
-    $('.notification-icon-container').click(function () {
-        var notificationIds = [];
-
-        $('.notification-container').each(function () {
-            if ($(this).hasClass == 'unread') {
-                debugger
-                notificationIds.push(parseInt($(this).data('id')));
-            }
-        })
-
-        console.log(notificationIds)
-        console.log($('.notification-container'))
-    });
 
     $('.notification-icon-container').click(function () {
         var notificationIds = [];
@@ -1242,7 +1236,9 @@
 
     var uniqueId = 0;
     // Add arrow button event listener
-    $('.add-arrow').on('click', function () {
+    $('.add-arrow').click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
         $('.user-skill-options').empty();
         // Get checked checkboxes from all-skill-options
         var checkedOptions = $('.all-skill-options input[type="checkbox"]:checked');

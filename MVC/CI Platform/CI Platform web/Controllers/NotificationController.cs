@@ -21,9 +21,9 @@ namespace CI_Platform_web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> HandleNotificationStatus(long?[] notificationIds)
+        public async Task<IActionResult> HandleNotificationStatus(long[] notificationIds)
         {
-            //await _notification.NotificationMarkAsRead(notificationIds.ToList());
+            await _notification.NotificationMarkAsRead(notificationIds.ToList());
             return Ok();
         }
 
@@ -31,7 +31,7 @@ namespace CI_Platform_web.Controllers
         public async Task<IActionResult> ClearNotifications()
         {
             long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
-            //await _notification.ClearAllNotifications(userId);
+            await _notification.ClearAllNotifications(userId);
             return Ok();
         }
 

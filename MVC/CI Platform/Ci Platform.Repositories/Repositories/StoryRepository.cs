@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ci_Platform.Repositories.Repositories
 {
-    public class StoryRepository : SendInvite<StoryDetailModel>, IStory
+    public class StoryRepository : Repository<NotificationData>, IStory
     {
         private new readonly ApplicationDbContext _context;
 
@@ -17,7 +17,7 @@ namespace Ci_Platform.Repositories.Repositories
         public async Task<Story> GetStoryById(long id)
         {
             Story? story = _context.Stories.Where(s => s.StoryId == id).Include(s => s.Mission).Include(s => s.User).Include(s => s.StoryMedia).FirstOrDefault();
-            if (story.Status == "PUBLISHED" )
+            if (story.Status == "PUBLISHED")
             {
                 story.Views += 1;
                 await _context.SaveChangesAsync();
@@ -80,7 +80,7 @@ namespace Ci_Platform.Repositories.Repositories
             var storyCardQuery = query.Select(story => new StoryCard()
             {
                 StoryData = story,
-                UserName = story.User.FirstName+" " + story.User.LastName,
+                UserName = story.User.FirstName + " " + story.User.LastName,
                 StoryMedia = story.StoryMedia.Where(story => story.Type == "image" && story.DeletedAt == null).Select(story => story.Path).FirstOrDefault(),
                 ThemeName = story.Mission.Theme.Title,
                 UserProfile = story.User.Avatar,
@@ -162,8 +162,8 @@ namespace Ci_Platform.Repositories.Repositories
                         Path = url
                     };
 
-                   await _context.StoryMedia.AddAsync(VideoUrl);
-                   await _context.SaveChangesAsync();
+                    await _context.StoryMedia.AddAsync(VideoUrl);
+                    await _context.SaveChangesAsync();
                 }
             }
         }
@@ -196,7 +196,7 @@ namespace Ci_Platform.Repositories.Repositories
             {
                 await DeleteImages(story);
                 await AddImages(model.images, story);
-                
+
             }
         }
         public async Task AddStoryAsPending(ShareStoryModel model, Story story)
@@ -217,6 +217,30 @@ namespace Ci_Platform.Repositories.Repositories
                 await DeleteImages(story);
                 await AddImages(model.images, story);
             }
-        }              
+        }
+        public async Task HandleStoryInvite(long ToUserId, long storyId, long FromUserId, StoryDetailModel viewmodel)
+        {
+            var storyInvite = new StoryInvite()
+            {
+                FromUserId = FromUserId,
+                ToUserId = ToUserId,
+                StoryId = storyId,
+            };
+
+            await _context.StoryInvites.AddAsync(storyInvite);
+            Story? story = await _context.Stories.FindAsync(storyId);
+            NotificationData notificationData = new()
+            {
+                UserId = story.UserId,
+                NotificationSettingsId = 8,
+                FromUserId = FromUserId,
+                ToUserId = ToUserId,
+                StoryId = story.StoryId,
+                MissionId = story.MissionId,
+            };      
+
+            await AddNotitifcationData(notificationData);
+            await _context.SaveChangesAsync();
+        }
     }
 }

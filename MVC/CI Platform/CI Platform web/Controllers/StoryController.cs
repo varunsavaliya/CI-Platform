@@ -183,7 +183,8 @@ namespace CI_Platform_web.Controllers
             long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
 
             var storyLink = Url.Action("StoryDetail", "Story", new { id = Id }, Request.Scheme);
-            await _story.SendEmailInvite(ToUserId, Id, userId, storyLink, viewmodel);
+            //await _story.SendEmailInvite(ToUserId, Id, userId, storyLink, viewmodel);
+            await _story.HandleStoryInvite(ToUserId, Id, userId, viewmodel);
             return Json(new { success = true });
         }
     }

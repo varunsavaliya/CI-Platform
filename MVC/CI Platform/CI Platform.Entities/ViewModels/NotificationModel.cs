@@ -18,5 +18,9 @@ namespace CI_Platform.Entities.ViewModels
         public string? FromUser { get; set; } = string.Empty;
         public string? FromUserAvatar { get; set; } = string.Empty;  
         public string? StoryTitle { get; set; } = string.Empty;
+        public string? MissionApplicationStatus { get;set; } = string.Empty;
+        public string? CommentStatus { get;set; } = string.Empty;
+        public string? TimesheetStatus { get;set; } = string.Empty;
+        public string? StoryStatus { get;set; } = string.Empty;
     }
 }

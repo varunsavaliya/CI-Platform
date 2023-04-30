@@ -3,7 +3,7 @@ using CI_Platform.Entities.ViewModels;
 
 namespace Ci_Platform.Repositories.Interfaces
 {
-    public interface IStory : ISendInvite<StoryDetailModel>
+    public interface IStory : IRepository<NotificationData>
     {
         public Task<List<Story>> GetStories(List<long> storyIds);
         public (List<StoryCard> storyList, int totalRecords) GetStoryCards(InputData queryParams);
@@ -16,5 +16,6 @@ namespace Ci_Platform.Repositories.Interfaces
         public Task AddStoryAsPending(ShareStoryModel model, Story story);
         public Task<Story> GetStoryById(long id);
         public List<User> GetUsers(long userId);
+        public Task HandleStoryInvite(long ToUserId, long storyId, long FromUserId, StoryDetailModel viewmodel);
     }
 }

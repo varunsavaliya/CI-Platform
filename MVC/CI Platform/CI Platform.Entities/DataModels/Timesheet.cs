@@ -7,7 +7,7 @@ public partial class Timesheet
 {
     public long TimesheetId { get; set; }
 
-    public long? UserId { get; set; }
+    public long UserId { get; set; }
 
     public long? MissionId { get; set; }
 
@@ -31,5 +31,5 @@ public partial class Timesheet
 
     public virtual ICollection<Notification> Notifications { get; } = new List<Notification>();
 
-    public virtual User? User { get; set; }
+    public virtual User User { get; set; } = null!;
 }

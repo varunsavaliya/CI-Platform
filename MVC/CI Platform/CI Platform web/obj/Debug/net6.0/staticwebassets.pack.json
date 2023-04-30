@@ -89,8 +89,16 @@
       "PackagePath": "staticwebassets\\ProfileImages\\12_ProfileImage.png"
     },
     {
-      "Id": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\14_ProfileImage.png",
-      "PackagePath": "staticwebassets\\ProfileImages\\14_ProfileImage.png"
+      "Id": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\14_ProfileImage.jpg",
+      "PackagePath": "staticwebassets\\ProfileImages\\14_ProfileImage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\36_ProfileImage.png",
+      "PackagePath": "staticwebassets\\ProfileImages\\36_ProfileImage.png"
+    },
+    {
+      "Id": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\ProfileImages\\default user avatar.jpg",
+      "PackagePath": "staticwebassets\\ProfileImages\\default user avatar.jpg"
     },
     {
       "Id": "C:\\Users\\hepin\\OneDrive\\Desktop\\varun\\pro\\MVC\\CI Platform\\CI Platform web\\wwwroot\\Upload\\404-Page-image_c42cae08-8bb1-4b2c-8c17-02a9c9ad10ca.png",

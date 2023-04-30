@@ -3,6 +3,7 @@ using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.Design;
 
 namespace Ci_Platform.Repositories.Repositories
 {
@@ -649,12 +650,32 @@ namespace Ci_Platform.Repositories.Repositories
         {
             MissionApplication? missionApplication = await _context.MissionApplications.FindAsync(missionApplicationId);
             missionApplication.ApprovalStatus = "PUBLISHED";
+
+            NotificationData notificationData = new()
+            {
+                UserId = missionApplication.UserId,
+                NotificationSettingsId = 9,
+                MissionId = missionApplication.MissionId,
+                MissionApplicationId = missionApplicationId,
+            };
+
+            await AddNotitifcationData(notificationData);
             await _context.SaveChangesAsync();
         }
         public async Task DeclineMissionApplication(long missionApplicationId)
         {
             MissionApplication? missionApplication = await _context.MissionApplications.FindAsync(missionApplicationId);
             missionApplication.ApprovalStatus = "DECLINED";
+
+            NotificationData notificationData = new()
+            {
+                UserId = missionApplication.UserId,
+                NotificationSettingsId = 9,
+                MissionId = missionApplication.MissionId,
+                MissionApplicationId = missionApplicationId,
+            };
+
+            await AddNotitifcationData(notificationData);
             await _context.SaveChangesAsync();
         }
 
@@ -668,6 +689,15 @@ namespace Ci_Platform.Repositories.Repositories
             Story? story = await _context.Stories.FindAsync(storyId);
             story.Status = "PUBLISHED";
             story.Views = 0;
+            NotificationData notificationData = new()
+            {
+                UserId = story.UserId,
+                NotificationSettingsId = 5,
+                MissionId = story.MissionId,
+                StoryId = storyId,
+            };
+
+            await AddNotitifcationData(notificationData);
             await _context.SaveChangesAsync();
         }
 
@@ -675,6 +705,15 @@ namespace Ci_Platform.Repositories.Repositories
         {
             Story? story = await _context.Stories.FindAsync(storyId);
             story.Status = "DECLINED";
+            NotificationData notificationData = new()
+            {
+                UserId = story.UserId,
+                NotificationSettingsId = 5,
+                MissionId = story.MissionId,
+                StoryId = storyId,
+            };
+
+            await AddNotitifcationData(notificationData);
             await _context.SaveChangesAsync();
         }
 
@@ -791,12 +830,32 @@ namespace Ci_Platform.Repositories.Repositories
         {
             Comment? commentToBeApprove = await _context.Comments.FindAsync(commentId);
             commentToBeApprove.ApprovalStatus = "PUBLISHED";
+
+            NotificationData notificationData = new()
+            {
+                UserId = commentToBeApprove.UserId,
+                NotificationSettingsId = 4,
+                MissionId = commentToBeApprove.MissionId,
+                CommentId = commentId,
+            };
+
+            await AddNotitifcationData(notificationData);
             await _context.SaveChangesAsync();
         }
         public async Task DeclineComment(long commentId)
         {
             Comment? commentToBeDecline = await _context.Comments.FindAsync(commentId);
             commentToBeDecline.ApprovalStatus = "DECLINED";
+
+            NotificationData notificationData = new()
+            {
+                UserId = commentToBeDecline.UserId,
+                NotificationSettingsId = 4,
+                MissionId = commentToBeDecline.MissionId,
+                CommentId = commentId,
+            };
+
+            await AddNotitifcationData(notificationData);
             await _context.SaveChangesAsync();
         }
 
@@ -804,12 +863,42 @@ namespace Ci_Platform.Repositories.Repositories
         {
             Timesheet timesheetToBeApprove = await _context.Timesheets.FindAsync(timesheetId);
             timesheetToBeApprove.Status = "APPROVED";
+            NotificationData notificationData = new()
+            {
+                UserId = timesheetToBeApprove.UserId,
+                MissionId = timesheetToBeApprove.MissionId,
+                TimesheetId = timesheetId,
+            };
+            if(timesheetToBeApprove.Action != null)
+            {
+                notificationData.NotificationSettingsId = 3;
+            }
+            else
+            {
+                notificationData.NotificationSettingsId = 2;
+            }
+            await AddNotitifcationData(notificationData);
             await _context.SaveChangesAsync();
         }
         public async Task DeclineTimesheet(long timesheetId)
         {
             Timesheet timesheetToBeDecline = await _context.Timesheets.FindAsync(timesheetId);
             timesheetToBeDecline.Status = "DECLINED";
+            NotificationData notificationData = new()
+            {
+                UserId = timesheetToBeDecline.UserId,
+                MissionId = timesheetToBeDecline.MissionId,
+                TimesheetId = timesheetId,
+            };
+            if (timesheetToBeDecline.Action != null)
+            {
+                notificationData.NotificationSettingsId = 3;
+            }
+            else
+            {
+                notificationData.NotificationSettingsId = 2;
+            }
+            await AddNotitifcationData(notificationData);
             await _context.SaveChangesAsync();
         }
     }

@@ -204,12 +204,12 @@
                                                 @foreach (var skill in Model.skillList)
                                                 {
                                                     <div class="form-check ps-0 mb-2">
-                                                        <input class="form-check-input d-none" type="checkbox" id="@skill.SkillId" value="@skill.SkillId" @if(Model.userSkills.Select(us=>us.SkillId).Contains(skill.SkillId)) {
+                                                        <input class="form-check-input d-none" type="checkbox" id="all_@skill.SkillId" value="@skill.SkillId" @if(Model.userSkills.Select(us=>us.SkillId).Contains(skill.SkillId)) {
                                                     <text>checked</text>
                                                     } />
                                                         <label class="form-check-label ps-3 @if(Model.userSkills.Select(us=>us.SkillId).Contains(skill.SkillId)) {
                                                     <text>skill-bg</text>
-}" for="@skill.SkillId">@skill.SkillName</label>
+}" for="all_@skill.SkillId">@skill.SkillName</label>
                                                     </div>
                                                 }
                                             </div>

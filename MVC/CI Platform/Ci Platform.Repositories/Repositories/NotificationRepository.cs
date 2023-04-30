@@ -17,7 +17,7 @@ namespace Ci_Platform.Repositories.Repositories
         public (List<UserNotification> newNotificationList,List<UserNotification> yesterdayNotificationList, List<UserNotification> olderNotificationList, int count) GetNotificationsByUserId(long userId)
         {
             List<long> userSettings = _context.UserNotificationSettings.Where(notif => notif.UserId == userId && notif.IsEnabled == true).Select(notif => notif.NotificationSettingsId).ToList();
-            var query = _context.Notifications.Where(notif => notif.DeletedAt == null && notif.UserId == userId && userSettings.Contains(notif.NotificationSettingsId)).AsQueryable();
+            var query = _context.Notifications.Where(notif => notif.DeletedAt == null && notif.UserId == userId && userSettings.Contains(notif.NotificationSettingsId)).OrderByDescending(notif => notif.CreatedAt).AsQueryable();
 
             var count = query.Count(count => count.Status == false);
 
@@ -30,8 +30,12 @@ namespace Ci_Platform.Repositories.Repositories
                 MissionTitle = notif.Mission.Title,
                 FromUserAvatar = notif.FromUser.Avatar == null ? "default user avatar.jpg" : notif.FromUser.Avatar,
                 StoryTitle = notif.Story.Title,
+                MissionApplicationStatus = notif.MissionApplication.ApprovalStatus,
+                CommentStatus = notif.Comment.ApprovalStatus,
+                TimesheetStatus = notif.Timesheet.Status,
+                StoryStatus = notif.Story.Status,
             });
-            
+
             var yesterdayNotificationQuery = query.Where(notification => notification.CreatedAt.Date == now.AddDays(-1).Date).Select(notif => new UserNotification()
             {
                 Notification = notif,
@@ -39,6 +43,10 @@ namespace Ci_Platform.Repositories.Repositories
                 MissionTitle = notif.Mission.Title,
                 FromUserAvatar = notif.FromUser.Avatar == null ? "default user avatar.jpg" : notif.FromUser.Avatar,
                 StoryTitle = notif.Story.Title,
+                MissionApplicationStatus = notif.MissionApplication.ApprovalStatus,
+                CommentStatus = notif.Comment.ApprovalStatus,
+                TimesheetStatus = notif.Timesheet.Status,
+                StoryStatus = notif.Story.Status,
             });
 
             var olderNotificationQuery = query.Where(notification => notification.CreatedAt.Date < now.AddDays(-1).Date).Select(notif => new UserNotification()
@@ -48,6 +56,10 @@ namespace Ci_Platform.Repositories.Repositories
                 MissionTitle = notif.Mission.Title,
                 FromUserAvatar = notif.FromUser.Avatar == null ? "default user avatar.jpg" : notif.FromUser.Avatar,
                 StoryTitle = notif.Story.Title,
+                MissionApplicationStatus = notif.MissionApplication.ApprovalStatus,
+                CommentStatus = notif.Comment.ApprovalStatus,
+                TimesheetStatus = notif.Timesheet.Status,
+                StoryStatus = notif.Story.Status,
             });
 
 

@@ -1,7 +1,22 @@
 ﻿@using CI_Platform.Entities.ViewModels
 @using CI_Platform.Entities.DataModels
 @model CI_Platform.Entities.ViewModels.NotificationModel
+@functions {
+    public string GetHref(UserNotification notification)
+    {
+        var href = "";
+        if (notification.Notification.NotificationSettingsId == 1 || notification.Notification.NotificationSettingsId == 4 || notification.Notification.NotificationSettingsId == 6 || notification.Notification.NotificationSettingsId == 9)
+            href = Url.Action("MissionVolunteering", "Mission", new { id = @notification.Notification.MissionId });
+        else if (notification.Notification.NotificationSettingsId == 2 || notification.Notification.NotificationSettingsId == 3)
+            href = Url.Action("TimeSheet", "Timesheet");
+        else if (notification.Notification.NotificationSettingsId == 5)
+            href = Url.Action("StoriesListing", "Story");
+        else if (notification.Notification.NotificationSettingsId == 8)
+            href = Url.Action("StoriesListing", "Story", new { id = @notification.Notification.StoryId });
 
+        return href;
+    }
+}
 <div class="dropdown">
     <div role="button" class="notification-icon-container" data-toggle="dropdown">
         <i class="fa-sharp fa-regular fa-bell text-secondary me-3 notification-icon"></i>
@@ -19,60 +34,119 @@
             <span class="clear-all-notification">Clear All</span>
         </div>
         <div class="no-notification-section">
-                <div class="no-notifiaction border-top py-3 d-flex flex-column justify-content-center align-items-center">
+            <div class="no-notifiaction border-top py-3 d-flex flex-column justify-content-center align-items-center">
                 <i class="fa-solid fa-bell text-secondary fs-3 mb-2"></i>
-                    <span class="text-secondary">You do not have any new notifications</span>
-                </div>
+                <span class="text-secondary">You do not have any new notifications</span>
+            </div>
         </div>
         <div class="notifications-section">
 
             <!-- New notifications section -->
             @foreach (UserNotification notification in Model.NewNotifications)
             {
-                if (notification.Notification.NotificationSettingsId == 1)
-                {
-                    <div data-id="@notification.Notification.NotificationId" class="notification-container @(notification.Notification.Status == false ? "unread" : "")">
-                        <a class="text-decoration-none text-secondary border-top" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@notification.Notification.MissionId})">
-                            <div class="d-flex align-items-center py-2 border-top">
-                                <div class="ms-2">
+                <div data-id="@notification.Notification.NotificationId" class="notification-container @(notification.Notification.Status == false ? "unread" : "")">
+                    <a class="text-decoration-none text-secondary border-top" href="@GetHref(notification)">
+                        <div class="d-flex align-items-center py-2 border-top">
+                            <div class="ms-2">
+                                @if (notification.Notification.NotificationSettingsId == 1 || notification.Notification.NotificationSettingsId == 8)
+                                {
                                     <img src="~/ProfileImages/@notification.FromUserAvatar" class="me-2 rounded-circle notification-avatar col-2" />
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-wrap">
-                                        <span class="">@notification.FromUser - Recommends this Mission - @notification.MissionTitle</span>
-                                    </div>
-                                    <div class="ms-1 me-3">
-                                        <i class="fa-solid fa-circle text-warning notification-blob ms-1 col-1 text-right"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                }
-                else if (notification.Notification.NotificationSettingsId == 6)
-                {
-                    <div data-id="@notification.Notification.NotificationId" class="notification-container @(notification.Notification.Status == false ? "unread" : "")">
-                        <a class="text-decoration-none text-secondary border-top" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@notification.Notification.MissionId})">
-                            <div class="d-flex align-items-center py-2 border-bottom">
-                                <div class="ms-2">
+                                }
+                                else if (notification.Notification.NotificationSettingsId == 2 || notification.Notification.NotificationSettingsId == 3)
+                                {
+                                    if (notification.TimesheetStatus == "PUBLISHED")
+                                    {
+                                        <i class="fa-solid fa-square-check text-secondary ps-1 pe-2 fs-4"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa-solid fa-triangle-exclamation text-secondary ps-1 pe-2 fs-4"></i>
+                                    }
+                                }
+                                else if (notification.Notification.NotificationSettingsId == 4)
+                                {
+                                    if (notification.CommentStatus == "PUBLISHED")
+                                    {
+                                        <i class="fa-solid fa-square-check text-secondary ps-1 pe-2 fs-4"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa-solid fa-triangle-exclamation text-secondary ps-1 pe-2 fs-4"></i>
+                                    }
+                                }
+                                else if (notification.Notification.NotificationSettingsId == 5)
+                                {
+                                    if (notification.StoryStatus == "PUBLISHED")
+                                    {
+                                        <i class="fa-solid fa-square-check text-secondary ps-1 pe-2 fs-4"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa-solid fa-triangle-exclamation text-secondary ps-1 pe-2 fs-4"></i>
+                                    }
+                                }
+                                else if (notification.Notification.NotificationSettingsId == 6)
+                                {
                                     <i class="fa-solid fa-circle-plus text-secondary ps-1 pe-2 fs-4"></i>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="text-wrap">
+                                }
+                                else if (notification.Notification.NotificationSettingsId == 9)
+                                {
+                                    if (notification.MissionApplicationStatus == "PUBLISHED")
+                                    {
+                                        <i class="fa-solid fa-square-check text-secondary ps-1 pe-2 fs-4"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa-solid fa-triangle-exclamation text-secondary ps-1 pe-2 fs-4"></i>
+                                    }
+                                }
+
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="text-wrap">
+                                    @if (notification.Notification.NotificationSettingsId == 1)
+                                    {
+                                        <span class="">@notification.FromUser - Recommends this Mission - @notification.MissionTitle</span>
+                                    }
+                                    else if (notification.Notification.NotificationSettingsId == 2 || notification.Notification.NotificationSettingsId == 3)
+                                    {
+                                        <span class="">Volunteering request has been @(notification.TimesheetStatus == "PUBLISHED" ? "approved" : "declined") for -@notification.MissionTitle</span>
+                                    }
+                                    else if (notification.Notification.NotificationSettingsId == 4)
+                                    {
+                                        <span class="">Comment has been @(notification.CommentStatus == "PUBLISHED" ? "approved" : "declined") for -@notification.MissionTitle</span>
+                                    }
+                                    else if (notification.Notification.NotificationSettingsId == 5)
+                                    {
+                                        <span class="">Story has been @(notification.CommentStatus == "PUBLISHED" ? "approved" : "declined") for -@notification.MissionTitle</span>
+                                    }
+                                    else if (notification.Notification.NotificationSettingsId == 6)
+                                    {
                                         <span class="">New Mission - @notification.MissionTitle</span>
-                                    </div>
-                                    <div class="ms-1 me-3">
-                                        <i class="fa-solid fa-circle text-warning notification-blob ms-1 col-1 text-right"></i>
-                                    </div>
+                                    }
+                                    else if (notification.Notification.NotificationSettingsId == 8)
+                                    {
+                                        <span class="">@notification.FromUser - Recommends this Story - @notification.StoryTitle</span>
+                                    }
+                                    else if (notification.Notification.NotificationSettingsId == 9)
+                                    {
+                                        <span class="">Mission application has been @(notification.MissionApplicationStatus == "PUBLISHED" ? "approved" : "declined") for -@notification.MissionTitle</span>
+                                    }
+
+
+                                </div>
+                                <div class="ms-1 me-3">
+                                    <i class="fa-solid fa-circle text-warning notification-blob ms-1 col-1 text-right"></i>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                }
+                        </div>
+                    </a>
+                </div>
             }
 
+
             <!-- Yesterday notifications section -->
-            @if(Model.YesterDayNotifications.Count > 0)
+            @if (Model.YesterDayNotifications.Count > 0)
             {
                 <span class="bg-light text-secondary border-bottom border-top text-center ps-3 pb-1 d-block">Yesterday</span>
                 @foreach (UserNotification notification in Model.YesterDayNotifications)
