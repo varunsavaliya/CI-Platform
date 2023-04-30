@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ci_Platform.Repositories.Repositories
 {
-    public class MissionRepository : SendInvite<MissionVolunteeringModel>, IMission
+    public class MissionRepository : Repository<NotificationData>, IMission
     {
         private new readonly ApplicationDbContext _context;
 
@@ -111,7 +111,7 @@ namespace Ci_Platform.Repositories.Repositories
                 // Mission is already in favorites, return an error message or redirect back to the mission page
                 var FavoriteMissionId = await _context.FavoriteMissions.Where(fm => fm.MissionId == missionId && fm.UserId == userId).FirstOrDefaultAsync();
                 _context.FavoriteMissions.Remove(FavoriteMissionId);
-               await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
             }
             else
             {
@@ -197,7 +197,7 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task<List<User>> GetUsersList(long userId)
         {
-            return await _context.Users.Where(user => user.UserId != userId && user.DeletedAt == null).ToListAsync();
+            return await _context.Users.Where(user => user.UserId != userId && user.DeletedAt == null && user.Status == 1).ToListAsync();
         }
         public async Task<List<MissionApplication>> GetRecentVolByPage(long missionId, int pageNo, int pageSize)
         {
@@ -252,14 +252,24 @@ namespace Ci_Platform.Repositories.Repositories
 
         public async Task SaveInviteData(long toUserId, long missionId, long fromUserId)
         {
-            Notification notification = new()
+            NotificationData notification = new()
             {
+                UserId = toUserId,
                 ToUserId = toUserId,
                 FromUserId = fromUserId,
                 MissionId = missionId,
-                Status = true,
+                NotificationSettingsId = 1,
+                Status = false,
             };
-            await _context.Notifications.AddAsync(notification);
+            await AddNotitifcationData(notification);
+            var missionInvite = new MissionInvite()
+            {
+                FromUserId = fromUserId,
+                ToUserId = toUserId,
+                MissionId = missionId,
+            };
+
+            await _context.MissionInvites.AddAsync(missionInvite);
             await _context.SaveChangesAsync();
         }
     }

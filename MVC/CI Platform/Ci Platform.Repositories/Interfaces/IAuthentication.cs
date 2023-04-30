@@ -5,6 +5,7 @@ namespace Ci_Platform.Repositories.Interfaces
 {
     public interface IAuthentication : IRepository<User>
     {
+        public Task AddNewUser(RegistrationModel model);
         public string GenerateToken();
         public void SendMail(string token, string PasswordResetLink, ForgotPasswordModel model);
         public void ResetPass(PasswordResetModel model);

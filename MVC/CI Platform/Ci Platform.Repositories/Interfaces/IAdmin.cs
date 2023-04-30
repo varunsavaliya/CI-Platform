@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Ci_Platform.Repositories.Interfaces
 {
-    public interface IAdmin
+    public interface IAdmin : IRepository<NotificationData>
     {
 
         public List<User> GetUsers();

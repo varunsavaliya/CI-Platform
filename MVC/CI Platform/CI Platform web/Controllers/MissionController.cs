@@ -37,13 +37,13 @@ namespace CI_Platform_web.Controllers
         [HttpPost]
         public async Task<IActionResult> LandingPage(InputData inputData)
         {
-            long UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
+            long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
 
-            var (missionList, totalRecords) = _mission.GetMissionCards(inputData, UserId);
+            var (missionList, totalRecords) = _mission.GetMissionCards(inputData, userId);
             LandingPageModel model = new()
             {
                 MissionList = missionList,
-                Users = await _filters.GetUsers(),
+                Users = await _mission.GetUsersList(userId),
                 totalRecords = totalRecords,
             };
 
@@ -120,7 +120,6 @@ namespace CI_Platform_web.Controllers
             if (HttpContext.Session.GetString("UserName") != null)
             {
                 UserId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
-                ViewBag.UserId = UserId;
             }
             var MissionLink = Url.Action("MissionVolunteering", "Mission", new { id = Id }, Request.Scheme);
             //await _mission.SendEmailInvite(ToUserId, Id, UserId, MissionLink, viewmodel);

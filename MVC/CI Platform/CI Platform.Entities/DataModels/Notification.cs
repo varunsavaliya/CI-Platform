@@ -7,9 +7,9 @@ public partial class Notification
 {
     public long NotificationId { get; set; }
 
-    public long? UserId { get; set; }
+    public long UserId { get; set; }
 
-    public long? NotificationSettingsId { get; set; }
+    public long NotificationSettingsId { get; set; }
 
     public long? FromUserId { get; set; }
 
@@ -27,7 +27,7 @@ public partial class Notification
 
     public bool? Status { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
+    public DateTime CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 
@@ -41,7 +41,7 @@ public partial class Notification
 
     public virtual MissionApplication? MissionApplication { get; set; }
 
-    public virtual NotificationSetting? NotificationSettings { get; set; }
+    public virtual NotificationSetting NotificationSettings { get; set; } = null!;
 
     public virtual Story? Story { get; set; }
 
@@ -49,5 +49,5 @@ public partial class Notification
 
     public virtual User? ToUser { get; set; }
 
-    public virtual User? User { get; set; }
+    public virtual User User { get; set; } = null!;
 }

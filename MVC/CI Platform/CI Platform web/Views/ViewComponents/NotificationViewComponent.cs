@@ -16,12 +16,15 @@ namespace CI_Platform_web.Views.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             long userId = Convert.ToInt64(HttpContext.Session.GetString("UserId"));
-            var (notificationList, count) = _notification.GetNotificationsByUserId(userId);
+            var (newNotificationList,yesterdayNotificationList,olderNotificationList, count) = _notification.GetNotificationsByUserId(userId);
             NotificationModel model = new()
             {
-                Notifications = notificationList,
+                NewNotifications = newNotificationList,
+                YesterDayNotifications = yesterdayNotificationList,
+                OlderNotifications = olderNotificationList,
                 NotificationCount = count,
                 NotificationSettings = _notification.GetNotificationSettings(),
+                UserNotificationSettingIds = await _notification.GetUserNotificationSettingIds(userId),
             };
             return View(model);   
         }

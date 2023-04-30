@@ -12,7 +12,7 @@ namespace CI_Platform.Entities.ViewModels
 
         [Required(ErrorMessage = "You must provide a phone number")]
         [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Phone number must be 10 digits long")]
-        public string PhoneNumber { get; set; } = string.Empty;
+        public long PhoneNumber { get; set; }
 
 
         [Required]

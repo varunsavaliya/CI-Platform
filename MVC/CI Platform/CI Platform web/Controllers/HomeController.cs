@@ -157,14 +157,13 @@ namespace CI_Platform_web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Registration(User obj, RegistrationModel model)
+        public IActionResult Registration(RegistrationModel model)
         {
             if (ModelState.IsValid)
             {
                 if (!_Authentication.IsRegistered(model.Email))
                 {
-                    _Authentication.Add(obj);
-                    _Authentication.Save();
+                    _Authentication.AddNewUser(model);
                     return RedirectToAction("Index", "Home");
                 }
                 else

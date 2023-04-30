@@ -2,6 +2,7 @@
 using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.Mail;
@@ -18,6 +19,35 @@ namespace Ci_Platform.Repositories.Repositories
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
+
+        public async Task AddNewUser(RegistrationModel model)
+        {
+            User user = new()
+            {
+                FirstName = model.FirstName,
+                LastName    = model.LastName,
+                Email = model.Email,
+                Password = model.Password,
+                PhoneNumber = model.PhoneNumber,
+            };
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
+
+            User? addedUser = await _context.Users.Where(user => user.Email == model.Email).FirstOrDefaultAsync();
+            List<NotificationSetting> notificationSettings = _context.NotificationSettings.ToList();
+
+            foreach (var notificationSetting in notificationSettings)
+            {
+                UserNotificationSetting userNotificationSetting = new()
+                {
+                    UserId = addedUser.UserId,
+                    NotificationSettingsId = notificationSetting.NotificationSettingsId,
+                };
+                await _context.UserNotificationSettings.AddAsync(userNotificationSetting);
+            }
+            await _context.SaveChangesAsync();
+        }
+
         public string GenerateToken()
         {
 

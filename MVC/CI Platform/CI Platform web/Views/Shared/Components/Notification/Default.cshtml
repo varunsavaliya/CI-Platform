@@ -7,38 +7,116 @@
         <i class="fa-sharp fa-regular fa-bell text-secondary me-3 notification-icon"></i>
 
         <!-- notification count -->
-        <span class="notification-count">@Model.NotificationCount</span>
+        @if (Model.NotificationCount > 0)
+        {
+            <span class="notification-count">@Model.NotificationCount</span>
+        }
     </div>
-    <div class="dropdown-menu pt-0" id="notification-dropdown" aria-labelledby="dropdownMenuButton" data-boundary="window">
+    <div class="dropdown-menu py-0" id="notification-dropdown" aria-labelledby="dropdownMenuButton" data-boundary="window">
         <div class="d-flex justify-content-around align-items-center py-2 mb-1">
             <i class="fa-solid fa-gear notification-settings-icon"></i>
             <span class="notification-heading">Notifications</span>
             <span class="clear-all-notification">Clear All</span>
         </div>
+        <div class="no-notification-section">
+                <div class="no-notifiaction border-top py-3 d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-solid fa-bell text-secondary fs-3 mb-2"></i>
+                    <span class="text-secondary">You do not have any new notifications</span>
+                </div>
+        </div>
         <div class="notifications-section">
-            @foreach (UserNotification notification in Model.Notifications)
+
+            <!-- New notifications section -->
+            @foreach (UserNotification notification in Model.NewNotifications)
             {
                 if (notification.Notification.NotificationSettingsId == 1)
                 {
-                    <a class="text-decoration-none text-secondary border-top" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@notification.Notification.MissionId})">
-                        <div class="d-flex align-items-center">
-                            <div class="ms-2">
-                                <img src="~/ProfileImages/@notification.FromUserAvatar" class="me-2 rounded-circle notification-avatar col-2" />
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <div class="text-wrap">
-                                    <span class="">@notification.FromUser - Recommends this Mission - @notification.MissionTitle</span>
+                    <div data-id="@notification.Notification.NotificationId" class="notification-container @(notification.Notification.Status == false ? "unread" : "")">
+                        <a class="text-decoration-none text-secondary border-top" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@notification.Notification.MissionId})">
+                            <div class="d-flex align-items-center py-2 border-top">
+                                <div class="ms-2">
+                                    <img src="~/ProfileImages/@notification.FromUserAvatar" class="me-2 rounded-circle notification-avatar col-2" />
                                 </div>
-                                <div class="ms-1 me-2">
-                                    <i class="fa-solid fa-circle text-warning notification-blob ms-1 col-1 text-right"></i>
+                                <div class="d-flex align-items-center">
+                                    <div class="text-wrap">
+                                        <span class="">@notification.FromUser - Recommends this Mission - @notification.MissionTitle</span>
+                                    </div>
+                                    <div class="ms-1 me-3">
+                                        <i class="fa-solid fa-circle text-warning notification-blob ms-1 col-1 text-right"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 }
-                else if (notification.Notification.NotificationSettingsId == 4)
+                else if (notification.Notification.NotificationSettingsId == 6)
                 {
+                    <div data-id="@notification.Notification.NotificationId" class="notification-container @(notification.Notification.Status == false ? "unread" : "")">
+                        <a class="text-decoration-none text-secondary border-top" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@notification.Notification.MissionId})">
+                            <div class="d-flex align-items-center py-2 border-bottom">
+                                <div class="ms-2">
+                                    <i class="fa-solid fa-circle-plus text-secondary ps-1 pe-2 fs-4"></i>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="text-wrap">
+                                        <span class="">New Mission - @notification.MissionTitle</span>
+                                    </div>
+                                    <div class="ms-1 me-3">
+                                        <i class="fa-solid fa-circle text-warning notification-blob ms-1 col-1 text-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
 
+            <!-- Yesterday notifications section -->
+            @if(Model.YesterDayNotifications.Count > 0)
+            {
+                <span class="bg-light text-secondary border-bottom border-top text-center ps-3 pb-1 d-block">Yesterday</span>
+                @foreach (UserNotification notification in Model.YesterDayNotifications)
+                {
+                    if (notification.Notification.NotificationSettingsId == 1)
+                    {
+                        <div data-id="@notification.Notification.NotificationId" class="notification-container @(notification.Notification.Status == false ? "unread" : "")">
+                            <a class="text-decoration-none text-secondary border-top" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@notification.Notification.MissionId})">
+                                <div class="d-flex align-items-center py-2 border-bottom">
+                                    <div class="ms-2">
+                                        <img src="~/ProfileImages/@notification.FromUserAvatar" class="me-2 rounded-circle notification-avatar col-2" />
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-wrap">
+                                            <span class="">@notification.FromUser - Recommends this Mission - @notification.MissionTitle</span>
+                                        </div>
+                                        <div class="ms-1 me-3">
+                                            <i class="fa-solid fa-circle text-warning notification-blob ms-1 col-1 text-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                    else if (notification.Notification.NotificationSettingsId == 6)
+                    {
+                        <div data-id="@notification.Notification.NotificationId" class="notification-container @(notification.Notification.Status == false ? "unread" : "")">
+                            <a class="text-decoration-none text-secondary border-top" href="@Url.Action("MissionVolunteering", "Mission" , new { id=@notification.Notification.MissionId})">
+                                <div class="d-flex align-items-center py-2 border-bottom">
+                                    <div class="ms-2">
+                                        <i class="fa-regular fa-circle-plus"></i>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-wrap">
+                                            <span class="">New Mission - @notification.MissionTitle</span>
+                                        </div>
+                                        <div class="ms-1 me-3">
+                                            <i class="fa-solid fa-circle text-warning notification-blob ms-1 col-1 text-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
                 }
             }
         </div>
@@ -47,13 +125,16 @@
             @foreach (NotificationSetting setting in Model.NotificationSettings)
             {
                 <div class="form-check px-3 d-flex justify-content-between">
-                    <span>
+                    <label for="@setting.NotificationSettingsId">
                         @setting.SettingName
-                    </span>
-                    <input class="form-check-input" type="checkbox" value="" id="@setting.NotificationSettingsId">
+                    </label>
+                    <input class="form-check-input" type="checkbox" value="@setting.NotificationSettingsId"
+                           id="@setting.NotificationSettingsId"
+                    @(Model.UserNotificationSettingIds.Contains(setting.NotificationSettingsId) ? "checked" : "")>
                 </div>
             }
-            <div class="notification-settings-btns d-flex justify-content-around border-top pt-2 mt-2">
+
+            <div class="notification-settings-btns d-flex justify-content-around border-top py-2 mt-2">
                 <button class="btn save-notification-settings card-button m-0 py-1 px-3">Save</button>
                 <button class="btn btn-outline-secondary skill-btn m-0 py-1 px-3" id="notification-settings-cancel-btn">Cancel</button>
             </div>

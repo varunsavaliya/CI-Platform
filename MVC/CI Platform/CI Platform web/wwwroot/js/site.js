@@ -64,29 +64,141 @@
             }
         });
     }
-    $(document).on('click', '.dropdown', function (e) {
-        e.stopPropagation();
-    })
+
+    // notification functionalities
+    let notificationCount = $('.notification-count').text();
+    if (notificationCount > 0 && currentUrl.includes('LandingPage'))
+    {
+        $('.notification-icon-container').click();
+    }
+    if (notificationCount < 1) {
+        $('.no-notification-section').show();
+    }
+
     $(document).on('click', '.notification-settings-icon', function (e) {
-        e.preventDefault();
         e.stopPropagation();
         $(this).hide();
         $('.notification-heading').text('Notification Settings');
         $('.clear-all-notification').hide();
         $('.notifications-section').hide();
         $('.notification-settings-section').show();
-
+        $('.no-notification-section').hide();
     })
+
     $(document).on('click', '#notification-settings-cancel-btn', function (e) {
-        e.preventDefault();
         e.stopPropagation();
         $('.notification-settings-icon').show();
         $('.notification-heading').text('Notifications');
         $('.clear-all-notification').show();
         $('.notifications-section').show();
         $('.notification-settings-section').hide();
+        console.log($('.notification-count').text())
+        if ($('.notification-count').text() < 1) {
+            $('.no-notification-section').show();
+        }
+    })
+
+    $(document).on('click', '.clear-all-notification', function (e) {
+        e.stopPropagation();
+        $('.notification-container').each(function (index) {
+            $(this).delay(index * 50).queue(function () {
+                $(this).css('transform', 'translateX(100%)').dequeue();
+            });
+        });
+
+        $.ajax({
+            url: "/Notification/ClearNotifications",
+            type: "POST",
+            success: function (response) {
+                setTimeout(function () {
+                    $('.no-notification-section').show();
+                    $('.notifications-section').empty();
+                    $('.notifications-section').css({
+                        'height': 'min-content',
+                        'overflow-y': 'auto'
+                    });
+
+                    $('.notification-count').hide();
+                    $('.notification-count').text(0);
+                }, 500);
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+        
 
     })
+
+    $('.notification-icon-container').click(function () {
+        var notificationIds = [];
+
+        $('.notification-container').each(function () {
+            if ($(this).hasClass == 'unread') {
+                debugger
+                notificationIds.push(parseInt($(this).data('id')));
+            }
+        })
+
+        console.log(notificationIds)
+        console.log($('.notification-container'))
+    });
+
+    $('.notification-icon-container').click(function () {
+        var notificationIds = [];
+
+        $('.notification-container.unread').each(function () {
+            notificationIds.push(parseInt($(this).data('id')));
+        });
+
+        $.ajax({
+            url: "/Notification/HandleNotificationStatus",
+            type: "POST",
+            data: { notificationIds: notificationIds },
+            success: function (response) {
+                setTimeout(function () {
+                    $('.notification-count').hide();
+                    $('.notification-container.unread').each(function () {
+                        $(this).find('i.fa-solid.fa-circle').removeClass('fa-solid fa-circle text-warning').addClass('fa-solid fa-circle-check text-secondary');
+                        $(this).removeClass('unread');
+                    });
+                }, 1000);
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
+
+
+    $(".save-notification-settings").click(function (e) {
+        e.stopPropagation();
+        var notificationSettings = [];
+
+        $("input[type=checkbox]:checked").each(function () {
+            notificationSettings.push(parseInt($(this).attr("id")));
+        });
+
+        $.ajax({
+            url: "/Notification/HandleNotificationSettings",
+            type: "POST",
+            data: { notificationSettings: notificationSettings },
+            success: function (response) {
+                $('.notification-settings-icon').show();
+                $('.notification-heading').text('Notifications');
+                $('.clear-all-notification').show();
+                $('.notifications-section').show();
+                $('.notification-settings-section').hide();
+                if ($('.notification-count').text() < 1) {
+                    $('.no-notification-section').show();
+                }
+            },
+            error: function (xhr) {
+                console.log(xhr.responseText);
+            }
+        });
+    });
+
 
 
     // functionality : when user check any filter then it will add as pill after search bar
@@ -312,7 +424,7 @@
         $.ajax({
             url: '/Mission/Apply',
             type: 'POST',
-            data: { MissionId: missionId},
+            data: { MissionId: missionId },
             success: function (response) {
                 $('.apply-btn').text('Applied').addClass('published-btn btn btn-success disabled');
                 $('.apply-btn').removeClass('card-button');
@@ -777,39 +889,39 @@
                 $('.image-validation-error').text('File size exceeds 4 MB: ' + file.name)
                 continue;
             }
-                var reader = new FileReader();
-                allfiles.push(file);
-                //formData.append('file', file);
+            var reader = new FileReader();
+            allfiles.push(file);
+            //formData.append('file', file);
 
-                // Create image preview and close icon
-                reader.onload = (function (file) {
-                    return function (e) {
-                        var image = $('<img>').attr('src', e.target.result);
-                        var closeIcon = $('<span>').addClass('close-icon').text('x');
+            // Create image preview and close icon
+            reader.onload = (function (file) {
+                return function (e) {
+                    var image = $('<img>').attr('src', e.target.result);
+                    var closeIcon = $('<span>').addClass('close-icon').text('x');
 
-                        // Add image and close icon to the list
-                        var item = $('<div>').addClass('image-item').append(image).append(closeIcon);
-                        imageList.append(item);
+                    // Add image and close icon to the list
+                    var item = $('<div>').addClass('image-item').append(image).append(closeIcon);
+                    imageList.append(item);
 
-                        // Handle close icon click event
-                        closeIcon.on('click', function () {
-                            item.remove();
-                            allfiles.splice(allfiles.indexOf(file), 1);
-                            if (file === defaultImage) {
-                                defaultImage = null;
-                            }
-                        });
+                    // Handle close icon click event
+                    closeIcon.on('click', function () {
+                        item.remove();
+                        allfiles.splice(allfiles.indexOf(file), 1);
+                        if (file === defaultImage) {
+                            defaultImage = null;
+                        }
+                    });
 
-                        item.on('click', function () {
-                            $('.image-item.default').removeClass('default border border-secondary');
-                            $(this).addClass('default border border-secondary');
-                            defaultImage = file;
-                        });
-                    };
-                })(file);
+                    item.on('click', function () {
+                        $('.image-item.default').removeClass('default border border-secondary');
+                        $(this).addClass('default border border-secondary');
+                        defaultImage = file;
+                    });
+                };
+            })(file);
 
-                // Read image file as data URL
-                reader.readAsDataURL(file);
+            // Read image file as data URL
+            reader.readAsDataURL(file);
         }
         // Create a new DataTransfer object
         var dataTransfer = new DataTransfer();

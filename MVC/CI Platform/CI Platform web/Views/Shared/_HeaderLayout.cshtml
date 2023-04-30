@@ -38,8 +38,8 @@
 <body class="">
     <div class="min-vh-100 d-flex flex-column">
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light d-flex justify-space-between align-items-center">
-                <div class="container-fluid ps-0">
+            <div class="container-fluid ps-0">
+                <nav class="navbar navbar-expand-lg navbar-light d-flex justify-space-between align-items-center">
                     <div class="left">
                         <button class="navbar-toggler ps-0" type="button" data-bs-toggle="offcanvas" aria-controls="offcanvasExample" href="#topmenu">
                             <span class="navbar-toggler-icon"></span>
@@ -62,10 +62,10 @@
                                                 <img src="~/images/drop-down.png" alt="" />
                                             </a>
                                             <ul class="dropdown-menu" id="exploreDropdown" aria-labelledby="exploreDropdown">
-                                                    <li class="border-bottom top-themes"><a class="dropdown-item">Top Themes</a></li>
-                                                    <li class="border-bottom most-ranked"><a class="dropdown-item">Most Ranked</a></li>
-                                                    <li class="border-bottom top-favourite"><a class="dropdown-item">Top Favourite</a></li>
-                                                    <li class="border-bottom random"><a class="dropdown-item">Random</a></li>
+                                                <li class="border-bottom top-themes"><a class="dropdown-item">Top Themes</a></li>
+                                                <li class="border-bottom most-ranked"><a class="dropdown-item">Most Ranked</a></li>
+                                                <li class="border-bottom top-favourite"><a class="dropdown-item">Top Favourite</a></li>
+                                                <li class="border-bottom random"><a class="dropdown-item">Random</a></li>
                                             </ul>
                                         </li>
                                         <li class="nav-item">
@@ -81,8 +81,8 @@
                     </div>
                     @await Component.InvokeAsync("Notification")
                     @await Component.InvokeAsync("UserHeader", "Default")
-                </div>
-            </nav>
+                </nav>
+            </div>
         </div>
         <div class="border-bottom"></div>
         <div class="flex-grow-1">

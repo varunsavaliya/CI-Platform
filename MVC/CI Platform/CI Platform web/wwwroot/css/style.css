@@ -164,6 +164,17 @@ body {
     font-size: 12px;
 }
 
+
+
+.no-notification-section{
+    display:none;
+}
+
+.notifications-section{
+    height:300px;
+    overflow-y:scroll;
+}
+
 .notification-settings-icon {
     cursor: pointer;
 }
@@ -177,6 +188,7 @@ body {
     right: 0;
     transform: translate(0%, 3%);
     width: 340px;
+    overflow: hidden;
 }
 
     #notification-dropdown span {
@@ -189,6 +201,11 @@ body {
     background-color: #f88634;
     border-color: #f88634;
 }
+
+.notification-container {
+    transition: transform 0.5s ease-out;
+}
+
 
 .notification-avatar {
     width: 30px;

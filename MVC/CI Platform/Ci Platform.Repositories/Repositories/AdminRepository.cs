@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ci_Platform.Repositories.Repositories
 {
-    public class AdminRepository : IAdmin
+    public class AdminRepository : Repository<NotificationData>, IAdmin
     {
         private readonly ApplicationDbContext _context;
 
-        public AdminRepository(ApplicationDbContext context)
+        public AdminRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
         }
@@ -468,6 +468,15 @@ namespace Ci_Platform.Repositories.Repositories
                 await AddMissionDocs(model.MissionDocs, missionId);
             }
 
+            // Send notification to every user for new mission
+
+            NotificationData notificationData = new()
+            {
+                NotificationSettingsId = 6,
+                MissionId = missionId,
+            };
+
+            await AddNotitifcationData(notificationData);
         }
 
         public async Task UpdateMission(AdminMissionModel model, long missionId)
