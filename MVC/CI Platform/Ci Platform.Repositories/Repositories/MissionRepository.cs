@@ -138,7 +138,12 @@ namespace Ci_Platform.Repositories.Repositories
                 seatsleft = mission.TotalSeats - mission.MissionApplications.Count(missionApplication => missionApplication.ApprovalStatus == "PUBLISHED" && missionApplication.DeletedAt == null),
                 AchievedGoal = mission.Timesheets.Where(achievedGoal => achievedGoal.Status == "APPROVED").Sum(achievedGoal => achievedGoal.Action),
                 Goalvalue = mission.GoalMissions.Select(goalMission => goalMission.GoalValue).FirstOrDefault(),
-                MissionComments = mission.Comments.Where(comment => comment.ApprovalStatus == "PUBLISHED").ToList(),
+                MissionComments = mission.Comments.Where(comment => comment.ApprovalStatus == "PUBLISHED").Select(comment => new MissionComment()
+                {
+                    CommentData = comment,
+                    UserAvatar = comment.User.Avatar == null ? "default user avatar.jpg" : comment.User.Avatar,
+                    UserName = comment.User.FirstName + " " + comment.User.LastName,
+                }).ToList(),
                 MissionSkills = mission.MissionSkills.Select(skill => skill.Skill.SkillName).ToList(),
                 rating = mission.MissionRatings.Average(rating => rating.Rating) == null ? 0 : mission.MissionRatings.Average(rating => rating.Rating),
                 MissionAllMedia = mission.MissionMedia.Where(missionMedia => missionMedia.DeletedAt == null).OrderByDescending(missionMedia => missionMedia.DefaultMedia).ToList(),

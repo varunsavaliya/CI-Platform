@@ -68,7 +68,6 @@
     // notification functionalities
     let notificationCount = $('.notification-count').text();
     let allNotifications = $('.notifications-section div').length;
-    console.log($('.notifications-section div').length)
     if (notificationCount > 0 && currentUrl.includes('LandingPage'))
     {
         $('.notification-icon-container').click();
@@ -183,7 +182,7 @@
                 $('.clear-all-notification').show();
                 $('.notifications-section').show();
                 $('.notification-settings-section').hide();
-                if ($('.notification-count').text() < 1) {
+                if (allNotifications < 1) {
                     $('.no-notification-section').show();
                 }
             },
@@ -201,7 +200,8 @@
     let allDropdowns = $('.dropdown ul');
     allDropdowns.each(function () {
         let dropdown = $(this);
-        $(this).on('change', 'input[type="checkbox"]', function () {
+        $(this).on('change', 'input[type="checkbox"]', function (e) {
+            e.stopPropagation;
             // if the check box is checked then and then  only we have to add it to pill
             if ($(this).is(':checked')) {
                 let selectedOptionText = $(this).next('label').text();
@@ -333,14 +333,14 @@
     });
 
     // add to favourite
-    $(document).on('click', 'i.favorite-button', function () {
+    $(document).on('click', 'i.favorite-button, a.favorite-button', function () {
         var missionId = $(this).data('mission-id');
         $.ajax({
             url: '/Mission/AddToFavorites',
             type: 'POST',
             data: { missionId: missionId },
             success: function (result) {
-                var allMissionId = $('.favorite-button')
+                var allMissionId = $('i.favorite-button');
                 allMissionId.each(function () {
                     if ($(this).data('mission-id') === missionId) {
                         if ($(this).hasClass('bi-heart')) {
@@ -355,6 +355,21 @@
                         }
                     }
                 })
+
+                let favBtn = $('a.favorite-button');
+                if (favBtn != undefined) {
+                    let icon = favBtn.find('i');
+                    if (icon.hasClass('bi-heart')) {
+                        icon.addClass('bi-heart-fill text-danger')
+                        icon.removeClass('bi-heart text-light')
+                        icon.next('span').text('Remove From Favourite')
+                    }
+                    else if (icon.hasClass('bi-heart-fill')) {
+                        icon.addClass('bi-heart text-light')
+                        icon.removeClass('bi-heart-fill text-danger')
+                        icon.next('span').text('Add to Favourite')
+                    }
+                }
             },
             error: function (error) {
 
@@ -782,8 +797,24 @@
     })
 
     // Invite user for volunteering mission page, Landing page, and story detail page
+
+    $(document).on('keyup','.all-users .search-invite-user', function () {
+        let searchedUser = $(this).val().toLocaleLowerCase();
+        let allUsers = $('.user-invite-container');
+        allUsers.each(function () {
+            if ($(this).find('#user-name').text().toLocaleLowerCase().includes(searchedUser) || $(this).find('#user-name').data('email').toLocaleLowerCase().includes(searchedUser)) {
+                $(this).addClass('d-flex');
+                $(this).show();
+            } else {
+                $(this).removeClass('d-flex');
+                $(this).hide();
+            }
+        })
+    })
+
     $(document).on('click', '.invite-button', function (e) {
         e.preventDefault();
+        let inviteButton = $(this);
         let ToUserID = $(this).parent().parent().find('#user-name').data('userid');
         let controllerAction;
         let Id
@@ -799,7 +830,7 @@
             type: 'POST',
             data: { ToUserId: ToUserID, Id: Id, FromUserId: userId },
             success: function (response) {
-                $('.Invited-' + ToUserID).html(' <button class="btn btn-success" data-mission-Id="@card.MissionId">Invited</button>');
+                inviteButton.addClass('disabled').text('Invited');
             }
         })
     })
@@ -1199,7 +1230,7 @@
         reader.readAsDataURL(this.files[0]);
     });
 
-    $(document).on('click', '.form-check-label', function () {
+    $('.all-skill-options').on('click', '.form-check-label', function () {
         var checkbox = $(this).prev();
         if (!checkbox.prop('checked')) {
             $(this).addClass('skill-bg');
@@ -1303,6 +1334,11 @@
         }
         if ($('#newPassword').val() == '') {
             $('#newPasswordValidation').text('Enter your new password');
+            return false;
+        }
+        if ($('#newPassword').val().length < 8)
+        {
+            $('#newPasswordValidation').text('Password should be 8 character long');
             return false;
         }
         if ($('#confirmPassword').val() == '' || $('#newPassword').val() != $('#confirmPassword').val()) {
@@ -1472,6 +1508,77 @@
         return new Date(randomTimestamp);
     }
 
+    $('table').on('click', '.timesheet-view-btn', function () {
+        let timesheetId = $(this).parent().find('input').val();
+        $.ajax({
+            url: '/Timesheet/GetTimesheetData',
+            type: 'GET',
+            data: { timesheetId: timesheetId },
+            success: function (response) {
+                if (response.Time == null) {
+                    $('#goal-mission option').each(function () {
+                        if ($(this).val() == response.MissionId) {
+                            $(this).prop('selected', true);
+                        }
+                    });
+                    $('#goal-mission').prop(`disabled`, true);
+
+                    var defaultDate = new Date(response.DateVolunteered);
+                    $("#goal-date").flatpickr().destroy();
+                    var fp = flatpickr("#goal-date", {
+                        dateFormat: "d-m-Y",
+                        defaultDate: defaultDate
+                    });
+                    $("#goal-date").prop('disabled', true);
+                    $('#Actions').val(response.Action)
+                    $('#Actions').prop('disabled', true);
+
+                    $('#goal-message').val(response.Notes);
+                    $('#goal-message').prop('disabled', true);
+
+                    $('div.timesheet-goal-btns button').hide();
+
+                } else {
+                    $('#time-mission option').each(function () {
+                        if ($(this).val() == response.MissionId) {
+                            $(this).prop('selected', true);
+                        }
+                    });
+                    $('#time-mission').prop(`disabled`, true);
+
+                    var defaultDate = new Date(response.DateVolunteered);
+                    $("#time-date").flatpickr().destroy();
+                    var fp = flatpickr("#time-date", {
+                        dateFormat: "d-m-Y",
+                        defaultDate: defaultDate
+                    });
+                    $("#time-date").prop(`disabled`, true);
+
+                    let time = response.Time;
+                    let parts = time.split(":");
+                    let hours = parseInt(parts[0]);
+                    let minutes = parseInt(parts[1]);
+                    //let hours = time.Substring(0, 2)
+                    //let minutes = time.Substring(3, 2)
+                    $('#Hours').val(hours)
+                    $('#Hours').prop(`disabled`, true);
+                    $('#Minutes').val(minutes)
+                    $('#Minutes').prop(`disabled`, true);
+
+                    $('#time-message').val(response.Notes);
+                    $('#time-message').prop(`disabled`, true);
+
+                    $('div.timesheet-time-btns button').hide();
+                }
+            },
+            error: function (error) {
+
+            }
+        });
+    })
+
+
+
     $('table').on('click', '.generic-edit-icon', function () {
         if (currentUrl.includes('AdminUser')) {
             let userId = $(this).parent().find('input').val();
@@ -1494,7 +1601,6 @@
             addOrEdit('AddorEditBanner', bannerId);
         }
         else {
-
             let timesheetId = $(this).parent().find('input').val();
 
             $.ajax({
@@ -1517,6 +1623,7 @@
                         var endDate = new Date(response.Mission.EndDate) > currentDate ? currentDate : new Date(response.Mission.EndDate);
                         var defaultDate = new Date(response.DateVolunteered);
                         $("#goal-date").flatpickr().destroy();
+                        $("#goal-date").prop(`disabled`, false);
                         var fp = flatpickr("#goal-date", {
                             dateFormat: "d-m-Y",
                             minDate: startDate,
@@ -1525,8 +1632,13 @@
                         });
 
                         $('#Actions').val(response.Action)
+                        $('#Actions').prop(`disabled`, false);
 
                         $('#goal-message').val(response.Notes);
+                        $('#goal-message').prop(`disabled`, false);
+
+                        $('div.timesheet-goal-btns button').show();
+
                     } else {
                         $('#TimeBasedTimesheet_TimesheetId').val(response.TimesheetId)
 
@@ -1548,6 +1660,7 @@
                             maxDate: endDate,
                             defaultDate: defaultDate
                         });
+                        $("#time-date").prop(`disabled`, false);
 
                         let time = response.Time;
                         let parts = time.split(":");
@@ -1556,9 +1669,13 @@
                         //let hours = time.Substring(0, 2)
                         //let minutes = time.Substring(3, 2)
                         $('#Hours').val(hours)
+                        $('#Hours').prop(`disabled`, false);
                         $('#Minutes').val(minutes)
+                        $('#Minutes').prop(`disabled`, false);
 
                         $('#time-message').val(response.Notes);
+                        $('#time-message').prop(`disabled`, false);
+                        $('div.timesheet-btns button').show();
                     }
                 },
                 error: function (error) {

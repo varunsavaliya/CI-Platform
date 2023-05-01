@@ -26,7 +26,7 @@ namespace Ci_Platform.Repositories.Repositories
 
         public List<Timesheet> GetTimesheetsById(long userId)
         {
-            return _context.Timesheets.Where(timesheet => timesheet.UserId == userId && timesheet.Status == "APPROVED" && timesheet.DeletedAt == null).Include(timesheet => timesheet.Mission).ToList();
+            return _context.Timesheets.Where(timesheet => timesheet.UserId == userId && timesheet.Status != "DECLINED" && timesheet.DeletedAt == null).Include(timesheet => timesheet.Mission).ToList();
         }
         public async Task<Mission> GetMission(long missionId)
         {

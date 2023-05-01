@@ -36,7 +36,7 @@
                     <td id="handle-application">
                         <div class="d-flex align-items-center">
                             <input value="@story.StoryId" class="d-none" type="text" />
-                            <a href="@Url.Action("StoryDetail", "Story" , new { id=@story.StoryId})" type="button" id="" class="btn ms-0 mt-0 card-button me-2 story-view-btn">View</a>
+                            <a href="@Url.Action("StoryDetail", "Story" , new { id=@story.StoryId})" type="button" id="" class="btn ms-0 mt-0 card-button me-2 story-view-btn" target="_blank">View</a>
                             <i class="fa-regular fa-circle-check me-2 text-success approve-story"></i>
                             <i class="fa-regular fa-circle-xmark me-2 text-danger decline-story"></i>
                             <i class="fa-regular fa-trash-can me-2 generic-delete-icon" data-bs-toggle="modal" data-bs-target="#deleteUser_@story.StoryId"></i>
@@ -46,7 +46,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header border-0">
-                                        <h5 class="modal-title">Confrim Delete</h5>
+                                        <h5 class="modal-title">Confirm Delete</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">

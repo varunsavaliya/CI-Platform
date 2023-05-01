@@ -54,8 +54,8 @@
                         @foreach (var theme in Model.Theme)
                         {
                             <li class="ms-4 form-check">
-                                <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="theme_@theme.MissionThemeId" name="themeCheckboxes" multiple>
-                                <label class="form-check-label" for="theme_@theme.MissionThemeId">@theme.Title</label>
+                                <input type="checkbox" value="@theme.MissionThemeId" class="form-check-input" id="offCanvas_theme_@theme.MissionThemeId" name="themeCheckboxes" multiple>
+                                <label class="form-check-label" for="offCanvas_theme_@theme.MissionThemeId">@theme.Title</label>
                             </li>
                         }
 
@@ -73,8 +73,8 @@
                         @foreach (var skill in Model.Skill)
                         {
                             <li class="ms-4 form-check">
-                                <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="skill_@skill.SkillId" name="skillCheckboxes" multiple>
-                                <label class="form-check-label" for="skill_@skill.SkillId">@skill.SkillName</label>
+                                <input type="checkbox" value="@skill.SkillId" class="form-check-input" id="offCanvas_skill_@skill.SkillId" name="skillCheckboxes" multiple>
+                                <label class="form-check-label" for="offCanvas_skill_@skill.SkillId">@skill.SkillName</label>
                             </li>
                         }
                     </ul>
@@ -115,11 +115,11 @@
 
             <!-- theme dropdown  -->
             <div class="dropdown d-flex-column justify-content-center align-items-center">
-                <a class="text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="text-decoration-none" role="button" data-toggle="dropdown">
                     Theme
                     <img src="~/images/drop-down.png" alt="">
                 </a>
-                <ul class="dropdown-menu" id="themeDropdown">
+                <ul class="dropdown-menu" id="themeDropdown" data-boundary="window">
                     @foreach (var theme in Model.Theme)
                     {
                         <li class="ms-4 form-check">

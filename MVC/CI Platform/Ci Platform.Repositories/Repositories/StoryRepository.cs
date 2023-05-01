@@ -231,7 +231,7 @@ namespace Ci_Platform.Repositories.Repositories
             Story? story = await _context.Stories.FindAsync(storyId);
             NotificationData notificationData = new()
             {
-                UserId = story.UserId,
+                UserId = ToUserId,
                 NotificationSettingsId = 8,
                 FromUserId = FromUserId,
                 ToUserId = ToUserId,

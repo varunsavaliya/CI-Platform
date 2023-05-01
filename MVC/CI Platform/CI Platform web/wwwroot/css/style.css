@@ -2132,7 +2132,7 @@ iframe {
     padding: 10px 26px;
     border-radius: 23px !important;
     width: max-content !important;
-    display: inline !important;
+    display: inline;
 }
 
 .all-skill-options div label, .user-skill-options div label {

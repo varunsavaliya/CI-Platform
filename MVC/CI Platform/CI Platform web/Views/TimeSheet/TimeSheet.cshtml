@@ -69,7 +69,7 @@
                                         <textarea class="form-control" id="time-message" asp-for="TimeBasedTimesheet.timeMessage" placeholder="Enter your Message" rows="3"></textarea>
                                         <span asp-validation-for="TimeBasedTimesheet.timeMessage" class="text-danger"></span>
                                     </div>
-                                    <div class="d-flex justify-content-end mt-3">
+                                    <div class="d-flex timesheet-time-btns justify-content-end mt-3">
                                         <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Cancel</button>
                                         <button type="submit" id="submit-time-btn" class="btn mt-0 card-button ms-2 me-0">Submit</button>
                                     </div>
@@ -102,8 +102,11 @@
                                 <td>@timesheet.DateVolunteered.Value.ToShortDateString()</td>
                                 <td>@string.Format("{0}h", hours)</td>
                                 <td>@string.Format("{0}min", minutes)</td>
-                                <td class="d-flex align-content-center justify-content-end">
+                                <td class="d-flex align-items-center justify-content-center">
                                     <input value="@timesheet.TimesheetId" class="d-none" type="text" />
+                                    @if(timesheet.Status == "PENDING")
+                                    {
+                                        
                                     <img class="generic-edit-icon me-2" src="~/images/editing.png" data-bs-toggle="modal" data-bs-target="#add-vol-hours" />
                                     <img class="generic-delete-icon" src="~/images/delete.png" data-bs-toggle="modal" data-bs-target="#deleteTimesheet_@timesheet.TimesheetId" />
 
@@ -121,7 +124,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        </div>
+                                    }
+                                    else if(timesheet.Status == "APPROVED")
+                                    {
+                                         <button type="button" id="" class="btn ms-0 mt-0 card-button me-2 py-0 px-3 timesheet-view-btn" data-bs-toggle="modal" data-bs-target="#add-vol-hours">View</button>
+                                    }
                                 </td>
                             </tr>
                         }
@@ -178,7 +186,7 @@
                                         <textarea class="form-control" id="goal-message" asp-for="GoalBasedTimesheet.goalMessage" placeholder="Enter your Message" rows="3"></textarea>
                                         <span asp-validation-for="GoalBasedTimesheet.goalMessage" class="text-danger"></span>
                                     </div>
-                                    <div class="d-flex justify-content-end mt-3">
+                                    <div class="d-flex timesheet-goal-btns justify-content-end mt-3">
                                         <button type="button" class="btn btn-outline-secondary skill-btn" data-bs-dismiss="modal">Cancel</button>
                                         <button type="submit" id="sobmit-goal-btn" class="btn mt-0 card-button ms-2 me-0">Submit</button>
                                     </div>
@@ -205,8 +213,10 @@
                                 <td scope="row">@timesheet.Mission.Title</td>
                                 <td>@timesheet.DateVolunteered.Value.ToShortDateString()</td>
                                 <td>@timesheet.Action</td>
-                                <td class="d-flex align-content-center justify-content-end">
+                                <td class="d-flex align-items-center justify-content-center">
                                     <input value="@timesheet.TimesheetId" class="d-none" type="text" />
+                                    @if(timesheet.Status == "PENDING")
+                                    {
                                     <img class="generic-edit-icon me-2" src="~/images/editing.png" data-bs-toggle="modal" data-bs-target="#add-vol-goal" />
                                     <img class="generic-delete-icon" src="~/images/delete.png" data-bs-toggle="modal" data-bs-target="#deleteTimesheet_@timesheet.TimesheetId" />
 
@@ -225,6 +235,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                    }
+                                     else if(timesheet.Status == "APPROVED")
+                                    {
+                                         <button type="button" id="" class="btn ms-0 mt-0 card-button me-2 py-0 px-3 timesheet-view-btn" data-bs-toggle="modal" data-bs-target="#add-vol-goal">View</button>
+                                    }
                                 </td>
                             </tr>
                         }

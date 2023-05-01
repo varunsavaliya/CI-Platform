@@ -92,7 +92,7 @@
         <div class="col-lg-6 col-md-12 mt-4">
             <div class="d-flex justify-content-between align-items-end">
                 <div class="d-flex flex-column volunteer-details">
-                    @if(Model.StoryDetail.User.Avatar != null)
+                    @if (Model.StoryDetail.User.Avatar != null)
                     {
                         <img class="mb-3" src="~/ProfileImages/@Model.StoryDetail.User.Avatar" />
                     }
@@ -135,47 +135,41 @@
 
                 <!-- Invite Volunteer Modal -->
                 <div class="modal fade" id="story-invite" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body" id="all-users">
-                              
-                                    @foreach (var u in Model.UserList)
-                                    {
-
-                                        <div class="mt-2 d-flex justify-content-between">
-
-                                            <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
-
-
-                                            <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-story-Id="@Model.StoryDetail.StoryId">Invite</button></span>
-
-                                        </div>
-                                    }
+                            <div class="modal-body all-users">
+                                 @foreach (var user in Model.UserList)
+                                        {
+                                            <div class="mt-2 d-flex justify-content-between user-invite-container">
+                                                <span class="me-4 " id="user-name" data-email="@user.Email" data-userID="@user.UserId">@user.FirstName @user.LastName</span>
+                                                <span class="invited-@user.UserId"><button class="btn model-button invite-button shadow-none card-button  py-1 px-3 m-0" data-story-Id="@Model.StoryDetail.StoryId">Invite</button></span>
+                                            </div>
+                                        }
                             </div>
                         </div>
                     </div>
                 </div>
                 @if (Model.StoryDetail.Status == "PENDING")
                 {
-                    <input value="@Model.StoryDetail.StoryId" class="d-none" type="text" />
-
-                    <button class="btn btn-outline-success d-flex align-items-center justify-content-between story-detail-btn approve-story mt-0 px-3 py-2 ">
-                        <i class="fa-regular fa-circle-check me-2"></i>
-                        <span>Publish</span>
-                    </button>
-                    <button class="btn btn-outline-warning d-flex align-items-center justify-content-between story-detail-btn decline-story mt-0 px-3 py-2 ">
-                        <i class="fa-regular fa-circle-xmark me-2"></i>
-                        <span>Decline</span>
-                    </button>
-                    <button class="btn btn-outline-danger d-flex align-items-center justify-content-between story-detail-btn generic-delete-icon mt-0 px-3 py-2 ">
-                        <i class="fa-regular fa-trash-can me-2" data-bs-toggle="modal" data-bs-target="#deleteUser_@Model.StoryDetail.StoryId"></i>
-                        <span>Delete</span>
-                    </button>
-
+                    <div class="d-flex justify-content-around align-items-center">
+                        <input value="@Model.StoryDetail.StoryId" class="d-none" type="text" />
+                        <button class="btn btn-outline-success d-flex align-items-center justify-content-between story-detail-btn approve-story mt-0 px-3 py-2 ">
+                            <i class="fa-regular fa-circle-check me-2"></i>
+                            <span>Publish</span>
+                        </button>
+                        <button class="btn btn-outline-warning d-flex align-items-center justify-content-between story-detail-btn decline-story mt-0 px-3 py-2 ">
+                            <i class="fa-regular fa-circle-xmark me-2"></i>
+                            <span>Decline</span>
+                        </button>
+                        <button class="btn btn-outline-danger d-flex align-items-center justify-content-between story-detail-btn generic-delete-icon mt-0 px-3 py-2 ">
+                            <i class="fa-regular fa-trash-can me-2" data-bs-toggle="modal" data-bs-target="#deleteUser_@Model.StoryDetail.StoryId"></i>
+                            <span>Delete</span>
+                        </button>
+                    </div>
                     <!-- delete story modal -->
                     <div class="modal fade" id="deleteUser_@Model.StoryDetail.StoryId" tabindex="-1" aria-labelledby="add-vol-hours-modal" aria-hidden="true">
                         <div class="modal-dialog">

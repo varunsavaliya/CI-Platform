@@ -5,7 +5,7 @@
 }
 @*<script>
     var userId = @Html.Raw(Json.Serialize(UserId));
-</script>*@
+    </script>*@
 @section scripts{
     @{
     <partial name="_ValidationScriptsPartial" />
@@ -107,7 +107,7 @@
                     <div class="seats-detail d-flex align-items-center">
                         <img src="~/images/Seats-left.png" alt="" />
                         <div class="d-flex flex-column">
-                            <p>@Model.mission.seatsleft</p>
+                            <p>@(Model.mission.seatsleft == null || Model.mission.seatsleft < 0 ? 0 : Model.mission.seatsleft)</p>
                             <p>Seats left</p>
                         </div>
                     </div>
@@ -155,35 +155,33 @@
                 @*favourite and recommend to a co-worker*@
                 <div class="row border-bottom pb-3 position-relative">
                     <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
-                        @if (Model.mission.IsFavourite)
-                        {
-                            <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.Missiondata.MissionId"><i class="bi bi-heart-fill favorite-button filled-heart text-danger me-2" data-mission-id="@Model.mission.Missiondata.MissionId"></i><span>Remove From Favourite</span></a>
-                        }
-                        else
-                        {
-                            <a class="btn vmbtn py-md-1 py-sm-1 py-lg-2" for="@Model.mission.Missiondata.MissionId"><i class="bi bi-heart favorite-button empty-heart text-light me-2" data-mission-id="@Model.mission.Missiondata.MissionId"></i><span>Add to Favourite</span></a>
-                        }
+
+                        <a class="btn vmbtn favorite-button py-md-1 py-sm-1 py-lg-2" data-mission-id="@Model.mission.Missiondata.MissionId" for="@Model.mission.Missiondata.MissionId">
+                            <i class="@(Model.mission.IsFavourite ? "bi bi-heart-fill filled-heart text-danger" : "bi bi-heart empty-heart text-light") me-2" data-mission-id="@Model.mission.Missiondata.MissionId"></i>
+                            <span>@(Model.mission.IsFavourite ? "Remove From Favourite" : "Add to Favourite")</span>
+                        </a>
+
                     </div>
                     <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
                         <a href="#" class="btn vmbtn py-md-1 py-sm-1 py-lg-2" data-bs-toggle="modal" data-bs-target="#inviteVolunteer"><div class="recommend-icon me-3"></div><span class="recommend-text"></span></a>
 
                         <!-- Invite Volunteer Modal -->
                         <div class="modal fade" id="inviteVolunteer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body" id="all-users">
+                                    <div class="modal-body all-users">
+                                        <input type="text" class="form-control search-invite-user mb-2" placeholder="Search User..." />
                                         @foreach (var user in Model.UserList)
                                         {
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <span class="me-4 " id="user-name" data-userID="@user.UserId">@user.FirstName @user.LastName</span>
-                                                <span class="invited-@user.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@Model.mission.Missiondata.MissionId">Invite</button></span>
+                                            <div class="mt-2 d-flex justify-content-between user-invite-container">
+                                                <span class="me-4 " id="user-name" data-email="@user.Email" data-userID="@user.UserId">@user.FirstName @user.LastName</span>
+                                                <span class="invited-@user.UserId"><button class="btn model-button invite-button shadow-none card-button  py-1 px-3 m-0" data-mission-Id="@Model.mission.Missiondata.MissionId">Invite</button></span>
                                             </div>
                                         }
-
                                     </div>
                                 </div>
                             </div>
@@ -321,26 +319,33 @@
                             Post Comment
                         </button>
                     </form>
-                    <div class="show-comments mt-4">
-                        @foreach (var comment in Model.mission.MissionComments)
-                        {
-                            if (@comment.ApprovalStatus == "PUBLISHED")
+                    @if (Model.mission.MissionComments.Count() < 1)
+                    {
+                        <h4 class="text-secondary mt-3">Be the first to comment in this mission!!</h4>
+                    }
+                    else
+                    {
+                        <div class="show-comments mt-4">
+                            @foreach (var comment in Model.mission.MissionComments)
                             {
-                                <div class="comment">
-                                    <div class="row">
-                                        <div class="col-2 d-flex justify-content-center align-items-center">
-                                            <img src="~/images/volunteer1.png" />
-                                        </div>
-                                        <div class="col-10 d-flex flex-column ">
-                                            <p class="comment-user mb-1 mt-1">@comment.User.FirstName @comment.User.LastName</p>
-                                            <p class="comment-time mb-2">@comment.CreatedAt.ToString("dddd, MMMM dd, yyyy, h:mm tt")</p>
-                                            <p class="comment-text mb-2">@comment.Comment1</p>
+                                if (@comment.CommentData.ApprovalStatus == "PUBLISHED")
+                                {
+                                    <div class="comment">
+                                        <div class="row">
+                                            <div class="col-2 d-flex justify-content-center align-items-center">
+                                                <img src="~/ProfileImages/@comment.UserAvatar" />
+                                            </div>
+                                            <div class="col-10 d-flex flex-column ">
+                                                <p class="comment-user mb-1 mt-1">@comment.UserName</p>
+                                                <p class="comment-time mb-2">@comment.CommentData.CreatedAt.ToString("dddd, MMMM dd, yyyy, h:mm tt")</p>
+                                                <p class="comment-text mb-2">@comment.CommentData.Comment1</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                }
                             }
-                        }
-                    </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
