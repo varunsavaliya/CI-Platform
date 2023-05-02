@@ -508,30 +508,31 @@
                                         }
                                     </div>
                                     <div class="pause-mission-icon">
-                                        <!-- Button trigger modal -->
+                                       <!-- Button trigger modal -->
                                 <img data-bs-toggle="modal" data-bs-target="#inviteVolunteer_@card.Missiondata.MissionId" src="~/images/user.png" alt="">
 
-                                        <!-- Invite Volunteer Modal -->
+                                            <!-- Invite Volunteer Modal -->
                                 <div class="modal fade" id="inviteVolunteer_@card.Missiondata.MissionId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body" id="all-users">
-                                                        @foreach (var u in Model.UserList)
-                                                        {
-                                                            <div class="mt-2 d-flex justify-content-between">
-                                                                <span class="me-4 " id="user-name" data-userID="@u.UserId">@u.FirstName @u.LastName</span>
-                                                                <span class="invited-@u.UserId"><button class="btn btn-primary model-button invite-button" data-mission-Id="@card.Missiondata.MissionId">Invite</button></span>
-                                                            </div>
-                                                        }
+                                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Invite Your Friend</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body all-users">
+                                                            <input type="text" class="form-control search-invite-user mb-2" placeholder="Search User..." />
+                                                            @foreach (var user in Model.UserList)
+                                                            {
+                                                                <div class="mt-2 d-flex justify-content-between user-invite-container">
+                                                                    <span class="me-4 " id="user-name" data-email="@user.Email" data-userID="@user.UserId">@user.FirstName @user.LastName</span>
+                                                                    <span class="invited-@user.UserId"><button class="btn model-button invite-button shadow-none card-button  py-1 px-3 m-0" data-mission-Id="@card.Missiondata.MissionId">Invite</button></span>
+                                                                </div>
+                                                            }
 
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
 

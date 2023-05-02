@@ -2119,6 +2119,10 @@ iframe {
     filter: brightness(0.5);
 }
 
+.user-image{
+    object-fit:cover;
+}
+
 .change-password {
     cursor: pointer;
 }
@@ -2287,6 +2291,9 @@ iframe {
 
 .vertical-nav-admin {
     height: inherit;
+    position: fixed;
+    width: 17%;
+    height: 100vh;
 }
 
     .vertical-nav-admin ul {
@@ -2336,6 +2343,8 @@ iframe {
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    width: calc(100% - 17%);
+    margin-left: 17%;
 }
 
 .admin-header {

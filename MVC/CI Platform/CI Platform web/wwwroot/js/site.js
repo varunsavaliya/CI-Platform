@@ -835,7 +835,7 @@
         })
     })
 
-    let pageSize = 3;
+    let pageSize = 9;
     let recentVolunteerPageNo = 1;
     let totalRecentVolunteers = $('#totalVolunteers').val();
     const getVolunteers = (pageNo, button) => {
@@ -1178,6 +1178,9 @@
                             showConfirmButton: false,
                             timer: 3000
                         })
+                        setTimeout(function () {
+                            location.reload();
+                        }, 3000);
                     },
                     error: function (error) {
 
@@ -1703,6 +1706,13 @@
         let form2 = $('#time-form')[0];
         $('#time-mission').prop(`disabled`, false);
         $('#goal-mission').prop(`disabled`, false);
+        $('#Actions').prop(`disabled`, false);
+        $("#goal-date").prop(`disabled`, false);
+        $('#goal-message').prop(`disabled`, false);
+        $("#time-date").prop(`disabled`, false);
+        $('#Hours').prop(`disabled`, false);
+        $('#Minutes').prop(`disabled`, false);
+        $('#time-message').prop(`disabled`, false);
 
         form1.reset();
         form2.reset();

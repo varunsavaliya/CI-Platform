@@ -83,38 +83,6 @@ namespace Ci_Platform.Repositories.Repositories
             }
 
             await _context.SaveChangesAsync();
-
-            //if (notificaitonData.NotificationSettingsId == 1)
-            //{
-
-            //if (notificaitonData.NotificationSettingsId == 8)
-            //{
-            //    Notification newNotification = new()
-            //    {
-            //        UserId = userId,
-            //        NotificationSettingsId = notificaitonData.NotificationSettingsId,
-            //        FromUserId = userId,
-            //        ToUserId = notificaitonData.ToUserId,
-            //        StoryId = notificaitonData.StoryId,
-            //        Status = false,
-            //    };
-
-            //    await _context.Notifications.AddAsync(newNotification);
-            //}
-
-            //if (notificaitonData.NotificationSettingsId == 9)
-            //{
-            //    Notification newNotification = new()
-            //    {
-            //        UserId = userId,
-            //        NotificationSettingsId = notificaitonData.NotificationSettingsId,
-            //        MissionApplicationId = notificaitonData.MissionApplicationId,
-            //        MissionId = notificaitonData.MissionId,
-            //        Status = false,
-            //    };
-
-            //    await _context.Notifications.AddAsync(newNotification);
-            //}
         }
     }
 }
