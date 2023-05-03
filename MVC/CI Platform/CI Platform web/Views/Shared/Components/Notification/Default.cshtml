@@ -364,7 +364,7 @@
             @foreach (NotificationSetting setting in Model.NotificationSettings)
             {
                 <div class="form-check px-3 d-flex justify-content-between">
-                    <label for="@setting.NotificationSettingsId">
+                    <label class="form-label" for="@setting.NotificationSettingsId">
                         @setting.SettingName
                     </label>
                     <input class="form-check-input" type="checkbox" value="@setting.NotificationSettingsId"

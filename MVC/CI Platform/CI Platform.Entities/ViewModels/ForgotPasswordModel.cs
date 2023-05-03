@@ -6,9 +6,9 @@ namespace CI_Platform.Entities.ViewModels
     {
         [Required]
         [EmailAddress]
-        public string email { get; set; }
+        public string email { get; set; } = String.Empty;
         public bool emailSent { get; set; }
-        
-        public string? token { get; set; }
+
+        public string? token { get; set; } = String.Empty;
     }
 }

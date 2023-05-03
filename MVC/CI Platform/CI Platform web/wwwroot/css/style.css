@@ -2292,7 +2292,7 @@ iframe {
 .vertical-nav-admin {
     height: inherit;
     position: fixed;
-    width: 17%;
+    width: 300px;
     height: 100vh;
 }
 
@@ -2343,13 +2343,17 @@ iframe {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    width: calc(100% - 17%);
-    margin-left: 17%;
+    width: calc(100% - 300px);
+    margin-left: 300px;
 }
 
 .admin-header {
     box-shadow: 3px 5px 10px #00000014;
     padding: 12px 26px;
+    position: fixed;
+    width: inherit;
+    z-index: 5000;
+    background: white;
 }
 
     .admin-header img {
@@ -2373,6 +2377,8 @@ iframe {
 
 .main-table-content {
     padding: 0 2rem;
+    margin-top: 70px;
+    z-index: 1;
 }
 
 .dataTables_paginate a {
@@ -2483,6 +2489,31 @@ iframe {
 @media screen and (max-width:991px) {
     .vertical-nav-admin ul li a {
         width: max-content;
+    }
+
+    .vertical-nav-admin {
+        width: 69px;
+    }
+    .main-content {
+        width: calc(100% - 69px);
+        margin-left: 69px;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .main-content {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+@media screen and (max-width:477px) {
+
+    .today-date {
+        display:none;
+    }
+    .admin-header{
+        justify-content:flex-end !important;
     }
 }
 

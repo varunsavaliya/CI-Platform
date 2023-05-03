@@ -47,9 +47,12 @@
         <tbody>
             @foreach (Banner banner in Model.Banners)
             {
+                var textLength = 80;
+    var text = banner.Text;
+               text = text.Length > textLength ? text.Substring(0, textLength) + "..." : text;
                 <tr class="tr_@banner.BannerId">
                     <td scope="row"><img class="banner-table-images" src="~/Banners/@banner.Image" /></td>
-                    <td>@banner.Text</td>
+                    <td>@text</td>
                     <td>@banner.SortOrder</td>
                     <td>
                         <input value="@banner.BannerId" class="d-none" type="text" />

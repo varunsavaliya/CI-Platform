@@ -910,6 +910,14 @@
         // Add selected images to the list
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
+
+            var fileExtension = ['jpeg', 'jpg', 'png'];
+            if ($.inArray(file.name.split('.').pop().toLowerCase(), fileExtension) == -1) {
+                //alert("Only formats are allowed : " + fileExtension.join(', '));
+                $('.image-validation-error').text(('Only formats are allowed : ' + fileExtension.join(', ')))
+                continue;
+            }
+
             if (file.size >= 4 * 1024 * 1024) {
                 $('.image-validation-error').text('File size exceeds 4 MB: ' + file.name)
                 continue;
@@ -1741,6 +1749,7 @@
     let dataTable;
     function initializeDataTable(id) {
         dataTable = $(id).DataTable({
+            responsive: true,
             lengthChange: false,
             paging: true,
             searching: true,

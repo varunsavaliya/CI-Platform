@@ -18,6 +18,13 @@
         var videoId = url.Split("v=")[1];
         return $"https://www.youtube.com/embed/{videoId}";
     }
+
+    public string GetVideoId(string url)
+    {
+        var videoId = url.Split("v=")[1];
+        return $"https://img.youtube.com/vi/{videoId}/0.jpg";
+
+    }
                     }
 <div class="container mt-3">
     <div class="row">
@@ -74,7 +81,7 @@
                             @if (!string.IsNullOrEmpty(media.MediaPath))
                             {
                                 <div class="swiper-slide">
-                                    <iframe src="@GetEmbedUrl(@media.MediaPath)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                    <img src="@GetVideoId(media.MediaPath)" />
                                 </div>
                             }
                         }

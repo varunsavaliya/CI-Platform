@@ -9,7 +9,7 @@ namespace CI_Platform.Entities.ViewModels
 {
     public class StoryDetailModel
     {
-        public Story StoryDetail { get; set; }
-        public List<User> UserList { get; set; }
+        public Story StoryDetail { get; set; } = new();
+        public List<User> UserList { get; set; } = new();
     }
 }

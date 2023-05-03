@@ -227,7 +227,7 @@ namespace Ci_Platform.Repositories.Repositories
         public async Task<AdminMissionModel> GetMissionById(long missionId)
         {
             Mission? mission = await _context.Missions.Where(mission => mission.MissionId == missionId).Include(mission => mission.GoalMissions).FirstOrDefaultAsync();
-            List<string>? allurls = await _context.MissionMedia
+            List<string> allurls = await _context.MissionMedia
                 .Where(missionMedia => missionMedia.MissionId == missionId && missionMedia.MediaType == "video")
                 .Select(missionMedia => missionMedia.MediaPath)
                 .ToListAsync();
@@ -781,7 +781,7 @@ namespace Ci_Platform.Repositories.Repositories
 
                 var existingMedia = await _context.Banners.FindAsync(bannerId);
                 string existingMediaName = existingMedia.Image;
-                string oldMediaPath = null;
+                string oldMediaPath = String.Empty;
                 if (existingMedia != null)
                 {
                     oldMediaPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Banners", existingMediaName);

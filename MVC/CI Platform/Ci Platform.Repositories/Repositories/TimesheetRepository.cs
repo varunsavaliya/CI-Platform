@@ -30,7 +30,7 @@ namespace Ci_Platform.Repositories.Repositories
         }
         public async Task<Mission> GetMission(long missionId)
         {
-            var mission = _context.Missions.Where(mission => mission.MissionId == missionId).FirstOrDefault();
+            var mission = await _context.Missions.Where(mission => mission.MissionId == missionId).FirstOrDefaultAsync();
             return mission;
         }
         public Timesheet GetTimesheetDataById(long timesheetId)

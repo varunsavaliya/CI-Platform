@@ -10,8 +10,8 @@ namespace CI_Platform.Entities.ViewModels
         [Required(ErrorMessage = "select a mission")]
         public int selectMission { get; set; }
 
-        [Required(ErrorMessage ="Enter story title")]
-        public string storyTitle { get; set; }
+        [Required(ErrorMessage = "Enter story title")]
+        public string storyTitle { get; set; } = String.Empty;
 
         [Required(ErrorMessage = "Please enter a date")]
         [DataType(DataType.Date)]

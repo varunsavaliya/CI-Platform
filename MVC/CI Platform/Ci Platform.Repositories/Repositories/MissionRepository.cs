@@ -117,8 +117,8 @@ namespace Ci_Platform.Repositories.Repositories
             {
                 // Add the mission to favorites for the user
                 var favoriteMission = new FavoriteMission { MissionId = missionId, UserId = userId };
-                _context.FavoriteMissions.Add(favoriteMission);
-                _context.SaveChanges();
+                await _context.FavoriteMissions.AddAsync(favoriteMission);
+                await _context.SaveChangesAsync();
             }
         }
         public MissionCard GetMissionVolunteeringData(long missionId, long userId)
