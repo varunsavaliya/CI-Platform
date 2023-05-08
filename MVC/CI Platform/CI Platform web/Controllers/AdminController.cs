@@ -1,5 +1,4 @@
 ﻿using Ci_Platform.Repositories.Interfaces;
-using CI_Platform.Entities.DataModels;
 using CI_Platform.Entities.ViewModels;
 using CI_Platform_web.Models;
 using Microsoft.AspNetCore.Authorization;

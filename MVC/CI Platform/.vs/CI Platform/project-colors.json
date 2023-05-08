@@ -25,7 +25,12 @@
       "ProjectGuid": "919fd655-f067-4ba2-b932-d926e85dd6b4",
       "DisplayName": "Script Documents",
       "ColorIndex": 3
+    },
+    "1dfa1621-eb86-440a-b3ac-8e24a226b14d": {
+      "ProjectGuid": "1dfa1621-eb86-440a-b3ac-8e24a226b14d",
+      "DisplayName": "NUnit",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

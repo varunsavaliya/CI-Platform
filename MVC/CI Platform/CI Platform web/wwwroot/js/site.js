@@ -99,7 +99,6 @@
         $('.clear-all-notification').show();
         $('.notifications-section').show();
         $('.notification-settings-section').hide();
-        console.log($('.notification-count').text())
         if ($('.notification-count').text() < 1) {
             $('.no-notification-section').show();
         }
@@ -130,7 +129,7 @@
                 }, 500);
             },
             error: function (xhr) {
-                console.log(xhr.responseText);
+
             }
         });
         
@@ -158,7 +157,7 @@
                 }, 1000);
             },
             error: function (xhr) {
-                console.log(xhr.responseText);
+
             }
         });
     });
@@ -187,7 +186,7 @@
                 }
             },
             error: function (xhr) {
-                console.log(xhr.responseText);
+
             }
         });
     });
@@ -609,7 +608,7 @@
                 $('.totalMissions').text(totalRecords + ' Missions')
             },
             error: function (error) {
-                console.log(error)
+
             }
         });
     }
@@ -1269,7 +1268,7 @@
                 }
             },
             error: function (error) {
-                console.log(error);
+
             }
         });
     });
