@@ -1,0 +1,238 @@
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\refint\CI Platform.Entities.dll
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\varun1\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\varun1\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\varun1\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\varun1\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\refint\CI Platform.Entities.dll
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\New folder (2)\varun1\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main1\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\refint\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+C:\Users\hepin\OneDrive\Desktop\varun\New folder\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\Projects\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\refint\CI Platform.Entities.dll
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+C:\Users\mitrs\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\refint\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+C:\Users\hepin\OneDrive\Desktop\varun\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\project\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\main\main\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\refint\CI Platform.Entities.dll
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+C:\Users\dhana\Desktop\varun\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\refint\CI Platform.Entities.dll
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+C:\Users\hepin\OneDrive\Desktop\varun\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\pro\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.deps.json
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.runtimeconfig.json
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\bin\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.AssemblyReference.cache
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfoInputs.cache
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.AssemblyInfo.cs
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.csproj.CoreCompileInputs.cache
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.dll
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\ref\CI Platform.Entities.dll
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.pdb
+D:\Projects\CI Platform final with assignments\CI-Platform\MVC\CI Platform\CI Platform.Entities\obj\Debug\net6.0\CI Platform.Entities.genruntimeconfig.cache
